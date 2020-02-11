@@ -17,7 +17,7 @@ public class ToppingSpawner : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        Debug.Log("col");
+        //Debug.Log("col");
     }
 
     private void OnTriggerExit(Collider col)
@@ -26,15 +26,15 @@ public class ToppingSpawner : MonoBehaviour
         {
             pickedUp = true;
             
-            StartCoroutine("WaitSpawn");
+            StartCoroutine(nameof(WaitSpawn));
         }
     }
 
     IEnumerator WaitSpawn()
     {
         yield return new WaitForSeconds(.15f);
-        GameObject g = Instantiate(topSpawn, gameObject.transform.position, Quaternion.identity);
-        currentTop = g;
+        GameObject instance = Instantiate(topSpawn, gameObject.transform.position, Quaternion.identity);
+        currentTop = instance;
         
         pickedUp = false;
     }
