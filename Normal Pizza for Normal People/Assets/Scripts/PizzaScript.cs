@@ -10,6 +10,8 @@ public class PizzaScript : MonoBehaviour
     public bool isCooked = false;
     public bool isBurnt = false;
 
+    public List<GameObject> ingredientList = new List<GameObject>();
+
     private void OnDestroy()
     {
         if(ticket != null)
@@ -20,5 +22,10 @@ public class PizzaScript : MonoBehaviour
                 ticketBox.isOpen = true;
             }
         }
+    }
+
+    public void OnCollisionEnter(Collision col)
+    {
+        ingredientList.Add(col.gameObject);
     }
 }
