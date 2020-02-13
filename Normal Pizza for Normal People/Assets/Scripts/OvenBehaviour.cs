@@ -6,7 +6,7 @@ using TMPro;
 
 public class OvenBehaviour : MonoBehaviour
 {
-    private GameManager gm;
+    //private GameManager gm;
     
     private bool inOven = false;
     public float cookTime = 10;
@@ -23,28 +23,28 @@ public class OvenBehaviour : MonoBehaviour
     private Color goodGreen = new Color(0.3f, 0.83f, 0.26f);
     private Color warnOrange = new Color(1f, 0.63f, 0f);
 
-    private ParticleSystem ps;
-    private AudioSource audioSource;
-    [SerializeField]
-    private AudioClip[] audioClips; // 0 = cooking, 1 = ding, 2 = burnt 3 = first placed
+    //private ParticleSystem ps;
+    //private AudioSource audioSource;
+    //[SerializeField]
+    //private AudioClip[] audioClips; // 0 = cooking, 1 = ding, 2 = burnt 3 = first placed
 
     private void Start()
     {
-        gm = FindObjectOfType<GameManager>();
-        ps = gameObject.GetComponent<ParticleSystem>();
-        audioSource = GetComponent<AudioSource>();
+        //gm = FindObjectOfType<GameManager>();
+        //ps = gameObject.GetComponent<ParticleSystem>();
+        //audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.CompareTag("pizza") && col.gameObject.GetComponentInParent<PizzaScript>().isBurnt == false && !gm.isPaused)
+        if (col.gameObject.CompareTag("pizza") && col.gameObject.GetComponentInParent<PizzaScript>().isBurnt == false)//&& !gm.isPaused
         {
-            audioSource.Stop();
-            audioSource.clip = audioClips[3];
-            audioSource.loop = false;
-            audioSource.Play();
+            //audioSource.Stop();
+            //audioSource.clip = audioClips[3];
+            //audioSource.loop = false;
+            //audioSource.Play();
 
-            ps.Play();
+            //ps.Play();
             currentTime = 0;
         }
     }
@@ -52,7 +52,7 @@ public class OvenBehaviour : MonoBehaviour
     private void OnTriggerStay(Collider col)
     {
         //Debug.Log(col.tag);
-        if (col.gameObject.CompareTag("pizza") && col.gameObject.GetComponentInParent<PizzaScript>().isBurnt == false && !gm.isPaused)
+        if (col.gameObject.CompareTag("pizza") && col.gameObject.GetComponentInParent<PizzaScript>().isBurnt == false)// && !gm.isPaused
         { 
             inOven = true;
             currentTime += Time.deltaTime;
@@ -60,12 +60,12 @@ public class OvenBehaviour : MonoBehaviour
             string per = (percent).ToString();
             loadingBar.fillAmount = currentTime / cookTime;
 
-            if (!audioSource.isPlaying)
-            {
-                audioSource.clip = audioClips[0];
-                audioSource.loop = true;
-                audioSource.Play();
-            }
+            //if (!audioSource.isPlaying)
+            //{
+            //    audioSource.clip = audioClips[0];
+            //    audioSource.loop = true;
+            //    audioSource.Play();
+            //}
 
             if (overCooking == true && currentTime >= cookTime)
             {
@@ -75,13 +75,13 @@ public class OvenBehaviour : MonoBehaviour
                 loadingBar.color = warnOrange;
                 progressIndicator.text = "Burnt";
                 
-                audioSource.Stop();
-                audioSource.clip = audioClips[1];
-                audioSource.loop = false;
-                audioSource.Play();
+                //audioSource.Stop();
+                //audioSource.clip = audioClips[1];
+                //audioSource.loop = false;
+                //audioSource.Play();
                 
-                audioSource.clip = audioClips[2];
-                audioSource.Play();
+                //audioSource.clip = audioClips[2];
+                //audioSource.Play();
             }
 
             else if (currentTime >= cookTime)
@@ -93,20 +93,20 @@ public class OvenBehaviour : MonoBehaviour
                 loadingBar.color = warnOrange;
                 progressIndicator.text = "Ready";
                 
-                audioSource.Stop();
-                audioSource.clip = audioClips[1];
-                audioSource.loop = false;
-                audioSource.Play();
+                //audioSource.Stop();
+                //audioSource.clip = audioClips[1];
+                //audioSource.loop = false;
+                //audioSource.Play();
             }
         }
     }
 
     private void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.CompareTag("pizza") && !gm.isPaused)
+        if (col.gameObject.CompareTag("pizza"))//&& !gm.isPaused
         {
-            ps.Stop();
-            audioSource.Stop();
+            //ps.Stop();
+            //audioSource.Stop();
             inOven = false;
             overCooking = false;
             currentTime = 0;
