@@ -4,7 +4,7 @@ using Valve.VR.InteractionSystem;
 
 public class ButtonExample1 : MonoBehaviour
 {
-    private GameManager gm;
+    //private GameManager gm;
     
     public HoverButton hoverButton;
 
@@ -14,7 +14,7 @@ public class ButtonExample1 : MonoBehaviour
 
     private void Start()
     {
-        gm = FindObjectOfType<GameManager>();
+        //gm = FindObjectOfType<GameManager>();
         hoverButton.onButtonDown.AddListener(OnButtonDown);
         //pizzas = new GameObject[5];
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -27,11 +27,11 @@ public class ButtonExample1 : MonoBehaviour
 
     private IEnumerator SpawnPizza()
     {
-        if (!gm.inGame) yield break;
+        //if (!gm.inGame) yield break;
         PizzaScript[] pizzas;
 
         //pizzas = GameObject.FindGameObjectsWithTag("pizza");
-        pizzas = GameObject.FindObjectsOfType<PizzaScript>();
+        pizzas = FindObjectsOfType<PizzaScript>();
         //Debug.Log("za: " + pizzas.Length);
         //for (int i = 0; i < pizzas.Length; i++)
         //{
