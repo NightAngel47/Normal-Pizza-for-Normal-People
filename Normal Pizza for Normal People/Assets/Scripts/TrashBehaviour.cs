@@ -19,7 +19,7 @@ public class TrashBehaviour : MonoBehaviour
     {
         if (col.gameObject.CompareTag("pizza") || col.gameObject.CompareTag("topping"))
         {
-            StartCoroutine("WaitKill", col.gameObject.transform.parent.gameObject);
+            StartCoroutine(nameof(WaitKill), col.gameObject.transform.parent.gameObject);
         }
     }
 
