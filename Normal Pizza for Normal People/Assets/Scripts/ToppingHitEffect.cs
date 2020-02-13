@@ -20,9 +20,9 @@ public class ToppingHitEffect : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.transform.GetChild(0).CompareTag("pizza"))
+        if (collision.transform.parent.TryGetComponent(out PizzaScript pizza))
         {
-            pizzaCollider = collision.gameObject.transform.GetChild(0).GetComponent<MeshCollider>();
+            pizzaCollider = collision.gameObject.GetComponent<MeshCollider>();
             audioSource.Play();
         }
 
@@ -40,7 +40,7 @@ public class ToppingHitEffect : MonoBehaviour
                     float randx = Random.Range(-.2f, .28f);
                     float randz = Random.Range(-.128f, .259f);
 
-                    GameObject spawned = GameObject.Instantiate(spawnObjectOnCollision);
+                    GameObject spawned = Instantiate(spawnObjectOnCollision);
                     spawned.transform.SetParent(pizzaCollider.transform);
                     spawned.transform.rotation = Quaternion.Euler(0, 0, 0);
                     spawned.transform.localPosition = new Vector3(randx, 3f, randz);
