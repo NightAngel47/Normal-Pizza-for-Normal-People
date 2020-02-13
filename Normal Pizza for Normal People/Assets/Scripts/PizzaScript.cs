@@ -14,13 +14,11 @@ public class PizzaScript : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(ticket != null)
+        if (ticket == null) return;
+        var ticketBox = ticket.GetComponent<OrderTicketScript>().ticketBox;
+        if(ticketBox != null)
         {
-            var ticketBox = ticket.GetComponent<OrderTicketScript>().ticketBox;
-            if(ticketBox != null)
-            {
-                ticketBox.isOpen = true;
-            }
+            ticketBox.isOpen = true;
         }
     }
 
