@@ -17,9 +17,9 @@ public class TrashBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.TryGetComponent(out PizzaScript pizza) || col.gameObject.CompareTag("topping"))
+        if (col.transform.TryGetComponent(out PizzaScript pizza) || col.transform.TryGetComponent(out ToppingHitEffect topping))
         {
-            StartCoroutine(nameof(WaitKill), col.gameObject.transform.parent.gameObject);
+            StartCoroutine(nameof(WaitKill), col.transform.parent.gameObject);
         }
     }
 
@@ -40,10 +40,10 @@ public class TrashBehaviour : MonoBehaviour
             //audioSource.loop = false;
             //audioSource.Play();
         }
-        GameObject ticket = gameObjectToDestroy.GetComponent<PizzaScript>().ticket;
-        if (ticket != null)
+        //GameObject ticket = gameObjectToDestroy.GetComponent<PizzaScript>().ticket;
+        //if (ticket != null)
         {
-            ticket.GetComponent<LockToPoint1>().ChangeSnap(ticket.GetComponent<OrderTicketBehaviour>().startLockPos.transform);
+         //   ticket.GetComponent<LockToPoint1>().ChangeSnap(ticket.GetComponent<OrderTicketBehaviour>().startLockPos.transform);
         }
         Destroy(gameObjectToDestroy);
     }
