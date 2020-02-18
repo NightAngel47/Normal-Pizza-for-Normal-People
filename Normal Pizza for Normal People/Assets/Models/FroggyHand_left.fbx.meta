@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ee25b165d142bcb4a95c9e2c83e61d24
+guid: d23a4b9386e0d8042a995c1f12ee41b6
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -81,15 +81,16 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 0.01
-    rootMotionBoneName: Root
+    rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
-    skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 5b1b3324d9af1db498a8cb294cc8d274,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 
