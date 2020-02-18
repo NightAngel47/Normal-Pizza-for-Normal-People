@@ -16,8 +16,11 @@
     </explicitIncludes>
     <explicitExcludes>
       <Path>.idea</Path>
+      <Path>Asset Bundles</Path>
+      <Path>Builds</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
+      <Path>OVRAssetBundles</Path>
       <Path>obj</Path>
     </explicitExcludes>
   </component>
