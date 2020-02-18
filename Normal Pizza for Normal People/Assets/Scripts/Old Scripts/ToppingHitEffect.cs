@@ -16,20 +16,21 @@ public class ToppingHitEffect : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.transform.parent.TryGetComponent(out PizzaScript pizza)) return;
-        Debug.Log(collision.transform.parent.name);
+        Debug.Log(collision.gameObject.name);
+        if (!collision.transform.TryGetComponent(out PizzaScript pizza)) return;
+        //Debug.Log(collision.transform.parent.name);
         
         audioSource.Play();
         
         float randx = Random.Range(-.2f, .28f);
         float randz = Random.Range(-.128f, .259f);
 
-        GameObject spawned = Instantiate(spawnObjectOnCollision);
-        spawned.transform.SetParent(collision.transform);
-        spawned.transform.rotation = Quaternion.Euler(0, 0, 0);
+        Vector3 toppingSpawnPos = new Vector3(collision.transform.position.x + randx, collision.transform.position.y, );
+        
+        Instantiate(spawnObjectOnCollision, , Quaternion.identity, collision.transform);
         spawned.transform.localPosition = new Vector3(randx, 3f, randz);
         
-        Destroy(collision.gameObject);
+        Destroy(gameObject);
         
         /*
         ContactPoint contact = collision.contacts[0];

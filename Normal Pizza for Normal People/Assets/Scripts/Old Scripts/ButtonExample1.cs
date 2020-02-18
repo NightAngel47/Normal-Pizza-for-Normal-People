@@ -10,14 +10,14 @@ public class ButtonExample1 : MonoBehaviour
 
     public GameObject prefab1;
 
-    private AudioSource audioSource;
+    //private AudioSource audioSource;
 
     private void Start()
     {
         //gm = FindObjectOfType<GameManager>();
         hoverButton.onButtonDown.AddListener(OnButtonDown);
         //pizzas = new GameObject[5];
-        audioSource = gameObject.GetComponent<AudioSource>();
+        //audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     private void OnButtonDown(Hand hand)
@@ -42,7 +42,7 @@ public class ButtonExample1 : MonoBehaviour
         {
             Instantiate(prefab1, gameObject.transform.position, Quaternion.identity);
             pizzas = new PizzaScript[0];
-            audioSource.Play();
+            //audioSource.Play();
         }
 
         yield return null;
