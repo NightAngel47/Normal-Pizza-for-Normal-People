@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Valve.VR.InteractionSystem;
-using Valve.VR;
+﻿using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
+using Valve.VR.InteractionSystem;
 
 public class InteractableHover : MonoBehaviour
 {
