@@ -9,6 +9,7 @@
       <Path>Library/PackageCache/com.unity.test-framework@1.1.9</Path>
       <Path>Library/PackageCache/com.unity.textmeshpro@2.0.1</Path>
       <Path>Library/PackageCache/com.unity.timeline@1.2.10</Path>
+      <Path>Library/PackageCache/com.unity.xr.oculus.android@2.38.6</Path>
       <Path>Library/PackageCache/com.unity.xr.oculus.standalone@2.38.4</Path>
       <Path>Library/PackageCache/com.unity.xr.openvr.standalone@2.0.5</Path>
       <Path>Packages</Path>
@@ -16,8 +17,12 @@
     </explicitIncludes>
     <explicitExcludes>
       <Path>.idea</Path>
+      <Path>Asset Bundles</Path>
+      <Path>Builds</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
+      <Path>OVRAssetBundles</Path>
+      <Path>Temp</Path>
       <Path>obj</Path>
     </explicitExcludes>
   </component>

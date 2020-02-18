@@ -25,10 +25,10 @@ public class ToppingHitEffect : MonoBehaviour
         float randx = Random.Range(-.2f, .28f);
         float randz = Random.Range(-.128f, .259f);
 
-        Vector3 toppingSpawnPos = new Vector3(collision.transform.position.x + randx, collision.transform.position.y, );
+        //Vector3 toppingSpawnPos = new Vector3(collision.transform.position.x + randx, collision.transform.position.y, );
         
-        Instantiate(spawnObjectOnCollision, , Quaternion.identity, collision.transform);
-        spawned.transform.localPosition = new Vector3(randx, 3f, randz);
+        //Instantiate(spawnObjectOnCollision, , Quaternion.identity, collision.transform);
+        //spawned.transform.localPosition = new Vector3(randx, 3f, randz);
         
         Destroy(gameObject);
         
