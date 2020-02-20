@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5028148242255062793}
   - component: {fileID: 5028148242255062792}
-  - component: {fileID: 5028148242255062799}
-  - component: {fileID: 5028148242255062798}
-  - component: {fileID: 5028148242255062797}
+  - component: {fileID: 3539250545555015827}
+  - component: {fileID: 6341904403071615621}
+  - component: {fileID: 8565379234060728272}
+  - component: {fileID: 8880228110941784162}
   - component: {fileID: 3537530837313218571}
-  - component: {fileID: -8531351764228126410}
   m_Layer: 0
   m_Name: Base Interactable
   m_TagString: Untagged
@@ -52,7 +52,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5028148242255062799
+--- !u!114 &3539250545555015827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5028148242255062899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ba9ab001be452646a3d2d0bda7be133, type: 3}
+  m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   activateActionSetOnAttach:
@@ -104,7 +104,7 @@ MonoBehaviour:
   highlightOnHover: 1
   hideHighlight: []
   hoverPriority: 0
---- !u!114 &5028148242255062798
+--- !u!114 &6341904403071615621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5028148242255062899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a246553c8f4bbe34e84608ca52f23420, type: 3}
+  m_Script: {fileID: 11500000, guid: c4153b26428ccf041950b92c057812a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onHandHoverBegin:
@@ -128,7 +128,7 @@ MonoBehaviour:
   onDetachedFromHand:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5028148242255062797
+--- !u!114 &8565379234060728272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,10 +137,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 5028148242255062899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640344fe8c86291499a91331a864c9a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 783750eec4c41da428b7651515146d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachmentFlags: 85
+  velocityAverageFrames: 5
+  angularVelocityAverageFrames: 11
+  estimateOnAwake: 0
+--- !u!114 &8880228110941784162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5028148242255062899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffefbea063cab884ca33e5a449e5c22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachmentFlags: 81
   attachmentOffset: {fileID: 0}
   catchingSpeedThreshold: -1
   releaseVelocityStyle: 3
@@ -211,18 +226,3 @@ MonoBehaviour:
   previewPoseSelection: 0
   blendingBehaviours: []
   scale: 1
---- !u!114 &-8531351764228126410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5028148242255062899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98477eeba5c9f824f82cb8645e4fd7a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityAverageFrames: 5
-  angularVelocityAverageFrames: 11
-  estimateOnAwake: 0
