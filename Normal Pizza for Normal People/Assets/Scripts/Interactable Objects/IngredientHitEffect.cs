@@ -9,8 +9,8 @@ public class IngredientHitEffect : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //TODO change PizzaScript to whatever new script will be
-        if (collision.collider.GetComponentInParent<PizzaScript>())
+        var pizza = collision.collider.GetComponentInParent<PizzaBehaviour>();
+        if (pizza)
         {
             ContactPoint contact = collision.contacts[0];
             RaycastHit hit;
@@ -19,13 +19,13 @@ public class IngredientHitEffect : MonoBehaviour
             Ray ray = new Ray(contact.point - (-contact.normal * backTrackLength), -contact.normal);
             if (collision.collider.Raycast(ray, out hit, 2))
             {
-                //TODO modify to work better
-                Instantiate(spawnObjectOnCollision);
+                var newIngredient = Instantiate(spawnObjectOnCollision, pizza.transform);
+                pizza.AddPizzaIngredient(newIngredient.GetComponent<PizzaIngredient>());
             }
 
             Debug.DrawRay(ray.origin, ray.direction, Color.cyan, 5, true);
 
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }
