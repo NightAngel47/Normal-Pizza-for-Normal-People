@@ -19,7 +19,8 @@ public class IngredientHitEffect : MonoBehaviour
             Ray ray = new Ray(contact.point - (-contact.normal * backTrackLength), -contact.normal);
             if (collision.collider.Raycast(ray, out hit, 2))
             {
-                var newIngredient = Instantiate(spawnObjectOnCollision, pizza.transform);
+                var newIngredient = Instantiate(spawnObjectOnCollision, pizza.transform.position + spawnObjectOnCollision.transform.localScale, Quaternion.identity);
+                newIngredient.transform.parent = pizza.transform;
                 pizza.AddPizzaIngredient(newIngredient.GetComponent<PizzaIngredient>());
             }
 
