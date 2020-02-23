@@ -10,23 +10,22 @@ public class IngredientHitEffect : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         var pizza = collision.collider.GetComponentInParent<PizzaBehaviour>();
-        if (pizza)
+        
+        if (!pizza) return;
+        ContactPoint contact = collision.contacts[0];
+
+        float backTrackLength = 1f;
+        Ray ray = new Ray(contact.point - (-contact.normal * backTrackLength), -contact.normal);
+        if (collision.collider.Raycast(ray, out RaycastHit hit, 2))
         {
-            ContactPoint contact = collision.contacts[0];
-            RaycastHit hit;
-
-            float backTrackLength = 1f;
-            Ray ray = new Ray(contact.point - (-contact.normal * backTrackLength), -contact.normal);
-            if (collision.collider.Raycast(ray, out hit, 2))
-            {
-                var newIngredient = Instantiate(spawnObjectOnCollision, pizza.transform.position + spawnObjectOnCollision.transform.localScale, Quaternion.identity);
-                newIngredient.transform.parent = pizza.transform;
-                pizza.AddPizzaIngredient(newIngredient.GetComponent<PizzaIngredient>());
-            }
-
-            Debug.DrawRay(ray.origin, ray.direction, Color.cyan, 5, true);
-
-            Destroy(gameObject);
+            var pizzaTransform = pizza.transform;
+            var newIngredient = Instantiate(spawnObjectOnCollision, 
+                pizzaTransform.position + 
+                Vector3.up * (3 * (pizza.transform.GetChild(0).localScale.y + spawnObjectOnCollision.transform.GetChild(0).localScale.y)), 
+                Quaternion.identity, pizzaTransform);
+            pizza.AddPizzaIngredient(newIngredient.GetComponent<PizzaIngredient>());
         }
+
+        Destroy(gameObject);
     }
 }

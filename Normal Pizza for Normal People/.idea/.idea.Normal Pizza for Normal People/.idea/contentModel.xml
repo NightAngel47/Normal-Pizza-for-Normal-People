@@ -35,6 +35,8 @@
           </e>
           <e p="PizzaBehaviour.cs" t="Include" />
           <e p="PizzaIngredient.cs" t="Include" />
+          <e p="Pointer.cs" t="Include" />
+          <e p="VRInputModule.cs" t="Include" />
         </e>
         <e p="SteamVR" t="Include">
           <e p="Editor" t="Include">
