@@ -6,4 +6,9 @@ public class PizzaIngredient : MonoBehaviour
 {
     [SerializeField, Tooltip("The name of the ingredient")]
     private string ingredientName;
+
+    public string GetIngredientName()
+    {
+        return ingredientName;
+    }
 }
