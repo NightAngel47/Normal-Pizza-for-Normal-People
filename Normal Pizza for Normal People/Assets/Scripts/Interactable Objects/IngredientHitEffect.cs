@@ -10,22 +10,22 @@ public class IngredientHitEffect : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         var pizza = collision.collider.GetComponentInParent<PizzaBehaviour>();
-        
-        if (!pizza) return;
-        ContactPoint contact = collision.contacts[0];
 
-        float backTrackLength = 1f;
-        Ray ray = new Ray(contact.point - (-contact.normal * backTrackLength), -contact.normal);
-        if (collision.collider.Raycast(ray, out RaycastHit hit, 2))
+        if (pizza)
         {
-            var pizzaTransform = pizza.transform;
-            var newIngredient = Instantiate(spawnObjectOnCollision, 
-                pizzaTransform.position + 
-                Vector3.up * (3 * (pizza.transform.GetChild(0).localScale.y + spawnObjectOnCollision.transform.GetChild(0).localScale.y)), 
-                Quaternion.identity, pizzaTransform);
-            pizza.AddPizzaIngredient(newIngredient.GetComponent<PizzaIngredient>());
-        }
+            ContactPoint contact = collision.contacts[0];
 
-        Destroy(gameObject);
+            float backTrackLength = 1f;
+            Ray ray = new Ray(contact.point - (-contact.normal * backTrackLength), -contact.normal);
+            if (collision.collider.Raycast(ray, out RaycastHit hit, 2))
+            {
+                var spawnPos = pizza.transform.position + Vector3.up * (3 * (pizza.transform.GetChild(0).localScale.y + spawnObjectOnCollision.transform.GetChild(0).localScale.y));
+                var randRot = Quaternion.Euler(new Vector3(0, Random.Range(-180f, 180f), 0));
+                var newIngredient = Instantiate(spawnObjectOnCollision,spawnPos, randRot, pizza.transform);
+                pizza.AddPizzaIngredient(newIngredient.GetComponent<PizzaIngredient>());
+            }
+
+            Destroy(gameObject);
+        }
     }
 }

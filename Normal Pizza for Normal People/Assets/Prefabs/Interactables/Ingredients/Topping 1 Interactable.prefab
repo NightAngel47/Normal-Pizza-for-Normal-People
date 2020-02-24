@@ -100,10 +100,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 179181037077442741, guid: cce7d3133eca42c4487ecfbde06776f1,
+        type: 3}
+      propertyPath: spawnObjectOnCollision
+      value: 
+      objectReference: {fileID: 2127256211169950911, guid: 44021f337208aae4785144ea1442ecf3,
+        type: 3}
     - target: {fileID: 5124808810708315160, guid: cce7d3133eca42c4487ecfbde06776f1,
         type: 3}
       propertyPath: m_Name
-      value: Topping 1
+      value: Topping 1 Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 5124808810708315234, guid: cce7d3133eca42c4487ecfbde06776f1,
         type: 3}
