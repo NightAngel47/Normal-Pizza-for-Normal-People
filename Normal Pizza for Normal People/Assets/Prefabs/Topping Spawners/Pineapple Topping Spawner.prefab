@@ -10,8 +10,14 @@ PrefabInstance:
     - target: {fileID: 8930300501600822282, guid: b8d64de87b973ce4f9e14c8d48fb631d,
         type: 3}
       propertyPath: m_Name
-      value: Topping 1 Spawner
+      value: Pineapple Topping Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8930300501600822282, guid: b8d64de87b973ce4f9e14c8d48fb631d,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 8930300501600822285, guid: b8d64de87b973ce4f9e14c8d48fb631d,
         type: 3}
       propertyPath: pizzaIngredientToSpawn
