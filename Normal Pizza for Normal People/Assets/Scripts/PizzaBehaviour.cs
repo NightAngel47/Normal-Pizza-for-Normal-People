@@ -8,8 +8,9 @@ public class PizzaBehaviour : MonoBehaviour
 
     //Oven/Cooking Variables
     public float cookedTime = 0; //the amount of time the pizza has spent in the oven
-    public bool isBurnt = false;
-    public bool isCooked = false;
+    public bool isBurnt = false; //has the pizza been burnt
+    public bool isCooked = false; //has the pizza been cooked ----- only one of these two bools will be on at any given time
+    public bool overCooking = false; //is it being over cooked, has it been cooked and will it be burning soon
 
     public void AddPizzaIngredient(PizzaIngredient newIngredient)
     {
