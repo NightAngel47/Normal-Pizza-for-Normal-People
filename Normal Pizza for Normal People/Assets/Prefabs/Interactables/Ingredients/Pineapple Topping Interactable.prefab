@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 272b2eea2c0e13d43b5060897fc822ec, type: 2}
+  - {fileID: 2100000, guid: 072e7e65e3e4702499200232b8ec0c3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,7 +109,7 @@ PrefabInstance:
     - target: {fileID: 5124808810708315160, guid: cce7d3133eca42c4487ecfbde06776f1,
         type: 3}
       propertyPath: m_Name
-      value: Topping 1 Interactable
+      value: Pineapple Topping Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 5124808810708315234, guid: cce7d3133eca42c4487ecfbde06776f1,
         type: 3}

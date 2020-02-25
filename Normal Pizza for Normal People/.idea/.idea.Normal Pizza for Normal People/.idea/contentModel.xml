@@ -7,7 +7,6 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
-          <e p="ButtonTransistioner.cs" t="Include" />
           <e p="CustomerTest.cs" t="Include" />
           <e p="Interactable Objects" t="Include">
             <e p="IngredientHitEffect.cs" t="Include" />
@@ -23,7 +22,7 @@
             <e p="OrderTicketBehaviour.cs" t="Include" />
             <e p="OrderTicketLockPosBehaviour.cs" t="Include" />
             <e p="OrderTicketScript.cs" t="Include" />
-            <e p="OvenBehaviour.cs" t="Include" />
+            <e p="OvenBehaviourOld.cs" t="Include" />
             <e p="PizzaCheckbox.cs" t="Include" />
             <e p="PizzaRespawn.cs" t="Include" />
             <e p="PizzaScript.cs" t="Include" />
@@ -34,12 +33,16 @@
             <e p="ToppingSpawner.cs" t="Include" />
             <e p="TrashBehaviour.cs" t="Include" />
           </e>
+          <e p="OvenBehaviour.cs" t="Include" />
           <e p="PizzaBehaviour.cs" t="Include" />
           <e p="PizzaIngredient.cs" t="Include" />
           <e p="PizzaIngredientSpawner.cs" t="Include" />
           <e p="PizzaSpawner.cs" t="Include" />
-          <e p="Pointer.cs" t="Include" />
-          <e p="VRInputModule.cs" t="Include" />
+          <e p="Pointer" t="Include">
+            <e p="ButtonTransistioner.cs" t="Include" />
+            <e p="Pointer.cs" t="Include" />
+            <e p="VRInputModule.cs" t="Include" />
+          </e>
         </e>
         <e p="SteamVR" t="Include">
           <e p="Editor" t="Include">
