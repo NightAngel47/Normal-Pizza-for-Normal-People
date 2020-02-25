@@ -17,7 +17,7 @@ public class PizzaIngredientSpawner : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        if (col.TryGetComponent(out PizzaIngredient ingredient) && 
+        if (!col.TryGetComponent(out PizzaIngredient ingredient) || 
             ingredient.GetIngredientName() != pizzaIngredientToSpawn.GetComponent<PizzaIngredient>().GetIngredientName()) return;
         
         if (!isSpawning)

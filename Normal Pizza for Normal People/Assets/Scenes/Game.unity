@@ -1930,6 +1930,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pineapple Topping Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 4271134858391353349, guid: e8f2f65dab7092140a1016555577de34,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000,
+        type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8f2f65dab7092140a1016555577de34, type: 3}
 --- !u!1 &1864852812

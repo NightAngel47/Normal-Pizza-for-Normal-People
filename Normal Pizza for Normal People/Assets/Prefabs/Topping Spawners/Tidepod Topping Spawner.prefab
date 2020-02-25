@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4659205244421184527
+--- !u!1001 &4146555987539412820
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,13 +10,19 @@ PrefabInstance:
     - target: {fileID: 8930300501600822282, guid: b8d64de87b973ce4f9e14c8d48fb631d,
         type: 3}
       propertyPath: m_Name
-      value: Topping 1 Spawner
+      value: Tidepod Topping Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8930300501600822282, guid: b8d64de87b973ce4f9e14c8d48fb631d,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 8930300501600822285, guid: b8d64de87b973ce4f9e14c8d48fb631d,
         type: 3}
       propertyPath: pizzaIngredientToSpawn
       value: 
-      objectReference: {fileID: 3992555147375518813, guid: af79277fd6452a74b93ceef354085e6c,
+      objectReference: {fileID: 8947208651912989917, guid: 2b0d21a40c4cec2468b19ad6a923a98b,
         type: 3}
     - target: {fileID: 8930300501600822287, guid: b8d64de87b973ce4f9e14c8d48fb631d,
         type: 3}
