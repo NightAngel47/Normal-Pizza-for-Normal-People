@@ -103,9 +103,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7701498598052804793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8c1505d41dc9504d81c0dc34289f714, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f2bbba4f69ca0544a41f949e95e8621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cookedTime: 10
+  isBurnt: 0
+  isCooked: 0
+  overCooking: 0
 --- !u!1001 &3397589903297814474
 PrefabInstance:
   m_ObjectHideFlags: 0
