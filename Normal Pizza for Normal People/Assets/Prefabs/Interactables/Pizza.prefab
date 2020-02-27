@@ -106,7 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2bbba4f69ca0544a41f949e95e8621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cookedTime: 10
+  cookedTime: 0
+  counterTime: -1
   isBurnt: 0
   isCooked: 0
   overCooking: 0

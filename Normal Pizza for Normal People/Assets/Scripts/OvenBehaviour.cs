@@ -19,6 +19,9 @@ public class OvenBehaviour : MonoBehaviour
     private float timerTime;
 
     private PizzaBehaviour pizza;
+    private float tempTime = 0;
+
+    private bool changeOnce = false;
 
     private Color goodGreen = new Color(0.3f, 0.83f, 0.26f);
     private Color warnOrange = new Color(1f, 0.63f, 0f);
@@ -31,7 +34,7 @@ public class OvenBehaviour : MonoBehaviour
 
     void Start()
     {
-        timerTime = cookTime;
+        timerTime = cookTime + 1;
     }
 
     // Update is called once per frame
@@ -52,18 +55,53 @@ public class OvenBehaviour : MonoBehaviour
         //    //ps.Play();
         //    //currentTime = 0;
         //}
+
+        if (col.gameObject.GetComponentInParent<PizzaBehaviour>() == true && col.gameObject.GetComponentInParent<PizzaBehaviour>().isBurnt == false)
+        {
+            if(col.gameObject.GetComponentInParent<PizzaBehaviour>().isCooked == true)
+            {
+                tempTime = col.gameObject.GetComponentInParent<PizzaBehaviour>().cookedTime - cookTime;
+            }
+
+            else
+            {
+                tempTime = col.gameObject.GetComponentInParent<PizzaBehaviour>().cookedTime;
+            }
+            
+            if(col.gameObject.GetComponentInParent<PizzaBehaviour>().counterTime == -1)
+            {
+                Debug.Log("here3");
+                timerTime = cookTime + 1;
+            }
+
+            else
+            {
+                timerTime = col.gameObject.GetComponentInParent<PizzaBehaviour>().counterTime;
+            }
+        }
     }
 
     private void OnTriggerStay(Collider col)
     {
-        Debug.Log(col.gameObject.name);
         //is the pizza in the oven and is it not burnt yet
         if (col.transform.parent.TryGetComponent(out PizzaBehaviour pizza) && pizza.isBurnt == false)// && !gm.isPaused
         {
             pizza.cookedTime += Time.deltaTime; //adds time to the amount of time the pizza has been cooked
-            cookTime -= Time.deltaTime;
-            string per = ((int)cookTime).ToString();
-            loadingBar.fillAmount = pizza.cookedTime / cookTime; //how much fill and assigns fill on timer
+            tempTime += Time.deltaTime;
+
+            timerTime -= Time.deltaTime;
+            string per = ((int)timerTime).ToString();
+
+            if (pizza.cookedTime > cookTime)
+            {
+                loadingBar.fillAmount = tempTime / cookTime; //how much fill and assigns fill on timer
+            }
+
+            else
+            {
+                loadingBar.fillAmount = pizza.cookedTime / cookTime; //how much fill and assigns fill on timer
+            }
+
             progressIndicator.text = per;
             
 
@@ -75,13 +113,13 @@ public class OvenBehaviour : MonoBehaviour
             //}
 
             //if it finished cooking this checks to see if it is going to burn/make it burnt
-            if (pizza.overCooking == true && pizza.cookedTime >= cookTime)
+            if (pizza.overCooking == true && pizza.cookedTime >= overCookTime)
             {
                 pizza.GetComponentInChildren<MeshRenderer>().material = burnt;
                 pizza.isCooked = false;
                 pizza.isBurnt = true;
                 loadingBar.color = warnOrange;
-                progressIndicator.text = "Burnt";
+                //progressIndicator.text = "Burnt";
 
                 //audioSource.Stop();
                 //audioSource.clip = audioClips[1];
@@ -97,10 +135,15 @@ public class OvenBehaviour : MonoBehaviour
             {
                 col.gameObject.GetComponentInChildren<MeshRenderer>().material = cooked;
                 pizza.isCooked = true;
-                pizza.cookedTime = 0;
                 pizza.overCooking = true;
                 loadingBar.color = warnOrange;
-                progressIndicator.text = "Ready";
+
+                if (changeOnce == false)
+                {
+                    changeOnce = true;
+                    tempTime = 0;
+                    timerTime = cookTime + 1;
+                }
 
                 //audioSource.Stop();
                 //audioSource.clip = audioClips[1];
@@ -123,7 +166,10 @@ public class OvenBehaviour : MonoBehaviour
             //reset the timer when pizza leaves
             loadingBar.color = goodGreen;
             loadingBar.fillAmount = 0;
-            progressIndicator.text = "Cooking";
+            tempTime = 0;
+            col.gameObject.GetComponentInParent<PizzaBehaviour>().counterTime = timerTime;
+            timerTime = cookTime + 1;
+            
         }
     }
 }
