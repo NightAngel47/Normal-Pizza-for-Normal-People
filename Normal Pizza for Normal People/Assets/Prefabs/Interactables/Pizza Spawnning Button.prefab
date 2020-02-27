@@ -42,7 +42,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b33d708cc136fa44a805968b05bd075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pizzaPrefab: {fileID: 0}
+  pizzaPrefab: {fileID: 7701498598052804793, guid: baf89d6b909037e4ca1ab0feddce36fd,
+    type: 3}
   pizzaSpawnPos: {fileID: 290742596}
 --- !u!1001 &7617579293688284220
 PrefabInstance:

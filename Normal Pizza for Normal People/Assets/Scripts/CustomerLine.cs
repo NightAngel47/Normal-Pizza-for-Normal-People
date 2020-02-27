@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class CustomerLine : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private int numOfCustomers;
+    private List<Order> customerOrders = new List<Order>();
+    private OrderCreation orderCreation;
+    [SerializeField]
+    private GameObject customerPrefab;
+
+    public void StartDay()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void NextCustomer()
     {
         
     }

@@ -7,14 +7,21 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
-          <e p="CustomerTest.cs" t="Include" />
+          <e p="Customer.cs" t="Include" />
+          <e p="CustomerLine.cs" t="Include" />
+          <e p="Ingredients" t="Include">
+            <e p="PizzaIngredient.cs" t="Include" />
+            <e p="PizzaIngredientSpawner.cs" t="Include" />
+          </e>
           <e p="Interactable Objects" t="Include">
             <e p="IngredientHitEffect.cs" t="Include" />
           </e>
+          <e p="MoneyTracker.cs" t="Include" />
           <e p="Old Scripts" t="Include">
             <e p="ButtonEffect1.cs" t="Include" />
             <e p="ButtonExample1.cs" t="Include" />
             <e p="CurrentPizzaStatus.cs" t="Include" />
+            <e p="CustomerTest.cs" t="Include" />
             <e p="FinishedPizza.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
             <e p="LockToPoint1.cs" t="Include" />
@@ -33,11 +40,13 @@
             <e p="ToppingSpawner.cs" t="Include" />
             <e p="TrashBehaviour.cs" t="Include" />
           </e>
+          <e p="Order.cs" t="Include" />
+          <e p="OrderCreation.cs" t="Include" />
           <e p="OvenBehaviour.cs" t="Include" />
-          <e p="PizzaBehaviour.cs" t="Include" />
-          <e p="PizzaIngredient.cs" t="Include" />
-          <e p="PizzaIngredientSpawner.cs" t="Include" />
-          <e p="PizzaSpawner.cs" t="Include" />
+          <e p="Pizza" t="Include">
+            <e p="PizzaBehaviour.cs" t="Include" />
+            <e p="PizzaSpawner.cs" t="Include" />
+          </e>
           <e p="Pointer" t="Include">
             <e p="ButtonTransistioner.cs" t="Include" />
             <e p="Pointer.cs" t="Include" />
