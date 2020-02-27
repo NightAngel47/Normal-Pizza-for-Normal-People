@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PizzaCheckbox : MonoBehaviour
+namespace Old_Scripts
+{
+    public class PizzaCheckbox : MonoBehaviour
 {
     [SerializeField, Tooltip("The matching current pizza status UI gameobject")]
     private CurrentPizzaStatus currentPizzaStatusUI;
@@ -70,3 +72,6 @@ public class PizzaCheckbox : MonoBehaviour
         }
     }
 }
+
+}
+

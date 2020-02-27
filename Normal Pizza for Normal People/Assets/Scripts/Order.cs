@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Order : MonoBehaviour
+public class Order
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private List<PizzaIngredient> orderIngredients = new List<PizzaIngredient>();
 
-    // Update is called once per frame
-    void Update()
+    //TODO add set order
+    
+    public List<PizzaIngredient> GetOrderIngredients()
     {
-        
+        return orderIngredients;
     }
 }

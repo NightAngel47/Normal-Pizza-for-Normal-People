@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinishedPizza : MonoBehaviour
+namespace Old_Scripts
+{
+    public class FinishedPizza : MonoBehaviour
 {
     private GameManager gm;
     private ParticleSystem ps;
@@ -171,3 +173,6 @@ public class FinishedPizza : MonoBehaviour
         //deliveredPizza.tag = "pizza";
     }
 }
+}
+
+

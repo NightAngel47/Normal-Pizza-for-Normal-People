@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrderCreation : MonoBehaviour
+public class OrderCreation
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<Order> GenerateOrders(int numOfCustomers)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return new List<Order>();
     }
 }

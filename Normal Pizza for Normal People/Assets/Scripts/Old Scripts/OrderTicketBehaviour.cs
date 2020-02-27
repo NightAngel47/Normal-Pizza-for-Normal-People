@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class OrderTicketBehaviour : MonoBehaviour
+namespace Old_Scripts
+{
+    public class OrderTicketBehaviour : MonoBehaviour
 {
     private GameManager gm;
     
@@ -169,3 +171,6 @@ public class OrderTicketBehaviour : MonoBehaviour
         startLockPos.isOpen = true;
     }
 }
+}
+
+

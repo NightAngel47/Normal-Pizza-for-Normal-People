@@ -16,4 +16,9 @@ public class PizzaBehaviour : MonoBehaviour
     {
         ingredientsOnPizza.Add(newIngredient);
     }
+
+    public List<PizzaIngredient> GetIngredientsOnPizza()
+    {
+        return ingredientsOnPizza;
+    }
 }
