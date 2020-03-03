@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Order
 {
-    private List<PizzaIngredient> orderIngredients = new List<PizzaIngredient>();
+    private readonly List<PizzaIngredient> orderIngredients;
 
-    //TODO add set order
-    
+    public Order(List<PizzaIngredient> pizzaIngredients)
+    {
+        orderIngredients = pizzaIngredients;
+    }
+
     public List<PizzaIngredient> GetOrderIngredients()
     {
         return orderIngredients;

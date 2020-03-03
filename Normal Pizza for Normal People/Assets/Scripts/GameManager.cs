@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CustomerLine), typeof(OrderCreation))]
 public class GameManager : MonoBehaviour
 {
     private CustomerLine customerLine;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     {
         moneyTracker = new MoneyTracker();
         customerLine = GetComponent<CustomerLine>();
+        WorkDay();
     }
 
     public MoneyTracker GetMoneyTracker()
