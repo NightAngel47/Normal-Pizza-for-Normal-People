@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &3623621652590598792
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104575434840523290}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: 4d5df00e03cbc834d9814b4ccc4ad3a5, type: 3}
 --- !u!114 &689300596043460042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,8 +98,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2454114618563569262, guid: ed475cc51d0f588448defe3230b1315b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454114618563569262, guid: ed475cc51d0f588448defe3230b1315b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454114618563569262, guid: ed475cc51d0f588448defe3230b1315b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed475cc51d0f588448defe3230b1315b, type: 3}
+--- !u!1 &2104575434840523290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1465250868470600829, guid: ed475cc51d0f588448defe3230b1315b,
+    type: 3}
+  m_PrefabInstance: {fileID: 675937777508619879}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3397589903297814474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -107,17 +142,17 @@ PrefabInstance:
     - target: {fileID: 5028148242255062793, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.42363784
       objectReference: {fileID: 0}
     - target: {fileID: 5028148242255062793, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.116
       objectReference: {fileID: 0}
     - target: {fileID: 5028148242255062793, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.7514895
       objectReference: {fileID: 0}
     - target: {fileID: 5028148242255062793, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
