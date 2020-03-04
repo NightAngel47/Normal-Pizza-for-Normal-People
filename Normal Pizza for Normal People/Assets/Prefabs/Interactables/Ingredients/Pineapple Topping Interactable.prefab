@@ -107,6 +107,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2127256211169950911, guid: 44021f337208aae4785144ea1442ecf3,
         type: 3}
+    - target: {fileID: 3733129861206303584, guid: cce7d3133eca42c4487ecfbde06776f1,
+        type: 3}
+      propertyPath: overridePreviewRightHandPrefab
+      value: 
+      objectReference: {fileID: 1000010304998954, guid: 8a929cc1bd635ae4490b5f87bafed6ad,
+        type: 3}
     - target: {fileID: 5124808810708315160, guid: cce7d3133eca42c4487ecfbde06776f1,
         type: 3}
       propertyPath: m_Name

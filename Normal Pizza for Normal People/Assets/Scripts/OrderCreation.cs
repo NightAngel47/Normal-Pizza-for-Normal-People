@@ -1,14 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class OrderCreation : MonoBehaviour
 {
     [SerializeField]
     private List<PizzaIngredient> allPizzaIngredients = new List<PizzaIngredient>();
     [SerializeField]
-    private int ingredientsPerOrder = 3;
-    
+    private int minIngredientsPerOrder = 1;
+    [SerializeField]
+    private int maxIngredientsPerOrder = 3;
+
     /// <summary>
     /// Generates the orders for the number of customers
     /// </summary>
@@ -18,10 +22,9 @@ public class OrderCreation : MonoBehaviour
     {
         List<Order> orders = new List<Order>(numOfCustomers);
         
-        for (int i = 0; i < orders.Count; ++i)
+        for (int i = 0; i < orders.Capacity; ++i)
         {
-            Order newOrder = new Order(RandomOrderIngredients());
-            orders.Add(newOrder);
+            orders.Add(new Order(RandomOrderIngredients()));
         }
         
         return orders;
@@ -33,8 +36,10 @@ public class OrderCreation : MonoBehaviour
     /// <returns>Returns list of ingredients for order for the number of ingredients per order</returns>
     private List<PizzaIngredient> RandomOrderIngredients()
     {
-        List<PizzaIngredient> ingredients = new List<PizzaIngredient>(ingredientsPerOrder);
-        for (int i = 0; i < ingredients.Count; ++i)
+        int randNumOfIngredients = Random.Range(minIngredientsPerOrder, maxIngredientsPerOrder);
+        List<PizzaIngredient> ingredients = new List<PizzaIngredient>(randNumOfIngredients);
+        
+        for (int i = 0; i < ingredients.Capacity; ++i)
         {
             ingredients.Add(allPizzaIngredients[Random.Range(0, allPizzaIngredients.Count)]);
         }

@@ -106,3 +106,4 @@ MonoBehaviour:
   allPizzaIngredients:
   - {fileID: 7516945271227501687, guid: 44021f337208aae4785144ea1442ecf3, type: 3}
   - {fileID: 9040540506502419961, guid: 7d1e6b0d42121f24d9fc188a3f5b8555, type: 3}
+  ingredientsPerOrder: 3
