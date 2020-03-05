@@ -712,6 +712,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pizza
       objectReference: {fileID: 0}
+    - target: {fileID: 7701498598052804802, guid: baf89d6b909037e4ca1ab0feddce36fd,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 7701498598052804803, guid: baf89d6b909037e4ca1ab0feddce36fd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2340,7 +2345,7 @@ PrefabInstance:
     - target: {fileID: 4359317179201253136, guid: fb55089772ca2294aa49af4b6d72b1fa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.566
+      value: 0.669
       objectReference: {fileID: 0}
     - target: {fileID: 4359317179201253136, guid: fb55089772ca2294aa49af4b6d72b1fa,
         type: 3}
