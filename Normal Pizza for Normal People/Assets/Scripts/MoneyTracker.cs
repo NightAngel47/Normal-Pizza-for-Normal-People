@@ -17,5 +17,6 @@ public class MoneyTracker
     public void ChangeMoney(int amount)
     {
         currentAmount += amount;
+        Debug.Log("Current Amount of Money: " + currentAmount);
     }
 }

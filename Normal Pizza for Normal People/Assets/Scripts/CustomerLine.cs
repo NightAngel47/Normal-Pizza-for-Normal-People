@@ -18,24 +18,27 @@ public class CustomerLine : MonoBehaviour
         orderCreation = GetComponent<OrderCreation>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            NextCustomer();
-        }
-    }
-
     public void StartDay(int numOfCustomers)
     {
         customerOrders = orderCreation.GenerateOrders(numOfCustomers);
+        StartCoroutine(NextCustomer());
     }
 
-    public void NextCustomer()
+    private IEnumerator NextCustomer()
     {
-        if (customerOrders.Count <= 0) return;
-        Customer newCustomer = Instantiate(customerPrefab, customerSpawnPos.position, customerSpawnPos.rotation).GetComponent<Customer>();
-        newCustomer.SetOrder(customerOrders[0]);
-        customerOrders.Remove(customerOrders[0]);
+        if (customerOrders.Count > 0 && !Physics.CheckSphere(customerSpawnPos.position, 0.5f))
+        {
+            yield return new WaitForSeconds(1f);
+            
+            Instantiate(customerPrefab, customerSpawnPos.position, customerSpawnPos.rotation).GetComponent<Customer>().SetOrder(customerOrders[0]);
+            customerOrders.Remove(customerOrders[0]);
+        }
+        
+        yield return new WaitForEndOfFrame();
+            
+        if (customerOrders.Count > 0)
+        {
+            StartCoroutine(NextCustomer());
+        }
     }
 }

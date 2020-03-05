@@ -14,11 +14,13 @@ public class Customer : MonoBehaviour
         moneyTracker = FindObjectOfType<GameManager>().GetMoneyTracker();
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider col)
     {
-        if (other.collider.TryGetComponent(out PizzaBehaviour pizza))
+        if (col.transform.parent.TryGetComponent(out PizzaBehaviour pizza))
         {
             moneyTracker.ChangeMoney(CheckDeliveredPizza(pizza));
+            Destroy(pizza.gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -38,6 +40,6 @@ public class Customer : MonoBehaviour
     /// <returns>If true: it returns the amount of money the pizza earned, else: it returns the amount of money lost.</returns>
     private int CheckDeliveredPizza(PizzaBehaviour pizza)
     {
-        return pizza.GetIngredientsOnPizza() == order.GetOrderIngredients() ? 100 : 0;
+        return pizza.GetIngredientsOnPizza() == order.GetOrderIngredients() ? 100 : -100;
     }
 }
