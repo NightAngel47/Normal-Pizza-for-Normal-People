@@ -121,6 +121,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 675937777508619879}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &362577401051150022 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 894329471142191265, guid: ed475cc51d0f588448defe3230b1315b,
+    type: 3}
+  m_PrefabInstance: {fileID: 675937777508619879}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3397589903297814474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,7 +309,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onHandHoverBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 362577401051150022}
     - target: {fileID: 6341904403071615621, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
       propertyPath: onHandHoverBegin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -323,7 +329,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onHandHoverEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 362577401051150022}
     - target: {fileID: 6341904403071615621, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
       propertyPath: onHandHoverEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
