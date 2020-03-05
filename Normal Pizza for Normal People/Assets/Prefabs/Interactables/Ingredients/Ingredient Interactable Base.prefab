@@ -20,6 +20,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3537530837313218571, guid: 1055cb29081f4834e9b59776c9e4f708,
+        type: 3}
+      propertyPath: overridePreviewRightHandPrefab
+      value: 
+      objectReference: {fileID: 1000010304998954, guid: 8a929cc1bd635ae4490b5f87bafed6ad,
+        type: 3}
     - target: {fileID: 5028148242255062793, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -78,7 +84,7 @@ PrefabInstance:
     - target: {fileID: 5028148242255062899, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
       propertyPath: m_Name
-      value: Ingredient Base
+      value: Ingredient Interactable Base
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1055cb29081f4834e9b59776c9e4f708, type: 3}
