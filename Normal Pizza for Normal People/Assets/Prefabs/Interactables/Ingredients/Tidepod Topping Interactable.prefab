@@ -107,6 +107,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 622189526953829681, guid: 7d1e6b0d42121f24d9fc188a3f5b8555,
         type: 3}
+    - target: {fileID: 3733129861206303584, guid: cce7d3133eca42c4487ecfbde06776f1,
+        type: 3}
+      propertyPath: overridePreviewRightHandPrefab
+      value: 
+      objectReference: {fileID: 1000010304998954, guid: 8a929cc1bd635ae4490b5f87bafed6ad,
+        type: 3}
     - target: {fileID: 5124808810708315160, guid: cce7d3133eca42c4487ecfbde06776f1,
         type: 3}
       propertyPath: m_Name
@@ -226,7 +232,8 @@ PrefabInstance:
         type: 3}
       propertyPath: onHandHoverEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 2100000, guid: 9b6cbedad8c812e47bdef06bc5af0264, type: 2}
+      objectReference: {fileID: -876546973899608171, guid: 8d8d8c3524d416e408882734e7521506,
+        type: 3}
     - target: {fileID: 6546985008559573486, guid: cce7d3133eca42c4487ecfbde06776f1,
         type: 3}
       propertyPath: onHandHoverEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
