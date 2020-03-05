@@ -36,7 +36,7 @@ public class OrderCreation : MonoBehaviour
     /// <returns>Returns list of ingredients for order for the number of ingredients per order</returns>
     private List<PizzaIngredient> RandomOrderIngredients()
     {
-        int randNumOfIngredients = Random.Range(minIngredientsPerOrder, maxIngredientsPerOrder);
+        int randNumOfIngredients = Random.Range(minIngredientsPerOrder, maxIngredientsPerOrder + 1);
         List<PizzaIngredient> ingredients = new List<PizzaIngredient>(randNumOfIngredients);
         
         for (int i = 0; i < ingredients.Capacity; ++i)
