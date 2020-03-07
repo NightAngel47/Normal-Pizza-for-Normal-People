@@ -1705,7 +1705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logo: {fileID: 645776004}
-  howToPlay: {fileID: 0}
+  howToPlay: {fileID: 703415116}
   credits: {fileID: 807479152}
 --- !u!4 &1488384663
 Transform:
