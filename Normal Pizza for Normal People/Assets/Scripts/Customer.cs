@@ -75,23 +75,23 @@ public class Customer : MonoBehaviour
     private int CheckDeliveredPizza(PizzaBehaviour pizza)
     {
         //TODO add pizza money calculation
-        if (pizza.GetIngredientsOnPizza().Count != order.GetOrderIngredients().Count) return -100;
         
-        var tempOrderList = order.GetOrderIngredients();
+        if (pizza.GetIngredientsOnPizza().Count != order.GetOrderIngredients().Count) return -100;
 
-        foreach (var pizzaIngredient in pizza.GetIngredientsOnPizza())
+        var tempPizzaList = pizza.GetIngredientsOnPizza();
+        var tempOrderList = order.GetOrderIngredients();
+        for (int i = 0; i < tempPizzaList.Count; ++i)
         {
-            foreach (var orderIngredient in tempOrderList)
+            for (int j = 0; j < tempOrderList.Count; ++j)
             {
-                if (pizzaIngredient.GetIngredientName() == orderIngredient.GetIngredientName())
+                if (tempPizzaList[i].GetIngredientName() == tempOrderList[j].GetIngredientName())
                 {
-                    tempOrderList.Remove(pizzaIngredient);
-                }
-                else
-                {
-                    return -100;
+                    tempPizzaList.Remove(tempPizzaList[i]);
+                    tempOrderList.Remove(tempOrderList[i]);
                 }
             }
+            
+            if (tempOrderList.Count > 0 || tempPizzaList.Count > 0) return -100;
         }
 
         return 100;
