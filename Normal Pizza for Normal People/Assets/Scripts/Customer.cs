@@ -74,6 +74,26 @@ public class Customer : MonoBehaviour
     /// <returns>If true: it returns the amount of money the pizza earned, else: it returns the amount of money lost.</returns>
     private int CheckDeliveredPizza(PizzaBehaviour pizza)
     {
-        return pizza.GetIngredientsOnPizza() == order.GetOrderIngredients() ? 100 : -100;
+        //TODO add pizza money calculation
+        if (pizza.GetIngredientsOnPizza().Count != order.GetOrderIngredients().Count) return -100;
+        
+        var tempOrderList = order.GetOrderIngredients();
+
+        foreach (var pizzaIngredient in pizza.GetIngredientsOnPizza())
+        {
+            foreach (var orderIngredient in tempOrderList)
+            {
+                if (pizzaIngredient.GetIngredientName() == orderIngredient.GetIngredientName())
+                {
+                    tempOrderList.Remove(pizzaIngredient);
+                }
+                else
+                {
+                    return -100;
+                }
+            }
+        }
+
+        return 100;
     }
 }
