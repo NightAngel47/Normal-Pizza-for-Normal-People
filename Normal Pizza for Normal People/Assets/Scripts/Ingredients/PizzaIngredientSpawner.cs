@@ -48,14 +48,9 @@ public class PizzaIngredientSpawner : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        if (col.GetComponentInParent<HandCollider>() && col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient) && isSpawning == true)
+        if (col.GetComponentInParent<HandCollider>())
         {
             isSpawning = false;
-            handInside = false;
-        }
-
-        if(col.GetComponentInParent<HandCollider>())
-        {
             handInside = false;
         }
         ////if (!col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient)) return;
