@@ -15,13 +15,14 @@ public class PizzaIngredientSpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnIngredient());
+        //StartCoroutine(SpawnIngredient());
     }
 
     private void OnTriggerEnter(Collider col)
     {
-        if(col.GetComponentInParent<HandCollider>())
+        if(col.GetComponentInParent<HandCollider>() && isSpawning == false)
         {
+            isSpawning = true;
             StartCoroutine("SpawnIngredient");
         }
     }
@@ -37,6 +38,11 @@ public class PizzaIngredientSpawner : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
+        if (col.GetComponentInParent<HandCollider>() && isSpawning == true)
+        {
+            isSpawning = false;
+
+        }
         ////if (!col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient)) return;
 
         //if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
@@ -52,9 +58,8 @@ public class PizzaIngredientSpawner : MonoBehaviour
     
     private IEnumerator SpawnIngredient()
     {
-        isSpawning = true;
         Instantiate(pizzaIngredientToSpawn, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(0.25f);
-        isSpawning = false;
+        //isSpawning = false;
     }
 }
