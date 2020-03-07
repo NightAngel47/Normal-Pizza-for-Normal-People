@@ -78,23 +78,21 @@ public class Customer : MonoBehaviour
         
         if (pizza.GetIngredientsOnPizza().Count != order.GetOrderIngredients().Count) return -100;
 
-        var tempPizzaList = pizza.GetIngredientsOnPizza();
         var tempOrderList = order.GetOrderIngredients();
         
         for (int i = 0; i < pizza.GetIngredientsOnPizza().Count; ++i)
         {
-            for (int j = 0; j < order.GetOrderIngredients().Count; ++j)
+            for (int j = 0; j < tempOrderList.Count; ++j)
             {
-                if (pizza.GetIngredientsOnPizza()[i].GetIngredientName() == order.GetOrderIngredients()[j].GetIngredientName())
+                if (pizza.GetIngredientsOnPizza()[i].GetIngredientName() == tempOrderList[j].GetIngredientName())
                 {
-                    tempPizzaList.Remove(tempPizzaList[i]);
-                    tempOrderList.Remove(tempOrderList[i]);
+                    tempOrderList.RemoveAt(j);
                     break;
                 }
             }
         }
         
-        if (tempOrderList.Count > 0 || tempPizzaList.Count > 0) return -100;
+        if (tempOrderList.Count > 0) return -100;
         
         return 100;
     }
