@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class PizzaIngredientSpawner : MonoBehaviour
 {
@@ -14,38 +15,51 @@ public class PizzaIngredientSpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnIngredient());
+        //StartCoroutine(SpawnIngredient());
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if(col.GetComponentInParent<HandCollider>() && isSpawning == false)
+        {
+            isSpawning = true;
+            StartCoroutine("SpawnIngredient");
+        }
     }
 
     private void OnTriggerStay(Collider col)
     {
-        if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient) && isSpawning == false)
-        {
-            isSpawning = false;
-            inContainer = true;
-        }
+        //if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
+        //{
+        //    //isSpawning = false;
+        //    inContainer = true;
+        //}
     }
 
     private void OnTriggerExit(Collider col)
     {
-        if (!col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient)) return;
+        if (col.GetComponentInParent<HandCollider>() && isSpawning == true)
+        {
+            isSpawning = false;
 
-        if(col.transform.parent.TryGetComponent(out IngredientHitEffect ing))
-        {
-            inContainer = false;
         }
-        
-        if (!isSpawning && inContainer == false)
-        {
-            StartCoroutine(SpawnIngredient());
-        }
+        ////if (!col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient)) return;
+
+        //if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
+        //{
+        //    inContainer = false;
+
+        //    if (!isSpawning && inContainer == false)
+        //    {
+        //        StartCoroutine(SpawnIngredient());
+        //    }
+        //}
     }
     
     private IEnumerator SpawnIngredient()
     {
-        isSpawning = true;
         Instantiate(pizzaIngredientToSpawn, transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(0.5f);
-        isSpawning = false;
+        yield return new WaitForSeconds(0.25f);
+        //isSpawning = false;
     }
 }
