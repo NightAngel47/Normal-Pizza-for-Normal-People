@@ -24,21 +24,27 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         if (gameObject.name == "Start")
         {
+            panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(false);
+            panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(false);
             SceneManager.LoadScene("Game");
         }
 
         if(gameObject.name == "HowToPlay")
         {
-
+            panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(true);
+            panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(false);
         }
 
         if (gameObject.name == "Credits")
         {
-
+            panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(false);
+            panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(true);
         }
 
         if (gameObject.name == "Quit")
         {
+            panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(false);
+            panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(false);
             Application.Quit();
         }
         img.color = hover;
