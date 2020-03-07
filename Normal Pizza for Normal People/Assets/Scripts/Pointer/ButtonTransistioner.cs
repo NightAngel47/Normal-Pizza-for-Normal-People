@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerClickHandler, IPointerUpHandler
 {
+    public GameObject panelHandler;
+
     public Color32 norm = Color.white;
     public Color32 hover = Color.gray;
     public Color32 down = Color.white;
@@ -20,9 +22,24 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (gameObject.name == "ButtonStart")
+        if (gameObject.name == "Start")
         {
             SceneManager.LoadScene("Game");
+        }
+
+        if(gameObject.name == "HowToPlay")
+        {
+
+        }
+
+        if (gameObject.name == "Credits")
+        {
+
+        }
+
+        if (gameObject.name == "Quit")
+        {
+            Application.Quit();
         }
         img.color = hover;
     }
