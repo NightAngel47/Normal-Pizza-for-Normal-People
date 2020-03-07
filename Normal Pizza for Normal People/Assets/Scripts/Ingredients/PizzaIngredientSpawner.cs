@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class PizzaIngredientSpawner : MonoBehaviour
 {
@@ -17,30 +18,36 @@ public class PizzaIngredientSpawner : MonoBehaviour
         StartCoroutine(SpawnIngredient());
     }
 
+    private void OnTriggerEnter(Collider col)
+    {
+        if(col.GetComponentInParent<HandCollider>())
+        {
+            StartCoroutine("SpawnIngredient");
+        }
+    }
+
     private void OnTriggerStay(Collider col)
     {
-        if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
-        {
-            //isSpawning = false;
-            inContainer = true;
-        }
+        //if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
+        //{
+        //    //isSpawning = false;
+        //    inContainer = true;
+        //}
     }
 
     private void OnTriggerExit(Collider col)
     {
-        //if (!col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient)) return;
+        ////if (!col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient)) return;
 
-        if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
-        {
-            inContainer = false;
+        //if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
+        //{
+        //    inContainer = false;
 
-            if (!isSpawning && inContainer == false)
-            {
-                StartCoroutine(SpawnIngredient());
-            }
-        }
-        
-       
+        //    if (!isSpawning && inContainer == false)
+        //    {
+        //        StartCoroutine(SpawnIngredient());
+        //    }
+        //}
     }
     
     private IEnumerator SpawnIngredient()
