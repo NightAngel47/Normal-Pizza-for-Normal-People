@@ -1,16 +1,27 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Customer : MonoBehaviour
 {
     private Order order;
     private MoneyTracker moneyTracker;
+
     [SerializeField]
-    private Transform orderUITransform;
+    private float startOrderTime = 90f;
+    private float currentOrderTime;
+    [SerializeField]
+    private GameObject orderTimerUI;
+    private TMP_Text orderTimerText;
+    private Image orderTimerProgressBar;
+    
+    [SerializeField]
+    private Transform ingredientUITransform;
     [SerializeField]
     private GameObject ingredientUI;
     
@@ -18,6 +29,11 @@ public class Customer : MonoBehaviour
     void Start()
     {
         moneyTracker = FindObjectOfType<GameManager>().GetMoneyTracker();
+
+        orderTimerText = orderTimerUI.GetComponentInChildren<TMP_Text>();
+        orderTimerProgressBar = orderTimerUI.transform.GetChild(0).GetComponent<Image>();
+        currentOrderTime = startOrderTime + 1;
+        StartCoroutine(OrderTimerCountDown());
     }
 
     private void OnTriggerEnter(Collider col)
@@ -58,12 +74,29 @@ public class Customer : MonoBehaviour
             int uniqueIngredientCount = order.GetOrderIngredients().Count(orderIngredient => ingredient == orderIngredient);
 
             // instantiate UI
-            var newIngredient = Instantiate(ingredientUI, orderUITransform.position, Quaternion.identity, orderUITransform);
+            var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, Quaternion.identity, ingredientUITransform);
             
             // update text with info
             var ingredientTexts = newIngredient.GetComponentsInChildren<TMP_Text>();
             ingredientTexts[0].text = ingredient.GetIngredientName();
             ingredientTexts[1].text = "x" + uniqueIngredientCount;
+        }
+    }
+
+    private IEnumerator OrderTimerCountDown()
+    {
+        orderTimerText.text = ""+(int)currentOrderTime;
+        orderTimerProgressBar.fillAmount = currentOrderTime / startOrderTime;
+        yield return new WaitForEndOfFrame();
+        currentOrderTime -= Time.deltaTime;
+        if (currentOrderTime > 0)
+        {
+            StartCoroutine(OrderTimerCountDown());
+        }
+        else
+        {
+            moneyTracker.ChangeMoney(-100);
+            Destroy(gameObject);
         }
     }
 

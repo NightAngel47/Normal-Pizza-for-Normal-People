@@ -46,7 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e579145daaec94599cc73342cd2b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orderUITransform: {fileID: 1499280587323528968}
+  startOrderTime: 90
+  orderTimerUI: {fileID: 2967428844220160117}
+  ingredientUITransform: {fileID: 1499280587323528968}
   ingredientUI: {fileID: 8306937801929323066, guid: f57c2c9a80b36e64fa04c920d6aa945c,
     type: 3}
 --- !u!136 &6820603579891726374
@@ -191,6 +193,12 @@ RectTransform:
 --- !u!224 &1499280587323528968 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1166648967260429950, guid: a48cbd8b80e14ab4a98285dc54d49872,
+    type: 3}
+  m_PrefabInstance: {fileID: 359802870229141878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2967428844220160117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3301184715323674883, guid: a48cbd8b80e14ab4a98285dc54d49872,
     type: 3}
   m_PrefabInstance: {fileID: 359802870229141878}
   m_PrefabAsset: {fileID: 0}
