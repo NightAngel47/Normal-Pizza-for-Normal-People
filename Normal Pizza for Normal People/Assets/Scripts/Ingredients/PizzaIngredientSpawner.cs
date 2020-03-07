@@ -24,55 +24,29 @@ public class PizzaIngredientSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if(col.GetComponentInParent<HandCollider>() && isSpawning == false)
+        if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
         {
-            isSpawning = true;
-            if (hasIngredient == false)
-            {
-                StartCoroutine("SpawnIngredient");
-            }
+            hasIngredient = true;
         }
-    }
 
-    private void OnTriggerStay(Collider col)
-    {
-        //if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient) && handInside == false)
-        //{
-        //    Destroy(temp);
-        //}
-
-        //if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
-        //{
-        //    //isSpawning = false;
-        //    inContainer = true;
-        //}
+        if(col.GetComponentInParent<HandCollider>() && hasIngredient == false)
+        {
+            StartCoroutine("SpawnIngredient");
+        }
     }
 
     private void OnTriggerExit(Collider col)
     {
         if (col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
         {
-            isSpawning = false;
             hasIngredient = false;
         }
-        ////if (!col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient)) return;
-
-        //if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
-        //{
-        //    inContainer = false;
-
-        //    if (!isSpawning && inContainer == false)
-        //    {
-        //        StartCoroutine(SpawnIngredient());
-        //    }
-        //}
     }
     
     private IEnumerator SpawnIngredient()
     {
         hasIngredient = true;
         temp = Instantiate(pizzaIngredientToSpawn, transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(0.25f);
-        //isSpawning = false;
+        yield return new WaitForEndOfFrame();
     }
 }
