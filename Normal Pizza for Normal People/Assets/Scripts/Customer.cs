@@ -80,20 +80,19 @@ public class Customer : MonoBehaviour
 
         var tempPizzaList = pizza.GetIngredientsOnPizza();
         var tempOrderList = order.GetOrderIngredients();
-        for (int i = 0; i < tempPizzaList.Count; ++i)
-        {
-            for (int j = 0; j < tempOrderList.Count; ++j)
-            {
-                if (tempPizzaList[i].GetIngredientName() == tempOrderList[j].GetIngredientName())
-                {
-                    tempPizzaList.Remove(tempPizzaList[i]);
-                    tempOrderList.Remove(tempOrderList[i]);
-                }
-            }
-            
-            if (tempOrderList.Count > 0 || tempPizzaList.Count > 0) return -100;
-        }
 
+        foreach (var pizzaIngredient in pizza.GetIngredientsOnPizza())
+        {
+            foreach (var orderIngredient in order.GetOrderIngredients().Where(orderIngredient => pizzaIngredient.GetIngredientName() == orderIngredient.GetIngredientName()))
+            {
+                tempPizzaList.Remove(pizzaIngredient);
+                tempOrderList.Remove(orderIngredient);
+                break;
+            }
+        }
+        
+        if (tempOrderList.Count > 0 || tempPizzaList.Count > 0) return -100;
+        
         return 100;
     }
 }
