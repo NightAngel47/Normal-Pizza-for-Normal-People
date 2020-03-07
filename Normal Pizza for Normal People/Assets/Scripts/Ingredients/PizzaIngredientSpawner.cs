@@ -19,33 +19,35 @@ public class PizzaIngredientSpawner : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient) && isSpawning == false)
+        if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
         {
-            isSpawning = false;
+            //isSpawning = false;
             inContainer = true;
         }
     }
 
     private void OnTriggerExit(Collider col)
     {
-        if (!col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient)) return;
+        //if (!col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient)) return;
 
-        if(col.transform.parent.TryGetComponent(out IngredientHitEffect ing))
+        if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
         {
             inContainer = false;
+
+            if (!isSpawning && inContainer == false)
+            {
+                StartCoroutine(SpawnIngredient());
+            }
         }
         
-        if (!isSpawning && inContainer == false)
-        {
-            StartCoroutine(SpawnIngredient());
-        }
+       
     }
     
     private IEnumerator SpawnIngredient()
     {
         isSpawning = true;
         Instantiate(pizzaIngredientToSpawn, transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         isSpawning = false;
     }
 }
