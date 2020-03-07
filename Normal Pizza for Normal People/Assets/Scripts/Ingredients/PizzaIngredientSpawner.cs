@@ -13,6 +13,10 @@ public class PizzaIngredientSpawner : MonoBehaviour
 
     private bool isSpawning = false;
 
+    private bool handInside = false;
+
+    private GameObject temp;
+
     private void Start()
     {
         //StartCoroutine(SpawnIngredient());
@@ -23,12 +27,18 @@ public class PizzaIngredientSpawner : MonoBehaviour
         if(col.GetComponentInParent<HandCollider>() && isSpawning == false)
         {
             isSpawning = true;
+            handInside = true;
             StartCoroutine("SpawnIngredient");
         }
     }
 
     private void OnTriggerStay(Collider col)
     {
+        if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient) && handInside == false)
+        {
+            Destroy(temp);
+        }
+
         //if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
         //{
         //    //isSpawning = false;
@@ -38,10 +48,15 @@ public class PizzaIngredientSpawner : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        if (col.GetComponentInParent<HandCollider>() && isSpawning == true)
+        if (col.GetComponentInParent<HandCollider>() && col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient) && isSpawning == true)
         {
             isSpawning = false;
+            handInside = false;
+        }
 
+        if(col.GetComponentInParent<HandCollider>())
+        {
+            handInside = false;
         }
         ////if (!col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient)) return;
 
@@ -58,7 +73,7 @@ public class PizzaIngredientSpawner : MonoBehaviour
     
     private IEnumerator SpawnIngredient()
     {
-        Instantiate(pizzaIngredientToSpawn, transform.position, Quaternion.identity);
+        temp = Instantiate(pizzaIngredientToSpawn, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(0.25f);
         //isSpawning = false;
     }
