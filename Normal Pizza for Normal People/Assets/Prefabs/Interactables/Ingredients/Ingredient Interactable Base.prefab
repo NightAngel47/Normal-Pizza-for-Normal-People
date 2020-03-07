@@ -86,6 +86,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ingredient Interactable Base
       objectReference: {fileID: 0}
+    - target: {fileID: 8880228110941784162, guid: 1055cb29081f4834e9b59776c9e4f708,
+        type: 3}
+      propertyPath: attachmentFlags
+      value: 85
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1055cb29081f4834e9b59776c9e4f708, type: 3}
 --- !u!1 &5124808810708315160 stripped
