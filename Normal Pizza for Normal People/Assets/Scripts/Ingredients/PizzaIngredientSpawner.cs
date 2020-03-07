@@ -8,6 +8,8 @@ public class PizzaIngredientSpawner : MonoBehaviour
     [SerializeField]
     private GameObject pizzaIngredientToSpawn;
 
+    private bool inContainer = false;
+
     private bool isSpawning = false;
 
     private void Start()
@@ -15,11 +17,25 @@ public class PizzaIngredientSpawner : MonoBehaviour
         StartCoroutine(SpawnIngredient());
     }
 
+    private void OnTriggerStay(Collider col)
+    {
+        if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient) && isSpawning == false)
+        {
+            isSpawning = false;
+            inContainer = true;
+        }
+    }
+
     private void OnTriggerExit(Collider col)
     {
         if (!col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient)) return;
+
+        if(col.transform.parent.TryGetComponent(out IngredientHitEffect ing))
+        {
+            inContainer = false;
+        }
         
-        if (!isSpawning)
+        if (!isSpawning && inContainer == false)
         {
             StartCoroutine(SpawnIngredient());
         }
