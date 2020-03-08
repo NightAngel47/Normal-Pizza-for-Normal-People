@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator DayCycle()
     {
-        currentDayText.text = "Day " + currentDay + 1;
+        currentDayText.text = "Day " + (currentDay + 1);
         customerLine.StartDay(gameDays[currentDay].numOfCustomers);
         currentDayTimer = gameDays[currentDay].dayLength;
         StartCoroutine(DayTimer());
