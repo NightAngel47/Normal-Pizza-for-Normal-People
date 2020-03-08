@@ -1,14 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class MoneyTracker
+public class MoneyTracker : MonoBehaviour
 {
-    private int currentAmount;
+    private GameManager gameManager;
+    [SerializeField]
+    private TMP_Text currentDayMoneyText;
+    private int currentAmount = 0;
 
-    public MoneyTracker() => currentAmount = 0;
-
-    public MoneyTracker(int startingAmount) => currentAmount = startingAmount;
+    private void Start()
+    {
+        gameManager = GetComponent<GameManager>();
+    }
 
     /// <summary>
     /// Changes the current amount by the amount passed in.
@@ -17,6 +23,7 @@ public class MoneyTracker
     public void ChangeMoney(int amount)
     {
         currentAmount += amount;
+        currentDayMoneyText.text = "$" + currentAmount + "/$" + gameManager.gameDays[gameManager.currentDay].moneyGoal;
         Debug.Log("Current Amount of Money: " + currentAmount);
     }
 }

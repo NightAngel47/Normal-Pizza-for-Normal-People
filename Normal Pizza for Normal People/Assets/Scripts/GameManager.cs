@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
     
     [SerializeField]
     public List<Day> gameDays = new List<Day>(7);
-    private int currentDay = 0;
+    [HideInInspector]
+    public int currentDay = 0;
     private float currentDayTimer;
     
 
@@ -32,11 +33,13 @@ public class GameManager : MonoBehaviour
         public int numOfCustomers;
         [Tooltip("The length of each day in seconds"), Range(0, 300)]
         public int dayLength;
+        [Tooltip("The profit goal for each day")]
+        public int moneyGoal;
     }
 
     private void Start()
     {
-        moneyTracker = new MoneyTracker();
+        moneyTracker = GetComponent<MoneyTracker>();
         customerLine = GetComponent<CustomerLine>();
         //TODO have player start day
         StartCoroutine(DayCycle());
