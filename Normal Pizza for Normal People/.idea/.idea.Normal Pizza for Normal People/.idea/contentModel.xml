@@ -17,6 +17,7 @@
           <e p="Interactable Objects" t="Include">
             <e p="IngredientHitEffect.cs" t="Include" />
           </e>
+          <e p="MainMenuHandle.cs" t="Include" />
           <e p="MoneyTracker.cs" t="Include" />
           <e p="Old Scripts" t="Include">
             <e p="ButtonEffect1.cs" t="Include" />

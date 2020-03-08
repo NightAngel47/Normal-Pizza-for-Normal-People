@@ -76,6 +76,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8227e4f94edf1c346990bff64b79341c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDayText: {fileID: 0}
+  currentDayTime: {fileID: 0}
+  currentDayProgressBar: {fileID: 0}
+  gameDays:
+  - numOfCustomers: 10
+    dayLength: 120
+  - numOfCustomers: 10
+    dayLength: 120
+  - numOfCustomers: 10
+    dayLength: 120
+  - numOfCustomers: 10
+    dayLength: 120
+  - numOfCustomers: 10
+    dayLength: 120
+  - numOfCustomers: 10
+    dayLength: 120
+  - numOfCustomers: 10
+    dayLength: 120
 --- !u!114 &8357020710274601803
 MonoBehaviour:
   m_ObjectHideFlags: 0

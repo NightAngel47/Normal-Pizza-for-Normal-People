@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e579145daaec94599cc73342cd2b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startOrderTime: 90
+  startOrderTime: 45
   orderTimerUI: {fileID: 2967428844220160117}
   ingredientUITransform: {fileID: 1499280587323528968}
   ingredientUI: {fileID: 8306937801929323066, guid: f57c2c9a80b36e64fa04c920d6aa945c,
