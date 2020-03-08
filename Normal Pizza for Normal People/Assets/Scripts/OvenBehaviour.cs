@@ -26,6 +26,8 @@ public class OvenBehaviour : MonoBehaviour
     private Color goodGreen = new Color(0.3f, 0.83f, 0.26f);
     private Color warnOrange = new Color(1f, 0.63f, 0f);
 
+    private ParticleSystem ps;
+
     //private ParticleSystem ps;
     //private AudioSource audioSource;
     //[SerializeField]
@@ -34,6 +36,7 @@ public class OvenBehaviour : MonoBehaviour
 
     void Start()
     {
+        ps = GetComponent<ParticleSystem>();
         timerTime = cookTime + 1;
     }
 
@@ -58,6 +61,8 @@ public class OvenBehaviour : MonoBehaviour
 
         if (col.gameObject.GetComponentInParent<PizzaBehaviour>() == true && col.gameObject.GetComponentInParent<PizzaBehaviour>().isBurnt == false)
         {
+            ps.Play();
+
             if(col.gameObject.GetComponentInParent<PizzaBehaviour>().isCooked == true)
             {
                 tempTime = col.gameObject.GetComponentInParent<PizzaBehaviour>().cookedTime - cookTime;
@@ -158,7 +163,7 @@ public class OvenBehaviour : MonoBehaviour
         //if the pizza is removed reset all variables
         if (col.gameObject.GetComponentInParent<PizzaBehaviour>())//&& !gm.isPaused
         {
-            //ps.Stop();
+            ps.Stop();
             //audioSource.Stop();
             //inOven = false;
             //currentTime = 0;
