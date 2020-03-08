@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 261cad43af6b76d4a941d2731f3ad67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDayCustomerText: {fileID: 0}
   customerPrefab: {fileID: 8855423326005325540, guid: 0a464834b98943a408688911cecd76cc,
     type: 3}
   customerSpawnPos: {fileID: 1275780412}
