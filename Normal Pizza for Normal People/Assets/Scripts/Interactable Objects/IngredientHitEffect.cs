@@ -20,9 +20,8 @@ public class IngredientHitEffect : MonoBehaviour
         {
             var pizzaTransform = pizza.transform;
             var spawnPos = pizzaTransform.position;
-            var randRot = pizzaTransform.rotation.eulerAngles;
-            randRot += new Vector3(0, Random.Range(-180f, 180f) - randRot.y, 0);
-            var newIngredient = Instantiate(spawnObjectOnCollision, spawnPos, Quaternion.Euler(randRot), pizza.transform);
+            var newIngredient = Instantiate(spawnObjectOnCollision, spawnPos, pizzaTransform.rotation, pizzaTransform);
+            newIngredient.transform.rotation = Quaternion.Euler(new Vector3(0, Random.Range(-180, 180), 0));
             pizza.AddPizzaIngredient(newIngredient.GetComponent<PizzaIngredient>());
         }
 
