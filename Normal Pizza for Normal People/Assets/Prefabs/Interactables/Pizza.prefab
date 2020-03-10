@@ -32,7 +32,7 @@ MonoBehaviour:
   isCooked: 0
   overCooking: 0
   cooked: {fileID: 2100000, guid: 406281ab3b4a7c54090398d3bb49d99d, type: 2}
-  burnt: {fileID: 955179057503558733, guid: 4d5df00e03cbc834d9814b4ccc4ad3a5, type: 3}
+  burnt: {fileID: 2100000, guid: 8855fb4f96d8d7a4ea1b863dfdebbac2, type: 2}
 --- !u!1001 &675937777508619879
 PrefabInstance:
   m_ObjectHideFlags: 0
