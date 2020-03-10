@@ -87,22 +87,8 @@ MonoBehaviour:
   - numOfCustomers: 10
     dayLength: 120
     moneyGoal: 1000
-  - numOfCustomers: 10
-    dayLength: 120
-    moneyGoal: 1000
-  - numOfCustomers: 10
-    dayLength: 120
-    moneyGoal: 1000
-  - numOfCustomers: 10
-    dayLength: 120
-    moneyGoal: 1000
-  - numOfCustomers: 10
-    dayLength: 120
-    moneyGoal: 1000
-  - numOfCustomers: 10
-    dayLength: 120
-    moneyGoal: 1000
   currentDay: 0
+  currentDayTimer: 0
 --- !u!114 &4954694665190826298
 MonoBehaviour:
   m_ObjectHideFlags: 0

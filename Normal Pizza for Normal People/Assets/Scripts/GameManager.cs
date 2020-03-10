@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
     public List<Day> gameDays = new List<Day>(7);
     [HideInInspector]
     public int currentDay = 0;
-    private float currentDayTimer;
-
+    [HideInInspector]
+    public float currentDayTimer;
 
     [Serializable]
     public struct Day
@@ -56,12 +56,18 @@ public class GameManager : MonoBehaviour
         customerLine.StartDay(gameDays[currentDay].numOfCustomers);
         currentDayTimer = gameDays[currentDay].dayLength;
         StartCoroutine(DayTimer());
+        
         yield return new WaitUntil(() => currentDayTimer <= 0);
+        foreach (var customer in FindObjectsOfType<Customer>())
+        {
+            Destroy(customer.gameObject);
+        }
         currentDay++;
         //TODO add upgrade pause
 
         if (currentDay < gameDays.Count)
         {
+            yield return new WaitForSeconds(5f);
             StartCoroutine(DayCycle());
         }
     }
