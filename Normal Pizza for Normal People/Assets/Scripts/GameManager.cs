@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         customerLine.StartDay(gameDays[currentDay].numOfCustomers);
         currentDayTimer = gameDays[currentDay].dayLength;
         StartCoroutine(DayTimer());
+        moneyTracker.TrackNewDay();
         
         yield return new WaitUntil(() => currentDayTimer <= 0);
         foreach (var customer in FindObjectsOfType<Customer>())

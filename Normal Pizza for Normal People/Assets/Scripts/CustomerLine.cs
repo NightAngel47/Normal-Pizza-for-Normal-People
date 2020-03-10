@@ -28,6 +28,7 @@ public class CustomerLine : MonoBehaviour
     public void StartDay(int numOfCustomers)
     {
         customerOrders = orderCreation.GenerateOrders(numOfCustomers);
+        currentDayCustomerServing = 0;
         currentDayNumOfCustomers = numOfCustomers;
         StartCoroutine(NextCustomer());
     }
@@ -36,6 +37,7 @@ public class CustomerLine : MonoBehaviour
     {
         if (gameManager.currentDayTimer > 1 && customerOrders.Count > 0 && !Physics.CheckSphere(customerSpawnPos.position, 0.5f))
         {
+            yield return new WaitForSeconds(1f);
             currentDayCustomerServing++;
             currentDayCustomerText.text = currentDayCustomerServing + "/" + currentDayNumOfCustomers;
             

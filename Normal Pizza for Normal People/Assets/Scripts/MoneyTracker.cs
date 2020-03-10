@@ -9,11 +9,25 @@ public class MoneyTracker : MonoBehaviour
     private GameManager gameManager;
     [SerializeField]
     private TMP_Text currentDayMoneyText;
-    private int currentAmount = 0;
+    /// <summary>
+    /// Current amount of money earned each day
+    /// </summary>
+    private int currentDayAmount = 0;
+    /// <summary>
+    /// Running total amount of money earned through total run
+    /// </summary>
+    private int totalMoneyAmount = 0;
 
     private void Start()
     {
         gameManager = GetComponent<GameManager>();
+        ChangeMoney(0);
+    }
+
+    public void TrackNewDay()
+    {
+        currentDayAmount = 0;
+        currentDayMoneyText.text = "$" + currentDayAmount + "/$" + gameManager.gameDays[gameManager.currentDay].moneyGoal;
     }
 
     /// <summary>
@@ -22,8 +36,10 @@ public class MoneyTracker : MonoBehaviour
     /// <param name="amount">The amount of money earned or spent (+  or -)</param>
     public void ChangeMoney(int amount)
     {
-        currentAmount += amount;
-        currentDayMoneyText.text = "$" + currentAmount + "/$" + gameManager.gameDays[gameManager.currentDay].moneyGoal;
-        Debug.Log("Current Amount of Money: " + currentAmount);
+        currentDayAmount += amount;
+        totalMoneyAmount += amount;
+        currentDayMoneyText.text = "$" + currentDayAmount + "/$" + gameManager.gameDays[gameManager.currentDay].moneyGoal;
+        Debug.Log("Current Day Amount of Money: " + currentDayAmount);
+        Debug.Log("Current Total Amount of Money: " + totalMoneyAmount);
     }
 }
