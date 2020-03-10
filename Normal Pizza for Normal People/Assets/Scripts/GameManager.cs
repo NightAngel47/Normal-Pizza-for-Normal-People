@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int currentDay = 0;
     private float currentDayTimer;
-    
+
 
     [Serializable]
     public struct Day
@@ -56,12 +56,14 @@ public class GameManager : MonoBehaviour
         customerLine.StartDay(gameDays[currentDay].numOfCustomers);
         currentDayTimer = gameDays[currentDay].dayLength;
         StartCoroutine(DayTimer());
-        
-        //TODO add upgrade pause
-        
-        yield return new WaitForSeconds(gameDays[currentDay].dayLength);
+        yield return new WaitUntil(() => currentDayTimer <= 0);
         currentDay++;
-        StartCoroutine(DayCycle());
+        //TODO add upgrade pause
+
+        if (currentDay < gameDays.Count)
+        {
+            StartCoroutine(DayCycle());
+        }
     }
 
     private IEnumerator DayTimer()
