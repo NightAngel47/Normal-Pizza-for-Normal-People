@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Customer : MonoBehaviour
@@ -26,6 +27,8 @@ public class Customer : MonoBehaviour
     private GameObject ingredientUI;
 
     private GameManager gm;
+
+    private Vector3 startPos;
     
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,8 @@ public class Customer : MonoBehaviour
 
         moneyTracker = FindObjectOfType<GameManager>().GetMoneyTracker();
 
+        startPos = transform.position;
+        
         orderTimerText = orderTimerUI.GetComponentInChildren<TMP_Text>();
         orderTimerProgressBar = orderTimerUI.transform.GetChild(0).GetComponent<Image>();
         currentOrderTime = startOrderTime + 1;
@@ -45,7 +50,8 @@ public class Customer : MonoBehaviour
         if (!col.transform.parent.TryGetComponent(out PizzaBehaviour pizza)) return;
         moneyTracker.ChangeMoney(CheckDeliveredPizza(pizza));
         Destroy(pizza.gameObject);
-        Destroy(gameObject);
+        GetComponent<NavMeshAgent>().SetDestination(startPos);
+        Destroy(gameObject, 10f);
     }
 
     /// <summary>

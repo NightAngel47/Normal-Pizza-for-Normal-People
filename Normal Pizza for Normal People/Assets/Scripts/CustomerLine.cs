@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CustomerLine : MonoBehaviour
 {
@@ -18,6 +18,8 @@ public class CustomerLine : MonoBehaviour
     private GameObject customerPrefab;
     [SerializeField]
     private Transform customerSpawnPos;
+    [SerializeField]
+    private Transform customerCounterPos;
 
     void Start()
     {
@@ -41,7 +43,9 @@ public class CustomerLine : MonoBehaviour
             currentDayCustomerServing++;
             currentDayCustomerText.text = currentDayCustomerServing + "/" + currentDayNumOfCustomers;
             
-            Instantiate(customerPrefab, customerSpawnPos.position, customerSpawnPos.rotation).GetComponent<Customer>().SetOrder(customerOrders[0]);
+            var newCustomer = Instantiate(customerPrefab, customerSpawnPos.position, customerSpawnPos.rotation);
+            newCustomer.GetComponent<Customer>().SetOrder(customerOrders[0]);
+            newCustomer.GetComponent<NavMeshAgent>().SetDestination(customerCounterPos.position);
             customerOrders.Remove(customerOrders[0]);
         }
         
