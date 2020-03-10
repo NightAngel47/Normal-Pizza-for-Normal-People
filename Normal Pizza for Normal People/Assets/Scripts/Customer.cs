@@ -24,10 +24,14 @@ public class Customer : MonoBehaviour
     private Transform ingredientUITransform;
     [SerializeField]
     private GameObject ingredientUI;
+
+    private GameManager gm;
     
     // Start is called before the first frame update
     void Start()
     {
+        gm = FindObjectOfType<GameManager>();
+
         moneyTracker = FindObjectOfType<GameManager>().GetMoneyTracker();
 
         orderTimerText = orderTimerUI.GetComponentInChildren<TMP_Text>();
@@ -126,6 +130,14 @@ public class Customer : MonoBehaviour
         }
         
         if (tempOrderList.Count > 0) return -100;
+
+        if (gm.currentDay >= 0)
+        {
+            if (pizza.isBurnt == true || pizza.isCooked == false)
+            {
+                return -50;
+            }
+        }
         
         return 100;
     }
