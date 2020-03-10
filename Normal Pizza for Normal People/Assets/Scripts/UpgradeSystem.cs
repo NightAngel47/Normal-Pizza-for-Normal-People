@@ -12,6 +12,13 @@ public class UpgradeSystem : MonoBehaviour
     {
         isUpgrading = true;
         print("We upgrading boissss!");
+
+        foreach(GameObject g in availableUpgrades)
+        {
+            g.SetActive(true);
+            g.GetComponent<ItemUpgrades>().ShowItem();
+        }
+
         Invoke(nameof(TempUpgradeModeTimer), 5f);
     }
 
