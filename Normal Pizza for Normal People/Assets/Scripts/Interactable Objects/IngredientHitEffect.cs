@@ -19,9 +19,11 @@ public class IngredientHitEffect : MonoBehaviour
             Ray ray = new Ray(contact.point - (-contact.normal * backTrackLength), -contact.normal);
             if (collision.collider.Raycast(ray, out RaycastHit hit, 2))
             {
-                var spawnPos = pizza.transform.position;
-                var randRot = Quaternion.Euler(new Vector3(0, Random.Range(-180f, 180f), 0));
-                var newIngredient = Instantiate(spawnObjectOnCollision, spawnPos, randRot, pizza.transform);
+                var pizzaTransform = pizza.transform;
+                var spawnPos = pizzaTransform.position;
+                var randRot = pizzaTransform.rotation.eulerAngles;
+                randRot += new Vector3(0, Random.Range(-180f, 180f), 0);
+                var newIngredient = Instantiate(spawnObjectOnCollision, spawnPos, Quaternion.Euler(randRot), pizza.transform);
                 pizza.AddPizzaIngredient(newIngredient.GetComponent<PizzaIngredient>());
             }
 
