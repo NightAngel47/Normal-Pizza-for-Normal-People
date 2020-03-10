@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     private CustomerLine customerLine;
     private MoneyTracker moneyTracker;
+    private UpgradeSystem upgradeSystem;
 
     [SerializeField]
     private TMP_Text currentDayText;
@@ -41,6 +42,8 @@ public class GameManager : MonoBehaviour
     {
         moneyTracker = GetComponent<MoneyTracker>();
         customerLine = GetComponent<CustomerLine>();
+        upgradeSystem = GetComponent<UpgradeSystem>();
+        
         //TODO have player start day
         StartCoroutine(DayCycle());
     }
@@ -62,12 +65,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(customer.gameObject);
         }
+        upgradeSystem.EnterUpgradeMode();
         currentDay++;
         //TODO add upgrade pause
 
         if (currentDay < gameDays.Count)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
             StartCoroutine(DayCycle());
         }
     }
