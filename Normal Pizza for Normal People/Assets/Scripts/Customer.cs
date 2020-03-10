@@ -84,6 +84,8 @@ public class Customer : MonoBehaviour
             var ingredientTexts = newIngredient.GetComponentsInChildren<TMP_Text>();
             ingredientTexts[0].text = ingredient.GetIngredientName();
             ingredientTexts[1].text = "x" + uniqueIngredientCount;
+
+            newIngredient.GetComponentInChildren<Image>().sprite = ingredient.GetIngredientIcon();
         }
     }
 
