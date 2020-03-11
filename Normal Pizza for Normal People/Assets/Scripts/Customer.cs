@@ -3,15 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Customer : MonoBehaviour
 {
     private Order order;
+    private GameManager gm;
     private MoneyTracker moneyTracker;
-
+    private CustomerLine customerLine;
+    private NavMeshAgent agent;
+    
     [SerializeField]
     private float startOrderTime = 90f;
     private float currentOrderTime;
@@ -25,27 +30,74 @@ public class Customer : MonoBehaviour
     [SerializeField]
     private GameObject ingredientUI;
 
-    private GameManager gm;
+    private bool activeOrder;
+    private bool leaving;
+    private Vector3 targetLinePos;
+    private Vector3 endPos;
     
     // Start is called before the first frame update
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-
-        moneyTracker = FindObjectOfType<GameManager>().GetMoneyTracker();
-
+        customerLine = gm.GetComponent<CustomerLine>();
+        moneyTracker = gm.GetMoneyTracker();
+        agent = GetComponent<NavMeshAgent>();
+        endPos = transform.position + (Vector3.right * 14);
+        
         orderTimerText = orderTimerUI.GetComponentInChildren<TMP_Text>();
         orderTimerProgressBar = orderTimerUI.transform.GetChild(0).GetComponent<Image>();
         currentOrderTime = startOrderTime + 1;
-        StartCoroutine(OrderTimerCountDown());
+        ChangeUIState();
     }
 
-    private void OnTriggerEnter(Collider col)
+    public void SetTargetLine(Vector3 customerLinePos)
     {
-        if (!col.transform.parent.TryGetComponent(out PizzaBehaviour pizza)) return;
-        moneyTracker.ChangeMoney(CheckDeliveredPizza(pizza));
-        Destroy(pizza.gameObject);
-        Destroy(gameObject);
+        targetLinePos = customerLinePos;
+    }
+
+    private void Update()
+    {
+        if (!leaving)
+        {
+            if (Physics.SphereCast(transform.position, 0.5f, transform.forward, out RaycastHit hit, 0.5f))
+            {
+                if (hit.collider.TryGetComponent(out Customer customer))
+                {
+                    agent.SetDestination(transform.position);
+                }
+            }
+            else if(agent.destination != targetLinePos)
+            {
+                agent.SetDestination(targetLinePos);
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("LineStart"))
+        {
+            activeOrder = true;
+            ChangeUIState();
+            StartCoroutine(OrderTimerCountDown());
+        }
+        
+        if (other.transform.parent.TryGetComponent(out PizzaBehaviour pizza))
+        {
+            moneyTracker.ChangeMoney(CheckDeliveredPizza(pizza));
+            Destroy(pizza.gameObject);
+            activeOrder = false;
+            CustomerLeave();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("LineStart"))
+        {
+            activeOrder = false;
+            ChangeUIState();
+        }
     }
 
     /// <summary>
@@ -64,6 +116,7 @@ public class Customer : MonoBehaviour
     /// </summary>
     private void DisplayOrder()
     {
+        //TODO decouple UI from customer
         // get unique ingredients
         List<PizzaIngredient> uniqueIngredients = new List<PizzaIngredient>();
         foreach (var ingredient in order.GetOrderIngredients().Where(ingredient => !uniqueIngredients.Contains(ingredient)))
@@ -78,7 +131,7 @@ public class Customer : MonoBehaviour
             int uniqueIngredientCount = order.GetOrderIngredients().Count(orderIngredient => ingredient == orderIngredient);
 
             // instantiate UI
-            var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, Quaternion.identity, ingredientUITransform);
+            var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, ingredientUITransform.rotation, ingredientUITransform);
             
             // update text with info
             var ingredientTexts = newIngredient.GetComponentsInChildren<TMP_Text>();
@@ -102,7 +155,8 @@ public class Customer : MonoBehaviour
         else
         {
             moneyTracker.ChangeMoney(-100);
-            Destroy(gameObject);
+            activeOrder = false;
+            CustomerLeave();
         }
     }
 
@@ -142,5 +196,25 @@ public class Customer : MonoBehaviour
         }
         
         return 100;
+    }
+
+    public void CustomerLeave()
+    {
+        if (leaving || activeOrder) return;
+        leaving = true;
+        agent.SetDestination(endPos);
+        Invoke(nameof(CallTheNextCustomer), 5f);
+        Destroy(gameObject, 10f);
+    }
+
+    private void CallTheNextCustomer()
+    {
+        customerLine.CustomerServed();
+    }
+
+    private void ChangeUIState()
+    {
+        ingredientUITransform.gameObject.SetActive(!ingredientUITransform.gameObject.activeSelf);
+        orderTimerUI.SetActive(!orderTimerUI.activeSelf);
     }
 }
