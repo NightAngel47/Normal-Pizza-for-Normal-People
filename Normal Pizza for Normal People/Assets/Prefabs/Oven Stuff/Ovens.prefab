@@ -156,13 +156,14 @@ GameObject:
   - component: {fileID: 4239804034356029046}
   - component: {fileID: 4855492644684462283}
   - component: {fileID: 7141895163382629132}
+  - component: {fileID: 1475996293}
   m_Layer: 0
   m_Name: TopOven
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2034012440133306876
 Transform:
   m_ObjectHideFlags: 0
@@ -241,6 +242,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -755444828255304380, guid: 04e8f450dc458d341899192e087e4aa8, type: 3}
+--- !u!114 &1475996293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218222329866575655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fced5377ccfb414286a9b774db6e56d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueprintMaterial: {fileID: 0}
+  activeMaterial: {fileID: 0}
 --- !u!1 &5686948792316507798
 GameObject:
   m_ObjectHideFlags: 0

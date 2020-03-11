@@ -4,23 +4,8 @@ using UnityEngine;
 
 public class OvenUpgrade : ItemUpgrades
 {
-    public Material blueprintMaterial;
-    public Material activeMaterial;
-
-    // Start is called before the first frame update
-    void Start()
+    protected override void ChangeMaterial(Material changeMat)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public override void ChangeMaterial(bool m)
-    {
-        throw new System.NotImplementedException();
+        gameObject.GetComponent<MeshRenderer>().material = changeMat;
     }
 }

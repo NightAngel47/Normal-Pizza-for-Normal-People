@@ -4,9 +4,12 @@ using UnityEngine;
 
 public abstract class ItemUpgrades : MonoBehaviour
 {
+    public Material blueprintMaterial;
+    public Material activeMaterial;
+
     public void ShowItem()
     {
-
+        ChangeMaterial(blueprintMaterial);
     }
 
     public void HideItem()
@@ -19,5 +22,5 @@ public abstract class ItemUpgrades : MonoBehaviour
 
     }
 
-    public abstract void ChangeMaterial(bool m);
+    protected abstract void ChangeMaterial(Material changeMat);
 }
