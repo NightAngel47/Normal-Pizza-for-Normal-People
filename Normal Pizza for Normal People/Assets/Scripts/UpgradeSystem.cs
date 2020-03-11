@@ -13,6 +13,7 @@ public class UpgradeSystem : MonoBehaviour
         foreach (GameObject g in availableUpgrades)
         {
             g.GetComponent<ItemUpgrades>().TurnOnUpgrade();
+            g.GetComponent<ItemUpgrades>().HideItem();
         }
     }
 
