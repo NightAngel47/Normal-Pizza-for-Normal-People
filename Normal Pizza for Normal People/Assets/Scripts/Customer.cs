@@ -61,7 +61,7 @@ public class Customer : MonoBehaviour
         {
             if (Physics.SphereCast(transform.position, 0.5f, transform.forward, out RaycastHit hit, 0.5f))
             {
-                if (hit.collider.TryGetComponent(out Customer customer))
+                if (hit.collider.TryGetComponent(out Customer customer) && !customer.leaving)
                 {
                     agent.SetDestination(transform.position);
                 }
