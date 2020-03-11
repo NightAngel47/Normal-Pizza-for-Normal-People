@@ -147,6 +147,11 @@ PrefabInstance:
       propertyPath: hideHandOnAttach
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5028148242255062792, guid: 1055cb29081f4834e9b59776c9e4f708,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 5028148242255062793, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
       propertyPath: m_LocalPosition.x

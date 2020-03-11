@@ -26,14 +26,6 @@ public class PizzaBehaviour : MonoBehaviour
         raw = pizzaModelMat.material;
     }
 
-    private void Update()
-    {
-        if (transform.GetChild(0).rotation != Quaternion.AngleAxis(90, Vector3.left))
-        {
-            transform.GetChild(0).rotation = Quaternion.AngleAxis(90, Vector3.left);
-        }
-    }
-
     public void AddPizzaIngredient(PizzaIngredient newIngredient)
     {
         ingredientsOnPizza.Add(newIngredient);

@@ -20,7 +20,7 @@ public class IngredientHitEffect : MonoBehaviour
         {
             var pizzaTransform = pizza.transform;
             var spawnPos = pizzaTransform.position;
-            var newIngredient = Instantiate(spawnObjectOnCollision, spawnPos, pizzaTransform.GetChild(0).rotation, pizzaTransform.GetChild(0));
+            var newIngredient = Instantiate(spawnObjectOnCollision, spawnPos, pizzaTransform.rotation, pizzaTransform);
             newIngredient.transform.Rotate(Vector3.up, Random.Range(-180, 180), Space.Self);
             pizza.AddPizzaIngredient(newIngredient.GetComponent<PizzaIngredient>());
         }
