@@ -14,13 +14,15 @@ public class PizzaBehaviour : MonoBehaviour
     public bool isCooked = false; //has the pizza been cooked ----- only one of these two bools will be on at any given time
     public bool overCooking = false; //is it being over cooked, has it been cooked and will it be burning soon
 
+    private MeshRenderer pizzaModelMat;
     public Material cooked;
     public Material burnt;
     private Material raw;
 
     public void Start()
     {
-        raw = gameObject.GetComponentInChildren<MeshRenderer>().material;
+        pizzaModelMat = gameObject.GetComponentInChildren<MeshRenderer>();
+        raw = pizzaModelMat.material;
     }
 
     public void AddPizzaIngredient(PizzaIngredient newIngredient)
@@ -35,19 +37,19 @@ public class PizzaBehaviour : MonoBehaviour
 
     public void MaterialChangeBack()
     {
-        if(isCooked == true)
+        if(isCooked)
         {
-            gameObject.GetComponentInChildren<MeshRenderer>().material = cooked;
+            pizzaModelMat.material = cooked;
         }
 
-        if (isBurnt == true)
+        if (isBurnt)
         {
-            gameObject.GetComponentInChildren<MeshRenderer>().material = burnt;
+            pizzaModelMat.material = burnt;
         }
 
         if(isCooked == false && isBurnt == false)
         {
-            gameObject.GetComponentInChildren<MeshRenderer>().material = raw;
+            pizzaModelMat.material = raw;
         }
     }
 }

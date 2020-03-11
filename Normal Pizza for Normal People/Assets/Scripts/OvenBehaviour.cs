@@ -92,9 +92,9 @@ public class OvenBehaviour : MonoBehaviour
         if (col.transform.parent.TryGetComponent(out PizzaBehaviour pizza) && pizza.isBurnt == false)// && !gm.isPaused
         {
             pizza.cookedTime += Time.deltaTime; //adds time to the amount of time the pizza has been cooked
-            tempTime += Time.deltaTime;
+            tempTime += Time.deltaTime; //time for fill on timer
 
-            timerTime -= Time.deltaTime;
+            timerTime -= Time.deltaTime; //time displayed on timer
             string per = ((int)timerTime).ToString();
 
             if (pizza.cookedTime > cookTime)
@@ -148,6 +148,7 @@ public class OvenBehaviour : MonoBehaviour
                     changeOnce = true;
                     tempTime = 0;
                     timerTime = cookTime + 1;
+                    Debug.Log(timerTime);
                 }
 
                 //audioSource.Stop();

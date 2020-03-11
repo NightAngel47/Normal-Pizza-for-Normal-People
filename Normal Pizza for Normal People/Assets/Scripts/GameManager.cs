@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
         [Header("Day Info")]
         [Tooltip("The number of customers per day"), Range(0, 50)]
         public int numOfCustomers;
+        [Tooltip("The number of ")]
+        public int numOfCustomersInQue;
         [Tooltip("The length of each day in seconds"), Range(0, 300)]
         public int dayLength;
         [Tooltip("The profit goal for each day")]
@@ -64,7 +66,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => currentDayTimer <= 0);
         foreach (var customer in FindObjectsOfType<Customer>())
         {
-            Destroy(customer.gameObject);
+            customer.CustomerLeave();
         }
         upgradeSystem.EnterUpgradeMode();
         currentDay++;

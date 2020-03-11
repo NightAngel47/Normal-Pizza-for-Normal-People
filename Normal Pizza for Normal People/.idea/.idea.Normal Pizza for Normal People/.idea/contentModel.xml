@@ -56,6 +56,10 @@
           </e>
           <e p="TrashScript.cs" t="Include" />
           <e p="UpgradeSystem.cs" t="Include" />
+          <e p="UpradeItems" t="Include">
+            <e p="ItemUpgrades.cs" t="Include" />
+            <e p="OvenUpgrade.cs" t="Include" />
+          </e>
         </e>
         <e p="SteamVR" t="Include">
           <e p="Editor" t="Include">
