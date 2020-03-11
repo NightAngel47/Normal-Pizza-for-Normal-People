@@ -8,6 +8,14 @@ public class UpgradeSystem : MonoBehaviour
     [SerializeField]
     private List<GameObject> availableUpgrades = new List<GameObject>();
 
+    public void Start()
+    {
+        foreach (GameObject g in availableUpgrades)
+        {
+            g.GetComponent<ItemUpgrades>().TurnOnUpgrade();
+        }
+    }
+
     public void EnterUpgradeMode()
     {
         isUpgrading = true;
@@ -15,11 +23,10 @@ public class UpgradeSystem : MonoBehaviour
 
         foreach(GameObject g in availableUpgrades)
         {
-            g.SetActive(true);
             g.GetComponent<ItemUpgrades>().ShowItem();
         }
 
-        Invoke(nameof(TempUpgradeModeTimer), 5f);
+        //Invoke(nameof(TempUpgradeModeTimer), 5f);
     }
 
     private void TempUpgradeModeTimer()
