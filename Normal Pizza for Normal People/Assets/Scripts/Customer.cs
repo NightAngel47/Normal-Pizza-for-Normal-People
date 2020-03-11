@@ -30,6 +30,7 @@ public class Customer : MonoBehaviour
     [SerializeField]
     private GameObject ingredientUI;
 
+    private bool activeOrder;
     private bool leaving;
     private Vector3 targetLinePos;
     private Vector3 endPos;
@@ -76,6 +77,7 @@ public class Customer : MonoBehaviour
     {
         if (other.CompareTag("LineStart"))
         {
+            activeOrder = true;
             ChangeUIState();
             StartCoroutine(OrderTimerCountDown());
         }
@@ -84,6 +86,7 @@ public class Customer : MonoBehaviour
         {
             moneyTracker.ChangeMoney(CheckDeliveredPizza(pizza));
             Destroy(pizza.gameObject);
+            activeOrder = false;
             CustomerLeave();
         }
     }
@@ -92,6 +95,7 @@ public class Customer : MonoBehaviour
     {
         if (other.CompareTag("LineStart"))
         {
+            activeOrder = false;
             ChangeUIState();
         }
     }
@@ -151,6 +155,7 @@ public class Customer : MonoBehaviour
         else
         {
             moneyTracker.ChangeMoney(-100);
+            activeOrder = false;
             CustomerLeave();
         }
     }
@@ -193,8 +198,9 @@ public class Customer : MonoBehaviour
         return 100;
     }
 
-    private void CustomerLeave()
+    public void CustomerLeave()
     {
+        if (leaving || activeOrder) return;
         leaving = true;
         agent.SetDestination(endPos);
         Invoke(nameof(CallTheNextCustomer), 5f);

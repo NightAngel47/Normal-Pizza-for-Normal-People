@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => currentDayTimer <= 0);
         foreach (var customer in FindObjectsOfType<Customer>())
         {
-            Destroy(customer.gameObject);
+            customer.CustomerLeave();
         }
         upgradeSystem.EnterUpgradeMode();
         currentDay++;

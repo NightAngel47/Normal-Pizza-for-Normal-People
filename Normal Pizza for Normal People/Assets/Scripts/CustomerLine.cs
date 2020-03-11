@@ -64,5 +64,9 @@ public class CustomerLine : MonoBehaviour
     public void CustomerServed()
     {
         currentAmountOfCustomersInShop--;
+        if (currentAmountOfCustomersInShop < 0)
+        {
+            currentAmountOfCustomersInShop = 0;
+        }
     }
 }
