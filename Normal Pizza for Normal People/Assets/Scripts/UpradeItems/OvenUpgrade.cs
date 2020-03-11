@@ -18,4 +18,9 @@ public class OvenUpgrade : ItemUpgrades
     {
         
     }
+
+    public override void ChangeMaterial(bool m)
+    {
+        throw new System.NotImplementedException();
+    }
 }
