@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,8 +12,11 @@ using UnityEngine.UI;
 public class Customer : MonoBehaviour
 {
     private Order order;
+    private GameManager gm;
     private MoneyTracker moneyTracker;
-
+    private CustomerLine customerLine;
+    private NavMeshAgent agent;
+    
     [SerializeField]
     private float startOrderTime = 90f;
     private float currentOrderTime;
@@ -26,18 +30,18 @@ public class Customer : MonoBehaviour
     [SerializeField]
     private GameObject ingredientUI;
 
-    private GameManager gm;
-
-    private Vector3 startPos;
+    private bool leaving;
+    private Vector3 targetLinePos;
+    private Vector3 endPos;
     
     // Start is called before the first frame update
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-
-        moneyTracker = FindObjectOfType<GameManager>().GetMoneyTracker();
-
-        startPos = transform.position;
+        customerLine = gm.GetComponent<CustomerLine>();
+        moneyTracker = gm.GetMoneyTracker();
+        agent = GetComponent<NavMeshAgent>();
+        endPos = transform.position + (Vector3.right * 14);
         
         orderTimerText = orderTimerUI.GetComponentInChildren<TMP_Text>();
         orderTimerProgressBar = orderTimerUI.transform.GetChild(0).GetComponent<Image>();
@@ -45,13 +49,35 @@ public class Customer : MonoBehaviour
         StartCoroutine(OrderTimerCountDown());
     }
 
+    public void SetTargetLine(Vector3 customerLinePos)
+    {
+        targetLinePos = customerLinePos;
+    }
+
+    private void Update()
+    {
+        if (!leaving)
+        {
+            if (Physics.SphereCast(transform.position, 0.5f, transform.forward, out RaycastHit hit, 0.5f))
+            {
+                if (hit.collider.TryGetComponent(out Customer customer))
+                {
+                    agent.SetDestination(transform.position);
+                }
+            }
+            else if(agent.destination != targetLinePos)
+            {
+                agent.SetDestination(targetLinePos);
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider col)
     {
         if (!col.transform.parent.TryGetComponent(out PizzaBehaviour pizza)) return;
         moneyTracker.ChangeMoney(CheckDeliveredPizza(pizza));
         Destroy(pizza.gameObject);
-        GetComponent<NavMeshAgent>().SetDestination(startPos);
-        Destroy(gameObject, 10f);
+        CustomerLeave();
     }
 
     /// <summary>
@@ -85,6 +111,7 @@ public class Customer : MonoBehaviour
 
             // instantiate UI
             var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, Quaternion.identity, ingredientUITransform);
+            newIngredient.transform.Rotate(Vector3.up, 180, Space.Self);
             
             // update text with info
             var ingredientTexts = newIngredient.GetComponentsInChildren<TMP_Text>();
@@ -108,7 +135,7 @@ public class Customer : MonoBehaviour
         else
         {
             moneyTracker.ChangeMoney(-100);
-            Destroy(gameObject);
+            CustomerLeave();
         }
     }
 
@@ -148,5 +175,18 @@ public class Customer : MonoBehaviour
         }
         
         return 100;
+    }
+
+    private void CustomerLeave()
+    {
+        leaving = true;
+        agent.SetDestination(endPos);
+        Invoke(nameof(CallTheNextCustomer), 5f);
+        Destroy(gameObject, 10f);
+    }
+
+    private void CallTheNextCustomer()
+    {
+        customerLine.CustomerServed();
     }
 }
