@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +24,14 @@ public class PizzaBehaviour : MonoBehaviour
     {
         pizzaModelMat = gameObject.GetComponentInChildren<MeshRenderer>();
         raw = pizzaModelMat.material;
+    }
+
+    private void Update()
+    {
+        if (transform.GetChild(0).rotation != Quaternion.AngleAxis(90, Vector3.left))
+        {
+            transform.GetChild(0).rotation = Quaternion.AngleAxis(90, Vector3.left);
+        }
     }
 
     public void AddPizzaIngredient(PizzaIngredient newIngredient)
