@@ -150,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 5028148242255062792, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
       propertyPath: m_Constraints
-      value: 112
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5028148242255062793, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
@@ -354,8 +354,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8880228110941784162, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
+      propertyPath: onPickUp.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880228110941784162, guid: 1055cb29081f4834e9b59776c9e4f708,
+        type: 3}
       propertyPath: attachmentFlags
       value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880228110941784162, guid: 1055cb29081f4834e9b59776c9e4f708,
+        type: 3}
+      propertyPath: onPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 689300596043460042}
+    - target: {fileID: 8880228110941784162, guid: 1055cb29081f4834e9b59776c9e4f708,
+        type: 3}
+      propertyPath: onPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetPizzaOrientation
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880228110941784162, guid: 1055cb29081f4834e9b59776c9e4f708,
+        type: 3}
+      propertyPath: onPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880228110941784162, guid: 1055cb29081f4834e9b59776c9e4f708,
+        type: 3}
+      propertyPath: onPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880228110941784162, guid: 1055cb29081f4834e9b59776c9e4f708,
+        type: 3}
+      propertyPath: onPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1055cb29081f4834e9b59776c9e4f708, type: 3}
