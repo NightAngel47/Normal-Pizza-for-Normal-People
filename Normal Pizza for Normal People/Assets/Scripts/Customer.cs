@@ -187,9 +187,9 @@ public class Customer : MonoBehaviour
         
         if (tempOrderList.Count > 0) return -100;
 
-        if (gm.currentDay >= 0)
+        if (gm.currentDay > 0)
         {
-            if (pizza.isBurnt == true || pizza.isCooked == false)
+            if (pizza.isBurnt || pizza.isCooked == false)
             {
                 return -50;
             }
