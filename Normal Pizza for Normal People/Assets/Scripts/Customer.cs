@@ -46,7 +46,7 @@ public class Customer : MonoBehaviour
         orderTimerText = orderTimerUI.GetComponentInChildren<TMP_Text>();
         orderTimerProgressBar = orderTimerUI.transform.GetChild(0).GetComponent<Image>();
         currentOrderTime = startOrderTime + 1;
-        StartCoroutine(OrderTimerCountDown());
+        ChangeUIState();
     }
 
     public void SetTargetLine(Vector3 customerLinePos)
@@ -72,12 +72,28 @@ public class Customer : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider col)
+    private void OnTriggerEnter(Collider other)
     {
-        if (!col.transform.parent.TryGetComponent(out PizzaBehaviour pizza)) return;
-        moneyTracker.ChangeMoney(CheckDeliveredPizza(pizza));
-        Destroy(pizza.gameObject);
-        CustomerLeave();
+        if (other.CompareTag("LineStart"))
+        {
+            ChangeUIState();
+            StartCoroutine(OrderTimerCountDown());
+        }
+        
+        if (other.transform.parent.TryGetComponent(out PizzaBehaviour pizza))
+        {
+            moneyTracker.ChangeMoney(CheckDeliveredPizza(pizza));
+            Destroy(pizza.gameObject);
+            CustomerLeave();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("LineStart"))
+        {
+            ChangeUIState();
+        }
     }
 
     /// <summary>
@@ -96,6 +112,7 @@ public class Customer : MonoBehaviour
     /// </summary>
     private void DisplayOrder()
     {
+        //TODO decouple UI from customer
         // get unique ingredients
         List<PizzaIngredient> uniqueIngredients = new List<PizzaIngredient>();
         foreach (var ingredient in order.GetOrderIngredients().Where(ingredient => !uniqueIngredients.Contains(ingredient)))
@@ -110,8 +127,7 @@ public class Customer : MonoBehaviour
             int uniqueIngredientCount = order.GetOrderIngredients().Count(orderIngredient => ingredient == orderIngredient);
 
             // instantiate UI
-            var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, Quaternion.identity, ingredientUITransform);
-            newIngredient.transform.Rotate(Vector3.up, 180, Space.Self);
+            var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, ingredientUITransform.rotation, ingredientUITransform);
             
             // update text with info
             var ingredientTexts = newIngredient.GetComponentsInChildren<TMP_Text>();
@@ -188,5 +204,11 @@ public class Customer : MonoBehaviour
     private void CallTheNextCustomer()
     {
         customerLine.CustomerServed();
+    }
+
+    private void ChangeUIState()
+    {
+        ingredientUITransform.gameObject.SetActive(!ingredientUITransform.gameObject.activeSelf);
+        orderTimerUI.SetActive(!orderTimerUI.activeSelf);
     }
 }
