@@ -59,6 +59,8 @@
           <e p="UpradeItems" t="Include">
             <e p="ItemUpgrades.cs" t="Include" />
             <e p="OvenUpgrade.cs" t="Include" />
+            <e p="PizzaStationUpgrade.cs" t="Include" />
+            <e p="ToppingUpgrades.cs" t="Include" />
           </e>
         </e>
         <e p="SteamVR" t="Include">
