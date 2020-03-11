@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class PizzaStationUpgrade : ItemUpgrades
 {
-    private PizzaSpawner ps;
+    private HoverButton hb;
+    private BoxCollider bc;
 
     protected override void ChangeMaterial(Material changeMat)
     {
@@ -14,7 +16,10 @@ public class PizzaStationUpgrade : ItemUpgrades
 
     public override void TurnOnUpgrade()
     {
-        ps = gameObject.GetComponent<PizzaSpawner>();
-        ps.enabled = !ps.enabled;
+        hb = gameObject.GetComponent<HoverButton>();
+        bc = gameObject.transform.GetChild(0).GetComponent<BoxCollider>();
+
+        hb.enabled = !hb.enabled;
+        bc.enabled = !bc.enabled;
     }
 }

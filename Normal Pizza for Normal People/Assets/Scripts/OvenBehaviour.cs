@@ -61,7 +61,7 @@ public class OvenBehaviour : MonoBehaviour
 
         if (col.gameObject.GetComponentInParent<PizzaBehaviour>() == true && col.gameObject.GetComponentInParent<PizzaBehaviour>().isBurnt == false)
         {
-            ps.Play();
+            //ps.Play();
 
             if(col.gameObject.GetComponentInParent<PizzaBehaviour>().isCooked == true)
             {
@@ -164,7 +164,7 @@ public class OvenBehaviour : MonoBehaviour
         //if the pizza is removed reset all variables
         if (col.gameObject.GetComponentInParent<PizzaBehaviour>())//&& !gm.isPaused
         {
-            ps.Stop();
+            //ps.Stop();
             //audioSource.Stop();
             //inOven = false;
             //currentTime = 0;
