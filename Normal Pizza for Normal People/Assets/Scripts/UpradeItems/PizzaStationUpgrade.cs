@@ -7,6 +7,7 @@ public class PizzaStationUpgrade : ItemUpgrades
 {
     private HoverButton hb;
     private BoxCollider bc;
+    private BoxCollider bc2;
 
     protected override void ChangeMaterial(Material changeMat)
     {
@@ -18,8 +19,10 @@ public class PizzaStationUpgrade : ItemUpgrades
     {
         hb = gameObject.GetComponent<HoverButton>();
         bc = gameObject.transform.GetChild(0).GetComponent<BoxCollider>();
+        bc2 = gameObject.GetComponent<BoxCollider>();
 
         hb.enabled = !hb.enabled;
         bc.enabled = !bc.enabled;
+        bc2.enabled = !bc2.enabled;
     }
 }
