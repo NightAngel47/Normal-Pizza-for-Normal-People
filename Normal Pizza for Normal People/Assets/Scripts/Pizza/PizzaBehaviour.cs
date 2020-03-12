@@ -28,7 +28,7 @@ public class PizzaBehaviour : MonoBehaviour
 
     public void ResetPizzaOrientation()
     {
-        transform.Rotate(0, 0, 0);
+        transform.GetChild(0).Rotate(0, 0, 0);
     }
 
     public void AddPizzaIngredient(PizzaIngredient newIngredient)
