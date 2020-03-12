@@ -248,8 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24636b4653b33f54383af9eaf4e50a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cookTime: 10
-  overCookTime: 20
+  cookTime: 5
+  overCookTime: 10
   cooked: {fileID: 2100000, guid: 406281ab3b4a7c54090398d3bb49d99d, type: 2}
   burnt: {fileID: 955179057503558733, guid: 4d5df00e03cbc834d9814b4ccc4ad3a5, type: 3}
   loadingBar: {fileID: 5134597844556409484}
@@ -530,8 +530,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24636b4653b33f54383af9eaf4e50a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cookTime: 10
-  overCookTime: 20
+  cookTime: 5
+  overCookTime: 10
   cooked: {fileID: 2100000, guid: 406281ab3b4a7c54090398d3bb49d99d, type: 2}
   burnt: {fileID: 955179057503558733, guid: 4d5df00e03cbc834d9814b4ccc4ad3a5, type: 3}
   loadingBar: {fileID: 5134597844556409484}
