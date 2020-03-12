@@ -12,7 +12,7 @@ public class CustomerLine : MonoBehaviour
     private OrderCreation orderCreation;
     [SerializeField]
     private TMP_Text currentDayCustomerText;
-    private int currentDayCustomerServing;
+    private int currentDayCustomerServed;
     private int currentDayNumOfCustomers;
     private int currentAmountOfCustomersInShop;
     [SerializeField]
@@ -31,8 +31,9 @@ public class CustomerLine : MonoBehaviour
     public void StartDay(int numOfCustomers)
     {
         customerOrders = orderCreation.GenerateOrders(numOfCustomers);
-        currentDayCustomerServing = 0;
+        currentDayCustomerServed = 0;
         currentDayNumOfCustomers = numOfCustomers;
+        currentDayCustomerText.text = currentDayCustomerServed + "/" + currentDayNumOfCustomers;
         StartCoroutine(NextCustomer());
     }
 
@@ -43,8 +44,6 @@ public class CustomerLine : MonoBehaviour
         if (gameManager.currentDayTimer < 1 || customerOrders.Count <= 0) yield break;
         
         currentAmountOfCustomersInShop++;
-        currentDayCustomerServing++;
-        currentDayCustomerText.text = currentDayCustomerServing + "/" + currentDayNumOfCustomers;
             
         var newCustomer = Instantiate(customerPrefab, customerSpawnPos.position, customerSpawnPos.rotation).GetComponent<Customer>();
         newCustomer.SetOrder(customerOrders[0]);
@@ -61,6 +60,12 @@ public class CustomerLine : MonoBehaviour
         }
     }
 
+    public void IncreaseCustomersServed()
+    {
+        currentDayCustomerServed++;
+        currentDayCustomerText.text = currentDayCustomerServed + "/" + currentDayNumOfCustomers;
+    }
+    
     public void CustomerServed()
     {
         currentAmountOfCustomersInShop--;

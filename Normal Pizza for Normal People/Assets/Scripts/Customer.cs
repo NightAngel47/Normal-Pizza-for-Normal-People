@@ -271,6 +271,7 @@ public class Customer : MonoBehaviour
         
         agent.SetDestination(endPos);
         leaving = true;
+        customerLine.IncreaseCustomersServed();
         Invoke(nameof(CallTheNextCustomer), 5f);
         Destroy(gameObject, 10f);
     }

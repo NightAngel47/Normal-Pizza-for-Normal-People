@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 118678880}
   - component: {fileID: 118678879}
   m_Layer: 5
-  m_Name: Money Status Count
+  m_Name: Day Money Status Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -528,7 +528,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Serving Customer: '
+  m_text: 'Customers Served: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -897,7 +897,7 @@ GameObject:
   - component: {fileID: 1117255568}
   - component: {fileID: 1117255567}
   m_Layer: 5
-  m_Name: Money Status Label
+  m_Name: Day Money Status Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1089,7 +1089,7 @@ GameObject:
   - component: {fileID: 1607235105}
   - component: {fileID: 1607235104}
   m_Layer: 5
-  m_Name: Money Status Count
+  m_Name: Total Money Status Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1244,7 +1244,7 @@ GameObject:
   - component: {fileID: 1787169210}
   - component: {fileID: 1787169209}
   m_Layer: 5
-  m_Name: Money Status Label
+  m_Name: Total Money Status Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
