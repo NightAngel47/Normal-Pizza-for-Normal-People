@@ -91,6 +91,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7cfcd398bd2ef854b8a9f0f478a553cd, type: 3}
   - {fileID: 8300000, guid: 3f9a5b582e233474d870c089a72e10b8, type: 3}
   - {fileID: 8300000, guid: 98e9a5544e32c56488c03cb8ab674c82, type: 3}
+  moneyForOrderText: {fileID: 2555674067644944362}
   activeOrder: 0
 --- !u!136 &6820603579891726374
 CapsuleCollider:
@@ -247,6 +248,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.99607843
       objectReference: {fileID: 0}
+    - target: {fileID: 6028383263601573211, guid: a48cbd8b80e14ab4a98285dc54d49872,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6776600240221178425, guid: a48cbd8b80e14ab4a98285dc54d49872,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -377,6 +383,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 359802870229141878}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2555674067644944362 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2849040012879267484, guid: a48cbd8b80e14ab4a98285dc54d49872,
+    type: 3}
+  m_PrefabInstance: {fileID: 359802870229141878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8855423326383952273
 PrefabInstance:
   m_ObjectHideFlags: 0

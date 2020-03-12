@@ -37,6 +37,9 @@ public class Customer : MonoBehaviour
     private enum CustomerAudioStates {Walking, GoodOrder, BadOrder, OrderEndingSoon}
     [SerializeField]
     private List<AudioClip> customerAudioClips = new List<AudioClip>();
+
+    [SerializeField]
+    private TMP_Text moneyForOrderText;
     
     [HideInInspector]
     public bool activeOrder;
@@ -57,6 +60,7 @@ public class Customer : MonoBehaviour
         
         endPos = transform.position + (Vector3.right * 14);
         
+        moneyForOrderText.gameObject.SetActive(false);
         orderTimerText = orderTimerUI.GetComponentInChildren<TMP_Text>();
         orderTimerProgressBar = orderTimerUI.transform.GetChild(0).GetComponent<Image>();
         currentOrderTime = startOrderTime + 1;
@@ -172,7 +176,7 @@ public class Customer : MonoBehaviour
         currentOrderTime -= Time.deltaTime;
         if (currentOrderTime > 0)
         {
-            if (currentOrderTime / startOrderTime >= 0.5f)
+            if (currentOrderTime / startOrderTime >= 0.66f)
             {
                 orderTimerProgressBar.color = orderTimerColors[(int) OrderTimerStates.Start];
             }
@@ -217,7 +221,8 @@ public class Customer : MonoBehaviour
     {
         //TODO add topping tiers
         float deliveredPizzaMoney = moneyTracker.basePizzaProfit + order.GetOrderIngredients().Count * moneyTracker.tier1Toppings;
-        
+
+        int pizzaProfit;
         if (pizza.GetIngredientsOnPizza().Count == order.GetOrderIngredients().Count)
         {
             var tempOrderList = order.GetOrderIngredients();
@@ -239,7 +244,8 @@ public class Customer : MonoBehaviour
                 if (gm.currentDay > 0 && (pizza.isBurnt || !pizza.isCooked))
                 {
                     PlayCustomerAudio(CustomerAudioStates.BadOrder);
-                    return (int) -deliveredPizzaMoney / 2;
+                    ShowMoneyAmount(pizzaProfit = (int) -deliveredPizzaMoney / 2);
+                    return pizzaProfit;
                 }
                 
                 if (pizza.isCooked)
@@ -249,12 +255,14 @@ public class Customer : MonoBehaviour
                 //TODO add other bonuses
                 
                 PlayCustomerAudio(CustomerAudioStates.GoodOrder);
-                return (int) (deliveredPizzaMoney * (1 + currentOrderTime / startOrderTime));
+                ShowMoneyAmount(pizzaProfit = (int) (deliveredPizzaMoney * (1 + currentOrderTime / startOrderTime)));
+                return pizzaProfit;
             }
         }
 
         PlayCustomerAudio(CustomerAudioStates.BadOrder);
-        return (int) -deliveredPizzaMoney / 2;
+        ShowMoneyAmount(pizzaProfit = (int) -deliveredPizzaMoney / 2);
+        return pizzaProfit;
     }
 
     public void CustomerLeave()
@@ -276,6 +284,13 @@ public class Customer : MonoBehaviour
     {
         ingredientUITransform.gameObject.SetActive(!ingredientUITransform.gameObject.activeSelf);
         orderTimerUI.SetActive(!orderTimerUI.activeSelf);
+    }
+
+    private void ShowMoneyAmount(int amount)
+    {
+        moneyForOrderText.text = "$" + amount;
+        moneyForOrderText.gameObject.SetActive(true);
+        ingredientUITransform.gameObject.SetActive(false);
     }
 
     private void PlayCustomerAudio(CustomerAudioStates state)
