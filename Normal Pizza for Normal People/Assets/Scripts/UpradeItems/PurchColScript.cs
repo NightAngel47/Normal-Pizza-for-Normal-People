@@ -44,4 +44,9 @@ public class PurchColScript : MonoBehaviour
             iu.Purchase();
         }
     }
+
+    private void OnTriggerExit(Collider col)
+    {
+        timeInside = 0;
+    }
 }
