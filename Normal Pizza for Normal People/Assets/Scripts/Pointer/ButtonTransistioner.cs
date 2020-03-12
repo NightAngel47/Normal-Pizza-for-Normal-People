@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerClickHandler, IPointerUpHandler
 {
     public GameObject panelHandler;
+    private AudioSource audioSource;
 
     public Color32 norm = Color.white;
     public Color32 hover = Color.gray;
@@ -17,7 +18,8 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
 
     private void Awake()
     {
-        img = GetComponent<Image>();    
+        img = GetComponent<Image>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -53,6 +55,7 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
     public void OnPointerDown(PointerEventData eventData)
     {
         img.color = down;
+        audioSource.Play();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
