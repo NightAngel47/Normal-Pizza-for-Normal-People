@@ -11,8 +11,13 @@ public class PizzaSpawner : MonoBehaviour
     [SerializeField]
     private Transform pizzaSpawnPos;
 
+    public bool dont = false;
+
     public void SpawnPizza()
     {
-        Instantiate(pizzaPrefab, pizzaSpawnPos.position, Quaternion.identity);
+        if (dont == false)
+        {
+            Instantiate(pizzaPrefab, pizzaSpawnPos.position, Quaternion.identity);
+        }
     }
 }
