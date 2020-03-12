@@ -14,12 +14,9 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
 
     [Header("Day Canvas UI")]
-    [SerializeField]
-    private TMP_Text currentDayText;
-    [SerializeField]
-    private TMP_Text currentDayTime;
-    [SerializeField]
-    private Image currentDayProgressBar;
+    [SerializeField] private TMP_Text currentDayText;
+    [SerializeField] private TMP_Text currentDayTime;
+    [SerializeField] private Image currentDayProgressBar;
     
     [Header("Game Days")]
     [SerializeField]
@@ -63,9 +60,11 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator DayCycle()
     {
+        moneyTracker.ShowHideTotalMoneyUI(false);
         currentDayText.text = "Day " + (currentDay + 1);
         customerLine.StartDay(gameDays[currentDay].numOfCustomers);
         currentDayTimer = gameDays[currentDay].dayLength;
+        ShowHideDayTimer(true);
         StartCoroutine(DayTimer());
         moneyTracker.TrackNewDay();
 
@@ -90,8 +89,10 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitWhile(() => lastCustomer.activeOrder);
         }
+        moneyTracker.ShowHideTotalMoneyUI(true);
         
         upgradeSystem.EnterUpgradeMode();
+        
         currentDay++;
         //TODO add upgrade pause
 
@@ -116,6 +117,12 @@ public class GameManager : MonoBehaviour
         {
             audioSource.clip = gameDayAudioClips[(int) GameDayAudioStates.EndDay];
             audioSource.Play();
+            ShowHideDayTimer(false);
         }
+    }
+
+    private void ShowHideDayTimer(bool state)
+    {
+        currentDayTime.transform.parent.gameObject.SetActive(state);
     }
 }

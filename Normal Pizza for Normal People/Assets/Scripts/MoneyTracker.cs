@@ -7,8 +7,8 @@ using UnityEngine;
 public class MoneyTracker : MonoBehaviour
 {
     private GameManager gameManager;
-    [SerializeField]
-    private TMP_Text currentDayMoneyText;
+    [SerializeField] private TMP_Text currentDayMoneyText;
+    [SerializeField] private TMP_Text totalMoneyText;
     /// <summary>
     /// Current amount of money earned each day
     /// </summary>
@@ -31,6 +31,7 @@ public class MoneyTracker : MonoBehaviour
     {
         gameManager = GetComponent<GameManager>();
         CustomerChangeMoney(0);
+        ShowHideTotalMoneyUI(false);
     }
 
     public void TrackNewDay()
@@ -48,6 +49,7 @@ public class MoneyTracker : MonoBehaviour
         currentDayAmount += amount;
         totalMoneyAmount += amount;
         currentDayMoneyText.text = "$" + currentDayAmount + "/$" + gameManager.gameDays[gameManager.currentDay].moneyGoal;
+        totalMoneyText.text = "$" + totalMoneyAmount;
         Debug.Log("Current Day Amount of Money: " + currentDayAmount);
         Debug.Log("Current Total Amount of Money: " + totalMoneyAmount);
     }
@@ -56,7 +58,13 @@ public class MoneyTracker : MonoBehaviour
     {
         if (amount > totalMoneyAmount) return false;
         totalMoneyAmount -= amount;
+        totalMoneyText.text = "$" + totalMoneyAmount;
         Debug.Log("Current Total Amount of Money: " + totalMoneyAmount);
         return true;
+    }
+
+    public void ShowHideTotalMoneyUI(bool state)
+    {
+        totalMoneyText.transform.parent.gameObject.SetActive(state);
     }
 }
