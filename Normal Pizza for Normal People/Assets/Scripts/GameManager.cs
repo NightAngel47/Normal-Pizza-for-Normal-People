@@ -68,9 +68,20 @@ public class GameManager : MonoBehaviour
         MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.WorkDayMusic);
         
         yield return new WaitUntil(() => currentDayTimer <= 0);
+        Customer lastCustomer = null;
         foreach (var customer in FindObjectsOfType<Customer>())
         {
+            if (customer.activeOrder)
+            {
+                lastCustomer = customer;
+            }
+
             customer.CustomerLeave();
+        }
+
+        if (lastCustomer != null)
+        {
+            yield return new WaitWhile(() => lastCustomer.activeOrder);
         }
         
         upgradeSystem.EnterUpgradeMode();

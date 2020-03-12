@@ -30,7 +30,7 @@ public class Customer : MonoBehaviour
     [SerializeField]
     private GameObject ingredientUI;
 
-    private bool activeOrder;
+    public bool activeOrder;
     private bool leaving;
     private Vector3 targetLinePos;
     private Vector3 endPos;
@@ -201,8 +201,9 @@ public class Customer : MonoBehaviour
     public void CustomerLeave()
     {
         if (leaving || activeOrder) return;
-        leaving = true;
+        
         agent.SetDestination(endPos);
+        leaving = true;
         Invoke(nameof(CallTheNextCustomer), 5f);
         Destroy(gameObject, 10f);
     }
