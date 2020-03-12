@@ -16,6 +16,7 @@ public class Customer : MonoBehaviour
     private MoneyTracker moneyTracker;
     private CustomerLine customerLine;
     private NavMeshAgent agent;
+    private AudioSource audioSource;
     
     [SerializeField]
     private float startOrderTime = 90f;
@@ -30,6 +31,11 @@ public class Customer : MonoBehaviour
     [SerializeField]
     private GameObject ingredientUI;
 
+    private enum CustomerAudioStates {Walking, GoodOrder, BadOrder}
+    [SerializeField]
+    private List<AudioClip> customerAudioClips = new List<AudioClip>(3);
+    
+    [HideInInspector]
     public bool activeOrder;
     private bool leaving;
     private Vector3 targetLinePos;
@@ -42,6 +48,12 @@ public class Customer : MonoBehaviour
         customerLine = gm.GetComponent<CustomerLine>();
         moneyTracker = gm.GetMoneyTracker();
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
+
+        audioSource.clip = customerAudioClips[(int) CustomerAudioStates.Walking];
+        audioSource.loop = true;
+        audioSource.Play();
+        
         endPos = transform.position + (Vector3.right * 14);
         
         orderTimerText = orderTimerUI.GetComponentInChildren<TMP_Text>();
@@ -63,11 +75,13 @@ public class Customer : MonoBehaviour
             {
                 if (hit.collider.TryGetComponent(out Customer customer) && !customer.leaving)
                 {
+                    audioSource.Stop();
                     agent.SetDestination(transform.position);
                 }
             }
             else if(agent.destination != targetLinePos)
             {
+                PlayCustomerAudio(CustomerAudioStates.Walking);
                 agent.SetDestination(targetLinePos);
             }
         }
@@ -155,6 +169,7 @@ public class Customer : MonoBehaviour
         else
         {
             moneyTracker.ChangeMoney(-100);
+            PlayCustomerAudio(CustomerAudioStates.BadOrder);
             activeOrder = false;
             CustomerLeave();
         }
@@ -168,34 +183,44 @@ public class Customer : MonoBehaviour
     private int CheckDeliveredPizza(PizzaBehaviour pizza)
     {
         //TODO add pizza money calculation
-        
-        if (pizza.GetIngredientsOnPizza().Count != order.GetOrderIngredients().Count) return -100;
 
-        var tempOrderList = order.GetOrderIngredients();
-        
-        for (int i = 0; i < pizza.GetIngredientsOnPizza().Count; ++i)
+        if (pizza.GetIngredientsOnPizza().Count == order.GetOrderIngredients().Count)
         {
-            for (int j = 0; j < tempOrderList.Count; ++j)
+            var tempOrderList = order.GetOrderIngredients();
+
+            for (int i = 0; i < pizza.GetIngredientsOnPizza().Count; ++i)
             {
-                if (pizza.GetIngredientsOnPizza()[i].GetIngredientName() == tempOrderList[j].GetIngredientName())
+                for (int j = 0; j < tempOrderList.Count; ++j)
                 {
-                    tempOrderList.RemoveAt(j);
-                    break;
+                    if (pizza.GetIngredientsOnPizza()[i].GetIngredientName() == tempOrderList[j].GetIngredientName())
+                    {
+                        tempOrderList.RemoveAt(j);
+                        break;
+                    }
                 }
             }
-        }
-        
-        if (tempOrderList.Count > 0) return -100;
 
-        if (gm.currentDay > 0)
-        {
-            if (pizza.isBurnt || pizza.isCooked == false)
+            if (tempOrderList.Count <= 0)
             {
-                return -50;
+                if (gm.currentDay > 0)
+                {
+                    if (pizza.isBurnt || pizza.isCooked == false)
+                    {
+                        PlayCustomerAudio(CustomerAudioStates.BadOrder);
+                        return -50;
+                    }
+                }
+                
+                PlayCustomerAudio(CustomerAudioStates.GoodOrder);
+                return 100;
             }
+
+            PlayCustomerAudio(CustomerAudioStates.BadOrder);
+            return -100;
         }
         
-        return 100;
+        PlayCustomerAudio(CustomerAudioStates.BadOrder);
+        return -100;
     }
 
     public void CustomerLeave()
@@ -217,5 +242,27 @@ public class Customer : MonoBehaviour
     {
         ingredientUITransform.gameObject.SetActive(!ingredientUITransform.gameObject.activeSelf);
         orderTimerUI.SetActive(!orderTimerUI.activeSelf);
+    }
+
+    private void PlayCustomerAudio(CustomerAudioStates state)
+    {
+        switch (state)
+        {
+            case CustomerAudioStates.Walking:
+                audioSource.clip = customerAudioClips[(int) CustomerAudioStates.Walking];
+                audioSource.loop = true;
+                audioSource.Play();
+                break;
+            case CustomerAudioStates.GoodOrder:
+                audioSource.clip = customerAudioClips[(int) CustomerAudioStates.GoodOrder];
+                audioSource.loop = false;
+                audioSource.Play();
+                break;
+            case CustomerAudioStates.BadOrder:
+                audioSource.clip = customerAudioClips[(int) CustomerAudioStates.BadOrder];
+                audioSource.loop = false;
+                audioSource.Play();
+                break;
+        }
     }
 }
