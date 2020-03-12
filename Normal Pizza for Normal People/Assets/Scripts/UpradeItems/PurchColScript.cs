@@ -33,10 +33,8 @@ public class PurchColScript : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        if (col.GetComponentInParent<HandCollider>() && callTimerOnce == false)
+        if (col.GetComponentInParent<HandCollider>())
         {
-            callTimerOnce = true;
-
             timeInside += Time.deltaTime;
 
             loadingBar.fillAmount = timeInside / timeTotal;
