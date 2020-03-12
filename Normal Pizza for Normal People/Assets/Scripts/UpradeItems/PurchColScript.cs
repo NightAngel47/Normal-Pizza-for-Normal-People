@@ -36,9 +36,9 @@ public class PurchColScript : MonoBehaviour
             {
                 callOnce = true; //make sure it cannot be called again
 
+                audioSource.Play();
                 timeInside = 0; //reset time
                 iu.Purchase(); //purchase the upgrade
-                audioSource.Play();
             }
         }
     }
