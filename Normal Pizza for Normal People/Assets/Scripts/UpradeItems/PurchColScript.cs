@@ -9,11 +9,10 @@ public class PurchColScript : MonoBehaviour
 {
     private ItemUpgrades iu;
 
-    private float timeTotal = 5;
-    private float timeInside = 0;
+    private float timeTotal = 5; //time hand is needed to be in collider
+    private float timeInside = 0; //time the hand has been in the collider
 
-    private bool callOnce = false;
-    private bool callTimerOnce = false;
+    private bool callOnce = false; //call the if statement once
 
     public Image loadingBar;
     public TextMeshProUGUI progressIndicator;
@@ -23,28 +22,20 @@ public class PurchColScript : MonoBehaviour
         iu = gameObject.GetComponentInParent<ItemUpgrades>();
     }
 
-    private void OnTriggerEnter(Collider col)
-    {
-        //if (col.GetComponentInParent<HandCollider>())
-        //{
-        //    iu.Purchase();
-        //}
-    }
-
     private void OnTriggerStay(Collider col)
     {
-        if (col.GetComponentInParent<HandCollider>())
+        if (col.GetComponentInParent<HandCollider>()) //if hand is in the collider
         {
-            timeInside += Time.deltaTime;
+            timeInside += Time.deltaTime; //count how long it has been in the collider
 
-            loadingBar.fillAmount = timeInside / timeTotal;
+            loadingBar.fillAmount = timeInside / timeTotal; //fill the loading bar
 
-            if (timeInside >= timeTotal && callOnce == false)
+            if (timeInside >= timeTotal && callOnce == false) //has the hand been in long enough and has this function yet to be called
             {
-                callOnce = true;
+                callOnce = true; //make sure it cannot be called again
 
-                timeInside = 0;
-                iu.Purchase();
+                timeInside = 0; //reset time
+                iu.Purchase(); //purchase the upgrade
             }
         }
     }
@@ -53,6 +44,8 @@ public class PurchColScript : MonoBehaviour
     {
         if (col.GetComponentInParent<HandCollider>())
         {
+            //reset any variables when the hand is removed
+            callOnce = false;
             timeInside = 0;
         }
     }

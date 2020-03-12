@@ -14,6 +14,7 @@ public class UpgradeSystem : MonoBehaviour
     {
         foreach (GameObject g in availableUpgrades)
         {
+            //make sure items do not have functionality in upgrade menu
             g.GetComponent<ItemUpgrades>().TurnOnUpgrade();
             g.GetComponent<ItemUpgrades>().HideItem();
         }
