@@ -147,11 +147,11 @@ MonoBehaviour:
   - numOfCustomers: 10
     numOfCustomersInQue: 3
     dayLength: 120
-    moneyGoal: 1000
+    moneyGoal: 100
   - numOfCustomers: 15
-    numOfCustomersInQue: 5
-    dayLength: 150
-    moneyGoal: 1000
+    numOfCustomersInQue: 3
+    dayLength: 120
+    moneyGoal: 100
   currentDay: 0
   currentDayTimer: 0
 --- !u!114 &4954694665190826298
@@ -167,6 +167,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentDayMoneyText: {fileID: 0}
+  basePizzaProfit: 25
+  tier1Toppings: 2
+  tier2Toppings: 4
+  tier3Toppings: 6
+  cookedBonus: 10
+  sauceBonus: 10
+  cheeseBonus: 10
 --- !u!114 &8357020710274601803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,4 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 997d9b72ead54984798b26125ac80295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableUpgrades: []
+  endUpgradeButton: {fileID: 0}
+  availableUpgrades:
+  - {fileID: 0}
+  - {fileID: 0}

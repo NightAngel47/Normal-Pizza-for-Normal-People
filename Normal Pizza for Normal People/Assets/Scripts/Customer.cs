@@ -103,7 +103,7 @@ public class Customer : MonoBehaviour
         
         if (other.transform.parent.TryGetComponent(out PizzaBehaviour pizza))
         {
-            moneyTracker.ChangeMoney(CheckDeliveredPizza(pizza));
+            moneyTracker.CustomerChangeMoney(CheckDeliveredPizza(pizza));
             Destroy(pizza.gameObject);
             activeOrder = false;
             CustomerLeave();
@@ -173,7 +173,7 @@ public class Customer : MonoBehaviour
         }
         else
         {
-            moneyTracker.ChangeMoney(-100);
+            moneyTracker.CustomerChangeMoney((int) -startOrderTime);
             PlayCustomerAudio(CustomerAudioStates.BadOrder);
             activeOrder = false;
             CustomerLeave();
@@ -187,8 +187,9 @@ public class Customer : MonoBehaviour
     /// <returns>If true: it returns the amount of money the pizza earned, else: it returns the amount of money lost.</returns>
     private int CheckDeliveredPizza(PizzaBehaviour pizza)
     {
-        //TODO add pizza money calculation
-
+        //TODO add topping tiers
+        float deliveredPizzaMoney = moneyTracker.basePizzaProfit + order.GetOrderIngredients().Count * moneyTracker.tier1Toppings;
+        
         if (pizza.GetIngredientsOnPizza().Count == order.GetOrderIngredients().Count)
         {
             var tempOrderList = order.GetOrderIngredients();
@@ -207,25 +208,25 @@ public class Customer : MonoBehaviour
 
             if (tempOrderList.Count <= 0)
             {
-                if (gm.currentDay > 0)
+                if (gm.currentDay > 0 && (pizza.isBurnt || !pizza.isCooked))
                 {
-                    if (pizza.isBurnt || pizza.isCooked == false)
-                    {
-                        PlayCustomerAudio(CustomerAudioStates.BadOrder);
-                        return -50;
-                    }
+                    PlayCustomerAudio(CustomerAudioStates.BadOrder);
+                    return (int) -deliveredPizzaMoney / 2;
                 }
                 
+                if (pizza.isCooked)
+                {
+                    deliveredPizzaMoney += (int) moneyTracker.cookedBonus;
+                }
+                //TODO add other bonuses
+                
                 PlayCustomerAudio(CustomerAudioStates.GoodOrder);
-                return 100;
+                return (int) (deliveredPizzaMoney * (1 + currentOrderTime / startOrderTime));
             }
-
-            PlayCustomerAudio(CustomerAudioStates.BadOrder);
-            return -100;
         }
-        
+
         PlayCustomerAudio(CustomerAudioStates.BadOrder);
-        return -100;
+        return (int) -deliveredPizzaMoney / 2;
     }
 
     public void CustomerLeave()

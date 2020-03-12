@@ -18,10 +18,19 @@ public class MoneyTracker : MonoBehaviour
     /// </summary>
     private int totalMoneyAmount = 0;
 
+    [Header("Pizza Profit Variables")]
+    public float basePizzaProfit = 25;
+    public float tier1Toppings = 2f;
+    public float tier2Toppings = 4f;
+    public float tier3Toppings = 6f;
+    public float cookedBonus = 10f;
+    public float sauceBonus = 15f;
+    public float cheeseBonus = 20f;
+
     private void Start()
     {
         gameManager = GetComponent<GameManager>();
-        ChangeMoney(0);
+        CustomerChangeMoney(0);
     }
 
     public void TrackNewDay()
@@ -34,7 +43,7 @@ public class MoneyTracker : MonoBehaviour
     /// Changes the current amount by the amount passed in.
     /// </summary>
     /// <param name="amount">The amount of money earned or spent (+  or -)</param>
-    public void ChangeMoney(int amount)
+    public void CustomerChangeMoney(int amount)
     {
         currentDayAmount += amount;
         totalMoneyAmount += amount;
@@ -45,15 +54,9 @@ public class MoneyTracker : MonoBehaviour
 
     public bool Purchase(int amount)
     {
-        if (amount <= totalMoneyAmount)
-        {
-            totalMoneyAmount -= amount;
-            return true;
-        }
-
-        else
-        {
-            return false;
-        }
+        if (amount > totalMoneyAmount) return false;
+        totalMoneyAmount -= amount;
+        Debug.Log("Current Total Amount of Money: " + totalMoneyAmount);
+        return true;
     }
 }
