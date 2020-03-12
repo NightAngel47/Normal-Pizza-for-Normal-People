@@ -32,16 +32,19 @@ public class PurchColScript : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        timeInside += Time.deltaTime;
-
-        loadingBar.fillAmount = timeInside / timeTotal;
-
-        if (timeInside >= timeTotal && callOnce == false)
+        if (col.GetComponentInParent<HandCollider>())
         {
-            callOnce = true; 
+            timeInside += Time.deltaTime;
 
-            timeInside = 0;
-            iu.Purchase();
+            loadingBar.fillAmount = timeInside / timeTotal;
+
+            if (timeInside >= timeTotal && callOnce == false)
+            {
+                callOnce = true;
+
+                timeInside = 0;
+                iu.Purchase();
+            }
         }
     }
 
