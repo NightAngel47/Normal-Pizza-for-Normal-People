@@ -6,7 +6,7 @@ public class OvenUpgrade : ItemUpgrades
 {
     private OvenBehaviour ob;
     private BoxCollider bc;
-    private BoxCollider purchCol;
+    private GameObject purchCol;
 
     protected override void ChangeMaterial(Material changeMat)
     {
