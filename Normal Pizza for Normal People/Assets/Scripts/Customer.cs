@@ -31,9 +31,9 @@ public class Customer : MonoBehaviour
     [SerializeField]
     private GameObject ingredientUI;
 
-    private enum CustomerAudioStates {Walking, GoodOrder, BadOrder}
+    private enum CustomerAudioStates {Walking, GoodOrder, BadOrder, OrderEndingSoon}
     [SerializeField]
-    private List<AudioClip> customerAudioClips = new List<AudioClip>(3);
+    private List<AudioClip> customerAudioClips = new List<AudioClip>();
     
     [HideInInspector]
     public bool activeOrder;
@@ -169,6 +169,11 @@ public class Customer : MonoBehaviour
         currentOrderTime -= Time.deltaTime;
         if (currentOrderTime > 0)
         {
+            if (!audioSource.isPlaying && currentOrderTime < 10)
+            {
+                PlayCustomerAudio(CustomerAudioStates.OrderEndingSoon);
+            }
+            
             StartCoroutine(OrderTimerCountDown());
         }
         else
@@ -266,6 +271,11 @@ public class Customer : MonoBehaviour
                 break;
             case CustomerAudioStates.BadOrder:
                 audioSource.clip = customerAudioClips[(int) CustomerAudioStates.BadOrder];
+                audioSource.loop = false;
+                audioSource.Play();
+                break;
+            case CustomerAudioStates.OrderEndingSoon:
+                audioSource.clip = customerAudioClips[(int) CustomerAudioStates.OrderEndingSoon];
                 audioSource.loop = false;
                 audioSource.Play();
                 break;
