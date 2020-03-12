@@ -24,10 +24,10 @@ public class PurchColScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.GetComponentInParent<HandCollider>())
-        {
-            iu.Purchase();
-        }
+        //if (col.GetComponentInParent<HandCollider>())
+        //{
+        //    iu.Purchase();
+        //}
     }
 
     private void OnTriggerStay(Collider col)
