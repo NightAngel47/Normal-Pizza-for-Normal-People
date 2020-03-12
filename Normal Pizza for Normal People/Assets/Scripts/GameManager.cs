@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
     private CustomerLine customerLine;
     private MoneyTracker moneyTracker;
     private UpgradeSystem upgradeSystem;
+    private AudioSource audioSource;
 
+    [Header("Day Canvas UI")]
     [SerializeField]
     private TMP_Text currentDayText;
     [SerializeField]
@@ -19,20 +21,23 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Image currentDayProgressBar;
     
+    [Header("Game Days")]
     [SerializeField]
     public List<Day> gameDays = new List<Day>(7);
     [HideInInspector]
     public int currentDay = 0;
     [HideInInspector]
     public float currentDayTimer;
-
+    enum GameDayAudioStates {StartDay, EndDay}
+    [SerializeField] List<AudioClip> gameDayAudioClips = new List<AudioClip>();
+    
     [Serializable]
     public struct Day
     {
         [Header("Day Info")]
         [Tooltip("The number of customers per day"), Range(0, 50)]
         public int numOfCustomers;
-        [Tooltip("The number of ")]
+        [Tooltip("The number of "), Range(1, 4)]
         public int numOfCustomersInQue;
         [Tooltip("The length of each day in seconds"), Range(0, 300)]
         public int dayLength;
@@ -45,7 +50,7 @@ public class GameManager : MonoBehaviour
         moneyTracker = GetComponent<MoneyTracker>();
         customerLine = GetComponent<CustomerLine>();
         upgradeSystem = GetComponent<UpgradeSystem>();
-        
+        audioSource = GetComponent<AudioSource>();
         
         //TODO have player start day
         StartCoroutine(DayCycle());
@@ -66,6 +71,8 @@ public class GameManager : MonoBehaviour
 
         // Change to work day music
         MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.WorkDayMusic);
+        audioSource.clip = gameDayAudioClips[(int) GameDayAudioStates.StartDay];
+        audioSource.Play();
         
         yield return new WaitUntil(() => currentDayTimer <= 0);
         Customer lastCustomer = null;
@@ -104,6 +111,11 @@ public class GameManager : MonoBehaviour
         if (currentDayTimer > 0)
         {
             StartCoroutine(DayTimer());
+        }
+        else
+        {
+            audioSource.clip = gameDayAudioClips[(int) GameDayAudioStates.EndDay];
+            audioSource.Play();
         }
     }
 }
