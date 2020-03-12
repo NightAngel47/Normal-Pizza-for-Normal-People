@@ -25,6 +25,9 @@ public class Customer : MonoBehaviour
     private GameObject orderTimerUI;
     private TMP_Text orderTimerText;
     private Image orderTimerProgressBar;
+    private enum OrderTimerStates {Start, Middle, Quarter, End}
+    [SerializeField]
+    private List<Color> orderTimerColors = new List<Color>();
     
     [SerializeField]
     private Transform ingredientUITransform;
@@ -169,9 +172,29 @@ public class Customer : MonoBehaviour
         currentOrderTime -= Time.deltaTime;
         if (currentOrderTime > 0)
         {
-            if (!audioSource.isPlaying && currentOrderTime < 10)
+            if (currentOrderTime / startOrderTime >= 0.5f)
             {
-                PlayCustomerAudio(CustomerAudioStates.OrderEndingSoon);
+                orderTimerProgressBar.color = orderTimerColors[(int) OrderTimerStates.Start];
+            }
+            
+            if (currentOrderTime / startOrderTime <= .66f)
+            {
+                orderTimerProgressBar.color = orderTimerColors[(int) OrderTimerStates.Middle];
+            }
+            
+            if (currentOrderTime / startOrderTime <= .33f)
+            {
+                orderTimerProgressBar.color = orderTimerColors[(int) OrderTimerStates.Quarter];
+            }
+
+            if (currentOrderTime <= 10)
+            {
+                orderTimerProgressBar.color = orderTimerColors[(int) OrderTimerStates.End];
+            
+                if (!audioSource.isPlaying)
+                {
+                    PlayCustomerAudio(CustomerAudioStates.OrderEndingSoon);
+                }
             }
             
             StartCoroutine(OrderTimerCountDown());

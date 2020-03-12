@@ -78,6 +78,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startOrderTime: 45
   orderTimerUI: {fileID: 2967428844220160117}
+  orderTimerColors:
+  - {r: 0.30588236, g: 0.5647059, b: 0.9960785, a: 1}
+  - {r: 0.9843138, g: 0.86666673, b: 0.2509804, a: 1}
+  - {r: 1, g: 0.6431373, b: 0.10588236, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
   ingredientUITransform: {fileID: 1499280587323528968}
   ingredientUI: {fileID: 8306937801929323066, guid: f57c2c9a80b36e64fa04c920d6aa945c,
     type: 3}
@@ -227,6 +232,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8855423326005325541}
     m_Modifications:
+    - target: {fileID: 550213574748087321, guid: a48cbd8b80e14ab4a98285dc54d49872,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.30588236
+      objectReference: {fileID: 0}
+    - target: {fileID: 550213574748087321, guid: a48cbd8b80e14ab4a98285dc54d49872,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 550213574748087321, guid: a48cbd8b80e14ab4a98285dc54d49872,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.99607843
+      objectReference: {fileID: 0}
     - target: {fileID: 6776600240221178425, guid: a48cbd8b80e14ab4a98285dc54d49872,
         type: 3}
       propertyPath: m_LocalPosition.x
