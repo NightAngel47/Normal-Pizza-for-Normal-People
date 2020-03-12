@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UpgradeSystem : MonoBehaviour
 {
+    public GameObject endUpgradeButton;
+
     private bool isUpgrading;
     [SerializeField]
     private List<GameObject> availableUpgrades = new List<GameObject>();
@@ -22,6 +24,8 @@ public class UpgradeSystem : MonoBehaviour
         isUpgrading = true;
         print("We upgrading boissss!");
 
+        endUpgradeButton.SetActive(true);
+
         foreach(GameObject g in availableUpgrades)
         {
             g.GetComponent<ItemUpgrades>().ShowItem();
@@ -30,9 +34,16 @@ public class UpgradeSystem : MonoBehaviour
         //Invoke(nameof(TempUpgradeModeTimer), 5f);
     }
 
-    private void TempUpgradeModeTimer()
+    public void EndUpgrade()
     {
         isUpgrading = false;
+
+        endUpgradeButton.SetActive(false);
+
+        foreach (GameObject g in availableUpgrades)
+        {
+            g.GetComponent<ItemUpgrades>().HideItem();
+        }
     }
     
     public bool GetIsUpgrading()
