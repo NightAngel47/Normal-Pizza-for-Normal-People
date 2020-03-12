@@ -13,6 +13,7 @@ public class PurchColScript : MonoBehaviour
     private float timeInside = 0;
 
     private bool callOnce = false;
+    private bool callTimerOnce = false;
 
     public Image loadingBar;
     public TextMeshProUGUI progressIndicator;
@@ -32,8 +33,10 @@ public class PurchColScript : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        if (col.GetComponentInParent<HandCollider>())
+        if (col.GetComponentInParent<HandCollider>() && callTimerOnce == false)
         {
+            callTimerOnce = true;
+
             timeInside += Time.deltaTime;
 
             loadingBar.fillAmount = timeInside / timeTotal;
@@ -50,6 +53,10 @@ public class PurchColScript : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        timeInside = 0;
+        if (col.GetComponentInParent<HandCollider>() && callTimerOnce == false)
+        {
+            timeInside = 0;
+            callTimerOnce = false;
+        }
     }
 }
