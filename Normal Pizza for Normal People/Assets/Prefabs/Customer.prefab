@@ -84,7 +84,7 @@ MonoBehaviour:
   customerAudioClips:
   - {fileID: 8300000, guid: 6450e4a80fd56424ab63d156ab02c035, type: 3}
   - {fileID: 8300000, guid: 7cfcd398bd2ef854b8a9f0f478a553cd, type: 3}
-  - {fileID: 8300000, guid: 076bc5d4ed8ea094e807253e4e6324ee, type: 3}
+  - {fileID: 8300000, guid: 3f9a5b582e233474d870c089a72e10b8, type: 3}
   activeOrder: 0
 --- !u!136 &6820603579891726374
 CapsuleCollider:
