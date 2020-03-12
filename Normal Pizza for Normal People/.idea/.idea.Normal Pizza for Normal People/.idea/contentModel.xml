@@ -10,6 +10,7 @@
           <e p="Customer.cs" t="Include" />
           <e p="CustomerLine.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
+          <e p="HideTutorial.cs" t="Include" />
           <e p="Ingredients" t="Include">
             <e p="PizzaIngredient.cs" t="Include" />
             <e p="PizzaIngredientSpawner.cs" t="Include" />
