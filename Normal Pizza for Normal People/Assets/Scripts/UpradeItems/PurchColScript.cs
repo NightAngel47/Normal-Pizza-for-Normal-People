@@ -8,6 +8,7 @@ using Valve.VR.InteractionSystem;
 public class PurchColScript : MonoBehaviour
 {
     private ItemUpgrades iu;
+    private AudioSource audioSource;
 
     private float timeTotal = 5; //time hand is needed to be in collider
     private float timeInside = 0; //time the hand has been in the collider
@@ -19,7 +20,8 @@ public class PurchColScript : MonoBehaviour
 
     private void Start()
     {
-        iu = gameObject.GetComponentInParent<ItemUpgrades>();
+        iu = GetComponentInParent<ItemUpgrades>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerStay(Collider col)
@@ -36,6 +38,7 @@ public class PurchColScript : MonoBehaviour
 
                 timeInside = 0; //reset time
                 iu.Purchase(); //purchase the upgrade
+                audioSource.Play();
             }
         }
     }
