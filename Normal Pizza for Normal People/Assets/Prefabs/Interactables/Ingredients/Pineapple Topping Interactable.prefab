@@ -101,6 +101,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2147976896087881106, guid: cce7d3133eca42c4487ecfbde06776f1,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5f9a757300cef614b8219cd699346be0, type: 3}
     - target: {fileID: 179181037077442741, guid: cce7d3133eca42c4487ecfbde06776f1,
         type: 3}
       propertyPath: spawnObjectOnCollision
