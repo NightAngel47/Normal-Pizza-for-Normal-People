@@ -31,7 +31,7 @@ public class PizzaIngredientSpawner : MonoBehaviour
 
         if(col.GetComponentInParent<HandCollider>() && hasIngredient == false)
         {
-            StartCoroutine("SpawnIngredient");
+            StartCoroutine(nameof(SpawnIngredient));
         }
     }
 
