@@ -50,9 +50,7 @@ public class Customer : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
 
-        audioSource.clip = customerAudioClips[(int) CustomerAudioStates.Walking];
-        audioSource.loop = true;
-        audioSource.Play();
+        PlayCustomerAudio(CustomerAudioStates.Walking);
         
         endPos = transform.position + (Vector3.right * 14);
         
@@ -75,15 +73,22 @@ public class Customer : MonoBehaviour
             {
                 if (hit.collider.TryGetComponent(out Customer customer) && !customer.leaving)
                 {
-                    audioSource.Stop();
                     agent.SetDestination(transform.position);
                 }
             }
             else if(agent.destination != targetLinePos)
             {
-                PlayCustomerAudio(CustomerAudioStates.Walking);
                 agent.SetDestination(targetLinePos);
             }
+        }
+
+        if (agent.velocity.magnitude > 0 && !audioSource.isPlaying)
+        {
+            PlayCustomerAudio(CustomerAudioStates.Walking);
+        }
+        else if (audioSource.clip == customerAudioClips[(int) CustomerAudioStates.Walking] && agent.remainingDistance <= 0)
+        {
+            audioSource.Stop();
         }
     }
 
