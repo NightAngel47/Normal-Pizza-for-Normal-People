@@ -39,6 +39,8 @@ public abstract class ItemUpgrades : MonoBehaviour
             TurnOffPurchaseCollider(); //turns off purchase collider(which is what detects when the player wants to buy) and its timer as well
             TurnOnUpgrade(); //makes sure upgrade funcitonality works 
             ChangeMaterial(activeMaterial); //changes it to the active normal material
+            FindObjectOfType<UpgradeSystem>().RemovedPurchasedUpgrade(gameObject); // Remove this gameobject from upgrade system
+            Destroy(gameObject.GetComponent<ItemUpgrades>()); // Destroy item upgrade so it is not readded to upgrade system
         }
 
         else //not enonugh money

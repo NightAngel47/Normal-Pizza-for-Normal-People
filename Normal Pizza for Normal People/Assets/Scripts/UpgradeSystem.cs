@@ -33,8 +33,6 @@ public class UpgradeSystem : MonoBehaviour
         {
             g.GetComponent<ItemUpgrades>().ShowItem();
         }
-
-        //Invoke(nameof(TempUpgradeModeTimer), 5f);
     }
 
     public void EndUpgrade()
@@ -47,6 +45,11 @@ public class UpgradeSystem : MonoBehaviour
         {
             g.GetComponent<ItemUpgrades>().HideItem();
         }
+    }
+
+    public void RemovedPurchasedUpgrade(GameObject upgradePurchased)
+    {
+        availableUpgrades.Remove(upgradePurchased);
     }
     
     public bool GetIsUpgrading()
