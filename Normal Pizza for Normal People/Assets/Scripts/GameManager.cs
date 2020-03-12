@@ -46,8 +46,6 @@ public class GameManager : MonoBehaviour
         customerLine = GetComponent<CustomerLine>();
         upgradeSystem = GetComponent<UpgradeSystem>();
         
-        // Change to work day music
-        MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.WorkDayMusic);
         
         //TODO have player start day
         StartCoroutine(DayCycle());
@@ -65,12 +63,16 @@ public class GameManager : MonoBehaviour
         currentDayTimer = gameDays[currentDay].dayLength;
         StartCoroutine(DayTimer());
         moneyTracker.TrackNewDay();
+
+        // Change to work day music
+        MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.WorkDayMusic);
         
         yield return new WaitUntil(() => currentDayTimer <= 0);
         foreach (var customer in FindObjectsOfType<Customer>())
         {
             customer.CustomerLeave();
         }
+        
         upgradeSystem.EnterUpgradeMode();
         currentDay++;
         //TODO add upgrade pause

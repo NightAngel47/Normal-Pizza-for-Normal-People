@@ -35,27 +35,26 @@ public class MusicManager : MonoBehaviour
         {
             ChangeMusic(MusicTrackName.MainMenuMusic);
         }
-        else if (SceneManager.GetActiveScene().name.Equals("Game"))
-        {
-            ChangeMusic(MusicTrackName.WorkDayMusic);
-        }
-        
-        audioSource.Play();
     }
 
     public void ChangeMusic(MusicTrackName musicTrack)
     {
-        switch (musicTrack.ToString())
+        audioSource.Stop();
+        switch (musicTrack)
         {
-            case "MainMenuMusic": 
+            case MusicTrackName.MainMenuMusic: 
                 audioSource.clip = musicTracks[(int) MusicTrackName.MainMenuMusic];
                 break;
-            case "WorkDayMusic":
+            case MusicTrackName.WorkDayMusic:
                 audioSource.clip = musicTracks[(int) MusicTrackName.WorkDayMusic];
                 break;
-            case "BetweenTheDaysMusic":
+            case MusicTrackName.BetweenDaysMusic:
                 audioSource.clip = musicTracks[(int) MusicTrackName.BetweenDaysMusic];
                 break;
         }
+        
+        print("Music track input: " + musicTrack + " Music track output: " + audioSource.clip);
+        
+        audioSource.Play();
     }
 }

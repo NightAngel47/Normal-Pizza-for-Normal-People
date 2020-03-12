@@ -21,6 +21,8 @@ public class UpgradeSystem : MonoBehaviour
 
     public void EnterUpgradeMode()
     {
+        // Change to between days music
+        MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.BetweenDaysMusic);
         isUpgrading = true;
         print("We upgrading boissss!");
 
