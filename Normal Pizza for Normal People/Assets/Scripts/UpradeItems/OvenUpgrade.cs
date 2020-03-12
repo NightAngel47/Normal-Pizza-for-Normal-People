@@ -6,6 +6,7 @@ public class OvenUpgrade : ItemUpgrades
 {
     private OvenBehaviour ob;
     private BoxCollider bc;
+    private BoxCollider purchCol;
 
     protected override void ChangeMaterial(Material changeMat)
     {
@@ -19,5 +20,12 @@ public class OvenUpgrade : ItemUpgrades
 
         ob.enabled = !ob.enabled;
         bc.enabled = !bc.enabled;
+    }
+
+    protected override void TurnOffPurchaseCollider()
+    {
+        purchCol = gameObject.transform.GetChild(3).GetComponent<BoxCollider>();
+
+        purchCol.enabled = !purchCol.enabled;
     }
 }

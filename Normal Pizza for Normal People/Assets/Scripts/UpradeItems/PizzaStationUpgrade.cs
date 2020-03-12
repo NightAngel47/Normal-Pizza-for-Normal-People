@@ -8,6 +8,7 @@ public class PizzaStationUpgrade : ItemUpgrades
     private HoverButton hb;
     private BoxCollider bc;
     private BoxCollider bc2;
+    private BoxCollider purchCol;
 
     protected override void ChangeMaterial(Material changeMat)
     {
@@ -24,5 +25,12 @@ public class PizzaStationUpgrade : ItemUpgrades
         hb.enabled = !hb.enabled;
         bc.enabled = !bc.enabled;
         bc2.enabled = !bc2.enabled;
+    }
+
+    protected override void TurnOffPurchaseCollider()
+    {
+        purchCol = gameObject.transform.GetChild(3).GetComponent<BoxCollider>();
+
+        purchCol.enabled = !purchCol.enabled;
     }
 }

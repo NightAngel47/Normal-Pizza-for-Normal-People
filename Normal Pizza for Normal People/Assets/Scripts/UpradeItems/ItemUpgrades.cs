@@ -23,10 +23,15 @@ public abstract class ItemUpgrades : MonoBehaviour
     public void Purchase()
     {
         gameObject.SetActive(true);
+        TurnOffPurchaseCollider();
+        TurnOnUpgrade();
         ChangeMaterial(activeMaterial);
     }
 
+    //toggles object functionality
     public abstract void TurnOnUpgrade();
+
+    protected abstract void TurnOffPurchaseCollider();
 
     protected abstract void ChangeMaterial(Material changeMat);
 }
