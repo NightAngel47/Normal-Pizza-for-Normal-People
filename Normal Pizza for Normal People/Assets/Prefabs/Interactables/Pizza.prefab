@@ -355,17 +355,17 @@ PrefabInstance:
     - target: {fileID: 8880228110941784162, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
       propertyPath: onPickUp.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8880228110941784162, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
       propertyPath: onDetachFromHand.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8880228110941784162, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}
       propertyPath: onHeldUpdate.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8880228110941784162, guid: 1055cb29081f4834e9b59776c9e4f708,
         type: 3}

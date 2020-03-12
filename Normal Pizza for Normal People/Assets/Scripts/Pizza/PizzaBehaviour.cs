@@ -26,11 +26,6 @@ public class PizzaBehaviour : MonoBehaviour
         raw = pizzaModelMat.material;
     }
 
-    public void ResetPizzaOrientation()
-    {
-        transform.GetChild(0).Rotate(0, 0, 0);
-    }
-
     public void AddPizzaIngredient(PizzaIngredient newIngredient)
     {
         ingredientsOnPizza.Add(newIngredient);
