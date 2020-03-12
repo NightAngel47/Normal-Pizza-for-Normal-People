@@ -42,4 +42,18 @@ public class MoneyTracker : MonoBehaviour
         Debug.Log("Current Day Amount of Money: " + currentDayAmount);
         Debug.Log("Current Total Amount of Money: " + totalMoneyAmount);
     }
+
+    public bool Purchase(int amount)
+    {
+        if (amount <= totalMoneyAmount)
+        {
+            totalMoneyAmount -= amount;
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+    }
 }

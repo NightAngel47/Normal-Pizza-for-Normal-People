@@ -51,10 +51,9 @@ public class PurchColScript : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        if (col.GetComponentInParent<HandCollider>() && callTimerOnce == false)
+        if (col.GetComponentInParent<HandCollider>())
         {
             timeInside = 0;
-            callTimerOnce = false;
         }
     }
 }

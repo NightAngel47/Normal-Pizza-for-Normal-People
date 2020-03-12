@@ -7,7 +7,14 @@ public abstract class ItemUpgrades : MonoBehaviour
     public Material blueprintMaterial;
     public Material activeMaterial;
 
-    public float itemCost;
+    private MoneyTracker mt;
+
+    public int itemCost;
+
+    private void Start()
+    {
+        mt = GameObject.FindObjectOfType<MoneyTracker>();
+    }
 
     public void ShowItem()
     {
@@ -22,10 +29,18 @@ public abstract class ItemUpgrades : MonoBehaviour
 
     public void Purchase()
     {
-        gameObject.SetActive(true);
-        TurnOffPurchaseCollider();
-        TurnOnUpgrade();
-        ChangeMaterial(activeMaterial);
+        if (mt.Purchase(itemCost))
+        {
+            gameObject.SetActive(true);
+            TurnOffPurchaseCollider();
+            TurnOnUpgrade();
+            ChangeMaterial(activeMaterial);
+        }
+
+        else
+        {
+            Debug.Log("Cannot Buy Not Enough Mons");
+        }
     }
 
     //toggles object functionality
