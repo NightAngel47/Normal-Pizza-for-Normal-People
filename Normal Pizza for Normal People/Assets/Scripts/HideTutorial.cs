@@ -8,7 +8,7 @@ public class HideTutorial : MonoBehaviour
 {
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out HandCollider handCollider))
+        if (other.transform.parent.TryGetComponent(out HandCollider handCollider))
         {
             gameObject.SetActive(false);
         }
