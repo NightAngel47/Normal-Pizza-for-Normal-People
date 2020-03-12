@@ -19,6 +19,7 @@
           </e>
           <e p="MainMenuHandle.cs" t="Include" />
           <e p="MoneyTracker.cs" t="Include" />
+          <e p="MusicManager.cs" t="Include" />
           <e p="Old Scripts" t="Include">
             <e p="ButtonEffect1.cs" t="Include" />
             <e p="ButtonExample1.cs" t="Include" />
@@ -60,6 +61,7 @@
             <e p="ItemUpgrades.cs" t="Include" />
             <e p="OvenUpgrade.cs" t="Include" />
             <e p="PizzaStationUpgrade.cs" t="Include" />
+            <e p="PurchColScript.cs" t="Include" />
             <e p="ToppingUpgrades.cs" t="Include" />
           </e>
         </e>

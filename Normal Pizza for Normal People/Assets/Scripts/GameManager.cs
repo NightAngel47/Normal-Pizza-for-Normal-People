@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour
         customerLine = GetComponent<CustomerLine>();
         upgradeSystem = GetComponent<UpgradeSystem>();
         
+        // Change to work day music
+        MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.WorkDayMusic);
+        
         //TODO have player start day
         StartCoroutine(DayCycle());
     }
