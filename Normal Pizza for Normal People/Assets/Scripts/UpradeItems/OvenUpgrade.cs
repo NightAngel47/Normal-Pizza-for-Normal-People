@@ -24,8 +24,8 @@ public class OvenUpgrade : ItemUpgrades
 
     protected override void TurnOffPurchaseCollider()
     {
-        purchCol = gameObject.transform.GetChild(3).GetComponent<BoxCollider>();
+        purchCol = gameObject.transform.GetChild(3).gameObject;
 
-        purchCol.enabled = !purchCol.enabled;
+        purchCol.SetActive(false);
     }
 }
