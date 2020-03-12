@@ -141,6 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8227e4f94edf1c346990bff64b79341c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  customerLine: {fileID: 8357020710274601803}
+  moneyTracker: {fileID: 4954694665190826298}
+  upgradeSystem: {fileID: 5544742078080136158}
   currentDayText: {fileID: 0}
   currentDayTime: {fileID: 0}
   currentDayProgressBar: {fileID: 0}
@@ -170,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa310714a3f412418dcd77a3714f4f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 2906572782878665318}
   currentDayMoneyText: {fileID: 0}
   totalMoneyText: {fileID: 0}
   basePizzaProfit: 25
@@ -191,6 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 261cad43af6b76d4a941d2731f3ad67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 2906572782878665318}
+  orderCreation: {fileID: 7806614716939482675}
   currentDayCustomerText: {fileID: 0}
   customerPrefab: {fileID: 8855423326005325540, guid: 0a464834b98943a408688911cecd76cc,
     type: 3}

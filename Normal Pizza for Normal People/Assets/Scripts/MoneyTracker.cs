@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MoneyTracker : MonoBehaviour
 {
-    private GameManager gameManager;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private TMP_Text currentDayMoneyText;
     [SerializeField] private TMP_Text totalMoneyText;
     /// <summary>
@@ -29,7 +29,7 @@ public class MoneyTracker : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GetComponent<GameManager>();
+        //gameManager = GetComponent<GameManager>();
         CustomerChangeMoney(0);
         ShowHideTotalMoneyUI(false);
     }

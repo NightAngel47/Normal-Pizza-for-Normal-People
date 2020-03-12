@@ -7,9 +7,9 @@ using UnityEngine.AI;
 
 public class CustomerLine : MonoBehaviour
 {
-    private GameManager gameManager;
+    [SerializeField] private GameManager gameManager;
     private List<Order> customerOrders = new List<Order>();
-    private OrderCreation orderCreation;
+    [SerializeField] private OrderCreation orderCreation;
     [SerializeField]
     private TMP_Text currentDayCustomerText;
     private int currentDayCustomerServed;

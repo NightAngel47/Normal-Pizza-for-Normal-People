@@ -8,9 +8,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CustomerLine), typeof(OrderCreation))]
 public class GameManager : MonoBehaviour
 {
-    private CustomerLine customerLine;
-    private MoneyTracker moneyTracker;
-    private UpgradeSystem upgradeSystem;
+    [SerializeField] private CustomerLine customerLine;
+    [SerializeField] private MoneyTracker moneyTracker;
+    [SerializeField] private UpgradeSystem upgradeSystem;
     private AudioSource audioSource;
 
     [Header("Day Canvas UI")]
@@ -44,9 +44,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        moneyTracker = GetComponent<MoneyTracker>();
-        customerLine = GetComponent<CustomerLine>();
-        upgradeSystem = GetComponent<UpgradeSystem>();
+        //moneyTracker = GetComponent<MoneyTracker>();
+        //customerLine = GetComponent<CustomerLine>();
+        //upgradeSystem = GetComponent<UpgradeSystem>();
         audioSource = GetComponent<AudioSource>();
         
         //TODO have player start day
