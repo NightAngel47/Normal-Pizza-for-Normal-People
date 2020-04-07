@@ -7,6 +7,7 @@ public class UpgradeSystem : MonoBehaviour
     public GameObject endUpgradeButton;
 
     private bool isUpgrading;
+
     [SerializeField]
     private List<GameObject> availableUpgrades = new List<GameObject>();
 
@@ -27,24 +28,38 @@ public class UpgradeSystem : MonoBehaviour
         isUpgrading = true;
         print("We upgrading boissss!");
 
-        endUpgradeButton.SetActive(true);
+        availableUpgrades[0].GetComponent<ItemUpgrades>().Purchase();
 
-        foreach(GameObject g in availableUpgrades)
-        {
-            g.GetComponent<ItemUpgrades>().ShowItem();
-        }
+        StartCoroutine("EndUp");
+
+        //PLAYER CHOOSE UPGRADE LEFTOVER CODE
+        //endUpgradeButton.SetActive(true);
+
+        //foreach(GameObject g in availableUpgrades)
+        //{
+        //    g.GetComponent<ItemUpgrades>().ShowItem();
+        //}
+    }
+
+    IEnumerator EndUp()
+    {
+        yield return new WaitForSeconds(1);
+        isUpgrading = false;
     }
 
     public void EndUpgrade()
     {
-        isUpgrading = false;
 
-        endUpgradeButton.SetActive(false);
 
-        foreach (GameObject g in availableUpgrades)
-        {
-            g.GetComponent<ItemUpgrades>().HideItem();
-        }
+        //PLAYER CHOOSE UPGRADE LEFTOVER CODE
+        //isUpgrading = false;
+
+        //endUpgradeButton.SetActive(false);
+
+        //foreach (GameObject g in availableUpgrades)
+        //{
+        //    g.GetComponent<ItemUpgrades>().HideItem();
+        //}
     }
 
     public void RemovedPurchasedUpgrade(GameObject upgradePurchased)
