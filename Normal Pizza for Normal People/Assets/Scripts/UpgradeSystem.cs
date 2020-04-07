@@ -10,6 +10,8 @@ public class UpgradeSystem : MonoBehaviour
 
     [SerializeField]
     private List<GameObject> availableUpgrades = new List<GameObject>();
+    [SerializeField]
+    private int upgradeTracker = 0; //keeps track of what day and whether it is 1 or 2 upgrades
 
     public void Start()
     {
@@ -28,8 +30,18 @@ public class UpgradeSystem : MonoBehaviour
         isUpgrading = true;
         print("We upgrading boissss!");
 
-        availableUpgrades[0].GetComponent<ItemUpgrades>().Purchase();
+        if (upgradeTracker == 0)
+        {
+            availableUpgrades[0].GetComponent<ItemUpgrades>().Purchase();
+        }
 
+        if(upgradeTracker == 1)
+        {
+            availableUpgrades[0].GetComponent<ItemUpgrades>().Purchase();
+            availableUpgrades[0].GetComponent<ItemUpgrades>().Purchase();
+        }
+
+        upgradeTracker++;
         StartCoroutine(EndUp());
 
         //PLAYER CHOOSE UPGRADE LEFTOVER CODE
