@@ -156,6 +156,26 @@ MonoBehaviour:
     numOfCustomersInQue: 3
     dayLength: 120
     moneyGoal: 100
+  - numOfCustomers: 15
+    numOfCustomersInQue: 3
+    dayLength: 120
+    moneyGoal: 100
+  - numOfCustomers: 15
+    numOfCustomersInQue: 3
+    dayLength: 120
+    moneyGoal: 100
+  - numOfCustomers: 15
+    numOfCustomersInQue: 3
+    dayLength: 120
+    moneyGoal: 100
+  - numOfCustomers: 15
+    numOfCustomersInQue: 3
+    dayLength: 120
+    moneyGoal: 100
+  - numOfCustomers: 15
+    numOfCustomersInQue: 3
+    dayLength: 120
+    moneyGoal: 100
   currentDay: 0
   currentDayTimer: 0
   gameDayAudioClips:
@@ -234,6 +254,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endUpgradeButton: {fileID: 0}
   availableUpgrades:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!82 &6980543429296917128

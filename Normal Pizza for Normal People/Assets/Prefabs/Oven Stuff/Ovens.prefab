@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &870956354
 Transform:
   m_ObjectHideFlags: 0
@@ -251,7 +251,7 @@ MonoBehaviour:
   cookTime: 5
   overCookTime: 10
   cooked: {fileID: 2100000, guid: 406281ab3b4a7c54090398d3bb49d99d, type: 2}
-  burnt: {fileID: 955179057503558733, guid: 4d5df00e03cbc834d9814b4ccc4ad3a5, type: 3}
+  burnt: {fileID: 2100000, guid: 8855fb4f96d8d7a4ea1b863dfdebbac2, type: 2}
   loadingBar: {fileID: 3139713164175175250}
   progressIndicator: {fileID: 7139490196923278035}
   goodGreen: {r: 0.3, g: 0.83, b: 0.26, a: 1}
@@ -533,7 +533,7 @@ MonoBehaviour:
   cookTime: 5
   overCookTime: 10
   cooked: {fileID: 2100000, guid: 406281ab3b4a7c54090398d3bb49d99d, type: 2}
-  burnt: {fileID: 955179057503558733, guid: 4d5df00e03cbc834d9814b4ccc4ad3a5, type: 3}
+  burnt: {fileID: 2100000, guid: 8855fb4f96d8d7a4ea1b863dfdebbac2, type: 2}
   loadingBar: {fileID: 5134597844556409484}
   progressIndicator: {fileID: 1137107727130879501}
   goodGreen: {r: 0.3, g: 0.83, b: 0.26, a: 1}
@@ -651,6 +651,7 @@ GameObject:
   - component: {fileID: 206206619172286670}
   - component: {fileID: 3644724259442923933}
   - component: {fileID: 7560149745562646420}
+  - component: {fileID: 1810542189}
   m_Layer: 0
   m_Name: BottomOven
   m_TagString: Untagged
@@ -736,6 +737,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5026631284426731867, guid: 04e8f450dc458d341899192e087e4aa8, type: 3}
+--- !u!114 &1810542189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8569749593358903502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fced5377ccfb414286a9b774db6e56d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueprintMaterial: {fileID: 2100000, guid: c5b34efdede44a541b61d292df6f95f4, type: 2}
+  activeMaterial: {fileID: -876546973899608171, guid: 04e8f450dc458d341899192e087e4aa8,
+    type: 3}
+  itemCost: 0
 --- !u!1001 &622900117089312117
 PrefabInstance:
   m_ObjectHideFlags: 0

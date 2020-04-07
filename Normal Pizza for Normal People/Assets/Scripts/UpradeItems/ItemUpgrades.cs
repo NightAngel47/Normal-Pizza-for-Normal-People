@@ -30,23 +30,30 @@ public abstract class ItemUpgrades : MonoBehaviour
         gameObject.SetActive(false); ;
     }
 
-    //When item is being purchased
+    //When item is being purchased/when item is now avialble to player via forced upgrade
     public void Purchase()
     {
-        if (mt.Purchase(itemCost)) //do we have enough money for the upgrade
-        {
-            gameObject.SetActive(true); //make sure it is active, probably do not need this line
-            TurnOffPurchaseCollider(); //turns off purchase collider(which is what detects when the player wants to buy) and its timer as well
-            TurnOnUpgrade(); //makes sure upgrade funcitonality works 
-            ChangeMaterial(activeMaterial); //changes it to the active normal material
-            FindObjectOfType<UpgradeSystem>().RemovedPurchasedUpgrade(gameObject); // Remove this gameobject from upgrade system
-            Destroy(gameObject.GetComponent<ItemUpgrades>()); // Destroy item upgrade so it is not readded to upgrade system
-        }
+        Debug.Log("purch");
+        gameObject.SetActive(true); //make sure it is active, probably do not need this line
+        TurnOnUpgrade(); //makes sure upgrade funcitonality works 
+        FindObjectOfType<UpgradeSystem>().RemovedPurchasedUpgrade(gameObject); // Remove this gameobject from upgrade system
+        Destroy(gameObject.GetComponent<ItemUpgrades>()); // Destroy item upgrade so it is not readded to upgrade system
 
-        else //not enonugh money
-        {
-            Debug.Log("Cannot Buy Not Enough Mons");
-        }
+        //PLAYER CHOOSE UPGRADE LEFTOVER CODE
+        //if (mt.Purchase(itemCost)) //do we have enough money for the upgrade
+        //{
+        //    gameObject.SetActive(true); //make sure it is active, probably do not need this line
+        //    TurnOffPurchaseCollider(); //turns off purchase collider(which is what detects when the player wants to buy) and its timer as well
+        //    TurnOnUpgrade(); //makes sure upgrade funcitonality works 
+        //    ChangeMaterial(activeMaterial); //changes it to the active normal material
+        //    FindObjectOfType<UpgradeSystem>().RemovedPurchasedUpgrade(gameObject); // Remove this gameobject from upgrade system
+        //    Destroy(gameObject.GetComponent<ItemUpgrades>()); // Destroy item upgrade so it is not readded to upgrade system
+        //}
+
+        //else //not enonugh money
+        //{
+        //    Debug.Log("Cannot Buy Not Enough Mons");
+        //}
     }
 
     //toggles object functionality
