@@ -39,7 +39,7 @@ public class CustomerLine : MonoBehaviour
 
     private IEnumerator NextCustomer()
     {
-        yield return new WaitUntil(() => currentAmountOfCustomersInShop < gameManager.gameDays[gameManager.currentDay].numOfCustomersInQue);
+        yield return new WaitUntil(() => currentAmountOfCustomersInShop < gameManager.currentGameDay.numOfCustomersInQue);
 
         if (gameManager.currentDayTimer < 1 || customerOrders.Count <= 0) yield break;
         
@@ -51,8 +51,7 @@ public class CustomerLine : MonoBehaviour
         newCustomer.GetComponent<NavMeshAgent>().SetDestination(customerLines[0].position);
         customerOrders.Remove(customerOrders[0]);
         
-        yield return new WaitForSeconds(gameManager.gameDays[gameManager.currentDay].dayLength /
-                                        gameManager.gameDays[gameManager.currentDay].numOfCustomers);
+        yield return new WaitForSeconds(gameManager.currentGameDay.dayLength / gameManager.currentGameDay.numOfCustomers);
         
         if (gameManager.currentDayTimer > 1 && customerOrders.Count > 0)
         {

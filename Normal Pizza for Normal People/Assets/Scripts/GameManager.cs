@@ -17,29 +17,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text currentDayText;
     [SerializeField] private TMP_Text currentDayTime;
     [SerializeField] private Image currentDayProgressBar;
-    
-    [Header("Game Days")]
-    [SerializeField]
-    public List<Day> gameDays = new List<Day>(7);
-    [HideInInspector]
-    public int currentDay = 0;
-    [HideInInspector]
-    public float currentDayTimer;
+
+    [Header("Game Days")] 
+    [SerializeField, Tooltip("The starting values for the game days.")] private Day startingDayValues;
+    [SerializeField, Tooltip("The rates the each of the day stats change by.")] private Day dayRates;
+    [HideInInspector] public Day currentGameDay;
+    [HideInInspector] public float currentDayTimer;
     enum GameDayAudioStates {StartDay, EndDay}
     [SerializeField] List<AudioClip> gameDayAudioClips = new List<AudioClip>();
     
     [Serializable]
     public struct Day
     {
-        [Header("Day Info")]
-        [Tooltip("The number of customers per day"), Range(0, 50)]
-        public int numOfCustomers;
-        [Tooltip("The number of "), Range(1, 4)]
-        public int numOfCustomersInQue;
-        [Tooltip("The length of each day in seconds"), Range(0, 300)]
-        public int dayLength;
-        [Tooltip("The profit goal for each day")]
-        public int moneyGoal;
+        [Header("Day Info")] 
+        [Tooltip("The day number")] public int dayNum;
+        [Tooltip("The number of customers per day"), Range(0, 50)] public int numOfCustomers;
+        [Tooltip("The number of "), Range(1, 4)] public int numOfCustomersInQue;
+        [Tooltip("The length of each day in seconds"), Range(0, 300)] public int dayLength;
+        [Tooltip("The profit goal for each day")] public int moneyGoal;
     }
 
     private void Start()
@@ -50,6 +45,7 @@ public class GameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         
         //TODO have player start day
+        currentGameDay = startingDayValues;
         StartCoroutine(DayCycle());
     }
 
@@ -61,9 +57,9 @@ public class GameManager : MonoBehaviour
     private IEnumerator DayCycle()
     {
         moneyTracker.ShowHideTotalMoneyUI(false);
-        currentDayText.text = "Day " + (currentDay + 1);
-        customerLine.StartDay(gameDays[currentDay].numOfCustomers);
-        currentDayTimer = gameDays[currentDay].dayLength;
+        currentDayText.text = "Day " + (currentGameDay.dayNum);
+        customerLine.StartDay(currentGameDay.numOfCustomers);
+        currentDayTimer = currentGameDay.dayLength;
         ShowHideDayTimer(true);
         StartCoroutine(DayTimer());
         moneyTracker.TrackNewDay();
@@ -92,21 +88,16 @@ public class GameManager : MonoBehaviour
         moneyTracker.ShowHideTotalMoneyUI(true);
         
         upgradeSystem.EnterUpgradeMode();
-        
-        currentDay++;
-        //TODO add upgrade pause
 
-        if (currentDay < gameDays.Count)
-        {
-            yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
-            StartCoroutine(DayCycle());
-        }
+        // TODO check for game over
+        yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
+        StartCoroutine(DayCycle());
     }
 
     private IEnumerator DayTimer()
     {
         currentDayTime.text = "" + (int) currentDayTimer;
-        currentDayProgressBar.fillAmount = currentDayTimer / gameDays[currentDay].dayLength;
+        currentDayProgressBar.fillAmount = currentDayTimer / currentGameDay.dayLength;
         yield return new WaitForEndOfFrame();
         currentDayTimer -= Time.deltaTime;
         if (currentDayTimer > 0)

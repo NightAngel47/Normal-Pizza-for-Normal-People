@@ -147,36 +147,24 @@ MonoBehaviour:
   currentDayText: {fileID: 0}
   currentDayTime: {fileID: 0}
   currentDayProgressBar: {fileID: 0}
-  gameDays:
-  - numOfCustomers: 10
+  startingDayValues:
+    dayNum: 1
+    numOfCustomers: 10
     numOfCustomersInQue: 3
     dayLength: 120
     moneyGoal: 100
-  - numOfCustomers: 15
-    numOfCustomersInQue: 3
-    dayLength: 120
+  dayRates:
+    dayNum: 1
+    numOfCustomers: 1
+    numOfCustomersInQue: 0
+    dayLength: 10
     moneyGoal: 100
-  - numOfCustomers: 15
-    numOfCustomersInQue: 3
-    dayLength: 120
-    moneyGoal: 100
-  - numOfCustomers: 15
-    numOfCustomersInQue: 3
-    dayLength: 120
-    moneyGoal: 100
-  - numOfCustomers: 15
-    numOfCustomersInQue: 3
-    dayLength: 120
-    moneyGoal: 100
-  - numOfCustomers: 15
-    numOfCustomersInQue: 3
-    dayLength: 120
-    moneyGoal: 100
-  - numOfCustomers: 15
-    numOfCustomersInQue: 3
-    dayLength: 120
-    moneyGoal: 100
-  currentDay: 0
+  currentGameDay:
+    dayNum: 0
+    numOfCustomers: 0
+    numOfCustomersInQue: 0
+    dayLength: 0
+    moneyGoal: 0
   currentDayTimer: 0
   gameDayAudioClips:
   - {fileID: 8300000, guid: 8d43ea58af9da7b4ea7afd1c3fad8ada, type: 3}
@@ -261,6 +249,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  upgradeTracker: 0
 --- !u!82 &6980543429296917128
 AudioSource:
   m_ObjectHideFlags: 0

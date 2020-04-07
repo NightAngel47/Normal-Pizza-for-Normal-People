@@ -37,7 +37,7 @@ public class MoneyTracker : MonoBehaviour
     public void TrackNewDay()
     {
         currentDayAmount = 0;
-        currentDayMoneyText.text = "$" + currentDayAmount + "/$" + gameManager.gameDays[gameManager.currentDay].moneyGoal;
+        currentDayMoneyText.text = "$" + currentDayAmount + "/$" + gameManager.currentGameDay.moneyGoal;
     }
 
     /// <summary>
@@ -48,7 +48,7 @@ public class MoneyTracker : MonoBehaviour
     {
         currentDayAmount += amount;
         totalMoneyAmount += amount;
-        currentDayMoneyText.text = "$" + currentDayAmount + "/$" + gameManager.gameDays[gameManager.currentDay].moneyGoal;
+        currentDayMoneyText.text = "$" + currentDayAmount + "/$" + gameManager.currentGameDay.moneyGoal;
         totalMoneyText.text = "$" + totalMoneyAmount;
         Debug.Log("Current Day Amount of Money: " + currentDayAmount);
         Debug.Log("Current Total Amount of Money: " + totalMoneyAmount);
