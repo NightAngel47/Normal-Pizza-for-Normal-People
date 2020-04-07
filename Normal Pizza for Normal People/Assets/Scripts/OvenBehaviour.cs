@@ -17,8 +17,8 @@ public class OvenBehaviour : MonoBehaviour
 
     //private PizzaBehaviour pizza;
     private float tempTime = 0;
-
-    private bool changeOnce = false;
+    private bool startOverCooking = false;
+    private bool isPizzaInOven = false;
 
     [SerializeField]
     private Color goodGreen = new Color(0.3f, 0.83f, 0.26f);
@@ -35,7 +35,7 @@ public class OvenBehaviour : MonoBehaviour
     {
         ps = transform.parent.GetComponentInChildren<ParticleSystem>();
         audioSource = GetComponent<AudioSource>();
-        timerTime = cookTime + 1;
+        //timerTime = cookTime + 1;
     }
 
     private void OnTriggerEnter(Collider col)
@@ -62,8 +62,72 @@ public class OvenBehaviour : MonoBehaviour
         {
             timerTime = pizza.counterTime;
         }
+
+        isPizzaInOven = true;
+        StartCoroutine(PizzaInOven(pizza));
     }
 
+    /// <summary>
+    /// Cooks the pizza while in the oven
+    /// </summary>
+    /// <param name="pizza">The pizza being cooked</param>
+    /// <returns></returns>
+    private IEnumerator PizzaInOven(PizzaBehaviour pizza)
+    {
+        pizza.cookedTime += Time.deltaTime; //adds time to the amount of time the pizza has been cooked
+        tempTime += Time.deltaTime; //time for fill on timer
+
+        timerTime -= Time.deltaTime; //time displayed on timer
+        string per = ((int)timerTime).ToString();
+        progressIndicator.text = per;
+        
+        if (pizza.cookedTime > cookTime)
+        {
+            loadingBar.fillAmount = tempTime / cookTime; //how much fill and assigns fill on timer
+        }
+        else
+        {
+            loadingBar.fillAmount = pizza.cookedTime / cookTime; //how much fill and assigns fill on timer
+        }
+        
+        //if it finished cooking this checks to see if it is going to burn/make it burnt
+        if (pizza.overCooking && pizza.cookedTime >= overCookTime)
+        {
+            pizza.GetComponentInChildren<MeshRenderer>().material = burnt;
+            pizza.isCooked = false;
+            pizza.isBurnt = true;
+            loadingBar.color = warnOrange;
+            PlayOvenAudio(OvenAudioStates.PizzaBurnt);
+            yield return new WaitWhile(() => audioSource.isPlaying);
+        }
+        //else it is not fully cooked yet and it checks to see if it is cooked, and if it is starts the burn part of it
+        else if (pizza.cookedTime >= cookTime)
+        {
+            pizza.GetComponentInChildren<MeshRenderer>().material = cooked;
+            pizza.isCooked = true;
+            pizza.overCooking = true;
+            loadingBar.color = warnOrange;
+            
+            if (!startOverCooking) // start overcooking
+            {
+                PlayOvenAudio(OvenAudioStates.PizzaDone);
+                yield return new WaitWhile(() => audioSource.isPlaying);
+                PlayOvenAudio(OvenAudioStates.Cooking);
+                startOverCooking = true;
+                tempTime = 0;
+                timerTime = cookTime + 1;
+                Debug.Log(timerTime);
+            }
+        }
+        
+        yield return new WaitForEndOfFrame();
+        if (isPizzaInOven && !pizza.isBurnt)
+        {
+            StartCoroutine(PizzaInOven(pizza));
+        }
+    }
+    
+    /*
     private void OnTriggerStay(Collider col)
     {
         //is the pizza in the oven and is it not burnt yet
@@ -105,17 +169,18 @@ public class OvenBehaviour : MonoBehaviour
             pizza.overCooking = true;
             loadingBar.color = warnOrange;
 
-            if (changeOnce == false)
+            if (!startOverCooking)
             {
                 PlayOvenAudio(OvenAudioStates.PizzaDone);
                 Invoke(nameof(BackToCookingSounds), 1f);
-                changeOnce = true;
+                startOverCooking = true;
                 tempTime = 0;
                 timerTime = cookTime + 1;
                 Debug.Log(timerTime);
             }
         }
     }
+    */
 
     private void OnTriggerExit(Collider col)
     {
@@ -124,6 +189,8 @@ public class OvenBehaviour : MonoBehaviour
         ps.Stop();
         audioSource.Stop();
 
+        startOverCooking = false;
+        isPizzaInOven = false;
         //reset the timer when pizza leaves
         loadingBar.color = goodGreen;
         loadingBar.fillAmount = 0;
@@ -142,16 +209,19 @@ public class OvenBehaviour : MonoBehaviour
         switch (state)
         {
             case OvenAudioStates.Cooking:
+                //audioSource.Stop();
                 audioSource.clip = ovenAudioClips[(int) OvenAudioStates.Cooking];
                 audioSource.loop = true;
                 audioSource.Play();
                 break;
             case OvenAudioStates.PizzaDone:
+                //audioSource.Stop();
                 audioSource.clip = ovenAudioClips[(int) OvenAudioStates.PizzaDone];
                 audioSource.loop = false;
                 audioSource.Play();
                 break;
             case OvenAudioStates.PizzaBurnt:
+                //audioSource.Stop();
                 audioSource.clip = ovenAudioClips[(int) OvenAudioStates.PizzaBurnt];
                 audioSource.loop = false;
                 audioSource.Play();

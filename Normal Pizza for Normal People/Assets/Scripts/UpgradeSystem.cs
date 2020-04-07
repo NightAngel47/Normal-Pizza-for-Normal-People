@@ -30,7 +30,7 @@ public class UpgradeSystem : MonoBehaviour
 
         availableUpgrades[0].GetComponent<ItemUpgrades>().Purchase();
 
-        StartCoroutine("EndUp");
+        StartCoroutine(EndUp());
 
         //PLAYER CHOOSE UPGRADE LEFTOVER CODE
         //endUpgradeButton.SetActive(true);
@@ -43,7 +43,7 @@ public class UpgradeSystem : MonoBehaviour
 
     IEnumerator EndUp()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
         isUpgrading = false;
     }
 
