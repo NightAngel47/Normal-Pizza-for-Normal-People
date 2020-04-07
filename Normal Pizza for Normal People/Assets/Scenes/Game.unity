@@ -752,7 +752,7 @@ PrefabInstance:
         type: 3}
       propertyPath: availableUpgrades.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1649522749}
     - target: {fileID: 5544742078080136158, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: availableUpgrades.Array.data[2]
@@ -2096,8 +2096,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: HoneyComb Topping Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 3208702802601570460, guid: e3677fe10a71a724ba6571eb958e490f,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000,
+        type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3677fe10a71a724ba6571eb958e490f, type: 3}
+--- !u!1 &1649522749 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3208702802601570460, guid: e3677fe10a71a724ba6571eb958e490f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1649522748}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1670965811
 PrefabInstance:
   m_ObjectHideFlags: 0
