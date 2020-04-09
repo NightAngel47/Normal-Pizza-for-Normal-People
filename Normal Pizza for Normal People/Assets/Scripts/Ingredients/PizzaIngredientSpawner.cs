@@ -7,7 +7,7 @@ using Valve.VR.InteractionSystem;
 public class PizzaIngredientSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject pizzaIngredientToSpawn;
+    public GameObject pizzaIngredientToSpawn;
 
     private bool hasIngredient = false;
 

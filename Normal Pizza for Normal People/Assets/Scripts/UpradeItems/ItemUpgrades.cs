@@ -11,10 +11,14 @@ public abstract class ItemUpgrades : MonoBehaviour
 
     public int itemCost; //cost of upgrade. set individually by each upgrade
 
+    public OrderCreation oc;
+    public bool isTopping;
+
     private void Start()
     {
         //finds money tracker ref
         mt = FindObjectOfType<MoneyTracker>();
+        oc = FindObjectOfType<OrderCreation>();
     }
 
     //displays items with the available for purchase material during ugrade period
@@ -37,6 +41,11 @@ public abstract class ItemUpgrades : MonoBehaviour
         gameObject.SetActive(true); //make sure it is active, probably do not need this line
         TurnOnUpgrade(); //makes sure upgrade funcitonality works 
         FindObjectOfType<UpgradeSystem>().RemovedPurchasedUpgrade(gameObject); // Remove this gameobject from upgrade system
+        if(isTopping == true)
+        {
+            oc.allPizzaIngredients.Add(gameObject.GetComponent<PizzaIngredientSpawner>().pizzaIngredientToSpawn.GetComponent<IngredientHitEffect>().
+                spawnObjectOnCollision.GetComponent<PizzaIngredient>());
+        }
         Destroy(gameObject.GetComponent<ItemUpgrades>()); // Destroy item upgrade so it is not readded to upgrade system
 
         //PLAYER CHOOSE UPGRADE LEFTOVER CODE
