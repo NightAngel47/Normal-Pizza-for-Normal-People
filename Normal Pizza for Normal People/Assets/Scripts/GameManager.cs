@@ -20,9 +20,11 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Days")] 
     [SerializeField, Tooltip("The starting values for the game days.")] private Day startingDayValues;
-    [SerializeField, Tooltip("The rates the each of the day stats change by.")] private Day dayRates;
+    [SerializeField, Tooltip("The rate that each new day will increase in customers."), Range(1f, 2f)] private float newCustomerPerDayRate;
+    [SerializeField, Tooltip("The rate that each new day will increase its money goal."), Range(1f, 2f)] private float newMoneyGoalPerDayRate;
     [HideInInspector] public Day currentGameDay;
     [HideInInspector] public float currentDayTimer;
+    
     enum GameDayAudioStates {StartDay, EndDay}
     [SerializeField] List<AudioClip> gameDayAudioClips = new List<AudioClip>();
     
@@ -39,9 +41,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //moneyTracker = GetComponent<MoneyTracker>();
-        //customerLine = GetComponent<CustomerLine>();
-        //upgradeSystem = GetComponent<UpgradeSystem>();
         audioSource = GetComponent<AudioSource>();
         
         //TODO have player start day
@@ -86,12 +85,22 @@ public class GameManager : MonoBehaviour
             yield return new WaitWhile(() => lastCustomer.activeOrder);
         }
         moneyTracker.ShowHideTotalMoneyUI(true);
-        
-        upgradeSystem.EnterUpgradeMode();
 
-        // TODO check for game over
-        yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
-        StartCoroutine(DayCycle());
+        if (moneyTracker.GetCurrentDayAmount() >= currentGameDay.moneyGoal)
+        {
+            upgradeSystem.EnterUpgradeMode();
+
+            yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
+
+            IncreaseDayDifficulty();
+            
+            StartCoroutine(DayCycle());
+        }
+        else
+        {
+            //TODO add game over transition
+            Debug.Log("game over");
+        }
     }
 
     private IEnumerator DayTimer()
@@ -115,5 +124,12 @@ public class GameManager : MonoBehaviour
     private void ShowHideDayTimer(bool state)
     {
         currentDayTime.transform.parent.gameObject.SetActive(state);
+    }
+
+    private void IncreaseDayDifficulty()
+    {
+        currentGameDay.dayNum++;
+        currentGameDay.numOfCustomers = (int) (currentGameDay.numOfCustomers * newCustomerPerDayRate);
+        currentGameDay.moneyGoal = (int) (currentGameDay.moneyGoal * newMoneyGoalPerDayRate);
     }
 }

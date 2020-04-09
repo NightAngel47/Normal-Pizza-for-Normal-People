@@ -153,12 +153,8 @@ MonoBehaviour:
     numOfCustomersInQue: 3
     dayLength: 120
     moneyGoal: 100
-  dayRates:
-    dayNum: 1
-    numOfCustomers: 1
-    numOfCustomersInQue: 0
-    dayLength: 10
-    moneyGoal: 100
+  newCustomerPerDayRate: 1.5
+  newMoneyGoalPerDayRate: 1.5
   currentGameDay:
     dayNum: 0
     numOfCustomers: 0

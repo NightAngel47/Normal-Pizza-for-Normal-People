@@ -29,7 +29,6 @@ public class MoneyTracker : MonoBehaviour
 
     private void Start()
     {
-        //gameManager = GetComponent<GameManager>();
         CustomerChangeMoney(0);
         ShowHideTotalMoneyUI(false);
     }
@@ -52,6 +51,11 @@ public class MoneyTracker : MonoBehaviour
         totalMoneyText.text = "$" + totalMoneyAmount;
         Debug.Log("Current Day Amount of Money: " + currentDayAmount);
         Debug.Log("Current Total Amount of Money: " + totalMoneyAmount);
+    }
+
+    public int GetCurrentDayAmount()
+    {
+        return currentDayAmount;
     }
 
     public bool Purchase(int amount)
