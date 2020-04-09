@@ -241,7 +241,7 @@ public class Customer : MonoBehaviour
 
             if (tempOrderList.Count <= 0)
             {
-                if (gm.currentGameDay.dayNum > 0 && (pizza.isBurnt || !pizza.isCooked))
+                if (gm.currentGameDay.dayNum > 1 && (pizza.isBurnt || !pizza.isCooked))
                 {
                     PlayCustomerAudio(CustomerAudioStates.BadOrder);
                     ShowMoneyAmount(pizzaProfit = (int) -deliveredPizzaMoney / 2);
