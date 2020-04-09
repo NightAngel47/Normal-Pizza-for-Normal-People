@@ -209,19 +209,19 @@ public class OvenBehaviour : MonoBehaviour
         switch (state)
         {
             case OvenAudioStates.Cooking:
-                //audioSource.Stop();
+                audioSource.Stop();
                 audioSource.clip = ovenAudioClips[(int) OvenAudioStates.Cooking];
                 audioSource.loop = true;
                 audioSource.Play();
                 break;
             case OvenAudioStates.PizzaDone:
-                //audioSource.Stop();
+                audioSource.Stop();
                 audioSource.clip = ovenAudioClips[(int) OvenAudioStates.PizzaDone];
                 audioSource.loop = false;
                 audioSource.Play();
                 break;
             case OvenAudioStates.PizzaBurnt:
-                //audioSource.Stop();
+                audioSource.Stop();
                 audioSource.clip = ovenAudioClips[(int) OvenAudioStates.PizzaBurnt];
                 audioSource.loop = false;
                 audioSource.Play();
