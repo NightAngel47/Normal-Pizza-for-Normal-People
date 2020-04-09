@@ -5071,7 +5071,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onHandHoverEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: -876546973899608171, guid: dc182023f650c0c4abfffda42184bfda,
+      objectReference: {fileID: -876546973899608171, guid: 69e36dba6ee907d43b5263357af236ac,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cce7d3133eca42c4487ecfbde06776f1, type: 3}
