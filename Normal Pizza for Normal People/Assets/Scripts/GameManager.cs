@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CustomerLine), typeof(OrderCreation))]
@@ -24,7 +25,12 @@ public class GameManager : MonoBehaviour
     [SerializeField, Tooltip("The rate that each new day will increase its money goal."), Range(1f, 2f)] private float newMoneyGoalPerDayRate;
     [HideInInspector] public Day currentGameDay;
     [HideInInspector] public float currentDayTimer;
-    
+
+    public GameObject gameOverPanel;
+    public GameObject pointer;
+    public GameObject inputMod;
+
+
     enum GameDayAudioStates {StartDay, EndDay}
     [SerializeField] List<AudioClip> gameDayAudioClips = new List<AudioClip>();
     
@@ -51,6 +57,24 @@ public class GameManager : MonoBehaviour
     public MoneyTracker GetMoneyTracker()
     {
         return moneyTracker;
+    }
+
+    public void TogglPointer()
+    {
+        if (pointer.activeSelf == false)
+        {
+            pointer.SetActive(true);
+            Debug.Log("Pointer On");
+        }
+
+        else
+        {
+            pointer.SetActive(false);
+            Debug.Log("Pointer Off");
+        }
+
+        inputMod.GetComponent<StandaloneInputModule>().enabled = !inputMod.GetComponent<StandaloneInputModule>().enabled;
+        inputMod.GetComponent<VRInputModule>().enabled = !inputMod.GetComponent<VRInputModule>().enabled;
     }
 
     private IEnumerator DayCycle()
@@ -100,6 +124,10 @@ public class GameManager : MonoBehaviour
         {
             //TODO add game over transition
             Debug.Log("game over");
+            gameOverPanel.SetActive(true);
+            pointer.SetActive(true);
+            inputMod.GetComponent<StandaloneInputModule>().enabled = !inputMod.GetComponent<StandaloneInputModule>().enabled;
+            inputMod.GetComponent<VRInputModule>().enabled = !inputMod.GetComponent<VRInputModule>().enabled;
         }
     }
 

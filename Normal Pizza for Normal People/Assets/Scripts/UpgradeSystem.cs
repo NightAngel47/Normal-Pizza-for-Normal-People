@@ -30,16 +30,20 @@ public class UpgradeSystem : MonoBehaviour
         isUpgrading = true;
         print("We upgrading boissss!");
 
-        if (upgradeTracker == 0)
-        {
-            availableUpgrades[0].GetComponent<ItemUpgrades>().Purchase();
-        }
+        availableUpgrades[0].GetComponent<ItemUpgrades>().Purchase();
+        availableUpgrades[0].GetComponent<ItemUpgrades>().Purchase();
 
-        if(upgradeTracker == 1)
-        {
-            availableUpgrades[0].GetComponent<ItemUpgrades>().Purchase();
-            availableUpgrades[0].GetComponent<ItemUpgrades>().Purchase();
-        }
+        //IF WE WANT TO HAVE IT DO ONE OR TWO UPGRADES
+        //if (upgradeTracker == 0)
+        //{
+        //    availableUpgrades[0].GetComponent<ItemUpgrades>().Purchase();
+        //}
+
+        //if(upgradeTracker == 1)
+        //{
+        //    availableUpgrades[0].GetComponent<ItemUpgrades>().Purchase();
+        //    availableUpgrades[0].GetComponent<ItemUpgrades>().Purchase();
+        //}
 
         upgradeTracker++;
         StartCoroutine(EndUp());
