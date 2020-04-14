@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
         inputMod.GetComponent<StandaloneInputModule>().enabled = !inputMod.GetComponent<StandaloneInputModule>().enabled;
         inputMod.GetComponent<VRInputModule>().enabled = !inputMod.GetComponent<VRInputModule>().enabled;
         inputMod.GetComponent<BaseInput>().enabled = !inputMod.GetComponent<BaseInput>().enabled;
+        gameObject.transform.GetChild(1).gameObject.SetActive(!gameObject.transform.GetChild(1).gameObject.activeSelf);
     }
 
     public void StartDay()
@@ -153,9 +154,7 @@ public class GameManager : MonoBehaviour
             //TODO add game over transition
             Debug.Log("game over");
             gameOverPanel.SetActive(true);
-            pointer.SetActive(true);
-            inputMod.GetComponent<StandaloneInputModule>().enabled = !inputMod.GetComponent<StandaloneInputModule>().enabled;
-            inputMod.GetComponent<VRInputModule>().enabled = !inputMod.GetComponent<VRInputModule>().enabled;
+            TogglePointer();
         }
     }
 

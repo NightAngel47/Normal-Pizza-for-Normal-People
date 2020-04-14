@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PizzaBehaviour : MonoBehaviour
 {
@@ -19,6 +22,11 @@ public class PizzaBehaviour : MonoBehaviour
     public Material cooked;
     public Material burnt;
     private Material raw;
+
+    [SerializeField]
+    private Transform ingredientUITransform;
+    [SerializeField]
+    private GameObject ingredientUI;
 
     public void Start()
     {
@@ -52,5 +60,39 @@ public class PizzaBehaviour : MonoBehaviour
         {
             pizzaModelMat.material = raw;
         }
+    }
+
+    public void CurrentIngredients()
+    {
+        //turn on canvas
+        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+
+        List<PizzaIngredient> uniqueIngredients = new List<PizzaIngredient>();
+        foreach (var ingredient in ingredientsOnPizza.Where(ingredient => !uniqueIngredients.Contains(ingredient)))
+        {
+            uniqueIngredients.Add(ingredient);
+        }
+
+        // for each unique order ingredient
+        foreach (var ingredient in uniqueIngredients)
+        {
+            // get unique ingredient count
+            int uniqueIngredientCount = ingredientsOnPizza.Count(orderIngredient => ingredient == orderIngredient);
+
+            // instantiate UI
+            var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, ingredientUITransform.rotation, ingredientUITransform);
+
+            // update text with info
+            var ingredientTexts = newIngredient.GetComponentsInChildren<TMP_Text>();
+            ingredientTexts[0].text = ingredient.GetIngredientName();
+            ingredientTexts[1].text = "x" + uniqueIngredientCount;
+
+            newIngredient.GetComponentInChildren<Image>().sprite = ingredient.GetIngredientIcon();
+        }
+    }
+
+    public void TurnOffCurrentIngredients()
+    {
+        gameObject.transform.GetChild(1).gameObject.SetActive(false);
     }
 }
