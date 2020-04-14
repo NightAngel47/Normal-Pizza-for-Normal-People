@@ -57,7 +57,7 @@ public class UpgradeSystem : MonoBehaviour
 
     IEnumerator EndUp()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
         isUpgrading = false;
     }
 
