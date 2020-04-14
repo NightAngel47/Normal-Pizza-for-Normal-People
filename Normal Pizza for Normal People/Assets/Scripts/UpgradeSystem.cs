@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class UpgradeSystem : MonoBehaviour
 {
-    public GameObject endUpgradeButton;
-
     private bool isUpgrading;
 
     [SerializeField]

@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     public GameObject pointer;
     public GameObject inputMod;
 
+    public GameObject startDayButton;
+    public bool dayStarted = false;
 
     enum GameDayAudioStates {StartDay, EndDay}
     [SerializeField] List<AudioClip> gameDayAudioClips = new List<AudioClip>();
@@ -51,7 +53,7 @@ public class GameManager : MonoBehaviour
         
         //TODO have player start day
         currentGameDay = startingDayValues;
-        StartCoroutine(DayCycle());
+        //StartCoroutine(DayCycle());  //moved to start day function
     }
 
     public MoneyTracker GetMoneyTracker()
@@ -59,22 +61,50 @@ public class GameManager : MonoBehaviour
         return moneyTracker;
     }
 
-    public void TogglPointer()
+    public void TogglePointer()
     {
-        if (pointer.activeSelf == false)
+        if (pointer.activeSelf == false) // turns pointer on if it was off
         {
             pointer.SetActive(true);
             Debug.Log("Pointer On");
         }
 
-        else
+        else //turns pointer off if it was on
         {
             pointer.SetActive(false);
             Debug.Log("Pointer Off");
         }
-
+        
+        //flips the needed components on or off
         inputMod.GetComponent<StandaloneInputModule>().enabled = !inputMod.GetComponent<StandaloneInputModule>().enabled;
         inputMod.GetComponent<VRInputModule>().enabled = !inputMod.GetComponent<VRInputModule>().enabled;
+        inputMod.GetComponent<BaseInput>().enabled = !inputMod.GetComponent<BaseInput>().enabled;
+    }
+
+    public void StartDayCall()
+    {
+        StartCoroutine(StartDay());
+    }
+
+    public IEnumerator StartDay()
+    {
+        startDayButton.SetActive(false);
+
+        if (dayStarted == false && currentGameDay.dayNum == 1)
+        {
+            StartCoroutine(DayCycle());
+        }
+
+        else
+        {
+            upgradeSystem.EnterUpgradeMode();
+
+            yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
+
+            IncreaseDayDifficulty();
+
+            StartCoroutine(DayCycle());
+        }
     }
 
     private IEnumerator DayCycle()
@@ -112,13 +142,16 @@ public class GameManager : MonoBehaviour
 
         if (moneyTracker.GetCurrentDayAmount() >= currentGameDay.moneyGoal)
         {
-            upgradeSystem.EnterUpgradeMode();
+            startDayButton.SetActive(true);
 
-            yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
+            //ALL MOVED TO START DAY FUNCTION
+            //upgradeSystem.EnterUpgradeMode();
 
-            IncreaseDayDifficulty();
+            //yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
+
+            //IncreaseDayDifficulty();
             
-            StartCoroutine(DayCycle());
+            //StartCoroutine(DayCycle());
         }
         else
         {
