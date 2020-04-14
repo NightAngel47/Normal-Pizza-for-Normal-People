@@ -210,11 +210,19 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       objectReference: {fileID: 1775011527}
     - target: {fileID: 3390842, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1881227291}
+=======
+      objectReference: {fileID: 467397243}
+    - target: {fileID: 3390842, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1253933992}
+>>>>>>> parent of ce530d4... Customer Lines
 =======
       objectReference: {fileID: 467397243}
     - target: {fileID: 3390842, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
@@ -731,6 +739,7 @@ MeshFilter:
   m_GameObject: {fileID: 214845487}
   m_Mesh: {fileID: -9090457421139725384, guid: e8a78118a9da7ab44803d4c5d7f1af64, type: 3}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &400631694
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,6 +948,8 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+=======
+>>>>>>> parent of ce530d4... Customer Lines
 =======
 >>>>>>> parent of ce530d4... Customer Lines
 --- !u!1001 &449130243
@@ -2673,8 +2684,13 @@ GameObject:
   m_PrefabInstance: {fileID: 1237314783}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!82 &1237314785
 AudioSource:
+=======
+--- !u!43 &1253933992
+Mesh:
+>>>>>>> parent of ce530d4... Customer Lines
 =======
 --- !u!43 &1253933992
 Mesh:
@@ -2683,6 +2699,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 1237314784}
   m_Enabled: 1
@@ -2775,6 +2792,8 @@ Mesh:
     m_PostInfinity: 2
     m_RotationOrder: 4
 =======
+=======
+>>>>>>> parent of ce530d4... Customer Lines
   m_Name: 
   serializedVersion: 10
   m_SubMeshes:
@@ -2932,6 +2951,9 @@ Mesh:
     offset: 0
     size: 0
     path: 
+<<<<<<< HEAD
+>>>>>>> parent of ce530d4... Customer Lines
+=======
 >>>>>>> parent of ce530d4... Customer Lines
 --- !u!1001 &1284444911
 PrefabInstance:
@@ -4784,6 +4806,7 @@ GameObject:
   m_PrefabInstance: {fileID: 3957785386656394120}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!43 &1881227291
 Mesh:
   m_ObjectHideFlags: 0
@@ -5024,6 +5047,8 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> parent of ce530d4... Customer Lines
 =======
 >>>>>>> parent of ce530d4... Customer Lines
   m_GameObject: {fileID: 1908227923}
