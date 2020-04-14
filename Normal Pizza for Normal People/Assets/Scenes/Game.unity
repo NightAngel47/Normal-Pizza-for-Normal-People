@@ -138,8 +138,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65583c428b8db9a47814eb36e4b553a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   blueprintMaterial: {fileID: 2100000, guid: c5b34efdede44a541b61d292df6f95f4, type: 2}
   activeMaterial: {fileID: 2100000, guid: 272b2eea2c0e13d43b5060897fc822ec, type: 2}
   itemCost: 400
@@ -208,15 +208,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2326430, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 1846104701}
     - target: {fileID: 3390842, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_Mesh
-      value: 
+      value:
       objectReference: {fileID: 1312028225}
     - target: {fileID: 11401046, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: renderModelPrefab
-      value: 
+      value:
       objectReference: {fileID: 1000012617731570, guid: 837f93beb9a614743ae3a2c0ada7c388,
         type: 3}
     - target: {fileID: 114000012749712888, guid: dc06161b6d97feb419f45f03b62e14b9,
@@ -227,7 +227,7 @@ PrefabInstance:
     - target: {fileID: 3409275479880504797, guid: dc06161b6d97feb419f45f03b62e14b9,
         type: 3}
       propertyPath: cam
-      value: 
+      value:
       objectReference: {fileID: 43141955}
     - target: {fileID: 3409275479880504797, guid: dc06161b6d97feb419f45f03b62e14b9,
         type: 3}
@@ -242,7 +242,7 @@ PrefabInstance:
     - target: {fileID: 6344865424291329687, guid: dc06161b6d97feb419f45f03b62e14b9,
         type: 3}
       propertyPath: im
-      value: 
+      value:
       objectReference: {fileID: 43141958}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
@@ -274,8 +274,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cf3e49e6a5ba4e4aae2f34f6ed799ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &128961304 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2906572782878665318, guid: 897a49b02c1c24a4baeb5662c7cd026d,
@@ -286,8 +286,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8227e4f94edf1c346990bff64b79341c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &135265188
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,8 +331,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe551620f8268cc4d80d1f34df9cf050, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!136 &135265191
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -486,7 +486,7 @@ PrefabInstance:
     - target: {fileID: 4050137906175898350, guid: 58378ed879dfa464183e41935ecc7ed9,
         type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
+      value:
       objectReference: {fileID: 633795263}
     - target: {fileID: 4050137906175898350, guid: 58378ed879dfa464183e41935ecc7ed9,
         type: 3}
@@ -566,13 +566,13 @@ PrefabInstance:
     - target: {fileID: 4050137907426621312, guid: 58378ed879dfa464183e41935ecc7ed9,
         type: 3}
       propertyPath: m_Mesh
-      value: 
+      value:
       objectReference: {fileID: -5447036705194824928, guid: e8a78118a9da7ab44803d4c5d7f1af64,
         type: 3}
     - target: {fileID: 4050137907426621313, guid: 58378ed879dfa464183e41935ecc7ed9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 272b2eea2c0e13d43b5060897fc822ec, type: 2}
     - target: {fileID: 4050137907426621315, guid: 58378ed879dfa464183e41935ecc7ed9,
         type: 3}
@@ -814,8 +814,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5c8f6e6b704fb24eadb8a0ac3a1a331, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   blueprintMaterial: {fileID: 0}
   activeMaterial: {fileID: 0}
   itemCost: 0
@@ -831,17 +831,17 @@ PrefabInstance:
     - target: {fileID: 2906572782878665318, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: currentDayText
-      value: 
+      value:
       objectReference: {fileID: 272717250620280137}
     - target: {fileID: 2906572782878665318, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: currentDayTime
-      value: 
+      value:
       objectReference: {fileID: 272717250620280135}
     - target: {fileID: 2906572782878665318, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: currentDayProgressBar
-      value: 
+      value:
       objectReference: {fileID: 272717250620280136}
     - target: {fileID: 2906572782878665318, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
@@ -866,22 +866,22 @@ PrefabInstance:
     - target: {fileID: 2906572782878665318, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: gameOverPanel
-      value: 
+      value:
       objectReference: {fileID: 1516594012}
     - target: {fileID: 2906572782878665318, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: pointer
-      value: 
+      value:
       objectReference: {fileID: 43141957}
     - target: {fileID: 2906572782878665318, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: inputMod
-      value: 
+      value:
       objectReference: {fileID: 43141956}
     - target: {fileID: 2906572782878665318, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: startDayButton
-      value: 
+      value:
       objectReference: {fileID: 3939152231045814973}
     - target: {fileID: 3481793447267015054, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
@@ -891,12 +891,12 @@ PrefabInstance:
     - target: {fileID: 4954694665190826298, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: currentDayMoneyText
-      value: 
+      value:
       objectReference: {fileID: 1220300757}
     - target: {fileID: 4954694665190826298, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: totalMoneyText
-      value: 
+      value:
       objectReference: {fileID: 1607235104}
     - target: {fileID: 5544742078080136158, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
@@ -906,52 +906,52 @@ PrefabInstance:
     - target: {fileID: 5544742078080136158, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: endUpgradeButton
-      value: 
+      value:
       objectReference: {fileID: 3939152231045814973}
     - target: {fileID: 5544742078080136158, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: availableUpgrades.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 1649522749}
     - target: {fileID: 5544742078080136158, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: availableUpgrades.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 818258696}
     - target: {fileID: 5544742078080136158, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: availableUpgrades.Array.data[2]
-      value: 
+      value:
       objectReference: {fileID: 1237314784}
     - target: {fileID: 5544742078080136158, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: availableUpgrades.Array.data[3]
-      value: 
+      value:
       objectReference: {fileID: 1810542184}
     - target: {fileID: 5544742078080136158, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: availableUpgrades.Array.data[4]
-      value: 
+      value:
       objectReference: {fileID: 1284444912}
     - target: {fileID: 5544742078080136158, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: availableUpgrades.Array.data[5]
-      value: 
+      value:
       objectReference: {fileID: 400631694}
     - target: {fileID: 5544742078080136158, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: availableUpgrades.Array.data[6]
-      value: 
+      value:
       objectReference: {fileID: 1859434023}
     - target: {fileID: 5544742078080136158, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: availableUpgrades.Array.data[7]
-      value: 
+      value:
       objectReference: {fileID: 1106386246}
     - target: {fileID: 8357020710274601803, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
       propertyPath: currentDayCustomerText
-      value: 
+      value:
       objectReference: {fileID: 2024619967}
     - target: {fileID: 9190195862997612197, guid: 897a49b02c1c24a4baeb5662c7cd026d,
         type: 3}
@@ -1077,8 +1077,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5492a82be7f14ce44a61cad98a5a1257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   tutorialToHide: {fileID: 1574292195699783019}
 --- !u!4 &570736381
 Transform:
@@ -1142,8 +1142,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
@@ -1204,7 +1204,7 @@ PrefabInstance:
     - target: {fileID: 4050137906175898350, guid: 58378ed879dfa464183e41935ecc7ed9,
         type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
+      value:
       objectReference: {fileID: 633795263}
     - target: {fileID: 4050137906175898350, guid: 58378ed879dfa464183e41935ecc7ed9,
         type: 3}
@@ -1239,7 +1239,7 @@ PrefabInstance:
     - target: {fileID: 4050137906175898350, guid: 58378ed879dfa464183e41935ecc7ed9,
         type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
+      value:
       objectReference: {fileID: 1863628175}
     - target: {fileID: 4050137906175898350, guid: 58378ed879dfa464183e41935ecc7ed9,
         type: 3}
@@ -1309,13 +1309,13 @@ PrefabInstance:
     - target: {fileID: 4050137907426621312, guid: 58378ed879dfa464183e41935ecc7ed9,
         type: 3}
       propertyPath: m_Mesh
-      value: 
+      value:
       objectReference: {fileID: -5447036705194824928, guid: e8a78118a9da7ab44803d4c5d7f1af64,
         type: 3}
     - target: {fileID: 4050137907426621313, guid: 58378ed879dfa464183e41935ecc7ed9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 272b2eea2c0e13d43b5060897fc822ec, type: 2}
     - target: {fileID: 4050137907426621315, guid: 58378ed879dfa464183e41935ecc7ed9,
         type: 3}
@@ -1523,8 +1523,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f10109d6435429f4b9b16cfe811c9a1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   panelHandler: {fileID: 0}
   norm:
     serializedVersion: 2
@@ -1545,8 +1545,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -1749,8 +1749,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5c8f6e6b704fb24eadb8a0ac3a1a331, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   blueprintMaterial: {fileID: 0}
   activeMaterial: {fileID: 0}
   itemCost: 0
@@ -1903,8 +1903,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f10109d6435429f4b9b16cfe811c9a1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   panelHandler: {fileID: 0}
   norm:
     serializedVersion: 2
@@ -1925,8 +1925,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -2004,8 +2004,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
@@ -2136,8 +2136,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &1237314783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2278,7 +2278,7 @@ PrefabInstance:
     - target: {fileID: 3601472248964427211, guid: f9af1ab185e384f45a1756616878e192,
         type: 3}
       propertyPath: pizzaIngredientToSpawn
-      value: 
+      value:
       objectReference: {fileID: 2570119674706485371, guid: 6d10906fcd321d148a21d1e04ddd6f81,
         type: 3}
     - target: {fileID: 3601472248964427212, guid: f9af1ab185e384f45a1756616878e192,
@@ -2304,8 +2304,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4963c3a0a8c83974bbd6de5dddf2d988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   blueprintMaterial: {fileID: 0}
   activeMaterial: {fileID: 0}
   itemCost: 0
@@ -2318,7 +2318,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 
+  m_Name:
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2337,11 +2337,11 @@ Mesh:
     channels: []
     fullWeights: []
   m_BindPose: []
-  m_BoneNameHashes: 
+  m_BoneNameHashes:
   m_RootBoneNameHash: 0
   m_BonesAABB: []
   m_VariableBoneCountWeights:
-    m_Data: 
+    m_Data:
   m_MeshCompression: 0
   m_IsReadable: 1
   m_KeepVertices: 1
@@ -2415,66 +2415,66 @@ Mesh:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_UV:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_Normals:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_Tangents:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_Weights:
       m_NumItems: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_NormalSigns:
       m_NumItems: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_TangentSigns:
       m_NumItems: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_FloatColors:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_BoneIndices:
       m_NumItems: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_Triangles:
       m_NumItems: 0
-      m_Data: 
+      m_Data:
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
     m_Center: {x: 0, y: 0.01, z: 0}
     m_Extent: {x: 1, y: 0, z: 0.75}
   m_MeshUsageFlags: 0
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
+  m_BakedConvexCollisionMesh:
+  m_BakedTriangleCollisionMesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     offset: 0
     size: 0
-    path: 
+    path:
 --- !u!1001 &1338493317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2744,8 +2744,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &1434313659 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2537351950621422375, guid: 864ab397703cc9a4bbb5897fe0cf3cb2,
@@ -2756,8 +2756,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &1516594012
 GameObject:
   m_ObjectHideFlags: 0
@@ -2787,8 +2787,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -2804,8 +2804,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
@@ -2869,8 +2869,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &1637293554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2941,7 +2941,7 @@ PrefabInstance:
     - target: {fileID: 4271134858391353349, guid: e8f2f65dab7092140a1016555577de34,
         type: 3}
       propertyPath: m_Icon
-      value: 
+      value:
       objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000,
         type: 0}
     m_RemovedComponents: []
@@ -3016,7 +3016,7 @@ PrefabInstance:
     - target: {fileID: 3208702802601570460, guid: e3677fe10a71a724ba6571eb958e490f,
         type: 3}
       propertyPath: m_Icon
-      value: 
+      value:
       objectReference: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000,
         type: 0}
     m_RemovedComponents: []
@@ -3074,8 +3074,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -3262,7 +3262,7 @@ PrefabInstance:
     - target: {fileID: -1504981713932161579, guid: 9947527e711158341a0488289071a3c7,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 8c30c7d2260bee64fae7a3c709ce5d2a, type: 2}
     - target: {fileID: -927199367670048503, guid: 9947527e711158341a0488289071a3c7,
         type: 3}
@@ -3324,8 +3324,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.64705884}
   m_RaycastTarget: 1
@@ -3394,8 +3394,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6969468cf1ae0634ea767ae834afb553, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   loadingBar: {fileID: 1434313659}
   progressIndicator: {fileID: 1434313658}
 --- !u!65 &1759468077
@@ -3602,7 +3602,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Sprites/Default
   m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
+  m_ShaderKeywords:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -3697,7 +3697,7 @@ PrefabInstance:
     - target: {fileID: 1973856870810316999, guid: 1b4c8422bd6bc5949a172f82581579d9,
         type: 3}
       propertyPath: pizzaIngredientToSpawn
-      value: 
+      value:
       objectReference: {fileID: 6151775484690570123, guid: bcbb968546cea3d4482aed4f1f32645f,
         type: 3}
     m_RemovedComponents: []
@@ -3718,8 +3718,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4963c3a0a8c83974bbd6de5dddf2d988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   blueprintMaterial: {fileID: 0}
   activeMaterial: {fileID: 0}
   itemCost: 0
@@ -3821,8 +3821,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &272717250620280134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4032,8 +4032,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &272717250620280136 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 592516736, guid: 8a297b8f6623cf2419e9caf6a6a64a02,
@@ -4044,8 +4044,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &272717250620280137 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 435499944, guid: 8a297b8f6623cf2419e9caf6a6a64a02,
@@ -4056,8 +4056,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &577019836638547158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4137,8 +4137,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b33d708cc136fa44a805968b05bd075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pizzaPrefab: {fileID: 7701498598052804793, guid: baf89d6b909037e4ca1ab0feddce36fd,
     type: 3}
   pizzaSpawnPos: {fileID: 1053372696283138322}
@@ -4467,10 +4467,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   activateActionSetOnAttach:
-    actionSetPath: 
+    actionSetPath:
   hideHandOnAttach: 0
   hideSkeletonOnAttach: 0
   hideControllerOnAttach: 0
@@ -4519,8 +4519,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c0e35ef0cc211b408d2d7e7eb0f850d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   movingPart: {fileID: 3939152230058876885}
   localMoveDistance: {x: 0, y: -0.05, z: 0}
   engageAtPercent: 0.95
@@ -4536,7 +4536,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument:
           m_BoolArgument: 0
         m_CallState: 2
   onButtonUp:
