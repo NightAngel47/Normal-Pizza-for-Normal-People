@@ -14,6 +14,8 @@ public abstract class ItemUpgrades : MonoBehaviour
     public OrderCreation oc;
     public bool isTopping;
 
+    
+
     private void Start()
     {
         //finds money tracker ref
@@ -41,6 +43,7 @@ public abstract class ItemUpgrades : MonoBehaviour
         gameObject.SetActive(true); //make sure it is active, probably do not need this line
         TurnOnUpgrade(); //makes sure upgrade funcitonality works 
         FindObjectOfType<UpgradeSystem>().RemovedPurchasedUpgrade(gameObject); // Remove this gameobject from upgrade system
+        gameObject.GetComponent<AudioSource>().Play();
         if(isTopping == true)
         {
             oc.allPizzaIngredients.Add(gameObject.GetComponent<PizzaIngredientSpawner>().pizzaIngredientToSpawn.GetComponent<IngredientHitEffect>().

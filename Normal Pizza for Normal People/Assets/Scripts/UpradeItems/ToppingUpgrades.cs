@@ -6,8 +6,6 @@ public class ToppingUpgrades : ItemUpgrades
 {
     private PizzaIngredientSpawner pis;
 
-    public OrderCreation oc;
-
     protected override void ChangeMaterial(Material changeMat)
     {
         gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material = changeMat;

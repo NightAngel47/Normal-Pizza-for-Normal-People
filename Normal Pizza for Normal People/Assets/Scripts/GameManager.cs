@@ -81,27 +81,22 @@ public class GameManager : MonoBehaviour
         inputMod.GetComponent<BaseInput>().enabled = !inputMod.GetComponent<BaseInput>().enabled;
     }
 
-    public void StartDayCall()
-    {
-        StartCoroutine(StartDay());
-    }
-
-    public IEnumerator StartDay()
+    public void StartDay()
     {
         startDayButton.SetActive(false);
 
-        if (dayStarted == false && currentGameDay.dayNum == 1)
+        if (currentGameDay.dayNum == 1)
         {
             StartCoroutine(DayCycle());
         }
 
         else
         {
-            upgradeSystem.EnterUpgradeMode();
+            //upgradeSystem.EnterUpgradeMode();
 
-            yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
+            //yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
 
-            IncreaseDayDifficulty();
+            //IncreaseDayDifficulty();
 
             StartCoroutine(DayCycle());
         }
@@ -142,15 +137,15 @@ public class GameManager : MonoBehaviour
 
         if (moneyTracker.GetCurrentDayAmount() >= currentGameDay.moneyGoal)
         {
+            upgradeSystem.EnterUpgradeMode();
+
+            yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
+
+            IncreaseDayDifficulty();
+
             startDayButton.SetActive(true);
 
-            //ALL MOVED TO START DAY FUNCTION
-            //upgradeSystem.EnterUpgradeMode();
-
-            //yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
-
-            //IncreaseDayDifficulty();
-            
+            //MOVED TO START DAY FUNCTION
             //StartCoroutine(DayCycle());
         }
         else
