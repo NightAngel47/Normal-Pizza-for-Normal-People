@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class OrderCreation : MonoBehaviour
 {
     [SerializeField]
-    private List<PizzaIngredient> allPizzaIngredients = new List<PizzaIngredient>();
+    public List<PizzaIngredient> allPizzaIngredients = new List<PizzaIngredient>();
     [SerializeField]
     private int minIngredientsPerOrder = 1;
     [SerializeField]

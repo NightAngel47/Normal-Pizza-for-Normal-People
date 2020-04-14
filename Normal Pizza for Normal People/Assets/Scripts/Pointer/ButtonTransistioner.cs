@@ -24,31 +24,42 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (gameObject.name == "Start")
+        if (gameObject.name == "Start") //main menu
         {
             panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(false);
             panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(false);
             SceneManager.LoadScene("Game");
         }
 
-        if(gameObject.name == "HowToPlay")
+        if(gameObject.name == "HowToPlay") //main menu
         {
             panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(true);
             panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(false);
         }
 
-        if (gameObject.name == "Credits")
+        if (gameObject.name == "Credits") //main menu
         {
             panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(false);
             panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(true);
         }
 
-        if (gameObject.name == "Quit")
+        if (gameObject.name == "Quit") //main menu
         {
             panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(false);
             panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(false);
             Application.Quit();
         }
+
+        if (gameObject.name == "Restart") //ingame
+        {
+            SceneManager.LoadScene("Game");
+        }
+
+        if (gameObject.name == "BackToMain") //ingame
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+
         img.color = hover;
     }
 
