@@ -37,6 +37,8 @@ public class PizzaBehaviour : MonoBehaviour
     public void AddPizzaIngredient(PizzaIngredient newIngredient)
     {
         ingredientsOnPizza.Add(newIngredient);
+
+        UpdateCanvas();
     }
 
     public List<PizzaIngredient> GetIngredientsOnPizza()
@@ -62,11 +64,8 @@ public class PizzaBehaviour : MonoBehaviour
         }
     }
 
-    public void CurrentIngredients()
+    private void UpdateCanvas()
     {
-        //turn on canvas
-        gameObject.transform.GetChild(1).gameObject.SetActive(true);
-
         List<PizzaIngredient> uniqueIngredients = new List<PizzaIngredient>();
         foreach (var ingredient in ingredientsOnPizza.Where(ingredient => !uniqueIngredients.Contains(ingredient)))
         {
@@ -91,8 +90,20 @@ public class PizzaBehaviour : MonoBehaviour
         }
     }
 
+    public void CurrentIngredients()
+    {
+        //turn on canvas
+        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+    }
+
     public void TurnOffCurrentIngredients()
     {
+        //remove current canvas ingredients so there are no repeats
+        for (int i = 0; i < ingredientUITransform.childCount; i++)
+        {
+            Destroy(ingredientUITransform.GetChild(i));
+        }
+
         gameObject.transform.GetChild(1).gameObject.SetActive(false);
     }
 }
