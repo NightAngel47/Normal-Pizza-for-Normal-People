@@ -9,9 +9,19 @@
         <e p="Scripts" t="Include">
           <e p="Customer.cs" t="Include" />
           <e p="CustomerLine.cs" t="Include" />
+          <e p="CustomerLinePos.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="HideTutorial.cs" t="Include" />
+          <e p="InGameButtonHandler.cs" t="Include" />
           <e p="Ingredients" t="Include">
+            <e p="Ingredient Singletons" t="Include">
+              <e p="BeetrootSingleton.cs" t="Include" />
+              <e p="CactusSingleton.cs" t="Include" />
+              <e p="HoneycombSingleton.cs" t="Include" />
+              <e p="PineappleSingleton.cs" t="Include" />
+              <e p="StarfishSingleton.cs" t="Include" />
+              <e p="TidepodSingleton.cs" t="Include" />
+            </e>
             <e p="PizzaIngredient.cs" t="Include" />
             <e p="PizzaIngredientSpawner.cs" t="Include" />
           </e>
@@ -56,14 +66,22 @@
             <e p="Pointer.cs" t="Include" />
             <e p="VRInputModule.cs" t="Include" />
           </e>
+          <e p="StarfishRandomStart.cs" t="Include" />
           <e p="TrashScript.cs" t="Include" />
           <e p="UpgradeSystem.cs" t="Include" />
           <e p="UpradeItems" t="Include">
+            <e p="CustomerLineUpgrade.cs" t="Include" />
             <e p="ItemUpgrades.cs" t="Include" />
             <e p="OvenUpgrade.cs" t="Include" />
             <e p="PizzaStationUpgrade.cs" t="Include" />
             <e p="PurchColScript.cs" t="Include" />
             <e p="ToppingUpgrades.cs" t="Include" />
+          </e>
+          <e p="Week 12, 1. Singleton Pattern with Console Output" t="Include">
+            <e p="SingletonClass.cs" t="Include" />
+            <e p="SingletonMonoBehaviour.cs" t="Include" />
+            <e p="StaticClass.cs" t="Include" />
+            <e p="UsingSingletons.cs" t="Include" />
           </e>
         </e>
         <e p="SteamVR" t="Include">
@@ -367,6 +385,7 @@
           <e p="Fonts" t="Include">
             <e p="LiberationSans - OFL.txt" t="Include" />
           </e>
+          <e p="Glyph Report.txt" t="Include" />
           <e p="Resources" t="Include">
             <e p="LineBreaking Following Characters.txt" t="Include" />
             <e p="LineBreaking Leading Characters.txt" t="Include" />

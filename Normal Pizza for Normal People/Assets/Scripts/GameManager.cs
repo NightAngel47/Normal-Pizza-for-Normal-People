@@ -80,6 +80,10 @@ public class GameManager : MonoBehaviour
         inputMod.GetComponent<VRInputModule>().enabled = !inputMod.GetComponent<VRInputModule>().enabled;
         inputMod.GetComponent<BaseInput>().enabled = !inputMod.GetComponent<BaseInput>().enabled;
         gameObject.transform.GetChild(1).gameObject.SetActive(!gameObject.transform.GetChild(1).gameObject.activeSelf);
+        foreach (var customerLinePos in FindObjectsOfType<CustomerLinePos>())
+        {
+            customerLinePos.gameObject.SetActive(!customerLinePos.gameObject.activeSelf);
+        }
     }
 
     public void StartDay()
