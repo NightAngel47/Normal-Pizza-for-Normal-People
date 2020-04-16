@@ -17,7 +17,14 @@ public class TrashScript : MonoBehaviour
         if (col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient) || col.transform.parent.TryGetComponent(out PizzaBehaviour pizza))
         {
             audioSource.Play();
-            Destroy(col.transform.parent.gameObject, 1f);
+            if (ingredient)
+            {
+                ingredient.gameObject.SetActive(false);
+            }
+            else
+            {
+                Destroy(col.transform.parent.gameObject, 1f);
+            }
         }
     }
 }
