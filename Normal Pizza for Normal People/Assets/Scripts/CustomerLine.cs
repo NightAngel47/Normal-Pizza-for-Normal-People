@@ -50,24 +50,26 @@ public class CustomerLine : MonoBehaviour
 
         foreach (var line in customerLines)
         {
+            Vector3 customerTargetPos;
+            
             if (line.isOpen)
             {
                 line.isOpen = false;
-                newCustomer.SetTargetLine(customerLines[customerLines.IndexOf(line)].transform.position);
-                newCustomer.GetComponent<NavMeshAgent>().SetDestination(customerLines[customerLines.IndexOf(line)].transform.position);
+                customerTargetPos = customerLines[customerLines.IndexOf(line)].transform.position;
+                newCustomer.SetTargetLine(customerTargetPos);
+                newCustomer.GetComponent<NavMeshAgent>().SetDestination(customerTargetPos);
                 break;
             }
-            
+
             if(line == customerLines[customerLines.Count - 1])
             {
-                newCustomer.SetTargetLine(customerLines[Random.Range(0, customerLines.Count)].transform.position);
-                newCustomer.GetComponent<NavMeshAgent>().SetDestination(customerLines[Random.Range(0, customerLines.Count)].transform.position);
+                customerTargetPos = customerLines[Random.Range(0, customerLines.Count)].transform.position;
+                newCustomer.SetTargetLine(customerTargetPos);
+                newCustomer.GetComponent<NavMeshAgent>().SetDestination(customerTargetPos);
                 break;
             }
         }
-        
-        
-        
+
         yield return new WaitForSeconds(gameManager.currentGameDay.dayLength / gameManager.currentGameDay.numOfCustomers);
         
         if (gameManager.currentDayTimer > 1 && customerOrders.Count > 0)

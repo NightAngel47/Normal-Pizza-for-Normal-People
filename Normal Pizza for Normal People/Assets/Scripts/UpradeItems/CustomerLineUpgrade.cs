@@ -14,7 +14,7 @@ public class CustomerLineUpgrade : ItemUpgrades
 
     public override void TurnOnUpgrade()
     {
-        customerLinePos.enabled = !customerLinePos;
+        customerLinePos.enabled = !customerLinePos.enabled;
         if (customerLinePos.enabled)
         {
             FindObjectOfType<CustomerLine>().AddNewCustomerLine(GetComponent<CustomerLinePos>());
