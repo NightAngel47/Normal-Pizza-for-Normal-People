@@ -7,6 +7,12 @@ TagManager:
   - topping
   - projectile
   - LineStart
+  - pineapple
+  - tidepod
+  - honeycomb
+  - starfish
+  - cactus
+  - beetroot
   layers:
   - Default
   - TransparentFX

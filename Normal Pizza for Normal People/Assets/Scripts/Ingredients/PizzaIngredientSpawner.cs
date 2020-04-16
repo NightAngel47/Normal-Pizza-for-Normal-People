@@ -14,6 +14,8 @@ public class PizzaIngredientSpawner : MonoBehaviour
 
     private bool handInside = false;
 
+    public ToppingObjectPool op; //object pool
+
     private void OnTriggerEnter(Collider col)
     {
         if(col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
@@ -38,7 +40,10 @@ public class PizzaIngredientSpawner : MonoBehaviour
     private IEnumerator SpawnIngredient()
     {
         hasIngredient = true;
-        Instantiate(pizzaIngredientToSpawn, transform.position, Quaternion.identity);
+
+        op.SpawnFromPool(pizzaIngredientToSpawn.tag, transform.position, Quaternion.identity);
+
+        //Instantiate(pizzaIngredientToSpawn, transform.position, Quaternion.identity);
 
         yield return new WaitForEndOfFrame();
     }

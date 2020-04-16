@@ -23,6 +23,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cactus Topping Interactable
       objectReference: {fileID: 0}
+    - target: {fileID: 5124808810708315160, guid: cce7d3133eca42c4487ecfbde06776f1,
+        type: 3}
+      propertyPath: m_TagString
+      value: cactus
+      objectReference: {fileID: 0}
     - target: {fileID: 5124808810708315234, guid: cce7d3133eca42c4487ecfbde06776f1,
         type: 3}
       propertyPath: m_LocalPosition.x
