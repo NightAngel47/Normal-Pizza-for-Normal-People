@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class PizzaBehaviour : MonoBehaviour
 {
     private List<PizzaIngredient> ingredientsOnPizza = new List<PizzaIngredient>();
-    private List<PizzaIngredient> uniqueIngredients = new List<PizzaIngredient>();
 
     //Oven/Cooking Variables
     [HideInInspector]
@@ -63,12 +62,20 @@ public class PizzaBehaviour : MonoBehaviour
 
     private void UpdateCanvas()
     {
-        
+
         // get unique ingredients
         List<PizzaIngredient> uniqueIngredients = new List<PizzaIngredient>();
-        foreach (var ingredient in ingredientsOnPizza.Where(ingredient => !uniqueIngredients.Contains(ingredient)))
+        
+        var tempIngredientsList = ingredientsOnPizza;
+        
+        foreach (var pizzaIngredient in ingredientsOnPizza.Where(pizzaIngredient => !uniqueIngredients.Contains(pizzaIngredient)))
         {
-            uniqueIngredients.Add(ingredient);
+            uniqueIngredients.Add(pizzaIngredient);
+
+            foreach (var ingredient in tempIngredientsList.Where(ingredient => ingredient == pizzaIngredient))
+            {
+                tempIngredientsList.Remove(pizzaIngredient);
+            }
         }
 
         // for each unique order ingredient
