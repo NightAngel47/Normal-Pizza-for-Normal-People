@@ -9,7 +9,7 @@ public class PizzaIngredientSpawner : MonoBehaviour
     [SerializeField]
     public GameObject pizzaIngredientToSpawn;
 
-    public GameObject singleton;
+    public Singleton singleton;
 
     private bool hasIngredient = false;
 
@@ -45,32 +45,7 @@ public class PizzaIngredientSpawner : MonoBehaviour
         {
             hasIngredient = false;
 
-            switch (pizzaIngredientToSpawn.name)
-            {
-                case "Pineapple Topping Interactable":
-                    singleton.GetComponent<PineappleSingleton>().RemoveInstance();
-                    break;
-
-                case "Tidepod Topping Interactable":
-                    singleton.GetComponent<TidepodSingleton>().RemoveInstance();
-                    break;
-
-                case "Starfish Topping Interactable":
-                    singleton.GetComponent<StarfishSingleton>().RemoveInstance();
-                    break;
-
-                case "Honeycomb Topping Interactable":
-                    singleton.GetComponent<HoneycombSingleton>().RemoveInstance();
-                    break;
-
-                case "Beetroot Topping Interactable":
-                    singleton.GetComponent<BeetrootSingleton>().RemoveInstance();
-                    break;
-
-                case "Cactus Topping Interactable":
-                    singleton.GetComponent<CactusSingleton>().RemoveInstance();
-                    break;
-            }
+            //singleton.
         }
     }
     

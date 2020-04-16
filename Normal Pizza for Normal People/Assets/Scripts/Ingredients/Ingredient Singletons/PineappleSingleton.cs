@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PineappleSingleton 
+public class PineappleSingleton : Singleton
 {
     public static PineappleSingleton instance;
 
@@ -15,7 +15,7 @@ public class PineappleSingleton
     {
         if (instance == null)
         {
-            instance = new PineappleSingleton();
+            instance = gameObject.AddComponent<PineappleSingleton>();
         }
         return instance;
     }
@@ -23,5 +23,6 @@ public class PineappleSingleton
     public void RemoveInstance()
     {
         instance = null;
+        Destroy(gameObject.AddComponent<PineappleSingleton>());
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TidepodSingleton 
+public class TidepodSingleton : Singleton
 {
     public static TidepodSingleton instance;
 
