@@ -14513,7 +14513,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 2fe42ec5bcba0354499a580c8a99dc0f, type: 3}
+      objectReference: {fileID: 8300000, guid: 99c7ccc52fc58834bbf175eccacfcd4a, type: 3}
     - target: {fileID: 299762634572199412, guid: 42a8c6e654b450c4d979a78c195ae6dc,
         type: 3}
       propertyPath: m_Name
@@ -14583,8 +14583,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ingredientIcon
       value: 
-      objectReference: {fileID: 21300000, guid: b0c0c1a7d2ca74290b7f98d049dafc89,
-        type: 3}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42a8c6e654b450c4d979a78c195ae6dc, type: 3}
 --- !u!4 &6031605587115149306 stripped

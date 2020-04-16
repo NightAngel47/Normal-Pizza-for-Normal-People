@@ -8,6 +8,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Valve.VR.InteractionSystem;
 
 public class Customer : MonoBehaviour
 {
@@ -104,6 +105,7 @@ public class Customer : MonoBehaviour
         if (other.CompareTag("LineStart"))
         {
             activeOrder = true;
+            transform.rotation = other.transform.rotation;
             ChangeUIState();
             StartCoroutine(OrderTimerCountDown());
         }
@@ -114,6 +116,14 @@ public class Customer : MonoBehaviour
             Destroy(pizza.gameObject);
             activeOrder = false;
             CustomerLeave();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("LineStart") && transform.rotation == other.transform.rotation)
+        {
+            transform.rotation = other.transform.rotation;
         }
     }
 
@@ -241,7 +251,8 @@ public class Customer : MonoBehaviour
 
             if (tempOrderList.Count <= 0)
             {
-                if (gm.currentGameDay.dayNum > 1 && (pizza.isBurnt || !pizza.isCooked))
+                // first 2 days don't need oven because there is no oven to cook pizzas till day 3
+                if (gm.currentGameDay.dayNum > 2 && (pizza.isBurnt || !pizza.isCooked))
                 {
                     PlayCustomerAudio(CustomerAudioStates.BadOrder);
                     ShowMoneyAmount(pizzaProfit = (int) -deliveredPizzaMoney / 2);

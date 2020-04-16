@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class PizzaBehaviour : MonoBehaviour
 {
     private List<PizzaIngredient> ingredientsOnPizza = new List<PizzaIngredient>();
+    private List<GameObject> ingredientUIList = new List<GameObject>();
+    private List<int> uniqueIngredientCounts = new List<int>();
 
     //Oven/Cooking Variables
     [HideInInspector]
@@ -23,10 +25,8 @@ public class PizzaBehaviour : MonoBehaviour
     public Material burnt;
     private Material raw;
 
-    [SerializeField]
-    private Transform ingredientUITransform;
-    [SerializeField]
-    private GameObject ingredientUI;
+    [SerializeField] private Transform ingredientUITransform;
+    [SerializeField] private GameObject ingredientUI;
 
     public void Start()
     {
@@ -37,6 +37,7 @@ public class PizzaBehaviour : MonoBehaviour
     public void AddPizzaIngredient(PizzaIngredient newIngredient)
     {
         ingredientsOnPizza.Add(newIngredient);
+        UpdateCanvas(newIngredient);
     }
 
     public List<PizzaIngredient> GetIngredientsOnPizza()
@@ -62,37 +63,56 @@ public class PizzaBehaviour : MonoBehaviour
         }
     }
 
+    private void UpdateCanvas(PizzaIngredient addedIngredient)
+    {
+        // checks if added ingredient already has UI
+        foreach (var uiElement in ingredientUIList)
+        {
+            var ingredientTexts = uiElement.GetComponentsInChildren<TMP_Text>();
+            if (addedIngredient.GetIngredientName() == ingredientTexts[0].text)
+            {
+                ++uniqueIngredientCounts[ingredientUIList.IndexOf(uiElement)];
+                ingredientTexts[1].text = "x" + uniqueIngredientCounts[ingredientUIList.IndexOf(uiElement)];
+                return;
+            }
+        }
+        
+        // if there is no UI create one
+        CreateNewUI(addedIngredient);
+    }
+
+    private void CreateNewUI(PizzaIngredient addedIngredient)
+    {
+
+        // instantiate UI
+        var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, ingredientUITransform.rotation, ingredientUITransform);
+            
+        // add new UI to list of UI for updating
+        ingredientUIList.Add(newIngredient);
+        uniqueIngredientCounts.Add(1);
+            
+        // update text with info
+        var ingredientTexts = newIngredient.GetComponentsInChildren<TMP_Text>();
+        ingredientTexts[0].text = addedIngredient.GetIngredientName();
+        ingredientTexts[1].text = "x" + uniqueIngredientCounts[ingredientUIList.IndexOf(newIngredient)];
+
+        newIngredient.GetComponentInChildren<Image>().sprite = addedIngredient.GetIngredientIcon();
+    }
+
     public void CurrentIngredients()
     {
         //turn on canvas
         gameObject.transform.GetChild(1).gameObject.SetActive(true);
-
-        List<PizzaIngredient> uniqueIngredients = new List<PizzaIngredient>();
-        foreach (var ingredient in ingredientsOnPizza.Where(ingredient => !uniqueIngredients.Contains(ingredient)))
-        {
-            uniqueIngredients.Add(ingredient);
-        }
-
-        // for each unique order ingredient
-        foreach (var ingredient in uniqueIngredients)
-        {
-            // get unique ingredient count
-            int uniqueIngredientCount = ingredientsOnPizza.Count(orderIngredient => ingredient == orderIngredient);
-
-            // instantiate UI
-            var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, ingredientUITransform.rotation, ingredientUITransform);
-
-            // update text with info
-            var ingredientTexts = newIngredient.GetComponentsInChildren<TMP_Text>();
-            ingredientTexts[0].text = ingredient.GetIngredientName();
-            ingredientTexts[1].text = "x" + uniqueIngredientCount;
-
-            newIngredient.GetComponentInChildren<Image>().sprite = ingredient.GetIngredientIcon();
-        }
     }
 
     public void TurnOffCurrentIngredients()
     {
+        //turn off canvas
         gameObject.transform.GetChild(1).gameObject.SetActive(false);
+    }
+
+    public void SetZeroRotation()
+    {
+        transform.rotation = Quaternion.identity;
     }
 }

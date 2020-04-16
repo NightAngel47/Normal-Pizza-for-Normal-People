@@ -6,21 +6,13 @@ using Valve.VR.InteractionSystem;
 
 public class PizzaIngredientSpawner : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject pizzaIngredientToSpawn;
+    [SerializeField] public GameObject pizzaIngredientToSpawn;
 
     private bool hasIngredient = false;
 
     private bool isSpawning = false;
 
     private bool handInside = false;
-
-    private GameObject temp;
-
-    private void Start()
-    {
-        //StartCoroutine(SpawnIngredient());
-    }
 
     private void OnTriggerEnter(Collider col)
     {
@@ -46,7 +38,8 @@ public class PizzaIngredientSpawner : MonoBehaviour
     private IEnumerator SpawnIngredient()
     {
         hasIngredient = true;
-        temp = Instantiate(pizzaIngredientToSpawn, transform.position, Quaternion.identity);
+        Instantiate(pizzaIngredientToSpawn, transform.position, Quaternion.identity);
+
         yield return new WaitForEndOfFrame();
     }
 }

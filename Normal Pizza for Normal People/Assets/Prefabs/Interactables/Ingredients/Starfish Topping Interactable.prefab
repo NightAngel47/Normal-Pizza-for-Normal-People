@@ -373,7 +373,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 5f2a1b55dfd7bbc4da6cd8dd2a6d89d8, type: 3}
+      objectReference: {fileID: 8300000, guid: b3c92e6d489f27b40b2ed6aab84150b9, type: 3}
     - target: {fileID: 179181037077442741, guid: cce7d3133eca42c4487ecfbde06776f1,
         type: 3}
       propertyPath: spawnObjectOnCollision
