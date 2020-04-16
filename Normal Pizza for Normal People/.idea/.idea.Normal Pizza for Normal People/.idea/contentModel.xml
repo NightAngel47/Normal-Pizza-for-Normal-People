@@ -15,13 +15,8 @@
           <e p="InGameButtonHandler.cs" t="Include" />
           <e p="Ingredients" t="Include">
             <e p="Ingredient Singletons" t="Include">
-              <e p="BeetrootSingleton.cs" t="Include" />
-              <e p="CactusSingleton.cs" t="Include" />
-              <e p="HoneycombSingleton.cs" t="Include" />
-              <e p="PineappleSingleton.cs" t="Include" />
-              <e p="Singleton.cs" t="Include" />
-              <e p="StarfishSingleton.cs" t="Include" />
-              <e p="TidepodSingleton.cs" t="Include" />
+              <e p="ToppingObjectPool.cs" t="Include" />
+              <e p="ToppingPools.cs" t="Include" />
             </e>
             <e p="PizzaIngredient.cs" t="Include" />
             <e p="PizzaIngredientSpawner.cs" t="Include" />
@@ -83,6 +78,16 @@
             <e p="SingletonMonoBehaviour.cs" t="Include" />
             <e p="StaticClass.cs" t="Include" />
             <e p="UsingSingletons.cs" t="Include" />
+          </e>
+          <e p="Week 12, 2. Object Pool Pattern with GameObjects" t="Include">
+            <e p="Client Scripts" t="Include">
+              <e p="FastPrefabSpawnerWithObjPooling.cs" t="Include" />
+              <e p="SlowPrefabSpawner.cs" t="Include" />
+            </e>
+            <e p="Design Pattern Scripts" t="Include">
+              <e p="ObjectPooler.cs" t="Include" />
+              <e p="Pool.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="SteamVR" t="Include">
