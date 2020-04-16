@@ -240,6 +240,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8213718143760729404, guid: 42a8c6e654b450c4d979a78c195ae6dc,
+        type: 3}
+      propertyPath: ingredientName
+      value: Cactus
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213718143760729404, guid: 42a8c6e654b450c4d979a78c195ae6dc,
+        type: 3}
+      propertyPath: ingredientIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: a795b6cc8bce4aa4da6bee2d963f2de0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42a8c6e654b450c4d979a78c195ae6dc, type: 3}
 --- !u!4 &8021332394509082705 stripped

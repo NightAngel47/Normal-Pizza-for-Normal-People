@@ -545,10 +545,10 @@ MonoBehaviour:
   currentDayProgressBar: {fileID: 0}
   startingDayValues:
     dayNum: 1
-    numOfCustomers: 1
-    numOfCustomersInQue: 1
-    dayLength: 30
-    moneyGoal: 0
+    numOfCustomers: 10
+    numOfCustomersInQue: 3
+    dayLength: 60
+    moneyGoal: 100
   newCustomerPerDayRate: 1.1
   newMoneyGoalPerDayRate: 1.5
   currentGameDay:
@@ -645,7 +645,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 833014313}
   upgradeTracker: 0
 --- !u!82 &6980543429296917128
 AudioSource:

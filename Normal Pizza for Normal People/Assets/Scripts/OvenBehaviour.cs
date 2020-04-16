@@ -111,15 +111,16 @@ public class OvenBehaviour : MonoBehaviour
             if (!startOverCooking) // start overcooking
             {
                 PlayOvenAudio(OvenAudioStates.PizzaDone);
+                startOverCooking = true;
+                tempTime = 0;
+                timerTime = cookTime + 1;
+                Debug.Log(timerTime);
+                
                 yield return new WaitWhile(() => audioSource.isPlaying);
                 if (isPizzaInOven)
                 {
                     PlayOvenAudio(OvenAudioStates.Cooking);
                 }
-                startOverCooking = true;
-                tempTime = 0;
-                timerTime = cookTime + 1;
-                Debug.Log(timerTime);
             }
         }
         
