@@ -48,27 +48,27 @@ public class PizzaIngredientSpawner : MonoBehaviour
             switch (pizzaIngredientToSpawn.name)
             {
                 case "Pineapple Topping Interactable":
-                    gameObject.GetComponent<PineappleSingleton>().RemoveInstance();
+                    singleton.GetComponent<PineappleSingleton>().RemoveInstance();
                     break;
 
                 case "Tidepod Topping Interactable":
-                    gameObject.GetComponent<TidepodSingleton>().RemoveInstance();
+                    singleton.GetComponent<TidepodSingleton>().RemoveInstance();
                     break;
 
                 case "Starfish Topping Interactable":
-                    gameObject.GetComponent<StarfishSingleton>().RemoveInstance();
+                    singleton.GetComponent<StarfishSingleton>().RemoveInstance();
                     break;
 
                 case "Honeycomb Topping Interactable":
-                    gameObject.GetComponent<HoneycombSingleton>().RemoveInstance();
+                    singleton.GetComponent<HoneycombSingleton>().RemoveInstance();
                     break;
 
                 case "Beetroot Topping Interactable":
-                    gameObject.GetComponent<BeetrootSingleton>().RemoveInstance();
+                    singleton.GetComponent<BeetrootSingleton>().RemoveInstance();
                     break;
 
                 case "Cactus Topping Interactable":
-                    gameObject.GetComponent<CactusSingleton>().RemoveInstance();
+                    singleton.GetComponent<CactusSingleton>().RemoveInstance();
                     break;
             }
         }
@@ -82,27 +82,27 @@ public class PizzaIngredientSpawner : MonoBehaviour
         switch (pizzaIngredientToSpawn.name)
         {
             case "Pineapple Topping Interactable":
-                gameObject.GetComponent<PineappleSingleton>().GetInstance();
+                singleton.GetComponent<PineappleSingleton>().GetInstance();
                 break;
 
             case "Tidepod Topping Interactable":
-                gameObject.GetComponent<TidepodSingleton>().GetInstance();
+                singleton.GetComponent<TidepodSingleton>().GetInstance();
                 break;
 
             case "Starfish Topping Interactable":
-                gameObject.GetComponent<StarfishSingleton>().GetInstance();
+                singleton.GetComponent<StarfishSingleton>().GetInstance();
                 break;
 
             case "Honeycomb Topping Interactable":
-                gameObject.GetComponent<HoneycombSingleton>().GetInstance();
+                singleton.GetComponent<HoneycombSingleton>().GetInstance();
                 break;
 
             case "Beetroot Topping Interactable":
-                gameObject.GetComponent<BeetrootSingleton>().GetInstance();
+                singleton.GetComponent<BeetrootSingleton>().GetInstance();
                 break;
 
             case "Cactus Topping Interactable":
-                gameObject.GetComponent<CactusSingleton>().GetInstance();
+                singleton.GetComponent<CactusSingleton>().GetInstance();
                 break;
         }
 
