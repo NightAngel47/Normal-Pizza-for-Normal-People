@@ -6,11 +6,6 @@ public class PineappleSingleton : Singleton
 {
     public static PineappleSingleton instance;
 
-    private PineappleSingleton()
-    {
-
-    }
-
     public PineappleSingleton GetInstance()
     {
         if (instance == null)
@@ -23,6 +18,6 @@ public class PineappleSingleton : Singleton
     public void RemoveInstance()
     {
         instance = null;
-        Destroy(gameObject.AddComponent<PineappleSingleton>());
+        Destroy(gameObject.GetComponent<PineappleSingleton>());
     }
 }

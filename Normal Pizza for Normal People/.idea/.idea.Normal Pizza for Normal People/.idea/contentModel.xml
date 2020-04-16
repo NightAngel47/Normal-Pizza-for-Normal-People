@@ -19,6 +19,7 @@
               <e p="CactusSingleton.cs" t="Include" />
               <e p="HoneycombSingleton.cs" t="Include" />
               <e p="PineappleSingleton.cs" t="Include" />
+              <e p="Singleton.cs" t="Include" />
               <e p="StarfishSingleton.cs" t="Include" />
               <e p="TidepodSingleton.cs" t="Include" />
             </e>

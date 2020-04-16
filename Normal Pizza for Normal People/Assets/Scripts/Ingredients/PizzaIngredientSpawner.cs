@@ -6,25 +6,13 @@ using Valve.VR.InteractionSystem;
 
 public class PizzaIngredientSpawner : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject pizzaIngredientToSpawn;
-
-    public Singleton singleton;
+    [SerializeField] public GameObject pizzaIngredientToSpawn;
 
     private bool hasIngredient = false;
 
     private bool isSpawning = false;
 
     private bool handInside = false;
-
-    private GameObject temp;
-
-    private void Start()
-    {
-        //StartCoroutine(SpawnIngredient());
-
-        
-    }
 
     private void OnTriggerEnter(Collider col)
     {
@@ -44,42 +32,13 @@ public class PizzaIngredientSpawner : MonoBehaviour
         if (col.transform.parent.TryGetComponent(out IngredientHitEffect ingredient))
         {
             hasIngredient = false;
-
-            //singleton.
         }
     }
     
     private IEnumerator SpawnIngredient()
     {
         hasIngredient = true;
-        temp = Instantiate(pizzaIngredientToSpawn, transform.position, Quaternion.identity);
-
-        switch (pizzaIngredientToSpawn.name)
-        {
-            case "Pineapple Topping Interactable":
-                singleton.GetComponent<PineappleSingleton>().GetInstance();
-                break;
-
-            case "Tidepod Topping Interactable":
-                singleton.GetComponent<TidepodSingleton>().GetInstance();
-                break;
-
-            case "Starfish Topping Interactable":
-                singleton.GetComponent<StarfishSingleton>().GetInstance();
-                break;
-
-            case "Honeycomb Topping Interactable":
-                singleton.GetComponent<HoneycombSingleton>().GetInstance();
-                break;
-
-            case "Beetroot Topping Interactable":
-                singleton.GetComponent<BeetrootSingleton>().GetInstance();
-                break;
-
-            case "Cactus Topping Interactable":
-                singleton.GetComponent<CactusSingleton>().GetInstance();
-                break;
-        }
+        Instantiate(pizzaIngredientToSpawn, transform.position, Quaternion.identity);
 
         yield return new WaitForEndOfFrame();
     }

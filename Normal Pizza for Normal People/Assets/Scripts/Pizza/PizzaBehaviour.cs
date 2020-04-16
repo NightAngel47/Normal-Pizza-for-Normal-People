@@ -62,19 +62,19 @@ public class PizzaBehaviour : MonoBehaviour
 
     private void UpdateCanvas()
     {
-
+        
         // get unique ingredients
         List<PizzaIngredient> uniqueIngredients = new List<PizzaIngredient>();
         
-        var tempIngredientsList = ingredientsOnPizza;
-        
-        foreach (var pizzaIngredient in ingredientsOnPizza.Where(pizzaIngredient => !uniqueIngredients.Contains(pizzaIngredient)))
+        foreach (var pizzaIngredient in ingredientsOnPizza)
         {
-            uniqueIngredients.Add(pizzaIngredient);
-
-            foreach (var ingredient in tempIngredientsList.Where(ingredient => ingredient == pizzaIngredient))
+            foreach (var uniqueIngredient in uniqueIngredients)
             {
-                tempIngredientsList.Remove(pizzaIngredient);
+                if (pizzaIngredient.GetIngredientName() == uniqueIngredient.GetIngredientName())
+                {
+                    uniqueIngredients.Add(pizzaIngredient);
+                    break;
+                }
             }
         }
 
