@@ -25,6 +25,6 @@ public class IngredientHitEffect : MonoBehaviour
             pizza.AddPizzaIngredient(newIngredient.GetComponent<PizzaIngredient>());
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
