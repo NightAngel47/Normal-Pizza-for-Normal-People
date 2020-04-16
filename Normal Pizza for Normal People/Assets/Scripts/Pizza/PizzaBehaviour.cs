@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class PizzaBehaviour : MonoBehaviour
 {
     private List<PizzaIngredient> ingredientsOnPizza = new List<PizzaIngredient>();
+    private List<PizzaIngredient> uniqueIngredients = new List<PizzaIngredient>();
 
     //Oven/Cooking Variables
     [HideInInspector]
@@ -23,10 +24,8 @@ public class PizzaBehaviour : MonoBehaviour
     public Material burnt;
     private Material raw;
 
-    [SerializeField]
-    private Transform ingredientUITransform;
-    [SerializeField]
-    private GameObject ingredientUI;
+    [SerializeField] private Transform ingredientUITransform;
+    [SerializeField] private GameObject ingredientUI;
 
     public void Start()
     {
@@ -37,8 +36,6 @@ public class PizzaBehaviour : MonoBehaviour
     public void AddPizzaIngredient(PizzaIngredient newIngredient)
     {
         ingredientsOnPizza.Add(newIngredient);
-
-        UpdateCanvas();
     }
 
     public List<PizzaIngredient> GetIngredientsOnPizza()
@@ -66,6 +63,8 @@ public class PizzaBehaviour : MonoBehaviour
 
     private void UpdateCanvas()
     {
+        
+        // get unique ingredients
         List<PizzaIngredient> uniqueIngredients = new List<PizzaIngredient>();
         foreach (var ingredient in ingredientsOnPizza.Where(ingredient => !uniqueIngredients.Contains(ingredient)))
         {
@@ -76,11 +75,11 @@ public class PizzaBehaviour : MonoBehaviour
         foreach (var ingredient in uniqueIngredients)
         {
             // get unique ingredient count
-            int uniqueIngredientCount = ingredientsOnPizza.Count(orderIngredient => ingredient == orderIngredient);
+            int uniqueIngredientCount = ingredientsOnPizza.Count(pizzaIngredient => ingredient == pizzaIngredient);
 
             // instantiate UI
             var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, ingredientUITransform.rotation, ingredientUITransform);
-
+            
             // update text with info
             var ingredientTexts = newIngredient.GetComponentsInChildren<TMP_Text>();
             ingredientTexts[0].text = ingredient.GetIngredientName();
@@ -88,22 +87,58 @@ public class PizzaBehaviour : MonoBehaviour
 
             newIngredient.GetComponentInChildren<Image>().sprite = ingredient.GetIngredientIcon();
         }
+        
+        /*
+        // if the added ingredient has already been added
+        if (uniqueIngredients.Contains(addedIngredient))
+        {
+            int uniqueIngredientCount = ingredientsOnPizza.Count(pizzaIngredient => pizzaIngredient == addedIngredient);
+            var ingredientTexts = ingredient.GetComponentsInChildren<TMP_Text>();
+            ingredientTexts[1].text = "x" + uniqueIngredientCount;
+        }
+        else // spawn new ui
+        {
+            // adds new ingredient to list of unique ingredients
+            uniqueIngredients.Add(addedIngredient);
+            
+            // get unique ingredient count
+            int uniqueIngredientCount = ingredientsOnPizza.Count(orderIngredient => addedIngredient == orderIngredient);
+
+            // instantiate UI
+            var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, ingredientUITransform.rotation, ingredientUITransform);
+
+            // update text with info
+            var ingredientTexts = newIngredient.GetComponentsInChildren<TMP_Text>();
+            ingredientTexts[0].text = addedIngredient.GetIngredientName();
+            ingredientTexts[1].text = "x" + uniqueIngredientCount;
+
+            newIngredient.GetComponentInChildren<Image>().sprite = addedIngredient.GetIngredientIcon();
+        }
+        */
     }
 
     public void CurrentIngredients()
     {
         //turn on canvas
+        UpdateCanvas();
         gameObject.transform.GetChild(1).gameObject.SetActive(true);
     }
 
     public void TurnOffCurrentIngredients()
     {
+        //turn off canvas
         //remove current canvas ingredients so there are no repeats
-        for (int i = 0; i < ingredientUITransform.childCount; i++)
+        int childCount = ingredientUITransform.childCount;
+        for (int i = 0; i < childCount; i++)
         {
-            Destroy(ingredientUITransform.GetChild(i));
+            Destroy(ingredientUITransform.GetChild(i).gameObject);
         }
-
+        
         gameObject.transform.GetChild(1).gameObject.SetActive(false);
+    }
+
+    public void SetZeroRotation()
+    {
+        transform.rotation = Quaternion.identity;
     }
 }
