@@ -112,7 +112,10 @@ public class OvenBehaviour : MonoBehaviour
             {
                 PlayOvenAudio(OvenAudioStates.PizzaDone);
                 yield return new WaitWhile(() => audioSource.isPlaying);
-                PlayOvenAudio(OvenAudioStates.Cooking);
+                if (isPizzaInOven)
+                {
+                    PlayOvenAudio(OvenAudioStates.Cooking);
+                }
                 startOverCooking = true;
                 tempTime = 0;
                 timerTime = cookTime + 1;
