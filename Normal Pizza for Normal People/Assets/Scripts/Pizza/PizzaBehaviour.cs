@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class PizzaBehaviour : MonoBehaviour
 {
     private List<PizzaIngredient> ingredientsOnPizza = new List<PizzaIngredient>();
+    private List<GameObject> ingredientUIList = new List<GameObject>();
+    private List<int> uniqueIngredientCounts = new List<int>();
 
     //Oven/Cooking Variables
     [HideInInspector]
@@ -35,6 +37,7 @@ public class PizzaBehaviour : MonoBehaviour
     public void AddPizzaIngredient(PizzaIngredient newIngredient)
     {
         ingredientsOnPizza.Add(newIngredient);
+        UpdateCanvas(newIngredient);
     }
 
     public List<PizzaIngredient> GetIngredientsOnPizza()
@@ -60,87 +63,51 @@ public class PizzaBehaviour : MonoBehaviour
         }
     }
 
-    private void UpdateCanvas()
+    private void UpdateCanvas(PizzaIngredient addedIngredient)
     {
-        
-        // get unique ingredients
-        List<PizzaIngredient> uniqueIngredients = new List<PizzaIngredient>();
-        
-        foreach (var pizzaIngredient in ingredientsOnPizza)
+        // checks if added ingredient already has UI
+        foreach (var uiElement in ingredientUIList)
         {
-            foreach (var uniqueIngredient in uniqueIngredients)
+            var ingredientTexts = uiElement.GetComponentsInChildren<TMP_Text>();
+            if (addedIngredient.GetIngredientName() == ingredientTexts[0].text)
             {
-                if (pizzaIngredient.GetIngredientName() == uniqueIngredient.GetIngredientName())
-                {
-                    uniqueIngredients.Add(pizzaIngredient);
-                    break;
-                }
+                ++uniqueIngredientCounts[ingredientUIList.IndexOf(uiElement)];
+                ingredientTexts[1].text = "x" + uniqueIngredientCounts[ingredientUIList.IndexOf(uiElement)];
+                return;
             }
         }
-
-        // for each unique order ingredient
-        foreach (var ingredient in uniqueIngredients)
-        {
-            // get unique ingredient count
-            int uniqueIngredientCount = ingredientsOnPizza.Count(pizzaIngredient => ingredient == pizzaIngredient);
-
-            // instantiate UI
-            var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, ingredientUITransform.rotation, ingredientUITransform);
-            
-            // update text with info
-            var ingredientTexts = newIngredient.GetComponentsInChildren<TMP_Text>();
-            ingredientTexts[0].text = ingredient.GetIngredientName();
-            ingredientTexts[1].text = "x" + uniqueIngredientCount;
-
-            newIngredient.GetComponentInChildren<Image>().sprite = ingredient.GetIngredientIcon();
-        }
         
-        /*
-        // if the added ingredient has already been added
-        if (uniqueIngredients.Contains(addedIngredient))
-        {
-            int uniqueIngredientCount = ingredientsOnPizza.Count(pizzaIngredient => pizzaIngredient == addedIngredient);
-            var ingredientTexts = ingredient.GetComponentsInChildren<TMP_Text>();
-            ingredientTexts[1].text = "x" + uniqueIngredientCount;
-        }
-        else // spawn new ui
-        {
-            // adds new ingredient to list of unique ingredients
-            uniqueIngredients.Add(addedIngredient);
+        // if there is no UI create one
+        CreateNewUI(addedIngredient);
+    }
+
+    private void CreateNewUI(PizzaIngredient addedIngredient)
+    {
+
+        // instantiate UI
+        var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, ingredientUITransform.rotation, ingredientUITransform);
             
-            // get unique ingredient count
-            int uniqueIngredientCount = ingredientsOnPizza.Count(orderIngredient => addedIngredient == orderIngredient);
+        // add new UI to list of UI for updating
+        ingredientUIList.Add(newIngredient);
+        uniqueIngredientCounts.Add(1);
+            
+        // update text with info
+        var ingredientTexts = newIngredient.GetComponentsInChildren<TMP_Text>();
+        ingredientTexts[0].text = addedIngredient.GetIngredientName();
+        ingredientTexts[1].text = "x" + uniqueIngredientCounts[ingredientUIList.IndexOf(newIngredient)];
 
-            // instantiate UI
-            var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, ingredientUITransform.rotation, ingredientUITransform);
-
-            // update text with info
-            var ingredientTexts = newIngredient.GetComponentsInChildren<TMP_Text>();
-            ingredientTexts[0].text = addedIngredient.GetIngredientName();
-            ingredientTexts[1].text = "x" + uniqueIngredientCount;
-
-            newIngredient.GetComponentInChildren<Image>().sprite = addedIngredient.GetIngredientIcon();
-        }
-        */
+        newIngredient.GetComponentInChildren<Image>().sprite = addedIngredient.GetIngredientIcon();
     }
 
     public void CurrentIngredients()
     {
         //turn on canvas
-        UpdateCanvas();
         gameObject.transform.GetChild(1).gameObject.SetActive(true);
     }
 
     public void TurnOffCurrentIngredients()
     {
         //turn off canvas
-        //remove current canvas ingredients so there are no repeats
-        int childCount = ingredientUITransform.childCount;
-        for (int i = 0; i < childCount; i++)
-        {
-            Destroy(ingredientUITransform.GetChild(i).gameObject);
-        }
-        
         gameObject.transform.GetChild(1).gameObject.SetActive(false);
     }
 
