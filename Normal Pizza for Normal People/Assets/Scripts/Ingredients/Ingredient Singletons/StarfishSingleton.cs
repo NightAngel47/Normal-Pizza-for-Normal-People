@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StarfishSingleton : MonoBehaviour
+public class StarfishSingleton
 {
     public static StarfishSingleton instance;
 

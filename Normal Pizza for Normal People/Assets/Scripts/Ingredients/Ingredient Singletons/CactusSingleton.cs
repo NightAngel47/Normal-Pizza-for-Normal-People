@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CactusSingleton : MonoBehaviour
+public class CactusSingleton 
 {
     public static CactusSingleton instance;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeetrootSingleton : MonoBehaviour
+public class BeetrootSingleton
 {
     public static BeetrootSingleton instance;
 

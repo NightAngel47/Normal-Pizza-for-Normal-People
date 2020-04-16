@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PineappleSingleton : MonoBehaviour
+public class PineappleSingleton 
 {
     public static PineappleSingleton instance;
 

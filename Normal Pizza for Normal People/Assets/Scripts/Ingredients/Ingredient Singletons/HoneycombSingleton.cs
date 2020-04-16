@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HoneycombSingleton : MonoBehaviour
+public class HoneycombSingleton
 {
     public static HoneycombSingleton instance;
 
