@@ -6,6 +6,7 @@ public class TutorialUIHandler : MonoBehaviour
 {
     public List<GameObject> tutorialUI = new List<GameObject>();
     private GameManager gm;
+    private bool runThroughOnce = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,26 +23,30 @@ public class TutorialUIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gm.dayStarted == true)
+        if (runThroughOnce)
         {
-            tutorialUI[0].SetActive(false); //start off
-            tutorialUI[1].SetActive(true); //smack on
-        }
-        if(FindObjectOfType<PizzaBehaviour>())
-        {
-            tutorialUI[1].SetActive(false); //smack off
-            tutorialUI[2].SetActive(true); //grab on
-        }
+            if (gm.dayStarted == true)
+            {
+                tutorialUI[0].SetActive(false); //start off
+                tutorialUI[1].SetActive(true); //smack on
+            }
+            if (FindObjectOfType<PizzaBehaviour>())
+            {
+                tutorialUI[1].SetActive(false); //smack off
+                tutorialUI[2].SetActive(true); //grab on
+            }
 
-        if(FindObjectOfType<IngredientHitEffect>())
-        {
-            tutorialUI[2].SetActive(false); //grab off
-            tutorialUI[3].SetActive(true); //throw on
-        }
+            if (FindObjectOfType<IngredientHitEffect>())
+            {
+                tutorialUI[2].SetActive(false); //grab off
+                tutorialUI[3].SetActive(true); //throw on
+            }
 
-        if(Customer.firstPizzaThrow == true)
-        {
-            tutorialUI[3].SetActive(false); //throw off
+            if (Customer.firstPizzaThrow == true)
+            {
+                tutorialUI[3].SetActive(false); //throw off
+                runThroughOnce = true;
+            }
         }
     }
 }
