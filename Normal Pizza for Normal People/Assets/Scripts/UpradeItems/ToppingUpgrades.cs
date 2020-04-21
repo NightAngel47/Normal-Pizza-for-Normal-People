@@ -13,9 +13,13 @@ public class ToppingUpgrades : ItemUpgrades
 
     public override void TurnOnUpgrade()
     {
-        isTopping = true;
         pis = gameObject.GetComponent<PizzaIngredientSpawner>();
         pis.enabled = !pis.enabled;
+
+        if (pis.enabled)
+        {
+            FindObjectOfType<OrderCreation>().allPizzaIngredients.Add(gameObject.GetComponent<PizzaIngredientSpawner>().pizzaIngredientToSpawn.GetComponent<IngredientHitEffect>().spawnObjectOnCollision.GetComponent<PizzaIngredient>());
+        }
     }
 
     protected override void TurnOffPurchaseCollider()

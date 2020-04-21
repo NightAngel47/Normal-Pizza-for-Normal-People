@@ -33,7 +33,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9190195862997612197}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 315, z: 0}
 --- !u!54 &833014317
 Rigidbody:
@@ -89,11 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c8f6e6b704fb24eadb8a0ac3a1a331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueprintMaterial: {fileID: 0}
-  activeMaterial: {fileID: 0}
-  itemCost: 0
-  oc: {fileID: 0}
-  isTopping: 0
 --- !u!82 &2509894332342842909
 AudioSource:
   m_ObjectHideFlags: 0
@@ -105,7 +100,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3d88de1f8036ed842977a3959bcc9e24, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -190,36 +185,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1275780411
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1275780412}
-  m_Layer: 0
-  m_Name: Customer Spawn Pos
-  m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1275780412
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275780411}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.05, y: 1.65, z: 11.58}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 9190195862997612197}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1733666333
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +218,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9190195862997612197}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 210, z: 0}
 --- !u!54 &1733666337
 Rigidbody:
@@ -309,11 +274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c8f6e6b704fb24eadb8a0ac3a1a331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueprintMaterial: {fileID: 0}
-  activeMaterial: {fileID: 0}
-  itemCost: 0
-  oc: {fileID: 0}
-  isTopping: 0
 --- !u!82 &2164688423524348677
 AudioSource:
   m_ObjectHideFlags: 0
@@ -325,7 +285,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3d88de1f8036ed842977a3959bcc9e24, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -441,7 +401,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9190195862997612197}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!54 &821180517
 Rigidbody:
@@ -518,7 +478,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1275780412}
   - {fileID: 95182522576721994}
   - {fileID: 1733666334}
   - {fileID: 833014314}
@@ -548,7 +507,7 @@ MonoBehaviour:
     numOfCustomers: 10
     numOfCustomersInQue: 3
     dayLength: 90
-    moneyGoal: 100
+    moneyGoal: 0
   newCustomerPerDayRate: 1.1
   newMoneyGoalPerDayRate: 1.5
   currentGameDay:
@@ -605,7 +564,7 @@ MonoBehaviour:
   currentDayCustomerText: {fileID: 0}
   customerPrefab: {fileID: 8855423326005325540, guid: 0a464834b98943a408688911cecd76cc,
     type: 3}
-  customerSpawnPos: {fileID: 1275780412}
+  customerSpawnPos: {fileID: 0}
   customerLines:
   - {fileID: 5973250667470171886}
 --- !u!114 &7806614716939482675
@@ -646,7 +605,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  upgradeTracker: 0
 --- !u!82 &6980543429296917128
 AudioSource:
   m_ObjectHideFlags: 0

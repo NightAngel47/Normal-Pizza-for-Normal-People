@@ -4,30 +4,30 @@ using UnityEngine;
 
 public abstract class ItemUpgrades : MonoBehaviour
 {
-    public Material blueprintMaterial; //material for when it is not avaiable for purchase
-    public Material activeMaterial; //material for when it is purchased its 'normal' material
+    //public Material blueprintMaterial; //material for when it is not avaiable for purchase
+    //public Material activeMaterial; //material for when it is purchased its 'normal' material
 
-    private MoneyTracker mt; //reference to moneytracker so that it can purchase the upgrades and subtract from total money amount
+    //private MoneyTracker mt; //reference to moneytracker so that it can purchase the upgrades and subtract from total money amount
 
-    public int itemCost; //cost of upgrade. set individually by each upgrade
+    //public int itemCost; //cost of upgrade. set individually by each upgrade
 
-    public OrderCreation oc;
-    public bool isTopping;
+    //public OrderCreation oc;
+    //public bool isTopping;
 
     
 
     private void Start()
     {
         //finds money tracker ref
-        mt = FindObjectOfType<MoneyTracker>();
-        oc = FindObjectOfType<OrderCreation>();
+        //mt = FindObjectOfType<MoneyTracker>();
+        //oc = FindObjectOfType<OrderCreation>();
     }
 
     //displays items with the available for purchase material during ugrade period
     public void ShowItem()
     {
         gameObject.SetActive(true);
-        ChangeMaterial(blueprintMaterial);
+        //ChangeMaterial(blueprintMaterial);
     }
 
     //hides items when upgrade period is done
@@ -44,11 +44,6 @@ public abstract class ItemUpgrades : MonoBehaviour
         TurnOnUpgrade(); //makes sure upgrade funcitonality works 
         FindObjectOfType<UpgradeSystem>().RemovedPurchasedUpgrade(gameObject); // Remove this gameobject from upgrade system
         gameObject.GetComponent<AudioSource>().Play();
-        if(isTopping == true)
-        {
-            oc.allPizzaIngredients.Add(gameObject.GetComponent<PizzaIngredientSpawner>().pizzaIngredientToSpawn.GetComponent<IngredientHitEffect>().
-                spawnObjectOnCollision.GetComponent<PizzaIngredient>());
-        }
         Destroy(gameObject.GetComponent<ItemUpgrades>()); // Destroy item upgrade so it is not readded to upgrade system
 
         //PLAYER CHOOSE UPGRADE LEFTOVER CODE
