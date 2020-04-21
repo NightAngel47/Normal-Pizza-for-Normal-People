@@ -491,6 +491,7 @@ GameObject:
   - component: {fileID: 7806614716939482675}
   - component: {fileID: 5544742078080136158}
   - component: {fileID: 6980543429296917128}
+  - component: {fileID: 449130246}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -732,6 +733,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &449130246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3481793447267015054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce4f884d60ab4945886d91c359d9757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 1480762469664099866}
 --- !u!1001 &1422050216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -934,6 +952,12 @@ PrefabInstance:
 --- !u!224 &1480762469664099846 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1480762468938403246, guid: 7c82d41976ba43849a247f8dc053395d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1422050216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1480762469664099866 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1480762468938403250, guid: 7c82d41976ba43849a247f8dc053395d,
     type: 3}
   m_PrefabInstance: {fileID: 1422050216}
   m_PrefabAsset: {fileID: 0}
