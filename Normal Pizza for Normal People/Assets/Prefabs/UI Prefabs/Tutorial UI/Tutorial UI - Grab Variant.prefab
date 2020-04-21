@@ -152,7 +152,7 @@ PrefabInstance:
     - target: {fileID: 3957785388385721863, guid: 6a66864445c6fb843aea2b0280507e12,
         type: 3}
       propertyPath: m_Name
-      value: Tutorial UI - Grab
+      value: Tutorial UI - Grab Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3957785388385721883, guid: 6a66864445c6fb843aea2b0280507e12,
         type: 3}
@@ -274,5 +274,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4987714613787769067, guid: 6a66864445c6fb843aea2b0280507e12,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9378c298b5491b54380255df86194d77, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a66864445c6fb843aea2b0280507e12, type: 3}

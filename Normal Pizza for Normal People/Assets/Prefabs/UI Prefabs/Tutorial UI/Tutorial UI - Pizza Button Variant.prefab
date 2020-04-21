@@ -7,137 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3957785387577775520, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.1115
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775520, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.0443
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775520, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.0807
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775520, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.11475226
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775520, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 13.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775520, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9917751
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775520, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.056317072
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775520, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.006516106
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775520, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: c854bfede2cc84ccc8ae3d9496d33ecc,
-        type: 2}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -8806849708005561971, guid: c854bfede2cc84ccc8ae3d9496d33ecc,
-        type: 2}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_text
-      value: Smack
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_fontColor.r
-      value: 0.94509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.34901962
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.25882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4282538481
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_firstOverflowCharacterIndex
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_margin.x
-      value: -0.026852489
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_margin.z
-      value: -0.15946972
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785387577775521, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_enableVertexGradient
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3957785388090278319, guid: 6a66864445c6fb843aea2b0280507e12,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3957785388385721863, guid: 6a66864445c6fb843aea2b0280507e12,
         type: 3}
       propertyPath: m_Name
-      value: Tutorial UI - Pizza Button
+      value: Tutorial UI - Pizza Button Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3957785388385721883, guid: 6a66864445c6fb843aea2b0280507e12,
         type: 3}
@@ -197,12 +70,12 @@ PrefabInstance:
     - target: {fileID: 3957785388385721883, guid: 6a66864445c6fb843aea2b0280507e12,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.16
+      value: -0.16000366
       objectReference: {fileID: 0}
     - target: {fileID: 3957785388385721883, guid: 6a66864445c6fb843aea2b0280507e12,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.626
+      value: 1.6260071
       objectReference: {fileID: 0}
     - target: {fileID: 3957785388385721883, guid: 6a66864445c6fb843aea2b0280507e12,
         type: 3}
