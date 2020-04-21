@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
     public void StartDay()
     {
         startDayButton.SetActive(false);
+        dayStarted = true;
 
         if (currentGameDay.dayNum == 1)
         {

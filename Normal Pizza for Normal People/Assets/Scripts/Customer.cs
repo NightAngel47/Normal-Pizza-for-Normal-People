@@ -47,6 +47,8 @@ public class Customer : MonoBehaviour
     private bool leaving;
     private Vector3 targetLinePos;
     private Vector3 endPos;
+
+    public static bool firstPizzaThrow = false;
     
     // Start is called before the first frame update
     void Start()
@@ -231,6 +233,8 @@ public class Customer : MonoBehaviour
     {
         //TODO add topping tiers
         float deliveredPizzaMoney = moneyTracker.basePizzaProfit + order.GetOrderIngredients().Count * moneyTracker.tier1Toppings;
+
+        firstPizzaThrow = true;
 
         int pizzaProfit;
         if (pizza.GetIngredientsOnPizza().Count == order.GetOrderIngredients().Count)
