@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.normalpizzafornormalpeople.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "D:\\GitHub\\Normal-Pizza-for-Normal-People\\Normal Pizza for Normal People\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\Kenzie\\Documents\\GitHub\\Normal-Pizza-for-Normal-People\\Normal Pizza for Normal People\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "Normal Pizza for Normal People [Testing]"
