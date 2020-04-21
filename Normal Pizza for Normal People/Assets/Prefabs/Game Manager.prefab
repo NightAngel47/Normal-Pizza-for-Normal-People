@@ -547,7 +547,7 @@ MonoBehaviour:
     dayNum: 1
     numOfCustomers: 10
     numOfCustomersInQue: 3
-    dayLength: 60
+    dayLength: 90
     moneyGoal: 100
   newCustomerPerDayRate: 1.1
   newMoneyGoalPerDayRate: 1.5
@@ -638,14 +638,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableUpgrades:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1733666333}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 833014313}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   upgradeTracker: 0
 --- !u!82 &6980543429296917128
 AudioSource:
