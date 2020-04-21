@@ -13,7 +13,7 @@ public class CustomerLine : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     private List<Order> customerOrders = new List<Order>();
     [SerializeField] private OrderCreation orderCreation;
-    [SerializeField] private TMP_Text currentDayCustomerText;
+    //[SerializeField] private TMP_Text currentDayCustomerText;
     private int currentDayCustomerServed;
     private int currentDayNumOfCustomers;
     private int currentAmountOfCustomersInShop;
@@ -32,7 +32,7 @@ public class CustomerLine : MonoBehaviour
         customerOrders = orderCreation.GenerateOrders(numOfCustomers);
         currentDayCustomerServed = 0;
         currentDayNumOfCustomers = numOfCustomers;
-        currentDayCustomerText.text = currentDayCustomerServed + "/" + currentDayNumOfCustomers;
+        //currentDayCustomerText.text = currentDayCustomerServed + "/" + currentDayNumOfCustomers;
         StartCoroutine(NextCustomer());
     }
 
@@ -81,7 +81,7 @@ public class CustomerLine : MonoBehaviour
     public void IncreaseCustomersServed()
     {
         currentDayCustomerServed++;
-        currentDayCustomerText.text = currentDayCustomerServed + "/" + currentDayNumOfCustomers;
+        //currentDayCustomerText.text = currentDayCustomerServed + "/" + currentDayNumOfCustomers;
     }
     
     public void CustomerServed()
