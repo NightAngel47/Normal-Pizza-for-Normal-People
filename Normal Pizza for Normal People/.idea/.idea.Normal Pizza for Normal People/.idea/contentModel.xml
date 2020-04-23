@@ -72,22 +72,6 @@
             <e p="OvenUpgrade.cs" t="Include" />
             <e p="ToppingUpgrades.cs" t="Include" />
           </e>
-          <e p="Week 12, 1. Singleton Pattern with Console Output" t="Include">
-            <e p="SingletonClass.cs" t="Include" />
-            <e p="SingletonMonoBehaviour.cs" t="Include" />
-            <e p="StaticClass.cs" t="Include" />
-            <e p="UsingSingletons.cs" t="Include" />
-          </e>
-          <e p="Week 12, 2. Object Pool Pattern with GameObjects" t="Include">
-            <e p="Client Scripts" t="Include">
-              <e p="FastPrefabSpawnerWithObjPooling.cs" t="Include" />
-              <e p="SlowPrefabSpawner.cs" t="Include" />
-            </e>
-            <e p="Design Pattern Scripts" t="Include">
-              <e p="ObjectPooler.cs" t="Include" />
-              <e p="Pool.cs" t="Include" />
-            </e>
-          </e>
         </e>
         <e p="SteamVR" t="Include">
           <e p="Editor" t="Include">

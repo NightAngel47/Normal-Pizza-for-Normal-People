@@ -313,7 +313,7 @@ public class Customer : MonoBehaviour
         moneyForOrderTextObject.gameObject.SetActive(true);
         ingredientUITransform.gameObject.SetActive(false);
 
-        Destroy(ingredientUITransform.gameObject);
+        Destroy(ingredientUITransform.transform.parent.gameObject);
         Destroy(moneyForOrderTextObject, 3);
         
     }
