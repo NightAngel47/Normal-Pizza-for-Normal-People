@@ -313,7 +313,9 @@ public class Customer : MonoBehaviour
         moneyForOrderTextObject.gameObject.SetActive(true);
         ingredientUITransform.gameObject.SetActive(false);
 
+        Destroy(ingredientUITransform.gameObject);
         Destroy(moneyForOrderTextObject, 3);
+        
     }
 
     private void PlayCustomerAudio(CustomerAudioStates state)
