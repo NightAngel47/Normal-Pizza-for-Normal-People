@@ -70,8 +70,6 @@
             <e p="CustomerLineUpgrade.cs" t="Include" />
             <e p="ItemUpgrades.cs" t="Include" />
             <e p="OvenUpgrade.cs" t="Include" />
-            <e p="PizzaStationUpgrade.cs" t="Include" />
-            <e p="PurchColScript.cs" t="Include" />
             <e p="ToppingUpgrades.cs" t="Include" />
           </e>
           <e p="Week 12, 1. Singleton Pattern with Console Output" t="Include">

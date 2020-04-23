@@ -89,6 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c8f6e6b704fb24eadb8a0ac3a1a331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newLineUI: {fileID: 5069565016871101520, guid: 21f185d3d344fed4c822358982e8dfa0,
+    type: 3}
+  newLineUILifetime: 5
 --- !u!82 &2509894332342842909
 AudioSource:
   m_ObjectHideFlags: 0
@@ -304,6 +307,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c8f6e6b704fb24eadb8a0ac3a1a331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newLineUI: {fileID: 5069565016871101520, guid: 21f185d3d344fed4c822358982e8dfa0,
+    type: 3}
+  newLineUILifetime: 5
 --- !u!82 &2164688423524348677
 AudioSource:
   m_ObjectHideFlags: 0

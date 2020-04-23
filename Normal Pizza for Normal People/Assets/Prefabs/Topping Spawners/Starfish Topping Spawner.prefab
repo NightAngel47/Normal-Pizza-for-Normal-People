@@ -172,6 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4963c3a0a8c83974bbd6de5dddf2d988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newToppingUI: {fileID: 8657597779185751768, guid: 2ee58e203efe9e14a8055b3fec42af18,
+    type: 3}
+  newToppingUILifetime: 2
 --- !u!95 &7711355531907728944
 Animator:
   serializedVersion: 3
