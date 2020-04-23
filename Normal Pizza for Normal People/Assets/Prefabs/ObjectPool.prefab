@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2207998650218602918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2207998650218602920}
+  - component: {fileID: 2207998650218602919}
+  m_Layer: 0
+  m_Name: ObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2207998650218602920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207998650218602918}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2207998650218602919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207998650218602918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f74609160bf8ec45bdb1cc8830e4b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: pineapple
+    prefab: {fileID: 3992555147375518813, guid: af79277fd6452a74b93ceef354085e6c,
+      type: 3}
+    size: 5
+  - tag: tidepod
+    prefab: {fileID: 8947208651912989917, guid: 2b0d21a40c4cec2468b19ad6a923a98b,
+      type: 3}
+    size: 5
+  - tag: honeycomb
+    prefab: {fileID: 3992555147375518813, guid: 1eb245e50c7ce7247911deea20cc1587,
+      type: 3}
+    size: 5
+  - tag: starfish
+    prefab: {fileID: 3992555147375518813, guid: de8ce5b3de19c1d4797f3bb9551a3ed1,
+      type: 3}
+    size: 5
+  - tag: cactus
+    prefab: {fileID: 6151775484690570123, guid: bcbb968546cea3d4482aed4f1f32645f,
+      type: 3}
+    size: 5
+  - tag: beetroot
+    prefab: {fileID: 2570119674706485371, guid: 6d10906fcd321d148a21d1e04ddd6f81,
+      type: 3}
+    size: 5
