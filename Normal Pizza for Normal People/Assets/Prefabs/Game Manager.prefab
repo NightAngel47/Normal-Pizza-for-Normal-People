@@ -540,6 +540,7 @@ MonoBehaviour:
   currentDayText: {fileID: 0}
   currentDayTime: {fileID: 0}
   currentDayProgressBar: {fileID: 0}
+  endOfDaySummary: {fileID: 0}
   startingDayValues:
     dayNum: 1
     numOfCustomers: 10
@@ -577,6 +578,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2906572782878665318}
   currentDayMoneyText: {fileID: 0}
+  endOfDaySummaryTexts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   basePizzaProfit: 25
   tier1Toppings: 2
   tier2Toppings: 4

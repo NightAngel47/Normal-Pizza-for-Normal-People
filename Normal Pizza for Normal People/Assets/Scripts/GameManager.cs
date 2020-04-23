@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text currentDayText;
     [SerializeField] private TMP_Text currentDayTime;
     [SerializeField] private Image currentDayProgressBar;
+    
+    [SerializeField] private GameObject endOfDaySummary;
 
     [Header("Game Days")] 
     [SerializeField, Tooltip("The starting values for the game days.")] private Day startingDayValues;
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         
+        endOfDaySummary.SetActive(false);
         //TODO have player start day
         currentGameDay = startingDayValues;
         //StartCoroutine(DayCycle());  //moved to start day function
@@ -110,8 +113,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator DayCycle()
     {
-        moneyTracker.ShowHideTotalMoneyUI(false);
-        currentDayText.text = "Day " + (currentGameDay.dayNum);
+        endOfDaySummary.SetActive(false);
+        endOfDaySummary.GetComponentsInChildren<TMP_Text>()[0].text = "Day " + currentGameDay.dayNum + " Summary";
+        currentDayText.text = "Day " + currentGameDay.dayNum;
         customerLine.StartDay(currentGameDay.numOfCustomers);
         currentDayTimer = currentGameDay.dayLength;
         ShowHideDayTimer(true);
@@ -139,7 +143,8 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitWhile(() => lastCustomer.activeOrder);
         }
-        moneyTracker.ShowHideTotalMoneyUI(true);
+        
+        endOfDaySummary.SetActive(true);
 
         if (moneyTracker.GetCurrentDayAmount() >= currentGameDay.moneyGoal)
         {
