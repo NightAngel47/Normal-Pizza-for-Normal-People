@@ -744,7 +744,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce4f884d60ab4945886d91c359d9757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bottomOven: {fileID: 0}
   tutorialUI:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

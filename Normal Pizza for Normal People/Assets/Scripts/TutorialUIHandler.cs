@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class TutorialUIHandler : MonoBehaviour
 {
-    public List<GameObject> tutorialUI = new List<GameObject>();
+    [SerializeField] private GameObject bottomOven;
+    [SerializeField] private List<GameObject> tutorialUI = new List<GameObject>();
     private GameManager gm;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,5 +53,15 @@ public class TutorialUIHandler : MonoBehaviour
         yield return new WaitUntil(() => Customer.firstPizzaThrow);
         
         tutorialUI[4].SetActive(false); //throw off
+        
+        yield return new WaitUntil(() => bottomOven.activeSelf && gm.dayStarted && FindObjectOfType<PizzaBehaviour>() && FindObjectOfType<IngredientHitEffect>());
+        
+        tutorialUI[5].SetActive(true); // cook right on
+        tutorialUI[6].SetActive(true); // cook on
+        
+        yield return new WaitUntil(() => bottomOven.GetComponentInChildren<OvenBehaviour>().GetIsPizzaInOven());
+        
+        tutorialUI[5].SetActive(false); // cook right off
+        tutorialUI[6].SetActive(false); // cook off
     }
 }
