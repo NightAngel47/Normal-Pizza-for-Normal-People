@@ -41,10 +41,15 @@ public class TutorialUIHandler : MonoBehaviour
         yield return new WaitUntil(() => FindObjectOfType<IngredientHitEffect>());
         
         tutorialUI[2].SetActive(false); //grab off
-        tutorialUI[3].SetActive(true); //throw on
+        tutorialUI[3].SetActive(true); //hover on
+        
+        yield return new WaitUntil(() => FindObjectOfType<PizzaBehaviour>().transform.GetChild(1).gameObject.activeSelf);
+        
+        tutorialUI[3].SetActive(false); //hover off
+        tutorialUI[4].SetActive(true); //throw on
         
         yield return new WaitUntil(() => Customer.firstPizzaThrow);
         
-        tutorialUI[3].SetActive(false); //throw off
+        tutorialUI[4].SetActive(false); //throw off
     }
 }
