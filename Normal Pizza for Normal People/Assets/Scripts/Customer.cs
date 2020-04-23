@@ -312,6 +312,8 @@ public class Customer : MonoBehaviour
         moneyForOrderTextObject.transform.localEulerAngles = new Vector3(0, moneyForOrderTextObject.transform.localEulerAngles.x , moneyForOrderTextObject.transform.localEulerAngles.z);
         moneyForOrderTextObject.gameObject.SetActive(true);
         ingredientUITransform.gameObject.SetActive(false);
+
+        Destroy(moneyForOrderTextObject, 3);
     }
 
     private void PlayCustomerAudio(CustomerAudioStates state)
