@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
     public void StartDay()
     {
         startDayButton.SetActive(false);
+        dayStarted = true;
 
         if (currentGameDay.dayNum == 1)
         {
@@ -164,7 +165,16 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator DayTimer()
     {
-        currentDayTime.text = "" + (int) currentDayTimer;
+        var dayTimeMin = (int) (currentDayTimer / 60);
+        var dayTimeSec = (int) (currentDayTimer - (dayTimeMin * 60));
+        if (dayTimeSec < 10)
+        {
+            currentDayTime.text = dayTimeMin + ":0" + dayTimeSec;
+        }
+        else
+        {
+            currentDayTime.text = dayTimeMin + ":" + dayTimeSec;
+        }
         currentDayProgressBar.fillAmount = currentDayTimer / currentGameDay.dayLength;
         yield return new WaitForEndOfFrame();
         currentDayTimer -= Time.deltaTime;

@@ -152,7 +152,7 @@ PrefabInstance:
     - target: {fileID: 3957785388385721863, guid: 6a66864445c6fb843aea2b0280507e12,
         type: 3}
       propertyPath: m_Name
-      value: Tutorial UI - Start Game
+      value: Tutorial UI - Start Game Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3957785388385721883, guid: 6a66864445c6fb843aea2b0280507e12,
         type: 3}

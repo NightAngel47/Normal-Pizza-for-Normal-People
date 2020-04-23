@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class ToppingUpgrades : ItemUpgrades
 {
+    [SerializeField] private GameObject newToppingUI;
+    [SerializeField] private float newToppingUILifetime = 2f;
+    
     private PizzaIngredientSpawner pis;
-
-    protected override void ChangeMaterial(Material changeMat)
-    {
-        gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material = changeMat;
-    }
 
     public override void TurnOnUpgrade()
     {
@@ -19,11 +17,7 @@ public class ToppingUpgrades : ItemUpgrades
         if (pis.enabled)
         {
             FindObjectOfType<OrderCreation>().allPizzaIngredients.Add(gameObject.GetComponent<PizzaIngredientSpawner>().pizzaIngredientToSpawn.GetComponent<IngredientHitEffect>().spawnObjectOnCollision.GetComponent<PizzaIngredient>());
+            Destroy(Instantiate(newToppingUI, transform.position, Quaternion.Euler(0, -90, 0)), newToppingUILifetime);
         }
-    }
-
-    protected override void TurnOffPurchaseCollider()
-    {
-        throw new System.NotImplementedException();
     }
 }

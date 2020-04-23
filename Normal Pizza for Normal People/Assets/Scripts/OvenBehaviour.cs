@@ -203,11 +203,6 @@ public class OvenBehaviour : MonoBehaviour
         timerTime = cookTime + 1;
     }
 
-    private void BackToCookingSounds()
-    {
-        PlayOvenAudio(OvenAudioStates.Cooking);
-    }
-
     private void PlayOvenAudio(OvenAudioStates state)
     {
         switch (state)
@@ -231,5 +226,11 @@ public class OvenBehaviour : MonoBehaviour
                 audioSource.Play();
                 break;
         }
+    }
+
+
+    public bool GetIsPizzaInOven()
+    {
+        return isPizzaInOven;
     }
 }

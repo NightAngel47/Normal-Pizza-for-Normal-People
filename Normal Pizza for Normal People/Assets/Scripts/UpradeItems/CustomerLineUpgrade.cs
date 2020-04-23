@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class CustomerLineUpgrade : ItemUpgrades
 {
+    [SerializeField] private GameObject newLineUI;
+    [SerializeField] private float newLineUILifetime = 2f;
+    
     private CustomerLinePos customerLinePos;
 
     private void Awake()
@@ -18,16 +21,7 @@ public class CustomerLineUpgrade : ItemUpgrades
         if (customerLinePos.enabled)
         {
             FindObjectOfType<CustomerLine>().AddNewCustomerLine(GetComponent<CustomerLinePos>());
+            Destroy(Instantiate(newLineUI, transform.position, Quaternion.identity), newLineUILifetime);
         }
-    }
-
-    protected override void ChangeMaterial(Material changeMat)
-    {
-        Debug.Log("");
-    }
-
-    protected override void TurnOffPurchaseCollider()
-    {
-        Debug.Log("");
     }
 }
