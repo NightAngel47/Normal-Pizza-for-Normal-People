@@ -62,6 +62,9 @@ public class ToppingObjectPool : MonoBehaviour
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
 
+        objectToSpawn.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = objectToSpawn.GetComponent<IngredientHitEffect>().mat;
+        objectToSpawn.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+
         // Add the object back to the queue of objects (to the back of the line)
         poolDictionary[tag].Enqueue(objectToSpawn);
 

@@ -6,6 +6,7 @@ using UnityEngine;
 public class IngredientHitEffect : MonoBehaviour
 {
     public GameObject spawnObjectOnCollision;
+    public Material mat;
 
     private void OnCollisionEnter(Collision collision)
     {
