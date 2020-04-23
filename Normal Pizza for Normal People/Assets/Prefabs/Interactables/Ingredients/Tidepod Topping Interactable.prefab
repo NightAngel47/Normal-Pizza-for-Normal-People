@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 26c33e04585867e45aa534e5855b01de, type: 2}
+  - {fileID: -876546973899608171, guid: e7ec257a567adf04f8c6e25e6ec0810c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,6 +111,12 @@ PrefabInstance:
       propertyPath: spawnObjectOnCollision
       value: 
       objectReference: {fileID: 622189526953829681, guid: 7d1e6b0d42121f24d9fc188a3f5b8555,
+        type: 3}
+    - target: {fileID: 179181037077442741, guid: cce7d3133eca42c4487ecfbde06776f1,
+        type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 8d8d8c3524d416e408882734e7521506,
         type: 3}
     - target: {fileID: 3733129861206303584, guid: cce7d3133eca42c4487ecfbde06776f1,
         type: 3}

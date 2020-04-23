@@ -8,7 +8,15 @@ public class MoneyTracker : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private TMP_Text currentDayMoneyText;
-    //[SerializeField] private TMP_Text totalMoneyText;
+
+    [SerializeField] private List<TMP_Text> endOfDaySummaryTexts;
+    private enum SummaryText
+    {
+        CurrentDay,
+        PreviousTotal,
+        NewTotal
+    };
+    
     /// <summary>
     /// Current amount of money earned each day
     /// </summary>
@@ -30,12 +38,12 @@ public class MoneyTracker : MonoBehaviour
     private void Start()
     {
         CustomerChangeMoney(0);
-        ShowHideTotalMoneyUI(false);
     }
 
     public void TrackNewDay()
     {
         currentDayAmount = 0;
+        endOfDaySummaryTexts[(int) SummaryText.PreviousTotal].text = "$" + totalMoneyAmount;
         currentDayMoneyText.text = "$" + currentDayAmount + "/$" + gameManager.currentGameDay.moneyGoal;
     }
 
@@ -48,9 +56,8 @@ public class MoneyTracker : MonoBehaviour
         currentDayAmount += amount;
         totalMoneyAmount += amount;
         currentDayMoneyText.text = "$" + currentDayAmount + "/$" + gameManager.currentGameDay.moneyGoal;
-        //totalMoneyText.text = "$" + totalMoneyAmount;
-        Debug.Log("Current Day Amount of Money: " + currentDayAmount);
-        Debug.Log("Current Total Amount of Money: " + totalMoneyAmount);
+        endOfDaySummaryTexts[(int) SummaryText.CurrentDay].text = "$" + currentDayAmount;
+        endOfDaySummaryTexts[(int) SummaryText.NewTotal].text = "$" + totalMoneyAmount;
     }
 
     public int GetCurrentDayAmount()
@@ -62,13 +69,7 @@ public class MoneyTracker : MonoBehaviour
     {
         if (amount > totalMoneyAmount) return false;
         totalMoneyAmount -= amount;
-        //totalMoneyText.text = "$" + totalMoneyAmount;
         Debug.Log("Current Total Amount of Money: " + totalMoneyAmount);
         return true;
-    }
-
-    public void ShowHideTotalMoneyUI(bool state)
-    {
-        //totalMoneyText.transform.parent.gameObject.SetActive(state);
     }
 }
