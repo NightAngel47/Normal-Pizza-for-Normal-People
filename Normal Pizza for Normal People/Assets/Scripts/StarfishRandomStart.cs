@@ -6,12 +6,15 @@ public class StarfishRandomStart : MonoBehaviour
 {
     [SerializeField]
     float cycleStart = 0;
+    [SerializeField]
+    float animSpeed = 0.5f;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        if(GetComponent<Animator>() != null)
-        {
-            GetComponent<Animator>().SetFloat("RandomStart", cycleStart);
-        }
+        anim = GetComponent<Animator>();
+        anim.SetFloat("RandomStart", cycleStart);
+        anim.SetFloat("Speed", animSpeed);
+        
     }
 }
