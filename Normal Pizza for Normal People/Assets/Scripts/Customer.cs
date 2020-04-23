@@ -40,7 +40,8 @@ public class Customer : MonoBehaviour
     private List<AudioClip> customerAudioClips = new List<AudioClip>();
 
     [SerializeField]
-    private TMP_Text moneyForOrderText;
+    private GameObject moneyForOrderText;
+    public GameObject moneyForOrderTextObject;
     
     [HideInInspector]
     public bool activeOrder;
@@ -62,8 +63,9 @@ public class Customer : MonoBehaviour
         PlayCustomerAudio(CustomerAudioStates.Walking);
         
         endPos = transform.position + (Vector3.right * 14);
-        
-        moneyForOrderText.gameObject.SetActive(false);
+
+        moneyForOrderTextObject = Instantiate(moneyForOrderText, targetLinePos, Quaternion.identity);
+        moneyForOrderTextObject.gameObject.SetActive(false);
         orderTimerText = orderTimerUI.GetComponentInChildren<TMP_Text>();
         orderTimerProgressBar = orderTimerUI.transform.GetChild(0).GetComponent<Image>();
         currentOrderTime = startOrderTime + 1;
@@ -304,8 +306,11 @@ public class Customer : MonoBehaviour
 
     private void ShowMoneyAmount(int amount)
     {
-        moneyForOrderText.text = "$" + amount;
-        moneyForOrderText.gameObject.SetActive(true);
+        moneyForOrderTextObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "$" + amount;
+        moneyForOrderTextObject.transform.LookAt(FindObjectOfType<Player>().transform);
+        moneyForOrderTextObject.transform.rotation *= Quaternion.Euler(0, 180f, 0);
+        moneyForOrderTextObject.transform.localEulerAngles = new Vector3(0, moneyForOrderTextObject.transform.localEulerAngles.x , moneyForOrderTextObject.transform.localEulerAngles.z);
+        moneyForOrderTextObject.gameObject.SetActive(true);
         ingredientUITransform.gameObject.SetActive(false);
     }
 
