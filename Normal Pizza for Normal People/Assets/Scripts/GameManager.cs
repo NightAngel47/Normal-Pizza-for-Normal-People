@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public Day currentGameDay;
     [HideInInspector] public float currentDayTimer;
 
-    public GameObject gameOverPanel;
+    public GameObject gameOverButtons;
+    public TMP_Text gameOverText;
     public GameObject pointer;
     public GameObject inputMod;
 
@@ -54,6 +55,8 @@ public class GameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         
         endOfDaySummary.SetActive(false);
+        gameOverButtons.SetActive(false);
+        gameOverText.gameObject.SetActive(false);
         //TODO have player start day
         currentGameDay = startingDayValues;
         //StartCoroutine(DayCycle());  //moved to start day function
@@ -69,13 +72,12 @@ public class GameManager : MonoBehaviour
         if (pointer.activeSelf == false) // turns pointer on if it was off
         {
             pointer.SetActive(true);
-            Debug.Log("Pointer On");
+            //Debug.Log("Pointer On");
         }
-
         else //turns pointer off if it was on
         {
             pointer.SetActive(false);
-            Debug.Log("Pointer Off");
+            //Debug.Log("Pointer Off");
         }
         
         //flips the needed components on or off
@@ -162,8 +164,18 @@ public class GameManager : MonoBehaviour
         else
         {
             //TODO add game over transition
-            Debug.Log("game over");
-            gameOverPanel.SetActive(true);
+            //Debug.Log("game over");
+            endOfDaySummary.GetComponentsInChildren<TMP_Text>()[0].text = "Game Over";
+            if (currentGameDay.dayNum > 1)
+            {
+                gameOverText.text = "You have completed "+ currentGameDay.dayNum +" Day of Pizza Research!";
+            }
+            else
+            {
+                gameOverText.text = "You have completed "+ currentGameDay.dayNum +" Days of Pizza Research!";
+            }
+            gameOverButtons.SetActive(true);
+            gameOverText.gameObject.SetActive(true);
             TogglePointer();
         }
     }

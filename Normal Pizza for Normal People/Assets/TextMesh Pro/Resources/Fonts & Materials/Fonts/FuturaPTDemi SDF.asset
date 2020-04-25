@@ -108,9 +108,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioB: 0.6770833
+    - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -154,9 +154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: FuturaPTDemi SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -1573590703
   material: {fileID: -4222953177037795882}
-  materialHashCode: 0
+  materialHashCode: -1458628806
   m_Version: 1.1.0
   m_SourceFontFileGUID: 156f97cde160e42da98b35cc677fcf2d
   m_SourceFontFile_EditorRef: {fileID: 0}

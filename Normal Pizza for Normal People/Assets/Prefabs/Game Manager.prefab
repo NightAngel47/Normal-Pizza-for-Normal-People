@@ -556,7 +556,8 @@ MonoBehaviour:
     dayLength: 0
     moneyGoal: 0
   currentDayTimer: 0
-  gameOverPanel: {fileID: 0}
+  gameOverButtons: {fileID: 0}
+  gameOverText: {fileID: 0}
   pointer: {fileID: 0}
   inputMod: {fileID: 0}
   startDayButton: {fileID: 0}
