@@ -26,6 +26,7 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         if (gameObject.name == "Start") //main menu
         {
+            panelHandler.GetComponent<MainMenuHandle>().logo.SetActive(true);
             panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(false);
             panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(false);
             SceneManager.LoadScene("Game");
@@ -35,18 +36,21 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
         {
             panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(true);
             panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(false);
+            panelHandler.GetComponent<MainMenuHandle>().logo.SetActive(false);
         }
 
         if (gameObject.name == "Credits") //main menu
         {
             panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(false);
             panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(true);
+            panelHandler.GetComponent<MainMenuHandle>().logo.SetActive(false);
         }
 
         if (gameObject.name == "Quit") //main menu
         {
             panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(false);
             panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(false);
+            panelHandler.GetComponent<MainMenuHandle>().logo.SetActive(false);
             Application.Quit();
         }
 

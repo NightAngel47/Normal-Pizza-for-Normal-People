@@ -166,13 +166,13 @@ public class GameManager : MonoBehaviour
             //TODO add game over transition
             //Debug.Log("game over");
             endOfDaySummary.GetComponentsInChildren<TMP_Text>()[0].text = "Game Over";
-            if (currentGameDay.dayNum > 1)
+            if (currentGameDay.dayNum == 1)
             {
-                gameOverText.text = "You have completed "+ currentGameDay.dayNum +" Day of Pizza Research!";
+                gameOverText.text = "You have completed "+ currentGameDay.dayNum +" Day\n of Pizza Research!";
             }
             else
             {
-                gameOverText.text = "You have completed "+ currentGameDay.dayNum +" Days of Pizza Research!";
+                gameOverText.text = "You have completed "+ currentGameDay.dayNum +" Days\n of Pizza Research!";
             }
             gameOverButtons.SetActive(true);
             gameOverText.gameObject.SetActive(true);
