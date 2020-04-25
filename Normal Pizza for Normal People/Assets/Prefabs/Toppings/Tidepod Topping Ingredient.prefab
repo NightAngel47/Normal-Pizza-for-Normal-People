@@ -254,6 +254,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tidepod Topping Ingredient
       objectReference: {fileID: 0}
+    - target: {fileID: 2321518831467544739, guid: 42a8c6e654b450c4d979a78c195ae6dc,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321518831467544739, guid: 42a8c6e654b450c4d979a78c195ae6dc,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.31764707
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321518831467544739, guid: 42a8c6e654b450c4d979a78c195ae6dc,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.6039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321518831467544739, guid: 42a8c6e654b450c4d979a78c195ae6dc,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.25490198
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321518831467544739, guid: 42a8c6e654b450c4d979a78c195ae6dc,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.47450984
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321518831467544739, guid: 42a8c6e654b450c4d979a78c195ae6dc,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.67058825
+      objectReference: {fileID: 0}
     - target: {fileID: 6862957792506140479, guid: 42a8c6e654b450c4d979a78c195ae6dc,
         type: 3}
       propertyPath: m_LocalPosition.x

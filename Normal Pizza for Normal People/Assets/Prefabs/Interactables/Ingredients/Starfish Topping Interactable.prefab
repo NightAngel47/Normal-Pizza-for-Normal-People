@@ -377,6 +377,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6301399345619136665}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &724397684095921632 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -2486406412844475015, guid: e7ec257a567adf04f8c6e25e6ec0810c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6301399345619136665}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8103837987889350725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -591,8 +597,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onHandHoverBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4162068359701904027, guid: 2b0d21a40c4cec2468b19ad6a923a98b,
-        type: 3}
+      objectReference: {fileID: 724397684095921632}
     - target: {fileID: 6546985008559573486, guid: cce7d3133eca42c4487ecfbde06776f1,
         type: 3}
       propertyPath: onHandHoverBegin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -612,8 +617,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onHandHoverEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4162068359701904027, guid: 2b0d21a40c4cec2468b19ad6a923a98b,
-        type: 3}
+      objectReference: {fileID: 724397684095921632}
     - target: {fileID: 6546985008559573486, guid: cce7d3133eca42c4487ecfbde06776f1,
         type: 3}
       propertyPath: onHandHoverEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
