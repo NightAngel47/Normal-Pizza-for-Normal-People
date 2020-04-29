@@ -23,6 +23,7 @@ public class CustomerLineUpgrade : ItemUpgrades
         {
             FindObjectOfType<CustomerLine>().AddNewCustomerLine(GetComponent<CustomerLinePos>());
             lineUIInstance = Instantiate(newLineUI, transform.position, Quaternion.identity);
+            StartCoroutine(DestroyUI());
         }
     }
     
