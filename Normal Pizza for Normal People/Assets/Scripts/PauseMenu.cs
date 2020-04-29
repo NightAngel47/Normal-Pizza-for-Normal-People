@@ -17,9 +17,10 @@ public class PauseMenu : MonoBehaviour
 
     public bool isPaused = false;
 
+    public GameObject pausePanel;
+
     void Start()
     {
-
         pauseActionBoolean.AddOnStateDownListener(PauseGame, leftHand);
         pauseActionBoolean.AddOnStateDownListener(PauseGame, rightHand);
     }
@@ -45,21 +46,30 @@ public class PauseMenu : MonoBehaviour
     /// <summary>
     /// Pauses game
     /// </summary>
-    private void PauseFunction()
+    public void PauseFunction()
     {
         if (isPaused)
         {
             isPaused = false;
             Vector3 position = FindObjectOfType<Player>().transform.position;
-            position = new Vector3(position.x, 0, position.z);
+            position = new Vector3(position.x, position.y, 0);
             FindObjectOfType<Player>().transform.position = position;
+
+            pausePanel.SetActive(true);
+
+            FindObjectOfType<GameManager>().TogglePointer();
         }
+
         else
         {
             isPaused = true;
             Vector3 position = FindObjectOfType<Player>().transform.position;
-            position = new Vector3(position.x, -3, position.z);
+            position = new Vector3(position.x, position.y, 6.5f);
             FindObjectOfType<Player>().transform.position = position;
+
+            pausePanel.SetActive(false);
+
+            FindObjectOfType<GameManager>().TogglePointer();
         }
     }
 }
