@@ -56,26 +56,31 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
 
         if (gameObject.name == "Restart") //ingame
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene("Game");
         }
 
         if (gameObject.name == "BackToMain") //ingame
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene("MainMenu");
         }
 
         if (gameObject.name == "Resume") //ingame
         {
+            Time.timeScale = 1;
             FindObjectOfType<PauseMenu>().PauseFunction();
         }
 
         if (gameObject.name == "RestartPause") //ingame
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene("Game");
         }
 
         if (gameObject.name == "BackToMainPause") //ingame
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene("MainMenu");
         }
 

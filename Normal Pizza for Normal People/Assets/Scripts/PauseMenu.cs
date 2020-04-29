@@ -19,10 +19,17 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pausePanel;
 
+    private Transform playerPos;
+    private GameManager gameManager;
+
     void Start()
     {
         pauseActionBoolean.AddOnStateDownListener(PauseGame, leftHand);
         pauseActionBoolean.AddOnStateDownListener(PauseGame, rightHand);
+        
+        pausePanel.SetActive(false);
+        playerPos = FindObjectOfType<Player>().transform;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void TriggerUp(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
@@ -48,28 +55,32 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void PauseFunction()
     {
+        
         if (isPaused)
         {
             isPaused = false;
-            Vector3 position = FindObjectOfType<Player>().transform.position;
+            Vector3 position = playerPos.position;
             position = new Vector3(position.x, position.y, 0);
-            FindObjectOfType<Player>().transform.position = position;
+            playerPos.position = position;
 
             pausePanel.SetActive(false);
 
-            FindObjectOfType<GameManager>().TogglePointer();
-        }
+            gameManager.TogglePointer();
 
+            Time.timeScale = 1;
+        }
         else
         {
             isPaused = true;
-            Vector3 position = FindObjectOfType<Player>().transform.position;
+            Vector3 position = playerPos.position;
             position = new Vector3(position.x, position.y, 6.5f);
-            FindObjectOfType<Player>().transform.position = position;
+            playerPos.position = position;
 
             pausePanel.SetActive(true);
 
-            FindObjectOfType<GameManager>().TogglePointer();
+            gameManager.TogglePointer();
+            
+            Time.timeScale = 0;
         }
     }
 }

@@ -17,7 +17,7 @@ public class ToppingUpgrades : ItemUpgrades
 
         if (pis.enabled)
         {
-            FindObjectOfType<OrderCreation>().allPizzaIngredients.Add(gameObject.GetComponent<PizzaIngredientSpawner>().pizzaIngredientToSpawn.GetComponent<IngredientHitEffect>().spawnObjectOnCollision.GetComponent<PizzaIngredient>());
+            FindObjectOfType<OrderCreation>().allPizzaIngredients.Add(pis.pizzaIngredientToSpawn.GetComponent<IngredientHitEffect>().spawnObjectOnCollision.GetComponent<PizzaIngredient>());
             toppingUIInstance = Instantiate(newToppingUI, transform.position, Quaternion.Euler(0, -90, 0));
             StartCoroutine(DestroyUI());
         }
