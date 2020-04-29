@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
@@ -6,30 +7,18 @@ using Valve.VR.InteractionSystem;
 
 public class PauseMenu : MonoBehaviour
 {
-    //public SteamVR_Input_Sources handType;
-
-    [SerializeField, Tooltip("Reference to Left Hand")]
-    private SteamVR_Input_Sources leftHand;
-    [SerializeField, Tooltip("Reference to Right Hand")]
-    private SteamVR_Input_Sources rightHand;
-
     public SteamVR_Action_Boolean pauseActionBoolean;
-
     public bool isPaused = false;
-
-    public GameObject pausePanel;
-
-    private Transform playerPos;
-    private GameManager gameManager;
+    
+    private GameObject pausePanel;
 
     void Start()
     {
-        pauseActionBoolean.AddOnStateDownListener(PauseGame, leftHand);
-        pauseActionBoolean.AddOnStateDownListener(PauseGame, rightHand);
+        pauseActionBoolean.AddOnStateDownListener(PauseGame, SteamVR_Input_Sources.LeftHand);
+        pauseActionBoolean.AddOnStateDownListener(PauseGame, SteamVR_Input_Sources.RightHand);
         
+        pausePanel = transform.GetChild(0).gameObject;
         pausePanel.SetActive(false);
-        playerPos = FindObjectOfType<Player>().transform;
-        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void TriggerUp(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
@@ -55,6 +44,9 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void PauseFunction()
     {
+        Transform playerPos = FindObjectOfType<Player>().transform;
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        pausePanel = transform.GetChild(0).gameObject;
         
         if (isPaused)
         {
