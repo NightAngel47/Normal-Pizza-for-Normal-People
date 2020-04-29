@@ -38,8 +38,6 @@ public class GameManager : MonoBehaviour
 
     enum GameDayAudioStates {StartDay, EndDay}
     [SerializeField] List<AudioClip> gameDayAudioClips = new List<AudioClip>();
-
-    private PauseMenu pm;
     
     [Serializable]
     public struct Day
@@ -61,8 +59,6 @@ public class GameManager : MonoBehaviour
         //TODO have player start day
         currentGameDay = startingDayValues;
         //StartCoroutine(DayCycle());  //moved to start day function
-
-        pm = FindObjectOfType<PauseMenu>();
     }
 
     public MoneyTracker GetMoneyTracker()
@@ -118,101 +114,95 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator DayCycle()
     {
-        if (pm.isPaused == false)
+        endOfDaySummary.SetActive(false);
+        endOfDaySummary.GetComponentsInChildren<TMP_Text>()[0].text = "Day " + currentGameDay.dayNum + " Summary";
+        currentDayText.text = "Day " + currentGameDay.dayNum;
+        customerLine.StartDay(currentGameDay.numOfCustomers);
+        currentDayTimer = currentGameDay.dayLength;
+        ShowHideDayTimer(true);
+        StartCoroutine(DayTimer());
+        moneyTracker.TrackNewDay();
+
+        // Change to work day music
+        MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.WorkDayMusic);
+        audioSource.clip = gameDayAudioClips[(int) GameDayAudioStates.StartDay];
+        audioSource.Play();
+        
+        yield return new WaitUntil(() => currentDayTimer <= 0);
+        Customer lastCustomer = null;
+        foreach (var customer in FindObjectsOfType<Customer>())
         {
-            endOfDaySummary.SetActive(false);
-            endOfDaySummary.GetComponentsInChildren<TMP_Text>()[0].text = "Day " + currentGameDay.dayNum + " Summary";
-            currentDayText.text = "Day " + currentGameDay.dayNum;
-            customerLine.StartDay(currentGameDay.numOfCustomers);
-            currentDayTimer = currentGameDay.dayLength;
-            ShowHideDayTimer(true);
-            StartCoroutine(DayTimer());
-            moneyTracker.TrackNewDay();
-
-            // Change to work day music
-            MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.WorkDayMusic);
-            audioSource.clip = gameDayAudioClips[(int)GameDayAudioStates.StartDay];
-            audioSource.Play();
-
-            yield return new WaitUntil(() => currentDayTimer <= 0);
-            Customer lastCustomer = null;
-            foreach (var customer in FindObjectsOfType<Customer>())
+            if (customer.activeOrder)
             {
-                if (customer.activeOrder)
-                {
-                    lastCustomer = customer;
-                }
-
-                customer.CustomerLeave();
+                lastCustomer = customer;
             }
 
-            if (lastCustomer != null)
+            customer.CustomerLeave();
+        }
+
+        if (lastCustomer != null)
+        {
+            yield return new WaitWhile(() => lastCustomer.activeOrder);
+        }
+        
+        endOfDaySummary.SetActive(true);
+
+        if (moneyTracker.GetCurrentDayAmount() >= currentGameDay.moneyGoal)
+        {
+            upgradeSystem.EnterUpgradeMode();
+
+            yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
+
+            IncreaseDayDifficulty();
+
+            startDayButton.SetActive(true);
+
+            //MOVED TO START DAY FUNCTION
+            //StartCoroutine(DayCycle());
+        }
+        else
+        {
+            //TODO add game over transition
+            //Debug.Log("game over");
+            endOfDaySummary.GetComponentsInChildren<TMP_Text>()[0].text = "Game Over";
+            if (currentGameDay.dayNum == 1)
             {
-                yield return new WaitWhile(() => lastCustomer.activeOrder);
-            }
-
-            endOfDaySummary.SetActive(true);
-
-            if (moneyTracker.GetCurrentDayAmount() >= currentGameDay.moneyGoal)
-            {
-                upgradeSystem.EnterUpgradeMode();
-
-                yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
-
-                IncreaseDayDifficulty();
-
-                startDayButton.SetActive(true);
-
-                //MOVED TO START DAY FUNCTION
-                //StartCoroutine(DayCycle());
+                gameOverText.text = "You have completed "+ currentGameDay.dayNum +" Day\n of Pizza Research!";
             }
             else
             {
-                //TODO add game over transition
-                //Debug.Log("game over");
-                endOfDaySummary.GetComponentsInChildren<TMP_Text>()[0].text = "Game Over";
-                if (currentGameDay.dayNum == 1)
-                {
-                    gameOverText.text = "You have completed " + currentGameDay.dayNum + " Day\n of Pizza Research!";
-                }
-                else
-                {
-                    gameOverText.text = "You have completed " + currentGameDay.dayNum + " Days\n of Pizza Research!";
-                }
-                gameOverButtons.SetActive(true);
-                gameOverText.gameObject.SetActive(true);
-                TogglePointer();
+                gameOverText.text = "You have completed "+ currentGameDay.dayNum +" Days\n of Pizza Research!";
             }
+            gameOverButtons.SetActive(true);
+            gameOverText.gameObject.SetActive(true);
+            TogglePointer();
         }
     }
 
     private IEnumerator DayTimer()
     {
-        if (pm.isPaused == false)
+        var dayTimeMin = (int) (currentDayTimer / 60);
+        var dayTimeSec = (int) (currentDayTimer - (dayTimeMin * 60));
+        if (dayTimeSec < 10)
         {
-            var dayTimeMin = (int)(currentDayTimer / 60);
-            var dayTimeSec = (int)(currentDayTimer - (dayTimeMin * 60));
-            if (dayTimeSec < 10)
-            {
-                currentDayTime.text = dayTimeMin + ":0" + dayTimeSec;
-            }
-            else
-            {
-                currentDayTime.text = dayTimeMin + ":" + dayTimeSec;
-            }
-            currentDayProgressBar.fillAmount = currentDayTimer / currentGameDay.dayLength;
-            yield return new WaitForEndOfFrame();
-            currentDayTimer -= Time.deltaTime;
-            if (currentDayTimer > 0)
-            {
-                StartCoroutine(DayTimer());
-            }
-            else
-            {
-                audioSource.clip = gameDayAudioClips[(int)GameDayAudioStates.EndDay];
-                audioSource.Play();
-                ShowHideDayTimer(false);
-            }
+            currentDayTime.text = dayTimeMin + ":0" + dayTimeSec;
+        }
+        else
+        {
+            currentDayTime.text = dayTimeMin + ":" + dayTimeSec;
+        }
+        currentDayProgressBar.fillAmount = currentDayTimer / currentGameDay.dayLength;
+        yield return new WaitForEndOfFrame();
+        currentDayTimer -= Time.deltaTime;
+        if (currentDayTimer > 0)
+        {
+            StartCoroutine(DayTimer());
+        }
+        else
+        {
+            audioSource.clip = gameDayAudioClips[(int) GameDayAudioStates.EndDay];
+            audioSource.Play();
+            ShowHideDayTimer(false);
         }
     }
 
