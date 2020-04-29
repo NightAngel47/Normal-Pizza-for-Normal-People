@@ -69,9 +69,14 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
             FindObjectOfType<PauseMenu>().PauseFunction();
         }
 
-        if (gameObject.name == "HowToPlayPause") //ingame
+        if (gameObject.name == "RestartPause") //ingame
         {
-            
+            SceneManager.LoadScene("Game");
+        }
+
+        if (gameObject.name == "BackToMainPause") //ingame
+        {
+            SceneManager.LoadScene("MainMenu");
         }
 
         img.color = hover;
