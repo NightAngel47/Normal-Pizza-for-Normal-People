@@ -5,7 +5,8 @@ using UnityEngine;
 public class ToppingUpgrades : ItemUpgrades
 {
     [SerializeField] private GameObject newToppingUI;
-    [SerializeField] private float newToppingUILifetime = 2f;
+
+    private GameObject toppingUIInstance;
     
     private PizzaIngredientSpawner pis;
 
@@ -17,7 +18,15 @@ public class ToppingUpgrades : ItemUpgrades
         if (pis.enabled)
         {
             FindObjectOfType<OrderCreation>().allPizzaIngredients.Add(gameObject.GetComponent<PizzaIngredientSpawner>().pizzaIngredientToSpawn.GetComponent<IngredientHitEffect>().spawnObjectOnCollision.GetComponent<PizzaIngredient>());
-            Destroy(Instantiate(newToppingUI, transform.position, Quaternion.Euler(0, -90, 0)), newToppingUILifetime);
+            toppingUIInstance = Instantiate(newToppingUI, transform.position, Quaternion.Euler(0, -90, 0));
+            StartCoroutine(DestroyUI());
         }
+    }
+
+    private IEnumerator DestroyUI()
+    {
+        yield return new WaitUntil(() => FindObjectOfType<GameManager>().dayStarted);
+        
+        Destroy(toppingUIInstance);
     }
 }

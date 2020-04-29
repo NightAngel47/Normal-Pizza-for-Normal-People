@@ -91,6 +91,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7cfcd398bd2ef854b8a9f0f478a553cd, type: 3}
   - {fileID: 8300000, guid: 3f9a5b582e233474d870c089a72e10b8, type: 3}
   - {fileID: 8300000, guid: 98e9a5544e32c56488c03cb8ab674c82, type: 3}
+  - {fileID: 8300000, guid: e098c94f061312d41835a7664b781f92, type: 3}
   moneyForOrderText: {fileID: 3607954698261671606, guid: eeaae81126b0b7e438f2d1aded924428,
     type: 3}
   moneyForOrderTextObject: {fileID: 0}

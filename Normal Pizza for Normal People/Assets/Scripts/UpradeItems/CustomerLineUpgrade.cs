@@ -6,7 +6,8 @@ using UnityEngine;
 public class CustomerLineUpgrade : ItemUpgrades
 {
     [SerializeField] private GameObject newLineUI;
-    [SerializeField] private float newLineUILifetime = 2f;
+
+    private GameObject lineUIInstance;
     
     private CustomerLinePos customerLinePos;
 
@@ -21,7 +22,14 @@ public class CustomerLineUpgrade : ItemUpgrades
         if (customerLinePos.enabled)
         {
             FindObjectOfType<CustomerLine>().AddNewCustomerLine(GetComponent<CustomerLinePos>());
-            Destroy(Instantiate(newLineUI, transform.position, Quaternion.identity), newLineUILifetime);
+            lineUIInstance = Instantiate(newLineUI, transform.position, Quaternion.identity);
         }
+    }
+    
+    private IEnumerator DestroyUI()
+    {
+        yield return new WaitUntil(() => FindObjectOfType<GameManager>().dayStarted);
+        
+        Destroy(lineUIInstance);
     }
 }

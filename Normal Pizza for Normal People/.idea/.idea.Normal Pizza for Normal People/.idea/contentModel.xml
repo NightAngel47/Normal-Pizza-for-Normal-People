@@ -53,6 +53,7 @@
           <e p="Order.cs" t="Include" />
           <e p="OrderCreation.cs" t="Include" />
           <e p="OvenBehaviour.cs" t="Include" />
+          <e p="PauseMenu.cs" t="Include" />
           <e p="Pizza" t="Include">
             <e p="PizzaBehaviour.cs" t="Include" />
             <e p="PizzaSpawner.cs" t="Include" />

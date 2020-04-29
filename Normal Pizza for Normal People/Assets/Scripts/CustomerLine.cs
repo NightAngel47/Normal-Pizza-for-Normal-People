@@ -38,7 +38,7 @@ public class CustomerLine : MonoBehaviour
 
     private IEnumerator NextCustomer()
     {
-        yield return new WaitUntil(() => currentAmountOfCustomersInShop < gameManager.currentGameDay.numOfCustomersInQue);
+        yield return new WaitUntil(() => currentAmountOfCustomersInShop < customerLines.Count * 3);
 
         if (gameManager.currentDayTimer < 1 || customerOrders.Count <= 0) yield break;
         
