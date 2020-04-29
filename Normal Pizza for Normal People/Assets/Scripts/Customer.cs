@@ -50,10 +50,13 @@ public class Customer : MonoBehaviour
     private Vector3 endPos;
 
     public static bool firstPizzaThrow = false;
+
+    private PauseMenu pm;
     
     // Start is called before the first frame update
     void Start()
     {
+        pm = FindObjectOfType<PauseMenu>();
         gm = FindObjectOfType<GameManager>();
         customerLine = gm.GetComponent<CustomerLine>();
         moneyTracker = gm.GetMoneyTracker();
@@ -185,45 +188,48 @@ public class Customer : MonoBehaviour
 
     private IEnumerator OrderTimerCountDown()
     {
-        orderTimerText.text = ""+(int)currentOrderTime;
-        orderTimerProgressBar.fillAmount = currentOrderTime / startOrderTime;
-        yield return new WaitForEndOfFrame();
-        currentOrderTime -= Time.deltaTime;
-        if (currentOrderTime > 0)
+        if (pm.isPaused == false)
         {
-            if (currentOrderTime / startOrderTime >= 0.66f)
+            orderTimerText.text = "" + (int)currentOrderTime;
+            orderTimerProgressBar.fillAmount = currentOrderTime / startOrderTime;
+            yield return new WaitForEndOfFrame();
+            currentOrderTime -= Time.deltaTime;
+            if (currentOrderTime > 0)
             {
-                orderTimerProgressBar.color = orderTimerColors[(int) OrderTimerStates.Start];
-            }
-            
-            if (currentOrderTime / startOrderTime <= .66f)
-            {
-                orderTimerProgressBar.color = orderTimerColors[(int) OrderTimerStates.Middle];
-            }
-            
-            if (currentOrderTime / startOrderTime <= .33f)
-            {
-                orderTimerProgressBar.color = orderTimerColors[(int) OrderTimerStates.Quarter];
-            }
-
-            if (currentOrderTime <= 10)
-            {
-                orderTimerProgressBar.color = orderTimerColors[(int) OrderTimerStates.End];
-            
-                if (!audioSource.isPlaying)
+                if (currentOrderTime / startOrderTime >= 0.66f)
                 {
-                    PlayCustomerAudio(CustomerAudioStates.OrderEndingSoon);
+                    orderTimerProgressBar.color = orderTimerColors[(int)OrderTimerStates.Start];
                 }
+
+                if (currentOrderTime / startOrderTime <= .66f)
+                {
+                    orderTimerProgressBar.color = orderTimerColors[(int)OrderTimerStates.Middle];
+                }
+
+                if (currentOrderTime / startOrderTime <= .33f)
+                {
+                    orderTimerProgressBar.color = orderTimerColors[(int)OrderTimerStates.Quarter];
+                }
+
+                if (currentOrderTime <= 10)
+                {
+                    orderTimerProgressBar.color = orderTimerColors[(int)OrderTimerStates.End];
+
+                    if (!audioSource.isPlaying)
+                    {
+                        PlayCustomerAudio(CustomerAudioStates.OrderEndingSoon);
+                    }
+                }
+
+                StartCoroutine(OrderTimerCountDown());
             }
-            
-            StartCoroutine(OrderTimerCountDown());
-        }
-        else
-        {
-            moneyTracker.CustomerChangeMoney((int) -startOrderTime);
-            PlayCustomerAudio(CustomerAudioStates.BadOrder);
-            activeOrder = false;
-            CustomerLeave();
+            else
+            {
+                moneyTracker.CustomerChangeMoney((int)-startOrderTime);
+                PlayCustomerAudio(CustomerAudioStates.BadOrder);
+                activeOrder = false;
+                CustomerLeave();
+            }
         }
     }
 

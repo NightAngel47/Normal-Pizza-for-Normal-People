@@ -21,10 +21,13 @@ public class CustomerLine : MonoBehaviour
     [SerializeField] private Transform customerSpawnPos;
     [SerializeField] private List<CustomerLinePos> customerLines = new List<CustomerLinePos>();
 
+    private PauseMenu pm;
+
     void Start()
     {
         gameManager = GetComponent<GameManager>();
         orderCreation = GetComponent<OrderCreation>();
+        pm = FindObjectOfType<PauseMenu>();
     }
 
     public void StartDay(int numOfCustomers)
@@ -38,43 +41,46 @@ public class CustomerLine : MonoBehaviour
 
     private IEnumerator NextCustomer()
     {
-        yield return new WaitUntil(() => currentAmountOfCustomersInShop < customerLines.Count * 3);
-
-        if (gameManager.currentDayTimer < 1 || customerOrders.Count <= 0) yield break;
-        
-        currentAmountOfCustomersInShop++;
-            
-        var newCustomer = Instantiate(customerPrefab, customerSpawnPos.position, customerSpawnPos.rotation).GetComponent<Customer>();
-        newCustomer.SetOrder(customerOrders[0]);
-        customerOrders.Remove(customerOrders[0]);
-
-        foreach (var line in customerLines)
+        if (pm.isPaused == false)
         {
-            Vector3 customerTargetPos;
-            
-            if (line.isOpen)
+            yield return new WaitUntil(() => currentAmountOfCustomersInShop < customerLines.Count * 3);
+
+            if (gameManager.currentDayTimer < 1 || customerOrders.Count <= 0) yield break;
+
+            currentAmountOfCustomersInShop++;
+
+            var newCustomer = Instantiate(customerPrefab, customerSpawnPos.position, customerSpawnPos.rotation).GetComponent<Customer>();
+            newCustomer.SetOrder(customerOrders[0]);
+            customerOrders.Remove(customerOrders[0]);
+
+            foreach (var line in customerLines)
             {
-                line.isOpen = false;
-                customerTargetPos = customerLines[customerLines.IndexOf(line)].transform.position;
-                newCustomer.SetTargetLine(customerTargetPos);
-                newCustomer.GetComponent<NavMeshAgent>().SetDestination(customerTargetPos);
-                break;
+                Vector3 customerTargetPos;
+
+                if (line.isOpen)
+                {
+                    line.isOpen = false;
+                    customerTargetPos = customerLines[customerLines.IndexOf(line)].transform.position;
+                    newCustomer.SetTargetLine(customerTargetPos);
+                    newCustomer.GetComponent<NavMeshAgent>().SetDestination(customerTargetPos);
+                    break;
+                }
+
+                if (line == customerLines[customerLines.Count - 1])
+                {
+                    customerTargetPos = customerLines[Random.Range(0, customerLines.Count)].transform.position;
+                    newCustomer.SetTargetLine(customerTargetPos);
+                    newCustomer.GetComponent<NavMeshAgent>().SetDestination(customerTargetPos);
+                    break;
+                }
             }
 
-            if(line == customerLines[customerLines.Count - 1])
-            {
-                customerTargetPos = customerLines[Random.Range(0, customerLines.Count)].transform.position;
-                newCustomer.SetTargetLine(customerTargetPos);
-                newCustomer.GetComponent<NavMeshAgent>().SetDestination(customerTargetPos);
-                break;
-            }
-        }
+            yield return new WaitForSeconds(gameManager.currentGameDay.dayLength / gameManager.currentGameDay.numOfCustomers);
 
-        yield return new WaitForSeconds(gameManager.currentGameDay.dayLength / gameManager.currentGameDay.numOfCustomers);
-        
-        if (gameManager.currentDayTimer > 1 && customerOrders.Count > 0)
-        {
-            StartCoroutine(NextCustomer());
+            if (gameManager.currentDayTimer > 1 && customerOrders.Count > 0)
+            {
+                StartCoroutine(NextCustomer());
+            }
         }
     }
 
