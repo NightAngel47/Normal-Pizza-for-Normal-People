@@ -55,7 +55,7 @@ public class PauseMenu : MonoBehaviour
             position = new Vector3(position.x, position.y, 0);
             FindObjectOfType<Player>().transform.position = position;
 
-            pausePanel.SetActive(true);
+            pausePanel.SetActive(false);
 
             FindObjectOfType<GameManager>().TogglePointer();
         }
@@ -67,7 +67,7 @@ public class PauseMenu : MonoBehaviour
             position = new Vector3(position.x, position.y, 6.5f);
             FindObjectOfType<Player>().transform.position = position;
 
-            pausePanel.SetActive(false);
+            pausePanel.SetActive(true);
 
             FindObjectOfType<GameManager>().TogglePointer();
         }
