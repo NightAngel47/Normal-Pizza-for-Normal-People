@@ -22,20 +22,22 @@ public class PauseMenu : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
-
-        gameObject.GetComponent<Canvas>().worldCamera = FindObjectOfType<Pointer>().gameObject.GetComponent<Camera>(); //GameObject.FindGameObjectWithTag("pointer").GetComponent<Camera>(); //
-        //FindObjectOfType<GameManager>().GetComponent<GameManager>().TogglePointer();
     }
 
     void Start()
     {
-       
-
         pauseActionBoolean.AddOnStateDownListener(PauseGame, SteamVR_Input_Sources.LeftHand);
         pauseActionBoolean.AddOnStateDownListener(PauseGame, SteamVR_Input_Sources.RightHand);
         
         pausePanel = transform.GetChild(0).gameObject;
         pausePanel.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        Debug.Log("here");
+        gameObject.GetComponent<Canvas>().worldCamera = FindObjectOfType<Pointer>().gameObject.GetComponent<Camera>(); //GameObject.FindGameObjectWithTag("pointer").GetComponent<Camera>(); //
+        FindObjectOfType<GameManager>().gameObject.GetComponent<GameManager>().TogglePointer();
     }
 
     public void TriggerUp(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
@@ -63,6 +65,8 @@ public class PauseMenu : MonoBehaviour
     {
         Transform playerPos = FindObjectOfType<Player>().transform;
         GameManager gameManager = FindObjectOfType<GameManager>();
+
+
 
         pausePanel = transform.GetChild(0).gameObject;
         

@@ -82,14 +82,11 @@ public class GameManager : MonoBehaviour
         }
         
         //flips the needed components on or off
-        inputMod.GetComponent<StandaloneInputModule>().enabled = !inputMod.GetComponent<StandaloneInputModule>().enabled;
-        inputMod.GetComponent<VRInputModule>().enabled = !inputMod.GetComponent<VRInputModule>().enabled;
-        inputMod.GetComponent<BaseInput>().enabled = !inputMod.GetComponent<BaseInput>().enabled;
+        //inputMod.GetComponent<StandaloneInputModule>().enabled = !inputMod.GetComponent<StandaloneInputModule>().enabled;
+        //inputMod.GetComponent<VRInputModule>().enabled = !inputMod.GetComponent<VRInputModule>().enabled;
+        //inputMod.GetComponent<BaseInput>().enabled = !inputMod.GetComponent<BaseInput>().enabled;
         gameObject.transform.GetChild(1).gameObject.SetActive(!gameObject.transform.GetChild(1).gameObject.activeSelf);
-        foreach (var customerLinePos in FindObjectsOfType<CustomerLinePos>())
-        {
-            customerLinePos.gameObject.SetActive(!customerLinePos.gameObject.activeSelf);
-        }
+        
     }
 
     public void StartDay()
@@ -164,6 +161,12 @@ public class GameManager : MonoBehaviour
             }
             gameOverButtons.SetActive(true);
             gameOverText.gameObject.SetActive(true);
+
+            foreach (var customerLinePos in FindObjectsOfType<CustomerLinePos>())
+            {
+                customerLinePos.gameObject.SetActive(!customerLinePos.gameObject.activeSelf);
+            }
+
             TogglePointer();
         }
     }
