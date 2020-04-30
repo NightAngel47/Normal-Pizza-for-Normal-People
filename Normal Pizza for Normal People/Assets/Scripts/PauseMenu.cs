@@ -35,7 +35,6 @@ public class PauseMenu : MonoBehaviour
 
     public void SetUp()
     {
-        Debug.Log("here");
         gameObject.GetComponent<Canvas>().worldCamera = FindObjectOfType<Pointer>().gameObject.GetComponent<Camera>(); //GameObject.FindGameObjectWithTag("pointer").GetComponent<Camera>(); //
         FindObjectOfType<GameManager>().gameObject.GetComponent<GameManager>().TogglePointer();
     }
