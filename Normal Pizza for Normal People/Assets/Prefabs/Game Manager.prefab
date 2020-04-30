@@ -91,7 +91,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newLineUI: {fileID: 5069565016871101520, guid: 21f185d3d344fed4c822358982e8dfa0,
     type: 3}
-  newLineUILifetime: 5
 --- !u!82 &2509894332342842909
 AudioSource:
   m_ObjectHideFlags: 0
@@ -309,7 +308,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newLineUI: {fileID: 5069565016871101520, guid: 21f185d3d344fed4c822358982e8dfa0,
     type: 3}
-  newLineUILifetime: 5
 --- !u!82 &2164688423524348677
 AudioSource:
   m_ObjectHideFlags: 0
@@ -544,7 +542,6 @@ MonoBehaviour:
   startingDayValues:
     dayNum: 1
     numOfCustomers: 10
-    numOfCustomersInQue: 3
     dayLength: 90
     moneyGoal: 100
   newCustomerPerDayRate: 1.1
@@ -552,7 +549,6 @@ MonoBehaviour:
   currentGameDay:
     dayNum: 0
     numOfCustomers: 0
-    numOfCustomersInQue: 0
     dayLength: 0
     moneyGoal: 0
   currentDayTimer: 0

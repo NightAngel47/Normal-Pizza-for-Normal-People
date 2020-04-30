@@ -75,6 +75,7 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
         if (gameObject.name == "RestartPause") //ingame
         {
             Time.timeScale = 1;
+            FindObjectOfType<PauseMenu>().PauseFunction();
             SceneManager.LoadScene("Game");
         }
 

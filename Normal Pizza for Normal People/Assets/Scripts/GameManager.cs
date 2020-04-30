@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
         //TODO have player start day
         currentGameDay = startingDayValues;
         //StartCoroutine(DayCycle());  //moved to start day function
+
+        FindObjectOfType<PauseMenu>().SetUp();
     }
 
     public MoneyTracker GetMoneyTracker()
@@ -80,36 +82,19 @@ public class GameManager : MonoBehaviour
         }
         
         //flips the needed components on or off
-        inputMod.GetComponent<StandaloneInputModule>().enabled = !inputMod.GetComponent<StandaloneInputModule>().enabled;
-        inputMod.GetComponent<VRInputModule>().enabled = !inputMod.GetComponent<VRInputModule>().enabled;
-        inputMod.GetComponent<BaseInput>().enabled = !inputMod.GetComponent<BaseInput>().enabled;
+        //inputMod.GetComponent<StandaloneInputModule>().enabled = !inputMod.GetComponent<StandaloneInputModule>().enabled;
+        //inputMod.GetComponent<VRInputModule>().enabled = !inputMod.GetComponent<VRInputModule>().enabled;
+        //inputMod.GetComponent<BaseInput>().enabled = !inputMod.GetComponent<BaseInput>().enabled;
         gameObject.transform.GetChild(1).gameObject.SetActive(!gameObject.transform.GetChild(1).gameObject.activeSelf);
-        foreach (var customerLinePos in FindObjectsOfType<CustomerLinePos>())
-        {
-            customerLinePos.gameObject.SetActive(!customerLinePos.gameObject.activeSelf);
-        }
+        
     }
 
     public void StartDay()
     {
-        startDayButton.SetActive(false);
         dayStarted = true;
-
-        if (currentGameDay.dayNum == 1)
-        {
-            StartCoroutine(DayCycle());
-        }
-
-        else
-        {
-            //upgradeSystem.EnterUpgradeMode();
-
-            //yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
-
-            //IncreaseDayDifficulty();
-
-            StartCoroutine(DayCycle());
-        }
+        startDayButton.SetActive(false);
+        
+        StartCoroutine(DayCycle());
     }
 
     private IEnumerator DayCycle()
@@ -144,7 +129,8 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitWhile(() => lastCustomer.activeOrder);
         }
-        
+
+        dayStarted = false;
         endOfDaySummary.SetActive(true);
 
         if (moneyTracker.GetCurrentDayAmount() >= currentGameDay.moneyGoal)
@@ -175,6 +161,12 @@ public class GameManager : MonoBehaviour
             }
             gameOverButtons.SetActive(true);
             gameOverText.gameObject.SetActive(true);
+
+            foreach (var customerLinePos in FindObjectsOfType<CustomerLinePos>())
+            {
+                customerLinePos.gameObject.SetActive(!customerLinePos.gameObject.activeSelf);
+            }
+
             TogglePointer();
         }
     }

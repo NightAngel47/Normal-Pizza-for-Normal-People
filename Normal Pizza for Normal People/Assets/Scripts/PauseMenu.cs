@@ -12,6 +12,18 @@ public class PauseMenu : MonoBehaviour
     
     private GameObject pausePanel;
 
+    public void Awake()
+    {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("pauseMenu");
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     void Start()
     {
         pauseActionBoolean.AddOnStateDownListener(PauseGame, SteamVR_Input_Sources.LeftHand);
@@ -19,6 +31,13 @@ public class PauseMenu : MonoBehaviour
         
         pausePanel = transform.GetChild(0).gameObject;
         pausePanel.SetActive(false);
+    }
+
+    public void SetUp()
+    {
+        Debug.Log("here");
+        gameObject.GetComponent<Canvas>().worldCamera = FindObjectOfType<Pointer>().gameObject.GetComponent<Camera>(); //GameObject.FindGameObjectWithTag("pointer").GetComponent<Camera>(); //
+        FindObjectOfType<GameManager>().gameObject.GetComponent<GameManager>().TogglePointer();
     }
 
     public void TriggerUp(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
@@ -46,6 +65,9 @@ public class PauseMenu : MonoBehaviour
     {
         Transform playerPos = FindObjectOfType<Player>().transform;
         GameManager gameManager = FindObjectOfType<GameManager>();
+
+
+
         pausePanel = transform.GetChild(0).gameObject;
         
         if (isPaused)
