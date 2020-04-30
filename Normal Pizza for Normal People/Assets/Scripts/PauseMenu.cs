@@ -33,7 +33,7 @@ public class PauseMenu : MonoBehaviour
         pausePanel.SetActive(false);
     }
 
-    private void OnEnable()
+    public void SetUp()
     {
         Debug.Log("here");
         gameObject.GetComponent<Canvas>().worldCamera = FindObjectOfType<Pointer>().gameObject.GetComponent<Camera>(); //GameObject.FindGameObjectWithTag("pointer").GetComponent<Camera>(); //

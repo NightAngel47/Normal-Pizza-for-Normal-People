@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         currentGameDay = startingDayValues;
         //StartCoroutine(DayCycle());  //moved to start day function
 
-        //TogglePointer();
+        FindObjectOfType<PauseMenu>().SetUp();
     }
 
     public MoneyTracker GetMoneyTracker()
