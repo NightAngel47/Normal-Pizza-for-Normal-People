@@ -25,7 +25,6 @@ public abstract class ItemUpgrades : MonoBehaviour
         TurnOnUpgrade(); //makes sure upgrade funcitonality works 
         FindObjectOfType<UpgradeSystem>().RemovedPurchasedUpgrade(gameObject); // Remove this gameobject from upgrade system
         gameObject.GetComponent<AudioSource>().Play();
-        //Destroy(gameObject.GetComponent<ItemUpgrades>()); // Destroy item upgrade so it is not readded to upgrade system
     }
 
     //toggles object functionality

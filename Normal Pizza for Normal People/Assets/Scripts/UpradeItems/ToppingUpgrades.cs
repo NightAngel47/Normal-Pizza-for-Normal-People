@@ -28,8 +28,6 @@ public class ToppingUpgrades : ItemUpgrades
     private IEnumerator DestroyUI()
     {
         yield return new WaitUntil(() => FindObjectOfType<GameManager>().dayStarted);
-        print("here topping 2");
-        
         Destroy(toppingUIInstance);
     }
 }

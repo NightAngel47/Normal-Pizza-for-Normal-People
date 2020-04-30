@@ -39,7 +39,6 @@ public class CustomerLineUpgrade : ItemUpgrades
     private IEnumerator DestroyUI()
     {
         yield return new WaitUntil(() => FindObjectOfType<GameManager>().dayStarted);
-        print("here line 2");
         Destroy(lineUIInstance);
     }
 }
