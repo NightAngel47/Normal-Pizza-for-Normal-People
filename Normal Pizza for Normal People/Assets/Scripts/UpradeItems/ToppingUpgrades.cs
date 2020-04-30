@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class ToppingUpgrades : ItemUpgrades
 {
@@ -26,6 +28,7 @@ public class ToppingUpgrades : ItemUpgrades
     private IEnumerator DestroyUI()
     {
         yield return new WaitUntil(() => FindObjectOfType<GameManager>().dayStarted);
+        print("here topping 2");
         
         Destroy(toppingUIInstance);
     }

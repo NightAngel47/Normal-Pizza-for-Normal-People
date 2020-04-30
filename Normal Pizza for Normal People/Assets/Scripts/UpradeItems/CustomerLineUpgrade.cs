@@ -9,18 +9,19 @@ public class CustomerLineUpgrade : ItemUpgrades
     [SerializeField] private GameObject newLineUI;
 
     private GameObject lineUIInstance;
-    
+
     private CustomerLinePos customerLinePos;
     private Camera vrCam;
 
-    private void Start()
-    {
-        vrCam = Camera.main;
-    }
 
     private void Awake()
     {
         customerLinePos = GetComponent<CustomerLinePos>();
+    }
+    
+    private void Start()
+    {
+        vrCam = Camera.main;
     }
 
     public override void TurnOnUpgrade()
@@ -30,7 +31,7 @@ public class CustomerLineUpgrade : ItemUpgrades
         {
             FindObjectOfType<CustomerLine>().AddNewCustomerLine(GetComponent<CustomerLinePos>());
             lineUIInstance = Instantiate(newLineUI, transform.position, Quaternion.identity);
-            lineUIInstance.transform.LookAt(vrCam.transform.position + new Vector3(0, 180, 0));
+            lineUIInstance.transform.LookAt(vrCam.transform);
             StartCoroutine(DestroyUI());
         }
     }
@@ -38,7 +39,7 @@ public class CustomerLineUpgrade : ItemUpgrades
     private IEnumerator DestroyUI()
     {
         yield return new WaitUntil(() => FindObjectOfType<GameManager>().dayStarted);
-        
+        print("here line 2");
         Destroy(lineUIInstance);
     }
 }

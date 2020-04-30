@@ -92,24 +92,10 @@ public class GameManager : MonoBehaviour
 
     public void StartDay()
     {
-        startDayButton.SetActive(false);
         dayStarted = true;
-
-        if (currentGameDay.dayNum == 1)
-        {
-            StartCoroutine(DayCycle());
-        }
-
-        else
-        {
-            //upgradeSystem.EnterUpgradeMode();
-
-            //yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
-
-            //IncreaseDayDifficulty();
-
-            StartCoroutine(DayCycle());
-        }
+        startDayButton.SetActive(false);
+        
+        StartCoroutine(DayCycle());
     }
 
     private IEnumerator DayCycle()
@@ -144,7 +130,8 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitWhile(() => lastCustomer.activeOrder);
         }
-        
+
+        dayStarted = false;
         endOfDaySummary.SetActive(true);
 
         if (moneyTracker.GetCurrentDayAmount() >= currentGameDay.moneyGoal)

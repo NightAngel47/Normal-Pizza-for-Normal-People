@@ -20,13 +20,12 @@ public abstract class ItemUpgrades : MonoBehaviour
     //When item is being purchased/when item is now avialble to player via forced upgrade
     public void Purchase()
     {
-        Debug.Log("purch");
+        //Debug.Log("purch");
         gameObject.SetActive(true); //make sure it is active, probably do not need this line
         TurnOnUpgrade(); //makes sure upgrade funcitonality works 
         FindObjectOfType<UpgradeSystem>().RemovedPurchasedUpgrade(gameObject); // Remove this gameobject from upgrade system
         gameObject.GetComponent<AudioSource>().Play();
-        Destroy(gameObject.GetComponent<ItemUpgrades>()); // Destroy item upgrade so it is not readded to upgrade system
-
+        //Destroy(gameObject.GetComponent<ItemUpgrades>()); // Destroy item upgrade so it is not readded to upgrade system
     }
 
     //toggles object functionality
