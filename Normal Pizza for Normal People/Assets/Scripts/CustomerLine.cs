@@ -21,6 +21,8 @@ public class CustomerLine : MonoBehaviour
     [SerializeField] private Transform customerSpawnPos;
     [SerializeField] private List<CustomerLinePos> customerLines = new List<CustomerLinePos>();
 
+    
+
     void Start()
     {
         gameManager = GetComponent<GameManager>();

@@ -50,10 +50,13 @@ public class Customer : MonoBehaviour
     private Vector3 endPos;
 
     public static bool firstPizzaThrow = false;
-    
+
+    private Camera vrCam;
+
     // Start is called before the first frame update
     void Start()
     {
+        vrCam = Camera.main;
         gm = FindObjectOfType<GameManager>();
         customerLine = gm.GetComponent<CustomerLine>();
         moneyTracker = gm.GetMoneyTracker();
@@ -308,9 +311,7 @@ public class Customer : MonoBehaviour
     private void ShowMoneyAmount(int amount)
     {
         moneyForOrderTextObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "$" + amount;
-        moneyForOrderTextObject.transform.LookAt(FindObjectOfType<Player>().transform);
-        moneyForOrderTextObject.transform.rotation *= Quaternion.Euler(0, 180f, 0);
-        moneyForOrderTextObject.transform.localEulerAngles = new Vector3(0, moneyForOrderTextObject.transform.localEulerAngles.x , moneyForOrderTextObject.transform.localEulerAngles.z);
+        moneyForOrderTextObject.transform.LookAt(vrCam.transform);
         moneyForOrderTextObject.gameObject.SetActive(true);
         ingredientUITransform.gameObject.SetActive(false);
 
