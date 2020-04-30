@@ -13,6 +13,8 @@ TagManager:
   - starfish
   - cactus
   - beetroot
+  - pauseMenu
+  - pointer
   layers:
   - Default
   - TransparentFX

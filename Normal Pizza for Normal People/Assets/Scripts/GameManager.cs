@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
         //TODO have player start day
         currentGameDay = startingDayValues;
         //StartCoroutine(DayCycle());  //moved to start day function
+
+        //TogglePointer();
     }
 
     public MoneyTracker GetMoneyTracker()
