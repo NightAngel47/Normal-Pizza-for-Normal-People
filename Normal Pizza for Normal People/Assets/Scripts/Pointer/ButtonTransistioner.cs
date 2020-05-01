@@ -82,6 +82,7 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
         if (gameObject.name == "BackToMainPause") //ingame
         {
             Time.timeScale = 1;
+            FindObjectOfType<PauseMenu>().pausePanel.SetActive(false);
             SceneManager.LoadScene("MainMenu");
         }
 

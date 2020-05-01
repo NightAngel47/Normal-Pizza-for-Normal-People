@@ -68,24 +68,9 @@ public class GameManager : MonoBehaviour
         return moneyTracker;
     }
 
-    public void TogglePointer()
+    public void TogglePointer(bool state)
     {
-        if (pointer.activeSelf == false) // turns pointer on if it was off
-        {
-            pointer.SetActive(true);
-            //Debug.Log("Pointer On");
-        }
-        else //turns pointer off if it was on
-        {
-            pointer.SetActive(false);
-            //Debug.Log("Pointer Off");
-        }
-        
-        //flips the needed components on or off
-        //inputMod.GetComponent<StandaloneInputModule>().enabled = !inputMod.GetComponent<StandaloneInputModule>().enabled;
-        //inputMod.GetComponent<VRInputModule>().enabled = !inputMod.GetComponent<VRInputModule>().enabled;
-        //inputMod.GetComponent<BaseInput>().enabled = !inputMod.GetComponent<BaseInput>().enabled;
-        
+        pointer.SetActive(state);
     }
 
     public void StartDay()
@@ -166,7 +151,7 @@ public class GameManager : MonoBehaviour
                 customerLinePos.gameObject.SetActive(!customerLinePos.gameObject.activeSelf);
             }
 
-            TogglePointer();
+            TogglePointer(true);
         }
     }
 

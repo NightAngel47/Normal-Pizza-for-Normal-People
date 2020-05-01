@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
@@ -10,7 +11,7 @@ public class PauseMenu : MonoBehaviour
     public SteamVR_Action_Boolean pauseActionBoolean;
     public bool isPaused = false;
     
-    private GameObject pausePanel;
+    public GameObject pausePanel;
 
     public void Awake()
     {
@@ -36,7 +37,8 @@ public class PauseMenu : MonoBehaviour
     public void SetUp()
     {
         gameObject.GetComponent<Canvas>().worldCamera = FindObjectOfType<Pointer>().gameObject.GetComponent<Camera>(); //GameObject.FindGameObjectWithTag("pointer").GetComponent<Camera>(); //
-        FindObjectOfType<GameManager>().gameObject.GetComponent<GameManager>().TogglePointer();
+        FindObjectOfType<GameManager>().TogglePointer(false);
+        pausePanel.SetActive(false);
     }
 
     public void TriggerUp(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
@@ -54,7 +56,10 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     private void PauseGame(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
-        PauseFunction();
+        if (SceneManager.GetActiveScene().name == "Game")
+        {
+            PauseFunction();
+        }
     }
 
     /// <summary>
@@ -64,9 +69,7 @@ public class PauseMenu : MonoBehaviour
     {
         Transform playerPos = FindObjectOfType<Player>().transform;
         GameManager gameManager = FindObjectOfType<GameManager>();
-
-
-
+        
         pausePanel = transform.GetChild(0).gameObject;
         
         if (isPaused)
@@ -78,7 +81,7 @@ public class PauseMenu : MonoBehaviour
 
             pausePanel.SetActive(false);
 
-            gameManager.TogglePointer();
+            gameManager.TogglePointer(false);
 
             Time.timeScale = 1;
         }
@@ -91,7 +94,7 @@ public class PauseMenu : MonoBehaviour
 
             pausePanel.SetActive(true);
 
-            gameManager.TogglePointer();
+            gameManager.TogglePointer(true);
             
             Time.timeScale = 0;
         }
