@@ -67,8 +67,8 @@ public class Customer : MonoBehaviour
         
         endPos = transform.position + (Vector3.right * 14);
 
-        moneyForOrderTextObject = Instantiate(moneyForOrderText, targetLinePos, Quaternion.identity);
-        moneyForOrderTextObject.gameObject.SetActive(false);
+        //moneyForOrderTextObject = Instantiate(moneyForOrderText, targetLinePos, Quaternion.identity);
+        //moneyForOrderTextObject.gameObject.SetActive(false);
         orderTimerText = orderTimerUI.GetComponentInChildren<TMP_Text>();
         orderTimerProgressBar = orderTimerUI.transform.GetChild(0).GetComponent<Image>();
         currentOrderTime = startOrderTime + 1;
@@ -310,6 +310,7 @@ public class Customer : MonoBehaviour
 
     private void ShowMoneyAmount(int amount)
     {
+        moneyForOrderTextObject = Instantiate(moneyForOrderText, gameObject.transform.position, Quaternion.identity);
         moneyForOrderTextObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "$" + amount;
         moneyForOrderTextObject.transform.LookAt(vrCam.transform);
         moneyForOrderTextObject.gameObject.SetActive(true);

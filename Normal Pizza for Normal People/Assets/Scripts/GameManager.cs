@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject startDayButton;
     public bool dayStarted = false;
+    public GameObject pizzaSpawnButton;
 
     enum GameDayAudioStates {StartDay, EndDay}
     [SerializeField] List<AudioClip> gameDayAudioClips = new List<AudioClip>();
@@ -60,6 +61,8 @@ public class GameManager : MonoBehaviour
         currentGameDay = startingDayValues;
         //StartCoroutine(DayCycle());  //moved to start day function
 
+        pizzaSpawnButton.SetActive(false);
+
         FindObjectOfType<PauseMenu>().SetUp();
     }
 
@@ -77,6 +80,7 @@ public class GameManager : MonoBehaviour
     {
         dayStarted = true;
         startDayButton.SetActive(false);
+        pizzaSpawnButton.SetActive(true);
         
         StartCoroutine(DayCycle());
     }
@@ -126,6 +130,7 @@ public class GameManager : MonoBehaviour
             IncreaseDayDifficulty();
 
             startDayButton.SetActive(true);
+            pizzaSpawnButton.SetActive(false);
 
             //MOVED TO START DAY FUNCTION
             //StartCoroutine(DayCycle());
