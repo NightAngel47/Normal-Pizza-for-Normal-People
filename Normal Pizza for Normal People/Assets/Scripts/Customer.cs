@@ -19,32 +19,25 @@ public class Customer : MonoBehaviour
     private NavMeshAgent agent;
     private AudioSource audioSource;
     
-    [SerializeField]
-    private float startOrderTime = 90f;
+    [SerializeField] private float startOrderTime = 90f;
     private float currentOrderTime;
-    [SerializeField]
-    private GameObject orderTimerUI;
+    [SerializeField] private GameObject orderTimerUI;
     private TMP_Text orderTimerText;
     private Image orderTimerProgressBar;
     private enum OrderTimerStates {Start, Middle, Quarter, End}
-    [SerializeField]
-    private List<Color> orderTimerColors = new List<Color>();
+    [SerializeField] private List<Color> orderTimerColors = new List<Color>();
     
-    [SerializeField]
-    private Transform ingredientUITransform;
-    [SerializeField]
-    private GameObject ingredientUI;
+    [SerializeField] private Transform ingredientUITransform;
+    [SerializeField] private GameObject ingredientUI;
+    [SerializeField] private GameObject speechBubbleUI;
 
     private enum CustomerAudioStates {Walking, GoodOrder, BadOrder, OrderEndingSoon, AtCounter}
-    [SerializeField]
-    private List<AudioClip> customerAudioClips = new List<AudioClip>();
+    [SerializeField] private List<AudioClip> customerAudioClips = new List<AudioClip>();
 
-    [SerializeField]
-    private GameObject moneyForOrderText;
+    [SerializeField] private GameObject moneyForOrderText;
     public GameObject moneyForOrderTextObject;
     
-    [HideInInspector]
-    public bool activeOrder;
+    [HideInInspector] public bool activeOrder;
     private bool leaving;
     private Vector3 targetLinePos;
     private Vector3 endPos;
@@ -306,6 +299,7 @@ public class Customer : MonoBehaviour
     {
         ingredientUITransform.gameObject.SetActive(!ingredientUITransform.gameObject.activeSelf);
         orderTimerUI.SetActive(!orderTimerUI.activeSelf);
+        speechBubbleUI.SetActive(!speechBubbleUI.activeSelf);
     }
 
     private void ShowMoneyAmount(int amount)

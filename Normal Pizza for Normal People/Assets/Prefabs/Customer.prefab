@@ -86,6 +86,7 @@ MonoBehaviour:
   ingredientUITransform: {fileID: 1499280587323528968}
   ingredientUI: {fileID: 8306937801929323066, guid: f57c2c9a80b36e64fa04c920d6aa945c,
     type: 3}
+  speechBubbleUI: {fileID: 2136325061995559620}
   customerAudioClips:
   - {fileID: 8300000, guid: 6450e4a80fd56424ab63d156ab02c035, type: 3}
   - {fileID: 8300000, guid: 7cfcd398bd2ef854b8a9f0f478a553cd, type: 3}
@@ -236,21 +237,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8855423326005325541}
     m_Modifications:
-    - target: {fileID: 1166648967260429950, guid: a48cbd8b80e14ab4a98285dc54d49872,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.19279999
-      objectReference: {fileID: 0}
-    - target: {fileID: 1893473763102535569, guid: a48cbd8b80e14ab4a98285dc54d49872,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411579000536589229, guid: a48cbd8b80e14ab4a98285dc54d49872,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6776600240221178425, guid: a48cbd8b80e14ab4a98285dc54d49872,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -309,12 +295,12 @@ PrefabInstance:
     - target: {fileID: 6776600240221178425, guid: a48cbd8b80e14ab4a98285dc54d49872,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.543
       objectReference: {fileID: 0}
     - target: {fileID: 6776600240221178425, guid: a48cbd8b80e14ab4a98285dc54d49872,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.1575
+      value: 0.325
       objectReference: {fileID: 0}
     - target: {fileID: 6776600240221178425, guid: a48cbd8b80e14ab4a98285dc54d49872,
         type: 3}
@@ -366,6 +352,12 @@ PrefabInstance:
 --- !u!224 &6554167709483483983 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6776600240221178425, guid: a48cbd8b80e14ab4a98285dc54d49872,
+    type: 3}
+  m_PrefabInstance: {fileID: 359802870229141878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2136325061995559620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1827202090752996274, guid: a48cbd8b80e14ab4a98285dc54d49872,
     type: 3}
   m_PrefabInstance: {fileID: 359802870229141878}
   m_PrefabAsset: {fileID: 0}
