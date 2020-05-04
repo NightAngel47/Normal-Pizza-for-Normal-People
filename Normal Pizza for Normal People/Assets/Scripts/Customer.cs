@@ -310,11 +310,13 @@ public class Customer : MonoBehaviour
 
     private void ShowMoneyAmount(int amount)
     {
-        moneyForOrderTextObject = Instantiate(moneyForOrderText, gameObject.transform.position, Quaternion.identity);
+        moneyForOrderTextObject = Instantiate(moneyForOrderText, new Vector3(gameObject.transform.position.x, 1, gameObject.transform.position.z), Quaternion.identity);
         moneyForOrderTextObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "$" + amount;
         moneyForOrderTextObject.transform.LookAt(vrCam.transform);
         moneyForOrderTextObject.gameObject.SetActive(true);
         ingredientUITransform.gameObject.SetActive(false);
+
+        moneyForOrderTextObject.transform.localPosition = new Vector3(gameObject.transform.position.x, 1, gameObject.transform.position.z);
 
         Destroy(ingredientUITransform.transform.parent.gameObject);
         Destroy(moneyForOrderTextObject, 3);
