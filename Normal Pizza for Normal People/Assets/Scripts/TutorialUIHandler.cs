@@ -43,25 +43,30 @@ public class TutorialUIHandler : MonoBehaviour
         yield return new WaitUntil(() => FindObjectOfType<IngredientHitEffect>());
         
         tutorialUI[2].SetActive(false); //grab off
-        tutorialUI[3].SetActive(true); //hover on
-        
+        tutorialUI[3].SetActive(true); //drop on
+
+        yield return new WaitUntil(() => FindObjectOfType<PizzaIngredient>());
+
+        tutorialUI[3].SetActive(false); //drop off
+        tutorialUI[4].SetActive(true); //hover on
+
         yield return new WaitUntil(() => FindObjectOfType<PizzaBehaviour>().transform.GetChild(1).gameObject.activeSelf);
         
-        tutorialUI[3].SetActive(false); //hover off
-        tutorialUI[4].SetActive(true); //throw on
+        tutorialUI[4].SetActive(false); //hover off
+        tutorialUI[5].SetActive(true); //throw on
         
         yield return new WaitUntil(() => Customer.firstPizzaThrow);
         
-        tutorialUI[4].SetActive(false); //throw off
+        tutorialUI[5].SetActive(false); //throw off
         
         yield return new WaitUntil(() => bottomOven.activeSelf && gm.dayStarted && FindObjectOfType<PizzaBehaviour>() && FindObjectOfType<IngredientHitEffect>());
         
-        tutorialUI[5].SetActive(true); // cook right on
-        tutorialUI[6].SetActive(true); // cook on
+        tutorialUI[6].SetActive(true); // cook right on
+        tutorialUI[7].SetActive(true); // cook on
         
         yield return new WaitUntil(() => bottomOven.GetComponentInChildren<OvenBehaviour>().GetIsPizzaInOven());
         
-        tutorialUI[5].SetActive(false); // cook right off
-        tutorialUI[6].SetActive(false); // cook off
+        tutorialUI[6].SetActive(false); // cook right off
+        tutorialUI[7].SetActive(false); // cook off
     }
 }
