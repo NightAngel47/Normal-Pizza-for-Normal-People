@@ -20,10 +20,8 @@ public class OvenBehaviour : MonoBehaviour
     private bool startOverCooking = false;
     private bool isPizzaInOven = false;
 
-    [SerializeField]
-    private Color goodGreen = new Color(0.3f, 0.83f, 0.26f);
-    [SerializeField]
-    private Color warnOrange = new Color(1f, 0.63f, 0f);
+    public Sprite cookedPizzaImg;
+    public Sprite burntPizzaImg;
 
     private ParticleSystem ps;
     
@@ -113,7 +111,7 @@ public class OvenBehaviour : MonoBehaviour
             pizza.GetComponentInChildren<MeshRenderer>().material = burnt;
             pizza.isCooked = false;
             pizza.isBurnt = true;
-            loadingBar.color = warnOrange;
+            loadingBar.sprite = burntPizzaImg;
             PlayOvenAudio(OvenAudioStates.PizzaBurnt);
             yield return new WaitWhile(() => audioSource.isPlaying);
         }
@@ -123,8 +121,8 @@ public class OvenBehaviour : MonoBehaviour
             pizza.GetComponentInChildren<MeshRenderer>().material = cooked;
             pizza.isCooked = true;
             pizza.overCooking = true;
-            loadingBar.color = warnOrange;
-            
+            loadingBar.sprite = burntPizzaImg;
+
             if (!startOverCooking) // start overcooking
             {
                 PlayOvenAudio(OvenAudioStates.PizzaDone);
@@ -217,7 +215,7 @@ public class OvenBehaviour : MonoBehaviour
             startOverCooking = false;
             isPizzaInOven = false;
             //reset the timer when pizza leaves
-            loadingBar.color = goodGreen;
+            loadingBar.sprite = cookedPizzaImg;
             loadingBar.fillAmount = 0;
             tempTime = 0;
             pizza.counterTime = timerTime;
