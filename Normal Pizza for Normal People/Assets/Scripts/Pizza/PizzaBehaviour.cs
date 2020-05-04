@@ -25,6 +25,8 @@ public class PizzaBehaviour : MonoBehaviour
     public Material burnt;
     private Material raw;
 
+    public bool inOven = false;
+
     [SerializeField] private Transform ingredientUITransform;
     [SerializeField] private GameObject ingredientUI;
 

@@ -31,6 +31,9 @@ public class OvenBehaviour : MonoBehaviour
     [SerializeField] private List<AudioClip> ovenAudioClips = new List<AudioClip>();
     private AudioSource audioSource;
 
+    private int pizzaCount = 0;
+    private List<PizzaBehaviour> pizzasInOvenList = new List<PizzaBehaviour>();
+
     void Start()
     {
         ps = transform.parent.GetComponentInChildren<ParticleSystem>();
@@ -40,31 +43,43 @@ public class OvenBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (!col.transform.parent.TryGetComponent(out PizzaBehaviour pizza) || pizza.isBurnt) return;
-        
-        ps.Play();
-        PlayOvenAudio(OvenAudioStates.Cooking);
-
-        if(pizza.isCooked)
+        if (isPizzaInOven == false)
         {
-            tempTime = pizza.cookedTime - cookTime;
+            if (!col.transform.parent.TryGetComponent(out PizzaBehaviour pizza) || pizza.isBurnt) return;
+
+            ps.Play();
+            PlayOvenAudio(OvenAudioStates.Cooking);
+
+            if (pizza.isCooked)
+            {
+                tempTime = pizza.cookedTime - cookTime;
+            }
+            else
+            {
+                tempTime = pizza.cookedTime;
+            }
+
+            if (pizza.counterTime == -1)
+            {
+                timerTime = cookTime + 1;
+            }
+            else
+            {
+                timerTime = pizza.counterTime;
+            }
+
+            isPizzaInOven = true;
+            pizzaCount++;
+            pizzasInOvenList.Add(pizza);
+            StartCoroutine(PizzaInOven(pizza));
         }
+
         else
         {
-            tempTime = pizza.cookedTime;
+            if (!col.transform.parent.TryGetComponent(out PizzaBehaviour pizza) || pizza.isBurnt) return;
+            pizzaCount++;
+            pizzasInOvenList.Add(pizza);
         }
-            
-        if(pizza.counterTime == -1)
-        {
-            timerTime = cookTime + 1;
-        }
-        else
-        {
-            timerTime = pizza.counterTime;
-        }
-
-        isPizzaInOven = true;
-        StartCoroutine(PizzaInOven(pizza));
     }
 
     /// <summary>
@@ -74,6 +89,8 @@ public class OvenBehaviour : MonoBehaviour
     /// <returns></returns>
     private IEnumerator PizzaInOven(PizzaBehaviour pizza)
     {
+        pizza.inOven = true;
+
         pizza.cookedTime += Time.deltaTime; //adds time to the amount of time the pizza has been cooked
         tempTime += Time.deltaTime; //time for fill on timer
 
@@ -188,19 +205,40 @@ public class OvenBehaviour : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        //if the pizza is removed reset all variables
         if (!col.transform.parent.TryGetComponent(out PizzaBehaviour pizza)) return;
-        ps.Stop();
-        audioSource.Stop();
 
-        startOverCooking = false;
-        isPizzaInOven = false;
-        //reset the timer when pizza leaves
-        loadingBar.color = goodGreen;
-        loadingBar.fillAmount = 0;
-        tempTime = 0;
-        pizza.counterTime = timerTime;
-        timerTime = cookTime + 1;
+        if (isPizzaInOven == true && col.transform.parent.GetComponent<PizzaBehaviour>().inOven == true)
+        {
+            //if the pizza is removed reset all variables
+            
+            ps.Stop();
+            audioSource.Stop();
+
+            startOverCooking = false;
+            isPizzaInOven = false;
+            //reset the timer when pizza leaves
+            loadingBar.color = goodGreen;
+            loadingBar.fillAmount = 0;
+            tempTime = 0;
+            pizza.counterTime = timerTime;
+            timerTime = cookTime + 1;
+
+            pizza.inOven = false;
+
+            pizzaCount--;
+            pizzasInOvenList.Remove(pizza);
+
+            if(pizzaCount > 0)
+            {
+                StartCoroutine(PizzaInOven(pizzasInOvenList[0]));
+            }
+        }
+
+        else
+        {
+            pizzaCount--;
+            pizzasInOvenList.Remove(pizza);
+        }
     }
 
     private void PlayOvenAudio(OvenAudioStates state)
