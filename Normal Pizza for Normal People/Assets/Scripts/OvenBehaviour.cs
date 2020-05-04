@@ -230,7 +230,7 @@ public class OvenBehaviour : MonoBehaviour
 
             if(pizzaCount > 0)
             {
-                StartCoroutine(PizzaInOven(pizzasInOvenList[0]));
+                StartSecondPizza(pizzasInOvenList[0]);
             }
         }
 
@@ -239,6 +239,33 @@ public class OvenBehaviour : MonoBehaviour
             pizzaCount--;
             pizzasInOvenList.Remove(pizza);
         }
+    }
+
+    public void StartSecondPizza(PizzaBehaviour pizza)
+    {
+        ps.Play();
+        PlayOvenAudio(OvenAudioStates.Cooking);
+
+        if (pizza.isCooked)
+        {
+            tempTime = pizza.cookedTime - cookTime;
+        }
+        else
+        {
+            tempTime = pizza.cookedTime;
+        }
+
+        if (pizza.counterTime == -1)
+        {
+            timerTime = cookTime + 1;
+        }
+        else
+        {
+            timerTime = pizza.counterTime;
+        }
+
+        isPizzaInOven = true;
+        StartCoroutine(PizzaInOven(pizza));
     }
 
     private void PlayOvenAudio(OvenAudioStates state)
