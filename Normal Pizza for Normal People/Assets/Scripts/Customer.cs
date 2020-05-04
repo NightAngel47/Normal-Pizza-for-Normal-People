@@ -116,6 +116,7 @@ public class Customer : MonoBehaviour
             moneyTracker.CustomerChangeMoney(CheckDeliveredPizza(pizza));
             Destroy(pizza.gameObject);
             activeOrder = false;
+            gm.RemoveActiveCustomer(this);
             CustomerLeave();
         }
     }
@@ -133,7 +134,6 @@ public class Customer : MonoBehaviour
         if (other.CompareTag("LineStart"))
         {
             activeOrder = false;
-            ChangeUIState();
         }
     }
 
@@ -181,6 +181,7 @@ public class Customer : MonoBehaviour
 
     private IEnumerator OrderTimerCountDown()
     {
+        if (!activeOrder) yield break;
         orderTimerText.text = ""+(int)currentOrderTime;
         orderTimerProgressBar.fillAmount = currentOrderTime / startOrderTime;
         yield return new WaitForEndOfFrame();
@@ -214,11 +215,13 @@ public class Customer : MonoBehaviour
             
             StartCoroutine(OrderTimerCountDown());
         }
-        else
+        else // order ran out of time and customer left
         {
             moneyTracker.CustomerChangeMoney((int) -startOrderTime);
             PlayCustomerAudio(CustomerAudioStates.BadOrder);
             activeOrder = false;
+            gm.RemoveActiveCustomer(this);
+            DestoryOrderUI();
             CustomerLeave();
         }
     }
@@ -308,13 +311,15 @@ public class Customer : MonoBehaviour
         moneyForOrderTextObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "$" + amount;
         moneyForOrderTextObject.transform.LookAt(vrCam.transform);
         moneyForOrderTextObject.gameObject.SetActive(true);
-        ingredientUITransform.gameObject.SetActive(false);
 
         moneyForOrderTextObject.transform.localPosition = new Vector3(gameObject.transform.position.x, 1, gameObject.transform.position.z);
-
-        Destroy(ingredientUITransform.transform.parent.gameObject);
+        DestoryOrderUI();
         Destroy(moneyForOrderTextObject, 3);
-        
+    }
+
+    private void DestoryOrderUI()
+    {
+        Destroy(ingredientUITransform.transform.parent.gameObject);
     }
 
     private void PlayCustomerAudio(CustomerAudioStates state)

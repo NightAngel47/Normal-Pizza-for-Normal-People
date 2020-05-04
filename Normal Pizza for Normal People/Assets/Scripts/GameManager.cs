@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
     public bool dayStarted = false;
     public GameObject pizzaSpawnButton;
 
+    private readonly List<Customer> activeCustomers = new List<Customer>();
+    
     enum GameDayAudioStates {StartDay, EndDay}
     [SerializeField] List<AudioClip> gameDayAudioClips = new List<AudioClip>();
     
@@ -102,23 +104,24 @@ public class GameManager : MonoBehaviour
         audioSource.Play();
         
         yield return new WaitUntil(() => currentDayTimer <= 0);
-        Customer lastCustomer = null;
         foreach (var customer in FindObjectsOfType<Customer>())
         {
             if (customer.activeOrder)
             {
-                lastCustomer = customer;
+                activeCustomers.Add(customer);
             }
 
             customer.CustomerLeave();
         }
 
-        if (lastCustomer != null)
-        {
-            yield return new WaitWhile(() => lastCustomer.activeOrder);
-        }
+        yield return new WaitUntil(() => activeCustomers.Count == 0);
+        
+        audioSource.clip = gameDayAudioClips[(int) GameDayAudioStates.EndDay];
+        audioSource.Play();
 
         dayStarted = false;
+        
+        yield return new WaitForSeconds(1f);
         endOfDaySummary.SetActive(true);
 
         if (moneyTracker.GetCurrentDayAmount() >= currentGameDay.moneyGoal)
@@ -181,8 +184,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            audioSource.clip = gameDayAudioClips[(int) GameDayAudioStates.EndDay];
-            audioSource.Play();
             ShowHideDayTimer(false);
         }
     }
@@ -197,5 +198,13 @@ public class GameManager : MonoBehaviour
         currentGameDay.dayNum++;
         currentGameDay.numOfCustomers = (int) (currentGameDay.numOfCustomers * newCustomerPerDayRate);
         currentGameDay.moneyGoal = (int) (currentGameDay.moneyGoal * newMoneyGoalPerDayRate);
+    }
+
+    public void RemoveActiveCustomer(Customer customer)
+    {
+        if (activeCustomers.Contains(customer))
+        {
+            activeCustomers.Remove(customer);
+        }
     }
 }

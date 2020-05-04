@@ -121,7 +121,6 @@ public class OvenBehaviour : MonoBehaviour
             pizza.GetComponentInChildren<MeshRenderer>().material = cooked;
             pizza.isCooked = true;
             pizza.overCooking = true;
-            loadingBar.sprite = burntPizzaImg;
 
             if (!startOverCooking) // start overcooking
             {
@@ -129,9 +128,10 @@ public class OvenBehaviour : MonoBehaviour
                 startOverCooking = true;
                 tempTime = 0;
                 timerTime = cookTime + 1;
-                Debug.Log(timerTime);
+                //Debug.Log(timerTime);
                 
                 yield return new WaitWhile(() => audioSource.isPlaying);
+                loadingBar.sprite = burntPizzaImg;
                 if (isPizzaInOven)
                 {
                     PlayOvenAudio(OvenAudioStates.Cooking);
