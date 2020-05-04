@@ -6,15 +6,11 @@ using Valve.VR.InteractionSystem;
 
 public class PizzaIngredientSpawner : MonoBehaviour
 {
-    [SerializeField] public GameObject pizzaIngredientToSpawn;
+    [SerializeField] public GameObject pizzaIngredientToSpawn = null;
 
     private bool hasIngredient = false;
 
-    private bool isSpawning = false;
-
-    private bool handInside = false;
-
-    public ToppingObjectPool op; //object pool
+    public ToppingObjectPool op = null; //object pool
 
     private void OnTriggerEnter(Collider col)
     {

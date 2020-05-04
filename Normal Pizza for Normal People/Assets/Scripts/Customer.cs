@@ -12,39 +12,39 @@ using Valve.VR.InteractionSystem;
 
 public class Customer : MonoBehaviour
 {
-    private Order order;
-    private GameManager gm;
-    private MoneyTracker moneyTracker;
-    private CustomerLine customerLine;
-    private NavMeshAgent agent;
-    private AudioSource audioSource;
+    private Order order = null;
+    private GameManager gm = null;
+    private MoneyTracker moneyTracker = null;
+    private CustomerLine customerLine = null;
+    private NavMeshAgent agent = null;
+    private AudioSource audioSource = null;
     
     [SerializeField] private float startOrderTime = 90f;
-    private float currentOrderTime;
-    [SerializeField] private GameObject orderTimerUI;
-    private TMP_Text orderTimerText;
-    private Image orderTimerProgressBar;
+    private float currentOrderTime = 0;
+    [SerializeField] private GameObject orderTimerUI = null;
+    private TMP_Text orderTimerText = null;
+    private Image orderTimerProgressBar = null;
     private enum OrderTimerStates {Start, Middle, Quarter, End}
     [SerializeField] private List<Color> orderTimerColors = new List<Color>();
     
-    [SerializeField] private Transform ingredientUITransform;
-    [SerializeField] private GameObject ingredientUI;
-    [SerializeField] private GameObject speechBubbleUI;
+    [SerializeField] private Transform ingredientUITransform = null;
+    [SerializeField] private GameObject ingredientUI = null;
+    [SerializeField] private GameObject speechBubbleUI = null;
 
     private enum CustomerAudioStates {Walking, GoodOrder, BadOrder, OrderEndingSoon, AtCounter}
     [SerializeField] private List<AudioClip> customerAudioClips = new List<AudioClip>();
 
-    [SerializeField] private GameObject moneyForOrderText;
-    public GameObject moneyForOrderTextObject;
+    [SerializeField] private GameObject moneyForOrderText = null;
+    public GameObject moneyForOrderTextObject = null;
     
-    [HideInInspector] public bool activeOrder;
-    private bool leaving;
-    private Vector3 targetLinePos;
-    private Vector3 endPos;
+    [HideInInspector] public bool activeOrder = false;
+    private bool leaving = false;
+    private Vector3 targetLinePos = Vector3.zero;
+    private Vector3 endPos = Vector3.zero;
 
     public static bool firstPizzaThrow = false;
 
-    private Camera vrCam;
+    private Camera vrCam = null;
 
     // Start is called before the first frame update
     void Start()

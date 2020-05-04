@@ -6,12 +6,9 @@ using Valve.VR.InteractionSystem;
 
 public class PizzaSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject pizzaPrefab;
-    [SerializeField]
-    private Transform pizzaSpawnPos;
-    [SerializeField]
-    private Transform pizzaSpawnPos2;
+    [SerializeField] private GameObject pizzaPrefab = null;
+    [SerializeField] private Transform pizzaSpawnPos = null;
+    [SerializeField] private Transform pizzaSpawnPos2 = null;
 
     private bool spawnRight = false;
 

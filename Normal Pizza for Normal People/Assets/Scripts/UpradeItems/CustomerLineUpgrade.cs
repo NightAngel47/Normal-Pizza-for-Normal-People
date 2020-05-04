@@ -6,14 +6,13 @@ using Valve.VR.InteractionSystem;
 
 public class CustomerLineUpgrade : ItemUpgrades
 {
-    [SerializeField] private GameObject newLineUI;
+    [SerializeField] private GameObject newLineUI = null;
 
-    private GameObject lineUIInstance;
+    private GameObject lineUIInstance = null;
 
-    private CustomerLinePos customerLinePos;
-    private Camera vrCam;
-
-
+    private CustomerLinePos customerLinePos = null;
+    private Camera vrCam = null;
+    
     private void Awake()
     {
         customerLinePos = GetComponent<CustomerLinePos>();

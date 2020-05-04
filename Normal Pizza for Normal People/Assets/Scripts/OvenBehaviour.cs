@@ -8,29 +8,29 @@ public class OvenBehaviour : MonoBehaviour
 {
     [SerializeField] private float cookTime = 10; //time till its cooked
     [SerializeField] private float overCookTime = 20; // time till its burnt
-    [SerializeField] private Material cooked;
-    [SerializeField] private Material burnt;
+    [SerializeField] private Material cooked  = null;
+    [SerializeField] private Material burnt = null;
 
-    public Image loadingBar;
-    public TextMeshProUGUI progressIndicator;
-    private float timerTime;
+    public Image loadingBar = null;
+    public TextMeshProUGUI progressIndicator = null;
+    private float timerTime = 0;
 
     //private PizzaBehaviour pizza;
     private float tempTime = 0;
     private bool startOverCooking = false;
     private bool isPizzaInOven = false;
 
-    public Sprite cookedPizzaImg;
-    public Sprite burntPizzaImg;
+    public Sprite cookedPizzaImg = null;
+    public Sprite burntPizzaImg = null;
 
-    private ParticleSystem ps;
+    private ParticleSystem ps = null;
     
     private enum OvenAudioStates {Cooking, PizzaDone, PizzaBurnt}
     [SerializeField] private List<AudioClip> ovenAudioClips = new List<AudioClip>();
-    private AudioSource audioSource;
+    private AudioSource audioSource = null;
 
     private int pizzaCount = 0;
-    private List<PizzaBehaviour> pizzasInOvenList = new List<PizzaBehaviour>();
+    private readonly List<PizzaBehaviour> pizzasInOvenList = new List<PizzaBehaviour>();
 
     void Start()
     {

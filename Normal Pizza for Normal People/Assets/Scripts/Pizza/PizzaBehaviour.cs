@@ -8,27 +8,26 @@ using UnityEngine.UI;
 
 public class PizzaBehaviour : MonoBehaviour
 {
-    private List<PizzaIngredient> ingredientsOnPizza = new List<PizzaIngredient>();
-    private List<GameObject> ingredientUIList = new List<GameObject>();
-    private List<int> uniqueIngredientCounts = new List<int>();
+    private readonly List<PizzaIngredient> ingredientsOnPizza = new List<PizzaIngredient>();
+    private readonly List<GameObject> ingredientUIList = new List<GameObject>();
+    private readonly List<int> uniqueIngredientCounts = new List<int>();
 
     //Oven/Cooking Variables
-    [HideInInspector]
-    public float cookedTime = 0; //the amount of time the pizza has spent in the oven
+    [HideInInspector] public float cookedTime = 0; //the amount of time the pizza has spent in the oven
     public float counterTime = -1;
     public bool isBurnt = false; //has the pizza been burnt
     public bool isCooked = false; //has the pizza been cooked ----- only one of these two bools will be on at any given time
     public bool overCooking = false; //is it being over cooked, has it been cooked and will it be burning soon
 
-    private MeshRenderer pizzaModelMat;
-    public Material cooked;
-    public Material burnt;
-    private Material raw;
+    private MeshRenderer pizzaModelMat = null;
+    public Material cooked = null;
+    public Material burnt = null;
+    private Material raw = null;
 
     public bool inOven = false;
 
-    [SerializeField] private Transform ingredientUITransform;
-    [SerializeField] private GameObject ingredientUI;
+    [SerializeField] private Transform ingredientUITransform = null;
+    [SerializeField] private GameObject ingredientUI = null;
 
     public void Start()
     {

@@ -6,11 +6,11 @@ using Valve.VR.InteractionSystem;
 
 public class ToppingUpgrades : ItemUpgrades
 {
-    [SerializeField] private GameObject newToppingUI;
+    [SerializeField] private GameObject newToppingUI = null;
 
-    private GameObject toppingUIInstance;
+    private GameObject toppingUIInstance = null;
     
-    private PizzaIngredientSpawner pis;
+    private PizzaIngredientSpawner pis = null;
 
     public override void TurnOnUpgrade()
     {

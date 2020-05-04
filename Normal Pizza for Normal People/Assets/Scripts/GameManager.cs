@@ -9,33 +9,33 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CustomerLine), typeof(OrderCreation))]
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private CustomerLine customerLine;
-    [SerializeField] private MoneyTracker moneyTracker;
-    [SerializeField] private UpgradeSystem upgradeSystem;
-    private AudioSource audioSource;
+    [SerializeField] private CustomerLine customerLine = null;
+    [SerializeField] private MoneyTracker moneyTracker = null;
+    [SerializeField] private UpgradeSystem upgradeSystem = null;
+    private AudioSource audioSource = null;
 
     [Header("Day Canvas UI")]
-    [SerializeField] private TMP_Text currentDayText;
-    [SerializeField] private TMP_Text currentDayTime;
-    [SerializeField] private Image currentDayProgressBar;
+    [SerializeField] private TMP_Text currentDayText = null;
+    [SerializeField] private TMP_Text currentDayTime = null;
+    [SerializeField] private Image currentDayProgressBar = null;
     
-    [SerializeField] private GameObject endOfDaySummary;
+    [SerializeField] private GameObject endOfDaySummary = null;
 
     [Header("Game Days")] 
-    [SerializeField, Tooltip("The starting values for the game days.")] private Day startingDayValues;
-    [SerializeField, Tooltip("The rate that each new day will increase in customers."), Range(1f, 2f)] private float newCustomerPerDayRate;
-    [SerializeField, Tooltip("The rate that each new day will increase its money goal."), Range(1f, 2f)] private float newMoneyGoalPerDayRate;
-    [HideInInspector] public Day currentGameDay;
-    [HideInInspector] public float currentDayTimer;
+    [SerializeField, Tooltip("The starting values for the game days.")] private Day startingDayValues = new Day();
+    [SerializeField, Tooltip("The rate that each new day will increase in customers."), Range(1f, 2f)] private float newCustomerPerDayRate = 1.1f;
+    [SerializeField, Tooltip("The rate that each new day will increase its money goal."), Range(1f, 2f)] private float newMoneyGoalPerDayRate = 1.5f;
+    [HideInInspector] public Day currentGameDay = new Day();
+    [HideInInspector] public float currentDayTimer = 0f;
 
-    public GameObject gameOverButtons;
-    public TMP_Text gameOverText;
-    public GameObject pointer;
-    public GameObject inputMod;
+    public GameObject gameOverButtons = null;
+    public TMP_Text gameOverText = null;
+    public GameObject pointer = null;
+    public GameObject inputMod = null;
 
-    public GameObject startDayButton;
+    public GameObject startDayButton = null;
     public bool dayStarted = false;
-    public GameObject pizzaSpawnButton;
+    public GameObject pizzaSpawnButton = null;
 
     private readonly List<Customer> activeCustomers = new List<Customer>();
     

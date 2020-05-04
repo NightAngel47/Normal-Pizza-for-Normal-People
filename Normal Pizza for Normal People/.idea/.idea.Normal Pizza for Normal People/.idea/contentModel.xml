@@ -27,29 +27,6 @@
           <e p="MainMenuHandle.cs" t="Include" />
           <e p="MoneyTracker.cs" t="Include" />
           <e p="MusicManager.cs" t="Include" />
-          <e p="Old Scripts" t="Include">
-            <e p="ButtonEffect1.cs" t="Include" />
-            <e p="ButtonExample1.cs" t="Include" />
-            <e p="CurrentPizzaStatus.cs" t="Include" />
-            <e p="CustomerTest.cs" t="Include" />
-            <e p="FinishedPizza.cs" t="Include" />
-            <e p="GameManager.cs" t="Include" />
-            <e p="LockToPoint1.cs" t="Include" />
-            <e p="MainMenuManager.cs" t="Include" />
-            <e p="OrderTicketBehaviour.cs" t="Include" />
-            <e p="OrderTicketLockPosBehaviour.cs" t="Include" />
-            <e p="OrderTicketScript.cs" t="Include" />
-            <e p="OvenBehaviourOld.cs" t="Include" />
-            <e p="PizzaCheckbox.cs" t="Include" />
-            <e p="PizzaRespawn.cs" t="Include" />
-            <e p="PizzaScript.cs" t="Include" />
-            <e p="PizzaTicketBox.cs" t="Include" />
-            <e p="TimeLeftUI.cs" t="Include" />
-            <e p="ToppingHitEffect.cs" t="Include" />
-            <e p="ToppingOrderUI.cs" t="Include" />
-            <e p="ToppingSpawner.cs" t="Include" />
-            <e p="TrashBehaviour.cs" t="Include" />
-          </e>
           <e p="Order.cs" t="Include" />
           <e p="OrderCreation.cs" t="Include" />
           <e p="OvenBehaviour.cs" t="Include" />

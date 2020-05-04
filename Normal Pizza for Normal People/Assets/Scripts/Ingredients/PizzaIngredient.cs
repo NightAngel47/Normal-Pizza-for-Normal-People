@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PizzaIngredient : MonoBehaviour
 {
-    [SerializeField, Tooltip("The name of the ingredient")]
-    private string ingredientName;
+    [SerializeField, Tooltip("The name of the ingredient")] private string ingredientName = null;
 
-    [SerializeField]
-    private Sprite ingredientIcon;
+    [SerializeField] private Sprite ingredientIcon = null;
 
     public string GetIngredientName()
     {

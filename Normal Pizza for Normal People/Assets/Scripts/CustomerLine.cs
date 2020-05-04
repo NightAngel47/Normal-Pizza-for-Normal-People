@@ -10,19 +10,17 @@ using Random = UnityEngine.Random;
 
 public class CustomerLine : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager;
+    [SerializeField] private GameManager gameManager = null;
     private List<Order> customerOrders = new List<Order>();
-    [SerializeField] private OrderCreation orderCreation;
+    [SerializeField] private OrderCreation orderCreation = null;
     //[SerializeField] private TMP_Text currentDayCustomerText;
-    private int currentDayCustomerServed;
-    private int currentDayNumOfCustomers;
-    private int currentAmountOfCustomersInShop;
-    [SerializeField] private GameObject customerPrefab;
-    [SerializeField] private Transform customerSpawnPos;
+    private int currentDayCustomerServed = 0;
+    private int currentDayNumOfCustomers = 0;
+    private int currentAmountOfCustomersInShop = 0;
+    [SerializeField] private GameObject customerPrefab = null;
+    [SerializeField] private Transform customerSpawnPos = null;
     [SerializeField] private List<CustomerLinePos> customerLines = new List<CustomerLinePos>();
-
     
-
     void Start()
     {
         gameManager = GetComponent<GameManager>();

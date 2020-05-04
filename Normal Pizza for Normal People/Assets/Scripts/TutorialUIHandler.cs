@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class TutorialUIHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject bottomOven;
+    [SerializeField] private GameObject bottomOven = null;
     [SerializeField] private List<GameObject> tutorialUI = new List<GameObject>();
-    private GameManager gm;
-
-
+    private GameManager gm = null;
+    
     // Start is called before the first frame update
     void Start()
     {
         gm = GetComponent<GameManager>();
         
-        for(int i = 0; i < tutorialUI.Count; i++)
+        foreach (var tutUi in tutorialUI)
         {
-            tutorialUI[i].SetActive(false);
+            tutUi.SetActive(false);
         }
 
         StartCoroutine(RunTutorial());

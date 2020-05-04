@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class MoneyTracker : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager;
-    [SerializeField] private TMP_Text currentDayMoneyText;
+    [SerializeField] private GameManager gameManager = null;
+    [SerializeField] private TMP_Text currentDayMoneyText = null;
 
-    [SerializeField] private List<TMP_Text> endOfDaySummaryTexts;
+    [SerializeField] private List<TMP_Text> endOfDaySummaryTexts = new List<TMP_Text>();
     private enum SummaryText
     {
         CurrentDay,
