@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using UnityEditor;
 using UnityEngine;
 using Valve.Newtonsoft.Json;
@@ -46,7 +45,7 @@ namespace Valve.VR
 
             string folderName = "SteamVR_" + SteamVR_Input_ActionFile.GetCodeFriendlyName(name);
 
-            string directorySeparatorChar = System.IO.Path.DirectorySeparatorChar.ToString();
+            string directorySeparatorChar = Path.DirectorySeparatorChar.ToString();
 
             string mainFolderPath = string.Format("{0}", folderName);
             string versionFolderPath = string.Format("{1}{0}{2}", directorySeparatorChar, folderName, version.ToString());

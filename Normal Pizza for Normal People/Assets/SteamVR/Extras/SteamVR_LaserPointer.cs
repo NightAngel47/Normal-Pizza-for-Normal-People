@@ -1,6 +1,6 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
+
 using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR.Extras
 {
@@ -62,7 +62,7 @@ namespace Valve.VR.Extras
             {
                 if (collider)
                 {
-                    Object.Destroy(collider);
+                    Destroy(collider);
                 }
             }
             Material newMaterial = new Material(Shader.Find("Unlit/Color"));

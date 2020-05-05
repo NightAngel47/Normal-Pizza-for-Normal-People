@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Valve.VR.Extras
 {
@@ -29,7 +29,7 @@ namespace Valve.VR.Extras
                     toDisable.SetActive(false);
             }
 
-            GameObject.Instantiate(vrCameraPrefab);
+            Instantiate(vrCameraPrefab);
         }
     }
 }

@@ -5,7 +5,6 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -28,7 +27,7 @@ namespace Valve.VR.InteractionSystem
 
         protected void OnHandInitialized(int deviceIndex)
         {
-            GameObject renderModelGameObject = GameObject.Instantiate(hand.renderModelPrefab);
+            GameObject renderModelGameObject = Instantiate(hand.renderModelPrefab);
             renderModelGameObject.transform.parent = this.transform;
             renderModelGameObject.transform.localPosition = Vector3.zero;
             renderModelGameObject.transform.localRotation = Quaternion.identity;

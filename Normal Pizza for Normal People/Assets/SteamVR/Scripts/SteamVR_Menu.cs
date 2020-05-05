@@ -4,8 +4,9 @@
 //
 //=============================================================================
 
+using System;
 using UnityEngine;
-using Valve.VR;
+using Object = UnityEngine.Object;
 
 namespace Valve.VR
 {
@@ -187,7 +188,7 @@ namespace Valve.VR
 #endif
             GUILayout.Space(menuOffset);
 
-            var env = System.Environment.GetEnvironmentVariable("VR_OVERRIDE");
+            var env = Environment.GetEnvironmentVariable("VR_OVERRIDE");
             if (env != null)
             {
                 GUILayout.Label("VR_OVERRIDE=" + env);
@@ -238,7 +239,7 @@ namespace Valve.VR
 
             // If an existing camera is rendering into the overlay texture, we need
             // to temporarily disable it to keep it from clearing the texture on us.
-            var cameras = Object.FindObjectsOfType(typeof(Camera)) as Camera[];
+            var cameras = FindObjectsOfType(typeof(Camera)) as Camera[];
             foreach (var cam in cameras)
             {
                 if (cam.enabled && cam.targetTexture == texture)

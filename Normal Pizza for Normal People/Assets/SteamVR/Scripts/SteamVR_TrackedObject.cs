@@ -4,8 +4,8 @@
 //
 //=============================================================================
 
+using System;
 using UnityEngine;
-using Valve.VR;
 
 namespace Valve.VR
 {
@@ -105,7 +105,7 @@ namespace Valve.VR
 
         public void SetDeviceIndex(int index)
         {
-            if (System.Enum.IsDefined(typeof(EIndex), index))
+            if (Enum.IsDefined(typeof(EIndex), index))
                 this.index = (EIndex)index;
         }
     }

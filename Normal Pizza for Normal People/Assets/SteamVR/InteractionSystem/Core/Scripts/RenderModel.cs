@@ -1,8 +1,7 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
-using UnityEngine;
-using System.Collections;
 using System;
+using UnityEngine;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -46,7 +45,7 @@ namespace Valve.VR.InteractionSystem
         {
             if (handPrefab != null)
             {
-                handInstance = GameObject.Instantiate(handPrefab);
+                handInstance = Instantiate(handPrefab);
                 handInstance.transform.parent = this.transform;
                 handInstance.transform.localPosition = Vector3.zero;
                 handInstance.transform.localRotation = Quaternion.identity;
@@ -75,7 +74,7 @@ namespace Valve.VR.InteractionSystem
         {
             if (controllerPrefab != null)
             {
-                controllerInstance = GameObject.Instantiate(controllerPrefab);
+                controllerInstance = Instantiate(controllerPrefab);
                 controllerInstance.transform.parent = this.transform;
                 controllerInstance.transform.localPosition = Vector3.zero;
                 controllerInstance.transform.localRotation = Quaternion.identity;

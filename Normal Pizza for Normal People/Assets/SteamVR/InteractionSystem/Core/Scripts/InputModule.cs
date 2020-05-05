@@ -5,7 +5,6 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.EventSystems;
 
 namespace Valve.VR.InteractionSystem
@@ -22,7 +21,7 @@ namespace Valve.VR.InteractionSystem
 			get
 			{
 				if ( _instance == null )
-					_instance = GameObject.FindObjectOfType<InputModule>();
+					_instance = FindObjectOfType<InputModule>();
 
 				return _instance;
 			}

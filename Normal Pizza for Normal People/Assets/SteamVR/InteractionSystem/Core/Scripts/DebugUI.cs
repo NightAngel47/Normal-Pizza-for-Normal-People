@@ -5,8 +5,6 @@
 //=============================================================================
 
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -23,7 +21,7 @@ namespace Valve.VR.InteractionSystem
 			{
 				if ( _instance == null )
 				{
-					_instance = GameObject.FindObjectOfType<DebugUI>();
+					_instance = FindObjectOfType<DebugUI>();
 				}
 				return _instance;
 			}

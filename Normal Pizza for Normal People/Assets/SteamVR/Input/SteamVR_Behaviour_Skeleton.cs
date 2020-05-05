@@ -1,10 +1,9 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
-using System;
 using System.Collections;
+using System.Threading;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.Events;
-using Valve.VR;
 
 namespace Valve.VR
 {
@@ -952,18 +951,18 @@ namespace Valve.VR
                 float increment = 100;
                 for (float timer = 0; timer < msToWait; timer += increment)
                 {
-                    bool cancel = UnityEditor.EditorUtility.DisplayCancelableProgressBar(title, text, timer / msToWait);
+                    bool cancel = EditorUtility.DisplayCancelableProgressBar(title, text, timer / msToWait);
                     if (cancel)
                     {
-                        UnityEditor.EditorUtility.ClearProgressBar();
+                        EditorUtility.ClearProgressBar();
 
                         if (temporarySession)
                             SteamVR.ExitTemporarySession();
                         return;
                     }
-                    System.Threading.Thread.Sleep((int)increment);
+                    Thread.Sleep((int)increment);
                 }
-                UnityEditor.EditorUtility.ClearProgressBar();
+                EditorUtility.ClearProgressBar();
 #endif
 
                 skeletonAction.actionSet.Activate();

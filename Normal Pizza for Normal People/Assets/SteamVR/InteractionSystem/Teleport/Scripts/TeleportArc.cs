@@ -5,6 +5,7 @@
 //=============================================================================
 
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -87,9 +88,9 @@ namespace Valve.VR.InteractionSystem
                 lineRenderers[i] = newObject.AddComponent<LineRenderer>();
 
                 lineRenderers[i].receiveShadows = false;
-                lineRenderers[i].reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
-                lineRenderers[i].lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
-                lineRenderers[i].shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                lineRenderers[i].reflectionProbeUsage = ReflectionProbeUsage.Off;
+                lineRenderers[i].lightProbeUsage = LightProbeUsage.Off;
+                lineRenderers[i].shadowCastingMode = ShadowCastingMode.Off;
                 lineRenderers[i].material = material;
 #if (UNITY_5_4)
                 lineRenderers[i].SetWidth(thickness, thickness);

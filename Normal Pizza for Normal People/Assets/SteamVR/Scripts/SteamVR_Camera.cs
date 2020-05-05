@@ -4,11 +4,9 @@
 //
 //=============================================================================
 
-using UnityEngine;
 using System.Collections;
 using System.Reflection;
-using Valve.VR;
-
+using UnityEngine;
 #if UNITY_2017_2_OR_NEWER
     using UnityEngine.XR;
 #else

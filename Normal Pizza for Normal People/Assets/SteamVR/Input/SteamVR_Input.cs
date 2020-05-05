@@ -1,14 +1,14 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
-using UnityEngine;
-using Valve.VR;
-using System.IO;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
-using System.Linq;
-using Valve.Newtonsoft.Json;
+using System.Runtime.InteropServices;
 using System.Text;
+using UnityEditor;
+using UnityEngine;
+using Valve.Newtonsoft.Json;
 
 namespace Valve.VR
 {
@@ -385,7 +385,7 @@ namespace Valve.VR
         protected static void ShowBindingHintsForSets(VRActiveActionSet_t[] sets, ulong highlightAction = 0)
         {
             if (sizeVRActiveActionSet_t == 0)
-                sizeVRActiveActionSet_t = (uint)System.Runtime.InteropServices.Marshal.SizeOf(typeof(VRActiveActionSet_t));
+                sizeVRActiveActionSet_t = (uint)Marshal.SizeOf(typeof(VRActiveActionSet_t));
 
             OpenVR.Input.ShowBindingsForActionSet(sets, sizeVRActiveActionSet_t, highlightAction);
         }
@@ -430,7 +430,7 @@ namespace Valve.VR
         public static void ShowBindingHintsForActiveActionSets(ulong highlightAction = 0)
         {
             if (sizeVRActiveActionSet_t == 0)
-                sizeVRActiveActionSet_t = (uint)System.Runtime.InteropServices.Marshal.SizeOf(typeof(VRActiveActionSet_t));
+                sizeVRActiveActionSet_t = (uint)Marshal.SizeOf(typeof(VRActiveActionSet_t));
 
             OpenVR.Input.ShowBindingsForActionSet(SteamVR_ActionSet_Manager.rawActiveActionSetArray, sizeVRActiveActionSet_t, highlightAction);
         }
@@ -1320,7 +1320,7 @@ namespace Valve.VR
                 bool verified = false;
                 if (File.Exists(newActionsFilePath))
                 {
-                    shouldCopy = UnityEditor.EditorUtility.DisplayDialog("SteamVR", "SteamVR Unity Plugin detected an Action Manifest file in the legacy location (project root). You also have an Action Manifest File in the new location (streaming assets). Would you like to overwrite the files in streaming assets?", "Yes", "No");
+                    shouldCopy = EditorUtility.DisplayDialog("SteamVR", "SteamVR Unity Plugin detected an Action Manifest file in the legacy location (project root). You also have an Action Manifest File in the new location (streaming assets). Would you like to overwrite the files in streaming assets?", "Yes", "No");
                     verified = true;
                 }
 
@@ -1347,14 +1347,14 @@ namespace Valve.VR
 
                     if (verified == false)
                     {
-                        UnityEditor.EditorUtility.DisplayDialog("SteamVR", "SteamVR Unity Plugin detected an Action Manifest file in the legacy location (project root). We've automatically moved the files to the new location (" + GetActionsFileFolder() + ").", "Ok");
+                        EditorUtility.DisplayDialog("SteamVR", "SteamVR Unity Plugin detected an Action Manifest file in the legacy location (project root). We've automatically moved the files to the new location (" + GetActionsFileFolder() + ").", "Ok");
                     }
                     else
                     {
-                        UnityEditor.EditorUtility.DisplayDialog("SteamVR", "Moving files to the new location (" + GetActionsFileFolder() + ") is complete.", "Ok");
+                        EditorUtility.DisplayDialog("SteamVR", "Moving files to the new location (" + GetActionsFileFolder() + ") is complete.", "Ok");
                     }
 
-                    UnityEditor.AssetDatabase.Refresh();
+                    AssetDatabase.Refresh();
                     return true;
                 }
             }
@@ -1381,9 +1381,9 @@ namespace Valve.VR
                 else
                 {
                     int numActions = 0;
-                    if (SteamVR_Input.actions != null)
+                    if (actions != null)
                     {
-                        numActions = SteamVR_Input.actions.Length;
+                        numActions = actions.Length;
 
                         if (showLogs)
                             Debug.Log(string.Format("<b>[SteamVR]</b> Successfully loaded {0} actions from action manifest into SteamVR ({1})", numActions, fullPath));
@@ -1413,7 +1413,7 @@ namespace Valve.VR
 
             if (File.Exists(fullPath))
             {
-                jsonText = System.IO.File.ReadAllText(fullPath);
+                jsonText = File.ReadAllText(fullPath);
             }
             else
             {
@@ -1422,7 +1422,7 @@ namespace Valve.VR
 
             string newHashFromFile = SteamVR_Utils.GetBadMD5Hash(jsonText);
 
-            string newJSON = JsonConvert.SerializeObject(SteamVR_Input.actionFile, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            string newJSON = JsonConvert.SerializeObject(actionFile, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
 
             string newHashFromMemory = SteamVR_Utils.GetBadMD5Hash(newJSON);
 
@@ -1475,7 +1475,7 @@ namespace Valve.VR
 
             if (actionsFileExists)
             {
-                jsonText = System.IO.File.ReadAllText(actionsFilePath);
+                jsonText = File.ReadAllText(actionsFilePath);
             }
             else
             {
@@ -1597,7 +1597,7 @@ namespace Valve.VR
             }
 
             if (createdDirectory)
-                UnityEditor.AssetDatabase.Refresh();
+                AssetDatabase.Refresh();
 
             if (fromAssetsDirectory == false)
                 return path.Replace("Assets/", "");
@@ -1612,20 +1612,20 @@ namespace Valve.VR
         public static bool IsOpeningSetup() { return openingSetup; }
         private static void CheckSetup()
         {
-            if (checkingSetup == false && openingSetup == false && (SteamVR_Input.actions == null || SteamVR_Input.actions.Length == 0))
+            if (checkingSetup == false && openingSetup == false && (actions == null || actions.Length == 0))
             {
                 checkingSetup = true;
                 Debug.Break();
 
-                bool open = UnityEditor.EditorUtility.DisplayDialog("[SteamVR]", "It looks like you haven't generated actions for SteamVR Input yet. Would you like to open the SteamVR Input window?", "Yes", "No");
+                bool open = EditorUtility.DisplayDialog("[SteamVR]", "It looks like you haven't generated actions for SteamVR Input yet. Would you like to open the SteamVR Input window?", "Yes", "No");
                 if (open)
                 {
                     openingSetup = true;
-                    UnityEditor.EditorApplication.isPlaying = false;
+                    EditorApplication.isPlaying = false;
                     Type editorWindowType = FindType("Valve.VR.SteamVR_Input_EditorWindow");
                     if (editorWindowType != null)
                     {
-                        var window = UnityEditor.EditorWindow.GetWindow(editorWindowType, false, "SteamVR Input", true);
+                        var window = EditorWindow.GetWindow(editorWindowType, false, "SteamVR Input", true);
                         if (window != null)
                             window.Show();
                     }

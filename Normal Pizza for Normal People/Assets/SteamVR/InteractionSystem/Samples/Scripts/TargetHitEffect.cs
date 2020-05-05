@@ -1,7 +1,6 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
 using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR.InteractionSystem.Sample
 {
@@ -43,7 +42,7 @@ namespace Valve.VR.InteractionSystem.Sample
 
                         color *= 15f;
 
-                        GameObject spawned = GameObject.Instantiate(spawnObjectOnCollision);
+                        GameObject spawned = Instantiate(spawnObjectOnCollision);
                         spawned.transform.position = contact.point;
                         spawned.transform.forward = ray.direction;
 

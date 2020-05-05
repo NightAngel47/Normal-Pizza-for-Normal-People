@@ -4,8 +4,8 @@
 //
 //=============================================================================
 
+using System;
 using UnityEngine;
-using Valve.VR;
 
 namespace Valve.VR
 {
@@ -82,7 +82,7 @@ namespace Valve.VR
                 var textures = new Texture_t[6];
                 for (int i = 0; i < 6; i++)
                 {
-                    textures[i].handle = (handles[i] != null) ? handles[i].GetNativeTexturePtr() : System.IntPtr.Zero;
+                    textures[i].handle = (handles[i] != null) ? handles[i].GetNativeTexturePtr() : IntPtr.Zero;
                     textures[i].eType = SteamVR.instance.textureType;
                     textures[i].eColorSpace = EColorSpace.Auto;
                 }

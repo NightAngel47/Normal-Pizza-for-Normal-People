@@ -4,11 +4,18 @@
 //
 //=============================================================================
 
-using UnityEngine;
-using Valve.VR;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-
+using System.Text;
+using System.Text.RegularExpressions;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.Rendering;
+using Valve.Newtonsoft.Json;
+using Debug = UnityEngine.Debug;
 #if UNITY_2017_2_OR_NEWER
     using UnityEngine.XR;
 #else
@@ -18,7 +25,7 @@ using XRDevice = UnityEngine.VR.VRDevice;
 
 namespace Valve.VR
 {
-    public class SteamVR : System.IDisposable
+    public class SteamVR : IDisposable
     {
         // Use this to check if SteamVR is currently active without attempting
         // to activate it in the process.
@@ -107,7 +114,7 @@ namespace Valve.VR
 
         public static bool usingNativeSupport
         {
-            get { return XRDevice.GetNativePtr() != System.IntPtr.Zero; }
+            get { return XRDevice.GetNativePtr() != IntPtr.Zero; }
         }
 
         public static SteamVR_Settings settings { get; private set; }
@@ -142,7 +149,7 @@ namespace Valve.VR
             try
             {
                 var error = EVRInitError.None;
-                if (!SteamVR.usingNativeSupport)
+                if (!usingNativeSupport)
                 {
                     ReportGeneralErrors();
                     initializedState = InitializedStates.InitializeFailure;
@@ -197,7 +204,7 @@ namespace Valve.VR
 #endif
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 Debug.LogError("<b>[SteamVR]</b> " + e);
                 SteamVR_Events.Initialized.Send(false);
@@ -272,7 +279,7 @@ namespace Valve.VR
             var capacity = hmd.GetStringTrackedDeviceProperty(deviceId, ETrackedDeviceProperty.Prop_AttachedDeviceId_String, null, 0, ref error);
             if (capacity > 1)
             {
-                var result = new System.Text.StringBuilder((int)capacity);
+                var result = new StringBuilder((int)capacity);
                 hmd.GetStringTrackedDeviceProperty(deviceId, ETrackedDeviceProperty.Prop_AttachedDeviceId_String, result, capacity, ref error);
                 return result.ToString();
             }
@@ -285,7 +292,7 @@ namespace Valve.VR
             var capactiy = hmd.GetStringTrackedDeviceProperty(deviceId, prop, null, 0, ref error);
             if (capactiy > 1)
             {
-                var result = new System.Text.StringBuilder((int)capactiy);
+                var result = new StringBuilder((int)capactiy);
                 hmd.GetStringTrackedDeviceProperty(deviceId, prop, result, capactiy, ref error);
                 return result.ToString();
             }
@@ -354,10 +361,10 @@ namespace Valve.VR
             bool temporarySession = InitializeTemporarySession(false);
 
 
-            Valve.VR.EVRSettingsError bindingFlagError = Valve.VR.EVRSettingsError.None;
-            Valve.VR.OpenVR.Settings.SetBool(Valve.VR.OpenVR.k_pch_SteamVR_Section, Valve.VR.OpenVR.k_pch_SteamVR_DebugInputBinding, true, ref bindingFlagError);
+            EVRSettingsError bindingFlagError = EVRSettingsError.None;
+            OpenVR.Settings.SetBool(OpenVR.k_pch_SteamVR_Section, OpenVR.k_pch_SteamVR_DebugInputBinding, true, ref bindingFlagError);
 
-            if (bindingFlagError != Valve.VR.EVRSettingsError.None)
+            if (bindingFlagError != EVRSettingsError.None)
                 Debug.LogError("<b>[SteamVR]</b> Error turning on the debug input binding flag in steamvr: " + bindingFlagError.ToString());
 
             if (Application.isPlaying == false)
@@ -376,11 +383,11 @@ namespace Valve.VR
         public static string GetSteamVRFolderParentPath(bool localToAssetsFolder = false)
         {
             SteamVR_Settings asset = ScriptableObject.CreateInstance<SteamVR_Settings>();
-            UnityEditor.MonoScript scriptAsset = UnityEditor.MonoScript.FromScriptableObject(asset);
+            MonoScript scriptAsset = MonoScript.FromScriptableObject(asset);
 
-            string scriptPath = UnityEditor.AssetDatabase.GetAssetPath(scriptAsset);
+            string scriptPath = AssetDatabase.GetAssetPath(scriptAsset);
 
-            System.IO.FileInfo settingsScriptFileInfo = new System.IO.FileInfo(scriptPath);
+            FileInfo settingsScriptFileInfo = new FileInfo(scriptPath);
 
             string fullPath = settingsScriptFileInfo.Directory.Parent.Parent.FullName;
 
@@ -388,7 +395,7 @@ namespace Valve.VR
                 return fullPath;
             else
             {
-                System.IO.DirectoryInfo assetsDirectoryInfo = new DirectoryInfo(Application.dataPath);
+                DirectoryInfo assetsDirectoryInfo = new DirectoryInfo(Application.dataPath);
                 string localPath = fullPath.Substring(assetsDirectoryInfo.Parent.FullName.Length + 1); //plus separator char
                 return localPath;
             }
@@ -397,11 +404,11 @@ namespace Valve.VR
         public static string GetSteamVRFolderPath(bool localToAssetsFolder = false)
         {
             SteamVR_Settings asset = ScriptableObject.CreateInstance<SteamVR_Settings>();
-            UnityEditor.MonoScript scriptAsset = UnityEditor.MonoScript.FromScriptableObject(asset);
+            MonoScript scriptAsset = MonoScript.FromScriptableObject(asset);
 
-            string scriptPath = UnityEditor.AssetDatabase.GetAssetPath(scriptAsset);
+            string scriptPath = AssetDatabase.GetAssetPath(scriptAsset);
 
-            System.IO.FileInfo settingsScriptFileInfo = new System.IO.FileInfo(scriptPath);
+            FileInfo settingsScriptFileInfo = new FileInfo(scriptPath);
             string fullPath = settingsScriptFileInfo.Directory.Parent.FullName;
 
 
@@ -409,7 +416,7 @@ namespace Valve.VR
                 return fullPath;
             else
             {
-                System.IO.DirectoryInfo assetsDirectoryInfo = new DirectoryInfo(Application.dataPath);
+                DirectoryInfo assetsDirectoryInfo = new DirectoryInfo(Application.dataPath);
                 string localPath = fullPath.Substring(assetsDirectoryInfo.Parent.FullName.Length + 1); //plus separator char
                 return localPath;
             }
@@ -451,7 +458,7 @@ namespace Valve.VR
                 productName = "unnamed_product";
             else
             {
-                productName = System.Text.RegularExpressions.Regex.Replace(Application.productName, "[^\\w\\._]", "");
+                productName = Regex.Replace(Application.productName, "[^\\w\\._]", "");
                 productName = productName.ToLower();
             }
 
@@ -471,7 +478,7 @@ namespace Valve.VR
             if (File.Exists(fullPath))
             {
                 string jsonText = File.ReadAllText(fullPath);
-                SteamVR_Input_ManifestFile existingFile = Valve.Newtonsoft.Json.JsonConvert.DeserializeObject<SteamVR_Input_ManifestFile>(jsonText);
+                SteamVR_Input_ManifestFile existingFile = JsonConvert.DeserializeObject<SteamVR_Input_ManifestFile>(jsonText);
 
                 if (existingFile != null && existingFile.applications != null && existingFile.applications.Count > 0 &&
                     existingFile.applications[0].app_key != SteamVR_Settings.instance.editorAppKey)
@@ -539,11 +546,11 @@ namespace Valve.VR
                 }
                 */
 
-                manifestFile.applications = new System.Collections.Generic.List<SteamVR_Input_ManifestFile_Application>();
+                manifestFile.applications = new List<SteamVR_Input_ManifestFile_Application>();
                 manifestFile.applications.Add(manifestApplication);
 
-                string json = Valve.Newtonsoft.Json.JsonConvert.SerializeObject(manifestFile, Valve.Newtonsoft.Json.Formatting.Indented,
-                    new Valve.Newtonsoft.Json.JsonSerializerSettings { NullValueHandling = Valve.Newtonsoft.Json.NullValueHandling.Ignore });
+                string json = JsonConvert.SerializeObject(manifestFile, Formatting.Indented,
+                    new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
 
                 File.WriteAllText(fullPath, json);
             }
@@ -572,7 +579,7 @@ namespace Valve.VR
                     Debug.Log("<b>[SteamVR]</b> Successfully added VR manifest to SteamVR");
             }
 
-            int processId = System.Diagnostics.Process.GetCurrentProcess().Id;
+            int processId = Process.GetCurrentProcess().Id;
             EVRApplicationError applicationIdentifyErr = OpenVR.Applications.IdentifyApplication((uint)processId, SteamVR_Settings.instance.editorAppKey);
 
             if (applicationIdentifyErr != EVRApplicationError.None)
@@ -703,13 +710,13 @@ namespace Valve.VR
 #if (UNITY_5_4)
                 case UnityEngine.Rendering.GraphicsDeviceType.OpenGL2:
 #endif
-                case UnityEngine.Rendering.GraphicsDeviceType.OpenGLCore:
-                case UnityEngine.Rendering.GraphicsDeviceType.OpenGLES2:
-                case UnityEngine.Rendering.GraphicsDeviceType.OpenGLES3:
+                case GraphicsDeviceType.OpenGLCore:
+                case GraphicsDeviceType.OpenGLES2:
+                case GraphicsDeviceType.OpenGLES3:
                     textureType = ETextureType.OpenGL;
                     break;
 #if !(UNITY_5_4)
-			case UnityEngine.Rendering.GraphicsDeviceType.Vulkan:
+			case GraphicsDeviceType.Vulkan:
 				textureType = ETextureType.Vulkan;
 				break;
 #endif
@@ -733,7 +740,7 @@ namespace Valve.VR
         public void Dispose()
         {
             Dispose(true);
-            System.GC.SuppressFinalize(this);
+            GC.SuppressFinalize(this);
         }
 
         private void Dispose(bool disposing)

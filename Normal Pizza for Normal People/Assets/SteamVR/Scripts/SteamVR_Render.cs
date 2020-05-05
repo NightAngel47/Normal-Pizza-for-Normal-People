@@ -4,10 +4,11 @@
 //
 //=============================================================================
 
-using UnityEngine;
 using System.Collections;
-using Valve.VR;
-
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Text;
+using UnityEngine;
 
 namespace Valve.VR
 {
@@ -154,7 +155,7 @@ namespace Valve.VR
             if (doesPathExist == false)
                 return false;
             else if (doesPathExist == null)
-                doesPathExist = System.IO.File.Exists(externalCameraConfigPath);
+                doesPathExist = File.Exists(externalCameraConfigPath);
 
             if (externalCamera == null && doesPathExist == true)
             {
@@ -269,7 +270,7 @@ namespace Valve.VR
                 return null;
             if (capacity > 1)
             {
-                var result = new System.Text.StringBuilder((int)capacity);
+                var result = new StringBuilder((int)capacity);
                 OpenVR.Screenshots.GetScreenshotPropertyFilename(screenshotHandle, screenshotPropertyFilename, result, capacity, ref error);
                 if (error != EVRScreenshotError.None)
                     return null;
@@ -294,9 +295,9 @@ namespace Valve.VR
                 // Do the stereo panorama screenshot
                 // Figure out where the view is
                 GameObject screenshotPosition = new GameObject("screenshotPosition");
-                screenshotPosition.transform.position = SteamVR_Render.Top().transform.position;
-                screenshotPosition.transform.rotation = SteamVR_Render.Top().transform.rotation;
-                screenshotPosition.transform.localScale = SteamVR_Render.Top().transform.lossyScale;
+                screenshotPosition.transform.position = Top().transform.position;
+                screenshotPosition.transform.rotation = Top().transform.rotation;
+                screenshotPosition.transform.localScale = Top().transform.lossyScale;
                 SteamVR_Utils.TakeStereoScreenshot(screenshotHandle, screenshotPosition, 32, 0.064f, ref previewFilename, ref VRFilename);
 
                 // and submit it
@@ -413,7 +414,7 @@ namespace Valve.VR
             if (system != null)
             {
                 var vrEvent = new VREvent_t();
-                var size = (uint)System.Runtime.InteropServices.Marshal.SizeOf(typeof(VREvent_t));
+                var size = (uint)Marshal.SizeOf(typeof(VREvent_t));
                 for (int i = 0; i < 64; i++)
                 {
                     if (!system.PollNextEvent(ref vrEvent, size))

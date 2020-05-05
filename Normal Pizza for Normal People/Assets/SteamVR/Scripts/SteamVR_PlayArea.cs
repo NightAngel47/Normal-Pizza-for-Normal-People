@@ -4,10 +4,10 @@
 //
 //=============================================================================
 
+using System.Collections;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Rendering;
-using System.Collections;
-using Valve.VR;
 
 namespace Valve.VR
 {
@@ -167,8 +167,8 @@ namespace Valve.VR
 
             var renderer = GetComponent<MeshRenderer>();
             renderer.material = new Material(Shader.Find("Sprites/Default"));
-            renderer.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
-            renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            renderer.reflectionProbeUsage = ReflectionProbeUsage.Off;
+            renderer.shadowCastingMode = ShadowCastingMode.Off;
             renderer.receiveShadows = false;
             renderer.lightProbeUsage = LightProbeUsage.Off;
         }
@@ -179,7 +179,7 @@ namespace Valve.VR
         {
             if (!Application.isPlaying)
             {
-                var fields = GetType().GetFields(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+                var fields = GetType().GetFields(BindingFlags.Instance | BindingFlags.Public);
 
                 bool rebuild = false;
 

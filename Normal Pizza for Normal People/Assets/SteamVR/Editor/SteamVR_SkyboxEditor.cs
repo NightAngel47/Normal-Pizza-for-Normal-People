@@ -4,12 +4,11 @@
 //
 //=============================================================================
 
-using UnityEngine;
-using UnityEditor;
-using System.Text;
-using System.Collections.Generic;
-using Valve.VR;
+using System.Diagnostics;
 using System.IO;
+using UnityEditor;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Valve.VR
 {
@@ -99,7 +98,7 @@ namespace Valve.VR
                         RenderTexture.active = null;
 
                         var assetName = string.Format(nameFormat, assetPath, target.name, i);
-                        System.IO.File.WriteAllBytes(assetName, texture.EncodeToPNG());
+                        File.WriteAllBytes(assetName, texture.EncodeToPNG());
                     }
 
                     if (camera != tempCamera)
@@ -111,7 +110,7 @@ namespace Valve.VR
 
                 if (tempCamera != null)
                 {
-                    Object.DestroyImmediate(tempCamera.gameObject);
+                    DestroyImmediate(tempCamera.gameObject);
                 }
 
                 // Now that everything has be written out, reload the associated assets and assign them.
@@ -151,7 +150,7 @@ namespace Valve.VR
                 new Texture2D(width, height, TextureFormat.ARGB32, false),
                 new Texture2D(width, height, TextureFormat.ARGB32, false) };
 
-                var timer = new System.Diagnostics.Stopwatch();
+                var timer = new Stopwatch();
 
                 Camera tempCamera = null;
                 foreach (SteamVR_Skybox target in targets)

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace Valve.VR
@@ -99,7 +94,7 @@ namespace Valve.VR
 
                 if (preview == null)
                 {
-                    preview = GameObject.Instantiate<GameObject>(previewPrefab);
+                    preview = Instantiate<GameObject>(previewPrefab);
                     preview.transform.localScale = Vector3.one * poserScale.floatValue;
                     preview.transform.parent = poser.transform;
                     preview.transform.localPosition = Vector3.zero;
@@ -580,7 +575,7 @@ namespace Valve.VR
 
                             if (string.IsNullOrEmpty(fullPath) == false)
                             {
-                                SteamVR_Skeleton_Pose newPose = ScriptableObject.CreateInstance<SteamVR_Skeleton_Pose>();
+                                SteamVR_Skeleton_Pose newPose = CreateInstance<SteamVR_Skeleton_Pose>();
                                 AssetDatabase.CreateAsset(newPose, fullPath);
                                 AssetDatabase.SaveAssets();
 

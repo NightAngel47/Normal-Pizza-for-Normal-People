@@ -1,16 +1,12 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
-using UnityEngine;
-using System.Collections;
+using System;
 using System.Collections.Generic;
-
 using System.Linq;
-using Valve.Newtonsoft.Json;
-using System.IO;
 
 namespace Valve.VR
 {
-    [System.Serializable]
+    [Serializable]
     public class SteamVR_Input_BindingFile
     {
         public string app_key;
@@ -20,7 +16,7 @@ namespace Valve.VR
         public string name;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class SteamVR_Input_BindingFile_ActionList
     {
         public List<SteamVR_Input_BindingFile_Chord> chords = new List<SteamVR_Input_BindingFile_Chord>();
@@ -30,7 +26,7 @@ namespace Valve.VR
         public List<SteamVR_Input_BindingFile_Skeleton> skeleton = new List<SteamVR_Input_BindingFile_Skeleton>();
     }
 
-    [System.Serializable]
+    [Serializable]
     public class SteamVR_Input_BindingFile_Chord
     {
         public string output;
@@ -75,7 +71,7 @@ namespace Valve.VR
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class SteamVR_Input_BindingFile_Pose
     {
         public string output;
@@ -100,7 +96,7 @@ namespace Valve.VR
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class SteamVR_Input_BindingFile_Haptic
     {
         public string output;
@@ -125,7 +121,7 @@ namespace Valve.VR
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class SteamVR_Input_BindingFile_Skeleton
     {
         public string output;
@@ -150,7 +146,7 @@ namespace Valve.VR
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class SteamVR_Input_BindingFile_Source
     {
         public string path;
@@ -219,7 +215,7 @@ namespace Valve.VR
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class SteamVR_Input_BindingFile_Source_Input : Dictionary<string, SteamVR_Input_BindingFile_Source_Input_StringDictionary>
     {
         public override bool Equals(object obj)
@@ -255,7 +251,7 @@ namespace Valve.VR
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class SteamVR_Input_BindingFile_Source_Input_StringDictionary : Dictionary<string, string>
     {
         public override bool Equals(object obj)

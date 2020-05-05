@@ -4,12 +4,15 @@
 //
 //=============================================================================
 
-using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -192,7 +195,7 @@ namespace Valve.VR.InteractionSystem
 		{
 			for ( int i = array.Length - 1; i > 0; i-- )
 			{
-				int r = UnityEngine.Random.Range( 0, i );
+				int r = Random.Range( 0, i );
 				Swap( ref array[i], ref array[r] );
 			}
 		}
@@ -203,7 +206,7 @@ namespace Valve.VR.InteractionSystem
 		{
 			for ( int i = list.Count - 1; i > 0; i-- )
 			{
-				int r = UnityEngine.Random.Range( 0, i );
+				int r = Random.Range( 0, i );
 				T temp = list[i];
 				list[i] = list[r];
 				list[r] = temp;
@@ -214,7 +217,7 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		public static int RandomWithLookback( int min, int max, List<int> history, int historyCount )
 		{
-			int index = UnityEngine.Random.Range( min, max - history.Count );
+			int index = Random.Range( min, max - history.Count );
 
 			for ( int i = 0; i < history.Count; i++ )
 			{
@@ -301,7 +304,7 @@ namespace Valve.VR.InteractionSystem
 
 
 		//-------------------------------------------------
-		public static List<T> FindAndRemove<T>( List<T> list, System.Predicate<T> match )
+		public static List<T> FindAndRemove<T>( List<T> list, Predicate<T> match )
 		{
 			List<T> retVal = list.FindAll( match );
 			list.RemoveAll( match );
@@ -408,7 +411,7 @@ namespace Valve.VR.InteractionSystem
 
 
 		//-------------------------------------------------
-		public static void AfterTimer( GameObject go, float _time, System.Action callback, bool trigger_if_destroyed_early = false )
+		public static void AfterTimer( GameObject go, float _time, Action callback, bool trigger_if_destroyed_early = false )
 		{
 			AfterTimer_Component afterTimer_component = go.AddComponent<AfterTimer_Component>();
 			afterTimer_component.Init( _time, callback, trigger_if_destroyed_early );
@@ -466,7 +469,7 @@ namespace Valve.VR.InteractionSystem
 
 
 		//-------------------------------------------------
-		public static IEnumerator WrapCoroutine( IEnumerator coroutine, System.Action onCoroutineFinished )
+		public static IEnumerator WrapCoroutine( IEnumerator coroutine, Action onCoroutineFinished )
 		{
 			while ( coroutine.MoveNext() )
 			{
@@ -490,7 +493,7 @@ namespace Valve.VR.InteractionSystem
 		public static void Quit()
 		{
 #if UNITY_EDITOR
-			UnityEditor.EditorApplication.isPlaying = false;
+			EditorApplication.isPlaying = false;
 #else
         // NOTE: The recommended call for exiting a Unity app is UnityEngine.Application.Quit(), but as
         // of 5.1.0f3 this was causing the application to crash. The following works without crashing:
@@ -571,7 +574,7 @@ namespace Valve.VR.InteractionSystem
 #if ( UNITY_5_4 )
 		public static float PathLength( NavMeshPath path )
 #else
-		public static float PathLength( UnityEngine.AI.NavMeshPath path )
+		public static float PathLength( NavMeshPath path )
 #endif
 		{
 			if ( path.corners.Length < 2 )
@@ -594,7 +597,7 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		public static bool HasCommandLineArgument( string argumentName )
 		{
-			string[] args = System.Environment.GetCommandLineArgs();
+			string[] args = Environment.GetCommandLineArgs();
 			for ( int i = 0; i < args.Length; i++ )
 			{
 				if ( args[i].Equals( argumentName ) )
@@ -610,7 +613,7 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		public static int GetCommandLineArgValue( string argumentName, int nDefaultValue )
 		{
-			string[] args = System.Environment.GetCommandLineArgs();
+			string[] args = Environment.GetCommandLineArgs();
 			for ( int i = 0; i < args.Length; i++ )
 			{
 				if ( args[i].Equals( argumentName ) )
@@ -620,7 +623,7 @@ namespace Valve.VR.InteractionSystem
 						return nDefaultValue;
 					}
 
-					return System.Int32.Parse( args[i + 1] );
+					return Int32.Parse( args[i + 1] );
 				}
 			}
 
@@ -631,7 +634,7 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		public static float GetCommandLineArgValue( string argumentName, float flDefaultValue )
 		{
-			string[] args = System.Environment.GetCommandLineArgs();
+			string[] args = Environment.GetCommandLineArgs();
 			for ( int i = 0; i < args.Length; i++ )
 			{
 				if ( args[i].Equals( argumentName ) )
@@ -687,16 +690,16 @@ namespace Valve.VR.InteractionSystem
 	//-------------------------------------------------------------------------
 	//Component used by the static AfterTimer function
 	//-------------------------------------------------------------------------
-	[System.Serializable]
+	[Serializable]
 	public class AfterTimer_Component : MonoBehaviour
 	{
-		private System.Action callback;
+		private Action callback;
 		private float triggerTime;
 		private bool timerActive = false;
 		private bool triggerOnEarlyDestroy = false;
 
 		//-------------------------------------------------
-		public void Init( float _time, System.Action _callback, bool earlydestroy )
+		public void Init( float _time, Action _callback, bool earlydestroy )
 		{
 			triggerTime = _time;
 			callback = _callback;

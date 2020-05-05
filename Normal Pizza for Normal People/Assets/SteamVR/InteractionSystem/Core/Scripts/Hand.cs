@@ -4,13 +4,12 @@
 //
 //=============================================================================
 
-using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using UnityEngine;
 using UnityEngine.Events;
-using System.Threading;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -1638,7 +1637,7 @@ namespace Valve.VR.InteractionSystem
 
             renderModels.Clear();
 
-            GameObject renderModelInstance = GameObject.Instantiate(renderModelPrefab);
+            GameObject renderModelInstance = Instantiate(renderModelPrefab);
             renderModelInstance.layer = gameObject.layer;
             renderModelInstance.tag = gameObject.tag;
             renderModelInstance.transform.parent = this.transform;
@@ -1681,6 +1680,6 @@ namespace Valve.VR.InteractionSystem
     }
 
 
-    [System.Serializable]
+    [Serializable]
     public class HandEvent : UnityEvent<Hand> { }
 }

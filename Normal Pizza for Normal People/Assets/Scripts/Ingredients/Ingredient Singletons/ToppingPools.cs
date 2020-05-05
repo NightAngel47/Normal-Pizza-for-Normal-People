@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class ToppingPools
 {
     //All of these need to be set in the inspector for each pool

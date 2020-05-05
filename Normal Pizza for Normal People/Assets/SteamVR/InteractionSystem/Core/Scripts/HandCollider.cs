@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 namespace Valve.VR.InteractionSystem
@@ -17,7 +16,7 @@ namespace Valve.VR.InteractionSystem
 
         public FingerColliders fingerColliders;
 
-        [System.Serializable]
+        [Serializable]
         public class FingerColliders
         {
             [Tooltip("Starting at tip and going down. Max 2.")]

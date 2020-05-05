@@ -4,11 +4,15 @@
 //
 //=============================================================================
 
-using UnityEngine;
-using UnityEditor;
-using System.IO;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using UnityEditor;
+using UnityEditor.PackageManager;
+using UnityEditor.PackageManager.Requests;
+using UnityEditorInternal.VR;
+using Debug = UnityEngine.Debug;
 
 namespace Valve.VR
 {
@@ -34,11 +38,11 @@ namespace Valve.VR
             Failed,
         }
 
-        private static UnityEditor.PackageManager.Requests.ListRequest listRequest;
-        private static UnityEditor.PackageManager.Requests.AddRequest addRequest;
+        private static ListRequest listRequest;
+        private static AddRequest addRequest;
         private static PackageStates packageState = PackageStates.None;
-        private static System.Diagnostics.Stopwatch addingPackageTime = new System.Diagnostics.Stopwatch();
-        private static System.Diagnostics.Stopwatch addingPackageTimeTotal = new System.Diagnostics.Stopwatch();
+        private static Stopwatch addingPackageTime = new Stopwatch();
+        private static Stopwatch addingPackageTimeTotal = new Stopwatch();
         private static float estimatedTimeToInstall = 80;
         private static int addTryCount = 0;
 #endif
@@ -49,22 +53,22 @@ namespace Valve.VR
             {
                 bool enabledVR = false;
 
-                if (UnityEditor.PlayerSettings.virtualRealitySupported == false)
+                if (PlayerSettings.virtualRealitySupported == false)
                 {
-                    UnityEditor.PlayerSettings.virtualRealitySupported = true;
+                    PlayerSettings.virtualRealitySupported = true;
                     enabledVR = true;
                     Debug.Log("<b>[SteamVR Setup]</b> Enabled virtual reality support in Player Settings. (you can disable this by unchecking Assets/SteamVR/SteamVR_Settings.autoEnableVR)");
                 }
 
-                UnityEditor.BuildTargetGroup currentTarget = UnityEditor.EditorUserBuildSettings.selectedBuildTargetGroup;
+                BuildTargetGroup currentTarget = EditorUserBuildSettings.selectedBuildTargetGroup;
 
 #if (UNITY_5_4 || UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
                 string[] devices = UnityEditorInternal.VR.VREditor.GetVREnabledDevices(currentTarget);
 #else
-                string[] devices = UnityEditorInternal.VR.VREditor.GetVREnabledDevicesOnTargetGroup(currentTarget);
+                string[] devices = VREditor.GetVREnabledDevicesOnTargetGroup(currentTarget);
 #endif
 
-                bool hasOpenVR = devices.Any(device => string.Equals(device, openVRString, System.StringComparison.CurrentCultureIgnoreCase));
+                bool hasOpenVR = devices.Any(device => string.Equals(device, openVRString, StringComparison.CurrentCultureIgnoreCase));
 
                 if (hasOpenVR == false || enabledVR)
                 {
@@ -86,7 +90,7 @@ namespace Valve.VR
 #if (UNITY_5_6 || UNITY_5_4 || UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
                     UnityEditorInternal.VR.VREditor.SetVREnabledDevices(currentTarget, newDevices);
 #else
-                    UnityEditorInternal.VR.VREditor.SetVREnabledDevicesOnTargetGroup(currentTarget, newDevices);
+                    VREditor.SetVREnabledDevicesOnTargetGroup(currentTarget, newDevices);
 #endif
                     Debug.Log("<b>[SteamVR Setup]</b> Added OpenVR to supported VR SDKs list.");
                 }
@@ -98,14 +102,14 @@ namespace Valve.VR
                 {
                     case PackageStates.None:
                         //see if we have the package
-                        listRequest = UnityEditor.PackageManager.Client.List(true);
+                        listRequest = Client.List(true);
                         packageState = PackageStates.WaitingForList;
                         break;
 
                     case PackageStates.WaitingForList:
                         if (listRequest.IsCompleted)
                         {
-                            if (listRequest.Error != null || listRequest.Status == UnityEditor.PackageManager.StatusCode.Failure)
+                            if (listRequest.Error != null || listRequest.Status == StatusCode.Failure)
                             {
                                 packageState = PackageStates.Failed;
                                 break;
@@ -116,7 +120,7 @@ namespace Valve.VR
                             if (hasPackage == false)
                             {
                                 //if we don't have the package - then install it
-                                addRequest = UnityEditor.PackageManager.Client.Add(openVRPackageString);
+                                addRequest = Client.Add(openVRPackageString);
                                 packageState = PackageStates.WaitingForAdd;
                                 addTryCount++;
 
@@ -135,7 +139,7 @@ namespace Valve.VR
                     case PackageStates.WaitingForAdd:
                         if (addRequest.IsCompleted)
                         {
-                            if (addRequest.Error != null || addRequest.Status == UnityEditor.PackageManager.StatusCode.Failure)
+                            if (addRequest.Error != null || addRequest.Status == StatusCode.Failure)
                             {
                                 packageState = PackageStates.Failed;
                                 break;
@@ -143,7 +147,7 @@ namespace Valve.VR
                             else
                             {
                                 //if the package manager says we added it then confirm that with the list
-                                listRequest = UnityEditor.PackageManager.Client.List(true);
+                                listRequest = Client.List(true);
                                 packageState = PackageStates.WaitingForAddConfirm;
                             }
                         }
@@ -158,7 +162,7 @@ namespace Valve.VR
                             else
                                 dialogText = "Retrying OpenVR install from Unity Package Manager...";
 
-                            bool cancel = UnityEditor.EditorUtility.DisplayCancelableProgressBar("SteamVR", dialogText, (float)addingPackageTimeTotal.Elapsed.TotalSeconds / estimatedTimeToInstall);
+                            bool cancel = EditorUtility.DisplayCancelableProgressBar("SteamVR", dialogText, (float)addingPackageTimeTotal.Elapsed.TotalSeconds / estimatedTimeToInstall);
                             if (cancel)
                                 packageState = PackageStates.Failed;
 
@@ -187,7 +191,7 @@ namespace Valve.VR
                             {
                                 if (addTryCount == 1)
                                 {
-                                    addRequest = UnityEditor.PackageManager.Client.Add(openVRPackageString);
+                                    addRequest = Client.Add(openVRPackageString);
                                     packageState = PackageStates.WaitingForAdd;
                                     addTryCount++;
 
@@ -212,13 +216,13 @@ namespace Valve.VR
                 {
                     addingPackageTime.Stop();
                     addingPackageTimeTotal.Stop();
-                    UnityEditor.EditorUtility.ClearProgressBar();
-                    UnityEditor.EditorApplication.update -= Update; //we're done trying to auto-enable vr
+                    EditorUtility.ClearProgressBar();
+                    EditorApplication.update -= Update; //we're done trying to auto-enable vr
 
                     if (packageState == PackageStates.Failed)
                     {
                         string failtext = "The Unity Package Manager failed to automatically install the OpenVR package. Please open the Package Manager Window and try to install it manually.";
-                        UnityEditor.EditorUtility.DisplayDialog("SteamVR", failtext, "Ok");
+                        EditorUtility.DisplayDialog("SteamVR", failtext, "Ok");
                         Debug.Log("<b>[SteamVR Setup]</b> " + failtext);
                     }
                 }

@@ -4,10 +4,12 @@
 //
 //=============================================================================
 
-using UnityEngine;
+using System;
 using System.Collections;
-using Valve.VR;
 using System.IO;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Valve.VR
 {
@@ -349,7 +351,7 @@ namespace Valve.VR
                     var error = applications.LaunchInternalProcess(fullPath, internalProcessArgs, workingDirectory);
                     Debug.Log("<b>[SteamVR]</b> LaunchInternalProcessError: " + error);
 #if UNITY_EDITOR
-                    UnityEditor.EditorApplication.isPlaying = false;
+                    EditorApplication.isPlaying = false;
 #elif !UNITY_METRO
 				System.Diagnostics.Process.GetCurrentProcess().Kill();
 #endif
@@ -357,11 +359,11 @@ namespace Valve.VR
             }
             else
             {
-                var mode = loadAdditive ? UnityEngine.SceneManagement.LoadSceneMode.Additive : UnityEngine.SceneManagement.LoadSceneMode.Single;
+                var mode = loadAdditive ? LoadSceneMode.Additive : LoadSceneMode.Single;
                 if (loadAsync)
                 {
                     Application.backgroundLoadingPriority = ThreadPriority.Low;
-                    async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(levelName, mode);
+                    async = SceneManager.LoadSceneAsync(levelName, mode);
 
                     // Performing this in a while loop instead seems to help smooth things out.
                     //yield return async;
@@ -372,13 +374,13 @@ namespace Valve.VR
                 }
                 else
                 {
-                    UnityEngine.SceneManagement.SceneManager.LoadScene(levelName, mode);
+                    SceneManager.LoadScene(levelName, mode);
                 }
             }
 
             yield return null;
 
-            System.GC.Collect();
+            GC.Collect();
 
             yield return null;
 

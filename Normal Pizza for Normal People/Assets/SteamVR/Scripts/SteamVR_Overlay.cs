@@ -4,9 +4,8 @@
 //
 //=============================================================================
 
+using System.Runtime.InteropServices;
 using UnityEngine;
-using System.Collections;
-using Valve.VR;
 
 namespace Valve.VR
 {
@@ -48,7 +47,7 @@ namespace Valve.VR
                 }
             }
 
-            SteamVR_Overlay.instance = this;
+            instance = this;
         }
 
         void OnDisable()
@@ -64,7 +63,7 @@ namespace Valve.VR
                 handle = OpenVR.k_ulOverlayHandleInvalid;
             }
 
-            SteamVR_Overlay.instance = null;
+            instance = null;
         }
 
         public void UpdateOverlay()
@@ -131,7 +130,7 @@ namespace Valve.VR
             if (overlay == null)
                 return false;
 
-            var size = (uint)System.Runtime.InteropServices.Marshal.SizeOf(typeof(Valve.VR.VREvent_t));
+            var size = (uint)Marshal.SizeOf(typeof(VREvent_t));
             return overlay.PollNextOverlayEvent(handle, ref pEvent, size);
         }
 

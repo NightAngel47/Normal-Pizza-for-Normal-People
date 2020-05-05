@@ -1,7 +1,7 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
+using System;
 using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR
 {
@@ -95,7 +95,7 @@ namespace Valve.VR
             buffer[currentIndex].rotation = rotation;
             buffer[currentIndex].velocity = velocity;
             buffer[currentIndex].angularVelocity = angularVelocity;
-            buffer[currentIndex].timeInTicks = System.DateTime.Now.Ticks;
+            buffer[currentIndex].timeInTicks = DateTime.Now.Ticks;
 
             StepForward();
         }

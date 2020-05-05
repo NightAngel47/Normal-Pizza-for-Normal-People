@@ -4,10 +4,9 @@
 //
 //=============================================================================
 
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
-using System;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -68,8 +67,8 @@ namespace Valve.VR.InteractionSystem
 
 #if UNITY_EDITOR
 	//-------------------------------------------------------------------------
-	[UnityEditor.CustomEditor( typeof( UIElement ) )]
-	public class UIElementEditor : UnityEditor.Editor
+	[CustomEditor( typeof( UIElement ) )]
+	public class UIElementEditor : Editor
 	{
 		//-------------------------------------------------
 		// Custom Inspector GUI allows us to click from within the UI

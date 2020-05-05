@@ -20,8 +20,10 @@
 //
 //=============================================================================
 
+using System;
+using System.Runtime.InteropServices;
 using UnityEngine;
-using Valve.VR;
+using Object = UnityEngine.Object;
 
 namespace Valve.VR
 {
@@ -87,9 +89,9 @@ namespace Valve.VR
                 if (trackedCamera == null)
                     return;
 
-                var nativeTex = System.IntPtr.Zero;
+                var nativeTex = IntPtr.Zero;
                 var deviceTexture = (_texture != null) ? _texture : new Texture2D(2, 2);
-                var headerSize = (uint)System.Runtime.InteropServices.Marshal.SizeOf(header.GetType());
+                var headerSize = (uint)Marshal.SizeOf(header.GetType());
 
                 if (vr.textureType == ETextureType.OpenGL)
                 {
@@ -99,7 +101,7 @@ namespace Valve.VR
                     if (trackedCamera.GetVideoStreamTextureGL(videostream.handle, frameType, ref glTextureId, ref header, headerSize) != EVRTrackedCameraError.None)
                         return;
 
-                    nativeTex = (System.IntPtr)glTextureId;
+                    nativeTex = (IntPtr)glTextureId;
                 }
                 else if (vr.textureType == ETextureType.DirectX)
                 {

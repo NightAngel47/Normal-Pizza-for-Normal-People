@@ -5,12 +5,9 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using UnityEngine.Events;
 #if UNITY_EDITOR
-using UnityEditor;
+
 #endif
 
 namespace Valve.VR.InteractionSystem
@@ -133,11 +130,11 @@ namespace Valve.VR.InteractionSystem
 			{
 				if ( Time.time > 0 )
 				{
-					GameObject.Destroy( child.gameObject );
+					Destroy( child.gameObject );
 				}
 				else
 				{
-					GameObject.DestroyImmediate( child.gameObject );
+					DestroyImmediate( child.gameObject );
 				}
 			}
 		}
@@ -339,13 +336,13 @@ namespace Valve.VR.InteractionSystem
 				RemoveMatchingItemTypesFromHand( ItemPackage.ItemPackageType.TwoHanded, hand.otherHand );
 			}
 
-			spawnedItem = GameObject.Instantiate( itemPackage.itemPrefab );
+			spawnedItem = Instantiate( itemPackage.itemPrefab );
 			spawnedItem.SetActive( true );
 			hand.AttachObject( spawnedItem, grabType, attachmentFlags );
 
 			if ( ( itemPackage.otherHandItemPrefab != null ) && ( hand.otherHand.isActive ) )
 			{
-				GameObject otherHandObjectToAttach = GameObject.Instantiate( itemPackage.otherHandItemPrefab );
+				GameObject otherHandObjectToAttach = Instantiate( itemPackage.otherHandItemPrefab );
 				otherHandObjectToAttach.SetActive( true );
 				hand.otherHand.AttachObject( otherHandObjectToAttach, grabType, attachmentFlags );
 			}

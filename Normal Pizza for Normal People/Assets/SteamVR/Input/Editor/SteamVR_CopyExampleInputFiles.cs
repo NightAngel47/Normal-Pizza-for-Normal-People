@@ -1,9 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.IO;
 using UnityEditor;
-using System;
-using System.Linq;
-using System.IO;
+using UnityEditor.Callbacks;
+using UnityEngine;
 
 namespace Valve.VR
 {
@@ -14,7 +12,7 @@ namespace Valve.VR
         public const string exampleJSONFolderParent = "Input";
         public const string exampleJSONFolderName = "ExampleJSON";
 
-        [UnityEditor.Callbacks.DidReloadScripts]
+        [DidReloadScripts]
         private static void OnReloadScripts()
         {
             SteamVR_Input.CheckOldLocation();

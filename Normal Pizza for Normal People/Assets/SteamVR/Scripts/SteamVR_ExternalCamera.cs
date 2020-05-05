@@ -4,9 +4,10 @@
 //
 //=============================================================================
 
+using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Rendering;
-using Valve.VR;
 
 namespace Valve.VR
 {
@@ -15,7 +16,7 @@ namespace Valve.VR
         private SteamVR_Action_Pose cameraPose = null;
         private SteamVR_Input_Sources cameraInputSource = SteamVR_Input_Sources.Camera;
 
-        [System.Serializable]
+        [Serializable]
         public struct Config
         {
             public float x, y, z;
@@ -45,7 +46,7 @@ namespace Valve.VR
                 var readCamMatrix = false;
 
                 object c = config; // box
-                var lines = System.IO.File.ReadAllLines(configPath);
+                var lines = File.ReadAllLines(configPath);
                 foreach (var line in lines)
                 {
                     var split = line.Split('=');
@@ -111,10 +112,10 @@ namespace Valve.VR
             // Listen for changes.
             if (watcher == null)
             {
-                var fi = new System.IO.FileInfo(configPath);
-                watcher = new System.IO.FileSystemWatcher(fi.DirectoryName, fi.Name);
-                watcher.NotifyFilter = System.IO.NotifyFilters.LastWrite;
-                watcher.Changed += new System.IO.FileSystemEventHandler(OnChanged);
+                var fi = new FileInfo(configPath);
+                watcher = new FileSystemWatcher(fi.DirectoryName, fi.Name);
+                watcher.NotifyFilter = NotifyFilters.LastWrite;
+                watcher.Changed += new FileSystemEventHandler(OnChanged);
                 watcher.EnableRaisingEvents = true;
             }
         }
@@ -137,12 +138,12 @@ namespace Valve.VR
             trackedObject.SetDeviceIndex(deviceIndex);
         }
 
-        void OnChanged(object source, System.IO.FileSystemEventArgs e)
+        void OnChanged(object source, FileSystemEventArgs e)
         {
             ReadConfig();
         }
 
-        System.IO.FileSystemWatcher watcher;
+        FileSystemWatcher watcher;
 #else
 	}
 #endif

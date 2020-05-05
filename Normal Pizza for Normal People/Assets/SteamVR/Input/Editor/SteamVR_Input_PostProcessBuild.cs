@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using UnityEditor;
-using System.Collections;
-using UnityEditor.Callbacks;
+﻿using System;
 using System.IO;
+using UnityEditor;
+using UnityEditor.Callbacks;
 
 namespace Valve.VR
 {
@@ -18,7 +17,7 @@ namespace Valve.VR
         {
             if (File.Exists(newFilePath))
             {
-                string jsonText = System.IO.File.ReadAllText(newFilePath);
+                string jsonText = File.ReadAllText(newFilePath);
 
                 string findString = "\"app_key\" : \"";
                 int stringStart = jsonText.IndexOf(findString);
@@ -39,7 +38,7 @@ namespace Valve.VR
 
                 string currentAppKey = jsonText.Substring(stringStart, stringLength);
 
-                if (string.Equals(currentAppKey, SteamVR_Settings.instance.editorAppKey, System.StringComparison.CurrentCultureIgnoreCase) == false)
+                if (string.Equals(currentAppKey, SteamVR_Settings.instance.editorAppKey, StringComparison.CurrentCultureIgnoreCase) == false)
                 {
                     jsonText = jsonText.Replace(currentAppKey, SteamVR_Settings.instance.editorAppKey);
 

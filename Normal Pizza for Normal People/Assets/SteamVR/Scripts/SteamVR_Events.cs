@@ -17,9 +17,10 @@
 //
 //=============================================================================
 
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Valve.VR;
 
 namespace Valve.VR
 {
@@ -31,7 +32,7 @@ namespace Valve.VR
             public bool enabled { set { Enable(value); } }
         }
 
-        [System.Serializable]
+        [Serializable]
         public class ActionNoArgs : Action
         {
             public ActionNoArgs(Event _event, UnityAction action)
@@ -52,7 +53,7 @@ namespace Valve.VR
             UnityAction action;
         }
 
-        [System.Serializable]
+        [Serializable]
         public class Action<T> : Action
         {
             public Action(Event<T> _event, UnityAction<T> action)
@@ -73,7 +74,7 @@ namespace Valve.VR
             UnityAction<T> action;
         }
 
-        [System.Serializable]
+        [Serializable]
         public class Action<T0, T1> : Action
         {
             public Action(Event<T0, T1> _event, UnityAction<T0, T1> action)
@@ -94,7 +95,7 @@ namespace Valve.VR
             UnityAction<T0, T1> action;
         }
 
-        [System.Serializable]
+        [Serializable]
         public class Action<T0, T1, T2> : Action
         {
             public Action(Event<T0, T1, T2> _event, UnityAction<T0, T1, T2> action)
@@ -188,7 +189,7 @@ namespace Valve.VR
         public static Event<SteamVR_RenderModel, bool> RenderModelLoaded = new Event<SteamVR_RenderModel, bool>();
         public static Action RenderModelLoadedAction(UnityAction<SteamVR_RenderModel, bool> action) { return new Action<SteamVR_RenderModel, bool>(RenderModelLoaded, action); }
 
-        static System.Collections.Generic.Dictionary<EVREventType, Event<VREvent_t>> systemEvents = new System.Collections.Generic.Dictionary<EVREventType, Event<VREvent_t>>();
+        static Dictionary<EVREventType, Event<VREvent_t>> systemEvents = new Dictionary<EVREventType, Event<VREvent_t>>();
         public static Event<VREvent_t> System(EVREventType eventType)
         {
             Event<VREvent_t> e;

@@ -4,11 +4,11 @@
 //
 //=============================================================================
 
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using System.Text;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -352,7 +352,7 @@ namespace Valve.VR.InteractionSystem
 
 			//Create the text hint object
 			Vector3 hintStartPos = hintInfo.localTransform.position + ( hintInfo.localTransform.forward * 0.01f );
-			hintInfo.textHintObject = GameObject.Instantiate( textHintPrefab, hintStartPos, Quaternion.identity ) as GameObject;
+			hintInfo.textHintObject = Instantiate( textHintPrefab, hintStartPos, Quaternion.identity ) as GameObject;
 			hintInfo.textHintObject.name = "Hint_" + hintInfo.componentName + "_Start";
 			hintInfo.textHintObject.transform.SetParent( textHintParent );
 			hintInfo.textHintObject.layer = gameObject.layer;

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Valve.VR.InteractionSystem.Sample
 {
@@ -21,7 +21,7 @@ namespace Valve.VR.InteractionSystem.Sample
 
         private IEnumerator DoPlant()
         {
-            GameObject planting = GameObject.Instantiate<GameObject>(prefab);
+            GameObject planting = Instantiate<GameObject>(prefab);
             planting.transform.position = this.transform.position;
             planting.transform.rotation = Quaternion.Euler(0, Random.value * 360f, 0);
 

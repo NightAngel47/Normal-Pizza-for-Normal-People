@@ -4,11 +4,15 @@
 //
 //=============================================================================
 
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Runtime.InteropServices;
-using Valve.VR;
+using System.Text;
+using System.Threading;
+using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Valve.VR
 {
@@ -76,7 +80,7 @@ namespace Valve.VR
         public static Hashtable materials = new Hashtable();
 
         // Helper class to load render models interface on demand and clean up when done.
-        public sealed class RenderModelInterfaceHolder : System.IDisposable
+        public sealed class RenderModelInterfaceHolder : IDisposable
         {
             private bool needsShutdown, failedLoadInterface;
             private CVRRenderModels _instance;
@@ -156,7 +160,7 @@ namespace Valve.VR
                 return;
             }
 
-            var buffer = new System.Text.StringBuilder((int)capacity);
+            var buffer = new StringBuilder((int)capacity);
             system.GetStringTrackedDeviceProperty((uint)index, ETrackedDeviceProperty.Prop_RenderModelName_String, buffer, capacity, ref error);
 
             var s = buffer.ToString();
@@ -194,7 +198,7 @@ namespace Valve.VR
                         if (capacity == 0)
                             continue;
 
-                        var componentNameStringBuilder = new System.Text.StringBuilder((int)capacity);
+                        var componentNameStringBuilder = new StringBuilder((int)capacity);
                         if (renderModels.GetComponentName(newRenderModelName, (uint)componentIndex, componentNameStringBuilder, capacity) == 0)
                             continue;
 
@@ -204,7 +208,7 @@ namespace Valve.VR
                         if (capacity == 0)
                             continue;
 
-                        var nameStringBuilder = new System.Text.StringBuilder((int)capacity);
+                        var nameStringBuilder = new StringBuilder((int)capacity);
                         if (renderModels.GetComponentRenderModelName(newRenderModelName, componentName, nameStringBuilder, capacity) == 0)
                             continue;
 
@@ -241,7 +245,7 @@ namespace Valve.VR
                         if (string.IsNullOrEmpty(renderModelNames[renderModelNameIndex]))
                             continue;
 
-                        var pRenderModel = System.IntPtr.Zero;
+                        var pRenderModel = IntPtr.Zero;
 
                         var error = renderModels.LoadRenderModel_Async(renderModelNames[renderModelNameIndex], ref pRenderModel);
                         //Debug.Log("<b>[SteamVR]</b> renderModels.LoadRenderModel_Async(" + renderModelNames[renderModelNameIndex] + ": " + error.ToString());
@@ -259,7 +263,7 @@ namespace Valve.VR
                             var material = materials[renderModel.diffuseTextureId] as Material;
                             if (material == null || material.mainTexture == null)
                             {
-                                var pDiffuseTexture = System.IntPtr.Zero;
+                                var pDiffuseTexture = IntPtr.Zero;
 
                                 error = renderModels.LoadTexture_Async(renderModel.diffuseTextureId, ref pDiffuseTexture);
                                 //Debug.Log("<b>[SteamVR]</b> renderModels.LoadRenderModel_Async(" + renderModelNames[renderModelNameIndex] + ": " + error.ToString());
@@ -339,7 +343,7 @@ namespace Valve.VR
 
         RenderModel LoadRenderModel(CVRRenderModels renderModels, string renderModelName, string baseName)
         {
-            var pRenderModel = System.IntPtr.Zero;
+            var pRenderModel = IntPtr.Zero;
 
             EVRRenderModelError error;
             while (true)
@@ -366,7 +370,7 @@ namespace Valve.VR
             var type = typeof(RenderModel_Vertex_t);
             for (int iVert = 0; iVert < renderModel.unVertexCount; iVert++)
             {
-                var ptr = new System.IntPtr(renderModel.rVertexData.ToInt64() + iVert * Marshal.SizeOf(type));
+                var ptr = new IntPtr(renderModel.rVertexData.ToInt64() + iVert * Marshal.SizeOf(type));
                 var vert = (RenderModel_Vertex_t)Marshal.PtrToStructure(ptr, type);
 
                 vertices[iVert] = new Vector3(vert.vPosition.v0, vert.vPosition.v1, -vert.vPosition.v2);
@@ -401,7 +405,7 @@ namespace Valve.VR
             var material = materials[renderModel.diffuseTextureId] as Material;
             if (material == null || material.mainTexture == null)
             {
-                var pDiffuseTexture = System.IntPtr.Zero;
+                var pDiffuseTexture = IntPtr.Zero;
 
                 while (true)
                 {
@@ -416,10 +420,10 @@ namespace Valve.VR
                 {
                     var diffuseTexture = MarshalRenderModel_TextureMap(pDiffuseTexture);
                     var texture = new Texture2D(diffuseTexture.unWidth, diffuseTexture.unHeight, TextureFormat.RGBA32, false);
-                    if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Direct3D11)
+                    if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.Direct3D11)
                     {
                         texture.Apply();
-                        System.IntPtr texturePointer = texture.GetNativeTexturePtr();
+                        IntPtr texturePointer = texture.GetNativeTexturePtr();
                         while (true)
                         {
                             error = renderModels.LoadIntoTextureD3D11_Async(renderModel.diffuseTextureId, texturePointer);
@@ -478,7 +482,7 @@ namespace Valve.VR
             return new RenderModel(mesh, material);
         }
 
-        IEnumerator FreeRenderModel(System.IntPtr pRenderModel)
+        IEnumerator FreeRenderModel(IntPtr pRenderModel)
         {
             yield return new WaitForSeconds(1.0f);
 
@@ -556,7 +560,7 @@ namespace Valve.VR
                 if (capacity == 0)
                     continue;
 
-                System.Text.StringBuilder componentNameStringBuilder = new System.Text.StringBuilder((int)capacity);
+                StringBuilder componentNameStringBuilder = new StringBuilder((int)capacity);
                 if (renderModels.GetComponentName(renderModelName, (uint)i, componentNameStringBuilder, capacity) == 0)
                     continue;
 
@@ -595,7 +599,7 @@ namespace Valve.VR
                 if (capacity == 0)
                     continue;
 
-                var componentRenderModelNameStringBuilder = new System.Text.StringBuilder((int)capacity);
+                var componentRenderModelNameStringBuilder = new StringBuilder((int)capacity);
                 if (renderModels.GetComponentRenderModelName(renderModelName, componentName, componentRenderModelNameStringBuilder, capacity) == 0)
                     continue;
 
@@ -677,7 +681,7 @@ namespace Valve.VR
             if (!Application.isPlaying)
             {
                 // See if anything has changed since this gets called whenever anything gets touched.
-                var fields = GetType().GetFields(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+                var fields = GetType().GetFields(BindingFlags.Instance | BindingFlags.Public);
 
                 bool modified = false;
 
@@ -778,7 +782,7 @@ namespace Valve.VR
                         nameCache.Add(childInstanceID, componentName);
                     }
 
-                    if (childName == SteamVR_RenderModel.k_localTransformName)
+                    if (childName == k_localTransformName)
                         attach = childChild;
                 }
 
@@ -819,7 +823,7 @@ namespace Valve.VR
         {
 #if !UNITY_METRO
             //System.Threading.Thread.SpinWait(1); //faster napping
-            System.Threading.Thread.Sleep(1);
+            Thread.Sleep(1);
 #endif
         }
 
@@ -829,10 +833,10 @@ namespace Valve.VR
         /// </summary>
         /// <param name="pRenderModel">native pointer to the RenderModel_t</param>
         /// <returns></returns>
-        private RenderModel_t MarshalRenderModel(System.IntPtr pRenderModel)
+        private RenderModel_t MarshalRenderModel(IntPtr pRenderModel)
         {
-            if ((System.Environment.OSVersion.Platform == System.PlatformID.MacOSX) ||
-                (System.Environment.OSVersion.Platform == System.PlatformID.Unix))
+            if ((Environment.OSVersion.Platform == PlatformID.MacOSX) ||
+                (Environment.OSVersion.Platform == PlatformID.Unix))
             {
                 var packedModel = (RenderModel_t_Packed)Marshal.PtrToStructure(pRenderModel, typeof(RenderModel_t_Packed));
                 RenderModel_t model = new RenderModel_t();
@@ -851,10 +855,10 @@ namespace Valve.VR
         /// </summary>
         /// <param name="pRenderModel">native pointer to the RenderModel_TextureMap_t</param>
         /// <returns></returns>
-        private RenderModel_TextureMap_t MarshalRenderModel_TextureMap(System.IntPtr pRenderModel)
+        private RenderModel_TextureMap_t MarshalRenderModel_TextureMap(IntPtr pRenderModel)
         {
-            if ((System.Environment.OSVersion.Platform == System.PlatformID.MacOSX) ||
-                (System.Environment.OSVersion.Platform == System.PlatformID.Unix))
+            if ((Environment.OSVersion.Platform == PlatformID.MacOSX) ||
+                (Environment.OSVersion.Platform == PlatformID.Unix))
             {
                 var packedModel = (RenderModel_TextureMap_t_Packed)Marshal.PtrToStructure(pRenderModel, typeof(RenderModel_TextureMap_t_Packed));
                 RenderModel_TextureMap_t model = new RenderModel_TextureMap_t();

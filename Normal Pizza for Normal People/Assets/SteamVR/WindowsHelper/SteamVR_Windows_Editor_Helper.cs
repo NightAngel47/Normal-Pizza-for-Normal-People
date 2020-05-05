@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Microsoft.Win32;
 
 namespace Valve.VR
 {
@@ -21,7 +20,7 @@ namespace Valve.VR
 #if UNITY_EDITOR
     #if UNITY_STANDALONE_WIN
             const string userChoice = @"Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice";
-            using (Microsoft.Win32.RegistryKey userChoiceKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(userChoice))
+            using (RegistryKey userChoiceKey = Registry.CurrentUser.OpenSubKey(userChoice))
             {
                 if (userChoiceKey == null)
                 {

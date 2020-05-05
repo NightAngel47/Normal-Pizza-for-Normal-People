@@ -4,11 +4,16 @@
 //
 //=============================================================================
 
-using UnityEngine;
+using System;
 using System.Collections;
-using System.Runtime.InteropServices;
-using Valve.VR;
+using System.Diagnostics;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+using UnityEngine;
+using Valve.VR;
+using Debug = UnityEngine.Debug;
+using Object = UnityEngine.Object;
 
 public static class SteamVR_Utils
 {
@@ -191,16 +196,16 @@ public static class SteamVR_Utils
 
     public static string GetBadMD5Hash(string usedString)
     {
-        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(usedString + secretKey);
+        byte[] bytes = Encoding.UTF8.GetBytes(usedString + secretKey);
 
         return GetBadMD5Hash(bytes);
     }
     public static string GetBadMD5Hash(byte[] bytes)
     {
-        System.Security.Cryptography.MD5CryptoServiceProvider md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+        MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
         byte[] hash = md5.ComputeHash(bytes);
 
-        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < hash.Length; i++)
         {
             sb.Append(hash[i].ToString("x2"));
@@ -233,7 +238,7 @@ public static class SteamVR_Utils
         return path;
     }
 
-    [System.Serializable]
+    [Serializable]
 	public struct RigidTransform
 	{
 		public Vector3 pos;
@@ -447,8 +452,8 @@ public static class SteamVR_Utils
 
 		public void Interpolate(RigidTransform to, float t)
 		{
-			pos = SteamVR_Utils.Lerp(pos, to.pos, t);
-			rot = SteamVR_Utils.Slerp(rot, to.rot, t);
+			pos = Lerp(pos, to.pos, t);
+			rot = Slerp(rot, to.rot, t);
 		}
 	}
 
@@ -480,7 +485,7 @@ public static class SteamVR_Utils
 
 		var texture = new Texture2D(width, height * 2, TextureFormat.ARGB32, false);
 
-		var timer = new System.Diagnostics.Stopwatch();
+		var timer = new Stopwatch();
 
 		Camera tempCamera = null;
 
@@ -659,11 +664,11 @@ public static class SteamVR_Utils
 
 		// Preview
 		previewTexture.Apply();
-		System.IO.File.WriteAllBytes(previewFilename, previewTexture.EncodeToPNG());
+		File.WriteAllBytes(previewFilename, previewTexture.EncodeToPNG());
 
 		// VR
 		texture.Apply();
-		System.IO.File.WriteAllBytes(VRFilename, texture.EncodeToPNG());
+		File.WriteAllBytes(VRFilename, texture.EncodeToPNG());
 
 		// Cleanup.
 		if (camera != tempCamera)

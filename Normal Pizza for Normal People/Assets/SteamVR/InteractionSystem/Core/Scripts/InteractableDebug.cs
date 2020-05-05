@@ -4,17 +4,16 @@
 //
 //=============================================================================
 
-using UnityEngine;
-using UnityEngine.Events;
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	public class InteractableDebug : MonoBehaviour
 	{
-        [System.NonSerialized]
+        [NonSerialized]
         public Hand attachedToHand;
 
         public float simulateReleasesForXSecondsAroundRelease = 0;
@@ -146,7 +145,7 @@ namespace Valve.VR.InteractionSystem
 
         private InteractableDebug CreateSimulation(Hand fromHand, float timeOffset, Color copyColor)
         {
-            GameObject copy = GameObject.Instantiate(this.gameObject);
+            GameObject copy = Instantiate(this.gameObject);
             InteractableDebug debugCopy = copy.GetComponent<InteractableDebug>();
             debugCopy.SetIsSimulation();
             debugCopy.ColorSelf(copyColor);
@@ -171,7 +170,7 @@ namespace Valve.VR.InteractionSystem
             DestroyImmediate(baseMarker.GetComponent<Collider>());
             baseMarker.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
 
-            GameObject line = GameObject.Instantiate(baseMarker);
+            GameObject line = Instantiate(baseMarker);
             line.transform.localScale = new Vector3(0.01f, 0.01f, 0.25f);
             line.transform.parent = baseMarker.transform;
             line.transform.localPosition = new Vector3(0, 0, line.transform.localScale.z / 2f);

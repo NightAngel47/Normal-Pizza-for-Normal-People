@@ -9,12 +9,9 @@
 //     * Action Source: This is a collection of cached data retrieved by calls to the underlying SteamVR Input system.
 //          Each Action Source has an inputSource that it is associated with.
 
-using UnityEngine;
-using System.Collections;
 using System;
-using Valve.VR;
-using System.Runtime.InteropServices;
-using System.Collections.Generic;
+using System.Globalization;
+using UnityEngine;
 
 namespace Valve.VR
 {
@@ -670,8 +667,8 @@ namespace Valve.VR
             return fullPath.Substring(0, count);
         }
 
-        private static string inLowered = "IN".ToLower(System.Globalization.CultureInfo.CurrentCulture);
-        private static string outLowered = "OUT".ToLower(System.Globalization.CultureInfo.CurrentCulture);
+        private static string inLowered = "IN".ToLower(CultureInfo.CurrentCulture);
+        private static string outLowered = "OUT".ToLower(CultureInfo.CurrentCulture);
 
         private SteamVR_ActionDirections GetActionDirection()
         {

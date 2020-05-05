@@ -5,7 +5,6 @@
 //=============================================================================
 
 using UnityEngine;
-using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -27,7 +26,7 @@ namespace Valve.VR.InteractionSystem
 		void Update()
 		{
 			if ( oldParent == null )
-				Object.Destroy( gameObject );
+				Destroy( gameObject );
 		}
 
 

@@ -1,12 +1,9 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
-using UnityEngine;
-using System.Collections;
 using System;
-
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace Valve.VR
 {
@@ -1426,7 +1423,7 @@ namespace Valve.VR
         public const int ring = 3;
         public const int pinky = 4;
 
-        public static SteamVR_Skeleton_FingerIndexEnum[] enumArray = (SteamVR_Skeleton_FingerIndexEnum[])System.Enum.GetValues(typeof(SteamVR_Skeleton_FingerIndexEnum));
+        public static SteamVR_Skeleton_FingerIndexEnum[] enumArray = (SteamVR_Skeleton_FingerIndexEnum[])Enum.GetValues(typeof(SteamVR_Skeleton_FingerIndexEnum));
     }
 
     /// <summary>The order of the fingerSplays that SteamVR Skeleton Input outputs</summary>
@@ -1437,7 +1434,7 @@ namespace Valve.VR
         public const int middleRing = 2;
         public const int ringPinky = 3;
 
-        public static SteamVR_Skeleton_FingerSplayIndexEnum[] enumArray = (SteamVR_Skeleton_FingerSplayIndexEnum[])System.Enum.GetValues(typeof(SteamVR_Skeleton_FingerSplayIndexEnum));
+        public static SteamVR_Skeleton_FingerSplayIndexEnum[] enumArray = (SteamVR_Skeleton_FingerSplayIndexEnum[])Enum.GetValues(typeof(SteamVR_Skeleton_FingerSplayIndexEnum));
     }
 
     public enum SteamVR_Skeleton_FingerSplayIndexEnum

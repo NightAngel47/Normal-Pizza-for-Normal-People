@@ -1,16 +1,15 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
-using UnityEngine;
-using System.Collections;
+using System;
 using System.Collections.Generic;
-
-using System.Linq;
-using Valve.Newtonsoft.Json;
 using System.IO;
+using System.Linq;
+using UnityEngine;
+using Valve.Newtonsoft.Json;
 
 namespace Valve.VR
 {
-    [System.Serializable]
+    [Serializable]
     public class SteamVR_Input_ActionFile
     {
         public List<SteamVR_Input_ActionFile_Action> actions = new List<SteamVR_Input_ActionFile_Action>();
@@ -190,7 +189,7 @@ namespace Valve.VR
         {
             if (File.Exists(newFilePath))
             {
-                string jsonText = System.IO.File.ReadAllText(newFilePath);
+                string jsonText = File.ReadAllText(newFilePath);
 
                 string findString = "\"app_key\"";
                 int stringStart = jsonText.IndexOf(findString);
@@ -221,7 +220,7 @@ namespace Valve.VR
             {
                 string jsonText = File.ReadAllText(path);
 
-                SteamVR_Input_ActionFile actionFile = Valve.Newtonsoft.Json.JsonConvert.DeserializeObject<SteamVR_Input_ActionFile>(jsonText);
+                SteamVR_Input_ActionFile actionFile = JsonConvert.DeserializeObject<SteamVR_Input_ActionFile>(jsonText);
                 actionFile.filePath = path;
                 actionFile.InitializeHelperLists();
 
@@ -265,7 +264,7 @@ namespace Valve.VR
         vive_tracker,
     }
 
-    [System.Serializable]
+    [Serializable]
     public class SteamVR_Input_ActionFile_DefaultBinding
     {
         public string controller_type;
@@ -280,7 +279,7 @@ namespace Valve.VR
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class SteamVR_Input_ActionFile_ActionSet
     {
         [JsonIgnore]
@@ -379,7 +378,7 @@ namespace Valve.VR
         mandatory,
     }
 
-    [System.Serializable]
+    [Serializable]
     public class SteamVR_Input_ActionFile_Action
     {
         [JsonIgnore]
@@ -390,7 +389,7 @@ namespace Valve.VR
             get
             {
                 if (_requirementValues == null)
-                    _requirementValues = System.Enum.GetNames(typeof(SteamVR_Input_ActionFile_Action_Requirements));
+                    _requirementValues = Enum.GetNames(typeof(SteamVR_Input_ActionFile_Action_Requirements));
 
                 return _requirementValues;
             }
@@ -420,7 +419,7 @@ namespace Valve.VR
             {
                 for (int index = 0; index < requirementValues.Length; index++)
                 {
-                    if (string.Equals(requirementValues[index], requirement, System.StringComparison.CurrentCultureIgnoreCase))
+                    if (string.Equals(requirementValues[index], requirement, StringComparison.CurrentCultureIgnoreCase))
                     {
                         return (SteamVR_Input_ActionFile_Action_Requirements)index;
                     }

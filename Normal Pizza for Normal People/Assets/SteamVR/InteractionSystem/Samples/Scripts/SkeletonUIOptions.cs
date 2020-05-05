@@ -1,8 +1,6 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
 using UnityEngine;
-using System.Collections;
-using Valve.VR.InteractionSystem;
 
 namespace Valve.VR.InteractionSystem.Sample
 {
@@ -16,7 +14,7 @@ namespace Valve.VR.InteractionSystem.Sample
                 Hand hand = Player.instance.hands[handIndex];
                 if (hand != null)
                 {
-                    hand.SetSkeletonRangeOfMotion(Valve.VR.EVRSkeletalMotionRange.WithController);
+                    hand.SetSkeletonRangeOfMotion(EVRSkeletalMotionRange.WithController);
                 }
             }
         }
@@ -28,7 +26,7 @@ namespace Valve.VR.InteractionSystem.Sample
                 Hand hand = Player.instance.hands[handIndex];
                 if (hand != null)
                 {
-                    hand.SetSkeletonRangeOfMotion(Valve.VR.EVRSkeletalMotionRange.WithoutController);
+                    hand.SetSkeletonRangeOfMotion(EVRSkeletalMotionRange.WithoutController);
                 }
             }
         }

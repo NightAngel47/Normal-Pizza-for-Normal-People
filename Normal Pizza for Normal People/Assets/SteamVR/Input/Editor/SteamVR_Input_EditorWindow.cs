@@ -1,18 +1,12 @@
-﻿using UnityEditor;
-using UnityEngine;
-
-using System.CodeDom;
-using Microsoft.CSharp;
-using System.IO;
-using System.CodeDom.Compiler;
-
-using System.Linq;
+﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
+using System.Linq;
 using System.Linq.Expressions;
-using System;
+using System.Reflection;
+using System.Threading;
+using UnityEditor;
 using UnityEditorInternal;
-using Valve.Newtonsoft.Json;
+using UnityEngine;
 
 namespace Valve.VR
 {
@@ -33,7 +27,7 @@ namespace Valve.VR
             if (instance != null)
             {
                 instance.ForceClose();
-                System.Threading.Thread.Sleep(100);
+                Thread.Sleep(100);
             }
 
             ShowWindow();
@@ -287,18 +281,18 @@ namespace Valve.VR
 
         private bool CopyOrClose()
         {
-            bool copyExamples = UnityEditor.EditorUtility.DisplayDialog("Copy Examples", "It looks like your project is missing an actions.json. Would you like to use the example files?", "Yes", "No");
+            bool copyExamples = EditorUtility.DisplayDialog("Copy Examples", "It looks like your project is missing an actions.json. Would you like to use the example files?", "Yes", "No");
             if (copyExamples)
             {
                 SteamVR_CopyExampleInputFiles.CopyFiles(true);
-                System.Threading.Thread.Sleep(1000);
+                Thread.Sleep(1000);
                 bool initializeSuccess = SteamVR_Input.InitializeFile();
                 return initializeSuccess;
             }
             else
             {
                 SteamVR_Input.CreateEmptyActionsFile();
-                System.Threading.Thread.Sleep(1000);
+                Thread.Sleep(1000);
                 bool initializeSuccess = SteamVR_Input.InitializeFile();
                 return initializeSuccess;
             }

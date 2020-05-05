@@ -4,10 +4,9 @@
 //
 //=============================================================================
 
-using UnityEngine;
-using UnityEngine.Events;
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -72,10 +71,10 @@ namespace Valve.VR.InteractionSystem
         [Tooltip("Higher is better")]
         public int hoverPriority = 0;
 
-        [System.NonSerialized]
+        [NonSerialized]
         public Hand attachedToHand;
 
-        [System.NonSerialized]
+        [NonSerialized]
         public List<Hand> hoveringHands = new List<Hand>();
         public Hand hoveringHand
         {

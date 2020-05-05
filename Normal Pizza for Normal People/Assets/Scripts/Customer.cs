@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-using Valve.VR.InteractionSystem;
 
 public class Customer : MonoBehaviour
 {

@@ -1,9 +1,8 @@
 ﻿// Copyright (c) Valve Corporation, All rights reserved. ======================================================================================================
 
 
-
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 namespace Valve.VR.InteractionSystem
 {

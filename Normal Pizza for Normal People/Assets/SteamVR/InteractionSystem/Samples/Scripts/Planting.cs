@@ -1,9 +1,7 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Valve.VR.InteractionSystem;
 
 namespace Valve.VR.InteractionSystem.Sample
 {
@@ -65,7 +63,7 @@ namespace Valve.VR.InteractionSystem.Sample
                 plantPosition.y = Player.instance.transform.position.y;
             }
 
-            GameObject planting = GameObject.Instantiate<GameObject>(prefabToPlant);
+            GameObject planting = Instantiate<GameObject>(prefabToPlant);
             planting.transform.position = plantPosition;
             planting.transform.rotation = Quaternion.Euler(0, Random.value * 360f, 0);
 

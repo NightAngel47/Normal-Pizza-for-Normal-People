@@ -1,11 +1,8 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
 using System;
-using System.Collections;
-using UnityEngine;
-using Valve.VR;
 using System.Collections.Generic;
-using System.Linq;
+using UnityEngine;
 
 namespace Valve.VR
 {
@@ -362,7 +359,7 @@ namespace Valve.VR
         /// <summary>
         /// A filter applied to the base pose. Blends to a secondary pose by a certain weight. Can be masked per-finger
         /// </summary>
-        [System.Serializable]
+        [Serializable]
         public class PoseBlendingBehaviour
         {
             public string name;
@@ -507,7 +504,7 @@ namespace Valve.VR
     /// <summary>
     /// Simple mask for fingers
     /// </summary>
-    [System.Serializable]
+    [Serializable]
     public class SteamVR_Skeleton_HandMask
     {
         public bool palm;

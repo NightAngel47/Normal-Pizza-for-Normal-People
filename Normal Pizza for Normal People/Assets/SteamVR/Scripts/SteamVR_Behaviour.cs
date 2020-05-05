@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
+using UnityEditor;
 using UnityEngine;
-
 #if UNITY_2017_2_OR_NEWER
     using UnityEngine.XR;
 #else
@@ -53,11 +49,11 @@ namespace Valve.VR
                 if (forceUnityVRToOpenVR)
                     forcingInitialization = true;
 
-                SteamVR_Render renderInstance = GameObject.FindObjectOfType<SteamVR_Render>();
+                SteamVR_Render renderInstance = FindObjectOfType<SteamVR_Render>();
                 if (renderInstance != null)
                     steamVRObject = renderInstance.gameObject;
 
-                SteamVR_Behaviour behaviourInstance = GameObject.FindObjectOfType<SteamVR_Behaviour>();
+                SteamVR_Behaviour behaviourInstance = FindObjectOfType<SteamVR_Behaviour>();
                 if (behaviourInstance != null)
                     steamVRObject = behaviourInstance.gameObject;
 
@@ -86,7 +82,7 @@ namespace Valve.VR
                 }
 
                 if (_instance != null && _instance.doNotDestroy)
-                    GameObject.DontDestroyOnLoad(_instance.transform.root.gameObject);
+                    DontDestroyOnLoad(_instance.transform.root.gameObject);
 
                 initializing = false;
             }
@@ -238,7 +234,7 @@ namespace Valve.VR
         protected void OnQuit(VREvent_t vrEvent)
         {
 #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+            EditorApplication.isPlaying = false;
 #else
 		    Application.Quit();
 #endif
