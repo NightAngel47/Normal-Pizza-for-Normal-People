@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * TutorialUIHandler
+ * Sydney & Steven
+ * Sydney: 
+ * Sets up order of UI text so that one command appears at a time and checks to see if certain conditions are met before moving to the next
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

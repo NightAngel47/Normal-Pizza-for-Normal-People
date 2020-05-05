@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * MainMenuHandle
+ * Sydney 
+ * Creates references for panels for main menu 
+ */
+
+using UnityEngine;
 
 public class MainMenuHandle : MonoBehaviour
 {

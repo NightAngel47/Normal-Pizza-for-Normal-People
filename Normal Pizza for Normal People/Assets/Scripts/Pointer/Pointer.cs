@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * Pointer
+ * Sydney 
+ * Created by following a tutorial. Set up the pointer and the line and dot it creates so the player knows what they are pointing at. Also checks to see if it has hit anything with raycast
+ */
+
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Pointer : MonoBehaviour

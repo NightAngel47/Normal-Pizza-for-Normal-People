@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * ButtonTransistioner
+ * Sydney 
+ * This is the script that handles what the buttons do when they are pressed. This is for the VR UI buttons, when clicked by a pointer.
+ */
+
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;

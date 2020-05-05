@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * PauseMenu
+ * Sydney 
+ * Sets up the function to turn on or off the pause menu. Sets it up with the VR system so that the VR controllers can pause the game.
+ */
+
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using Valve.VR;
 using Valve.VR.InteractionSystem;

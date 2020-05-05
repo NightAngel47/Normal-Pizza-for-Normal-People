@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * UpgradeSystem
+ * Steven & Sydney 
+ * Sydney:
+ * Sets up the upgrade system, when it starts and when it ends. Calls on the item upgrade for the respective upgrades that need to be turned on that day.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -60,21 +69,6 @@ public class UpgradeSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         isUpgrading = false;
-    }
-
-    public void EndUpgrade()
-    {
-
-
-        //PLAYER CHOOSE UPGRADE LEFTOVER CODE
-        //isUpgrading = false;
-
-        //endUpgradeButton.SetActive(false);
-
-        //foreach (GameObject g in availableUpgrades)
-        //{
-        //    g.GetComponent<ItemUpgrades>().HideItem();
-        //}
     }
 
     public void RemovedPurchasedUpgrade(GameObject upgradePurchased)

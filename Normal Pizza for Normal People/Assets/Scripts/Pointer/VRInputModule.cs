@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * VRInputModule
+ * Sydney 
+ * Created by following a tutorial, sets up how the vr input system should handle a pointer. This is an add on to the current built in input module
+ */
+
+using UnityEngine;
 using UnityEngine.EventSystems;
 using Valve.VR;
 

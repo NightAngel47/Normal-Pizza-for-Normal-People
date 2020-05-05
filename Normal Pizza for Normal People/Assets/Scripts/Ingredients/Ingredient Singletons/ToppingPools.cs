@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * ToppingPools
+ * Sydney 
+ * Sets up the object pool
+ */
+
+using System;
 using UnityEngine;
 
 [Serializable]

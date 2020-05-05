@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * CustomerLineUpgrade
+ * Steven
+ * Sets up what happens with the customer line upgrade. How it turns on and reactivates itself
+ */
+
+using System.Collections;
 using UnityEngine;
 
 public class CustomerLineUpgrade : ItemUpgrades

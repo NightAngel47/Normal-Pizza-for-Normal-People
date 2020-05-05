@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * TrashScript
+ * Sydney 
+ * Will destroy anything thrown in trash can, or set active in case of ingredients for object pool
+ */
+
+using UnityEngine;
 
 public class TrashScript : MonoBehaviour
 {

@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * ItemUpgrades
+ * Sydney 
+ * Base class for all types of upgrades in game. Handles what all do the same, and sets up abstract functions for what is uniquely done
+ */
+
+using UnityEngine;
 
 public abstract class ItemUpgrades : MonoBehaviour
 {

@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * PizzaSpawner
+ * Sydney & Steven
+ * Sydney: Added updates so that pizzas spawn in one of two locations
+ * Sets up how pizzas Spawn. When a button is hit spawn pizza is called and flip bakc and forth on where it spawns
+ */
+
+using UnityEngine;
 
 public class PizzaSpawner : MonoBehaviour
 {

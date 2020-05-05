@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * GameManager
+ * Steven & Sydney 
+ * Sydney: Toggle pointer function, start day button and days being started by the player, and pizza spawning button turning on and off,
+ * ?
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;

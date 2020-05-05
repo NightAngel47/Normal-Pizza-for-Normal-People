@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * ToppingUpgrades
+ * Sydney 
+ * Sets up new topping basket when the upgraded has been given. Turns on object and reactivates it
+ */
+
+using System.Collections;
 using UnityEngine;
 
 public class ToppingUpgrades : ItemUpgrades

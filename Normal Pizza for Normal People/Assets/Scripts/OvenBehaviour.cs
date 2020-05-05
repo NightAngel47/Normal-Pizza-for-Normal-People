@@ -1,4 +1,14 @@
-﻿using System.Collections;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * OvenBehaviour
+ * Sydney & Steven
+ * Sydney: 
+ * Sets up the behaviour for the oven and what to do with the pizzas when they are in the oven. Sees if pizza is cooked or burnt,
+ * timers, audio, and particles for the oven.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -145,61 +155,6 @@ public class OvenBehaviour : MonoBehaviour
             StartCoroutine(PizzaInOven(pizza));
         }
     }
-    
-    /*
-    private void OnTriggerStay(Collider col)
-    {
-        //is the pizza in the oven and is it not burnt yet
-        if (!col.transform.parent.TryGetComponent(out PizzaBehaviour pizza) || pizza.isBurnt) return;
-        
-        pizza.cookedTime += Time.deltaTime; //adds time to the amount of time the pizza has been cooked
-        tempTime += Time.deltaTime; //time for fill on timer
-
-        timerTime -= Time.deltaTime; //time displayed on timer
-        string per = ((int)timerTime).ToString();
-
-        if (pizza.cookedTime > cookTime)
-        {
-            loadingBar.fillAmount = tempTime / cookTime; //how much fill and assigns fill on timer
-        }
-        else
-        {
-            loadingBar.fillAmount = pizza.cookedTime / cookTime; //how much fill and assigns fill on timer
-        }
-
-        progressIndicator.text = per;
-
-        //if it finished cooking this checks to see if it is going to burn/make it burnt
-        if (pizza.overCooking && pizza.cookedTime >= overCookTime)
-        {
-            pizza.GetComponentInChildren<MeshRenderer>().material = burnt;
-            pizza.isCooked = false;
-            pizza.isBurnt = true;
-            loadingBar.color = warnOrange;
-            PlayOvenAudio(OvenAudioStates.PizzaBurnt);
-            Invoke(nameof(BackToCookingSounds), 1f);
-        }
-
-        //else it is not fully cooked yet and it checks to see if it is cooked, and if it is starts the burn part of it
-        else if (pizza.cookedTime >= cookTime)
-        {
-            pizza.GetComponentInChildren<MeshRenderer>().material = cooked;
-            pizza.isCooked = true;
-            pizza.overCooking = true;
-            loadingBar.color = warnOrange;
-
-            if (!startOverCooking)
-            {
-                PlayOvenAudio(OvenAudioStates.PizzaDone);
-                Invoke(nameof(BackToCookingSounds), 1f);
-                startOverCooking = true;
-                tempTime = 0;
-                timerTime = cookTime + 1;
-                Debug.Log(timerTime);
-            }
-        }
-    }
-    */
 
     private void OnTriggerExit(Collider col)
     {

@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * Customer
+ * Steven & Sydney 
+ * Sydney: The show money amount function and the variables it sets and uses
+ * 
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
