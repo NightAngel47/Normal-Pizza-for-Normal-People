@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
         pizzaSpawnButton.SetActive(false);
 
         FindObjectOfType<PauseMenu>().SetUp();
+        
+        MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.BetweenDaysMusic);
     }
 
     public MoneyTracker GetMoneyTracker()
