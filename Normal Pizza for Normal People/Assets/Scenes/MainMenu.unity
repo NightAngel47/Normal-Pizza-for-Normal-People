@@ -122,7 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!43 &197975545
+--- !u!43 &357575340
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -354,13 +354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 502a61ddfbcff294586d7c625c3efb49, type: 3}
---- !u!20 &1399689101 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 5355422399162787402, guid: 0ed3571a4535dbc4aa6742cd31d6b270,
-    type: 3}
-  m_PrefabInstance: {fileID: 8741163638914246814}
-  m_PrefabAsset: {fileID: 0}
---- !u!21 &1620063391
+--- !u!21 &1221097613
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -394,6 +388,12 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!20 &1399689101 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5355422399162787402, guid: 0ed3571a4535dbc4aa6742cd31d6b270,
+    type: 3}
+  m_PrefabInstance: {fileID: 8741163638914246814}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1941941394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -771,6 +771,16 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1399689101}
+    - target: {fileID: 5437081482558957979, guid: cecda2c4d625fd3499b748ca39fd7d43,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437081483866597596, guid: cecda2c4d625fd3499b748ca39fd7d43,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cecda2c4d625fd3499b748ca39fd7d43, type: 3}
 --- !u!1001 &8741163638914246814
@@ -784,12 +794,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 197975545}
+      objectReference: {fileID: 357575340}
     - target: {fileID: 8741163638886084953, guid: 0ed3571a4535dbc4aa6742cd31d6b270,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1620063391}
+      objectReference: {fileID: 1221097613}
     - target: {fileID: 8741163638887815957, guid: 0ed3571a4535dbc4aa6742cd31d6b270,
         type: 3}
       propertyPath: m_LocalPosition.x
