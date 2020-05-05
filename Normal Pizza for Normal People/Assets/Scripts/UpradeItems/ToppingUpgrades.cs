@@ -2,7 +2,9 @@
  * Normal Pizza for Normal People
  * IM 389
  * ToppingUpgrades
- * Sydney 
+ * Sydney & Steven
+ * Sydney: Created initial script that handled adding new toppings to world and order creation
+ * Steven: Added new topping UI
  * Sets up new topping basket when the upgraded has been given. Turns on object and reactivates it
  */
 

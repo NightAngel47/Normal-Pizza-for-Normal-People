@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * IngredientHitEffect
+ * Steven & Sydney
+ * Steven: Created initial script that handles when toppings hit pizzas
+ * Sydney: Added object pooling functionality
+ * Holds order ingredients
+ */
+
+using UnityEngine;
 
 public class IngredientHitEffect : MonoBehaviour
 {

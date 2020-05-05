@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * OrderCreation
+ * Steven:
+ * Handles creating all of the orders for each customer based on what ingredients are available
+ */
+
+using System.Collections.Generic;
 using UnityEngine;
 
 public class OrderCreation : MonoBehaviour
 {
-    [SerializeField]
-    public List<PizzaIngredient> allPizzaIngredients = new List<PizzaIngredient>();
-    [SerializeField]
-    private int minIngredientsPerOrder = 1;
-    [SerializeField]
-    private int maxIngredientsPerOrder = 3;
+    [SerializeField] public List<PizzaIngredient> allPizzaIngredients = new List<PizzaIngredient>();
+    [SerializeField] private int minIngredientsPerOrder = 1;
+    [SerializeField] private int maxIngredientsPerOrder = 3;
 
     /// <summary>
     /// Generates the orders for the number of customers

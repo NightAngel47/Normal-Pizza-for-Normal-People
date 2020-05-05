@@ -1,4 +1,14 @@
-﻿using System.Collections;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * PizzaIngredientSpawner
+ * Sydney & Steven
+ * Sydney: Improved topping spawning and added object pooling functionality 
+ * Steven: Created initial script that had basic spawning
+ * Spawns pizza ingredients in trays when player reaches for them
+ */
+
+using System.Collections;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 

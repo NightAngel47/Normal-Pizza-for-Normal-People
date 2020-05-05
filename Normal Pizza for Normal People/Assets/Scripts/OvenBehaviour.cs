@@ -3,7 +3,8 @@
  * IM 389
  * OvenBehaviour
  * Sydney & Steven
- * Sydney: 
+ * Sydney: Created script and initial functionality of cooking pizzas and updating UI timers, made ovens work with one pizza at a time
+ * Steven: Added audio sources and when to play sfx, changed cooking function to coroutine.
  * Sets up the behaviour for the oven and what to do with the pizzas when they are in the oven. Sees if pizza is cooked or burnt,
  * timers, audio, and particles for the oven.
  */

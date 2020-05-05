@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * StarfishRandomStart
+ * Fisher 
+ * Gives the starfish a random start and speed for their animation
+ */
+
+using UnityEngine;
 
 public class StarfishRandomStart : MonoBehaviour
 {

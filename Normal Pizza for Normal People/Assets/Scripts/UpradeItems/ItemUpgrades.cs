@@ -2,7 +2,9 @@
  * Normal Pizza for Normal People
  * IM 389
  * ItemUpgrades
- * Sydney 
+ * Sydney & Steven
+ * Sydney: Created initial script that is the base class for all upgrades
+ * Steven: Cleaned up functions
  * Base class for all types of upgrades in game. Handles what all do the same, and sets up abstract functions for what is uniquely done
  */
 

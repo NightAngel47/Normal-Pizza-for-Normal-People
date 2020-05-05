@@ -4,6 +4,7 @@
  * PizzaSpawner
  * Sydney & Steven
  * Sydney: Added updates so that pizzas spawn in one of two locations
+ * Steven: Created initial script that handles spawning pizza at a spawn pos on hover button hit
  * Sets up how pizzas Spawn. When a button is hit spawn pizza is called and flip bakc and forth on where it spawns
  */
 

@@ -1,4 +1,14 @@
-﻿using System.Collections.Generic;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * MoneyTracker
+ * Steven & Sydney
+ * Steven: Created initial script which handles the player's money earned
+ * Sydney: Created purchase functionality
+ * Handles the money that the player earns each day and in total
+ */
+
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 

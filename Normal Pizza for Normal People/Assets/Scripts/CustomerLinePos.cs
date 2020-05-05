@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * CustomerLinePos
+ * Steven:
+ * Handles when customer lines are available
+ */
+
+using UnityEngine;
 
 public class CustomerLinePos : MonoBehaviour
 {

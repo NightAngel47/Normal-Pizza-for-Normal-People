@@ -2,8 +2,9 @@
  * Normal Pizza for Normal People
  * IM 389
  * UpgradeSystem
- * Steven & Sydney 
- * Sydney:
+ * Sydney & Steven 
+ * Sydney: Created functionality for handling available upgrades
+ * Steven: Setup initial script tie in with game manager that handled when the upgrade system was upgrading
  * Sets up the upgrade system, when it starts and when it ends. Calls on the item upgrade for the respective upgrades that need to be turned on that day.
  */
 
