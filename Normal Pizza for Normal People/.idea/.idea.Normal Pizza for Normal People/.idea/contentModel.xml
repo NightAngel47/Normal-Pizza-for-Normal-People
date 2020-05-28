@@ -12,7 +12,6 @@
           <e p="CustomerLinePos.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="HideTutorial.cs" t="Include" />
-          <e p="InGameButtonHandler.cs" t="Include" />
           <e p="Ingredients" t="Include">
             <e p="Ingredient Singletons" t="Include">
               <e p="ToppingObjectPool.cs" t="Include" />

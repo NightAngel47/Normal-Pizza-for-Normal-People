@@ -3,7 +3,8 @@
  * IM 389
  * TutorialUIHandler
  * Sydney & Steven
- * Sydney: 
+ * Sydney: Created initial script and process of going through the tutorial path, added more tutorial sections
+ * Steven: Changed run tutorial to be a coroutine and added more tutorial sections
  * Sets up order of UI text so that one command appears at a time and checks to see if certain conditions are met before moving to the next
  */
 

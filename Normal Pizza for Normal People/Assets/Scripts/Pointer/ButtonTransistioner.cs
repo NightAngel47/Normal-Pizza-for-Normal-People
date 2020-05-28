@@ -2,7 +2,9 @@
  * Normal Pizza for Normal People
  * IM 389
  * ButtonTransistioner
- * Sydney 
+ * Sydney & Steven
+ * Sydney: Created initial script that handles all button functionality for main menu and pause menu
+ * Steven: Added audio and resets time scale to 1
  * This is the script that handles what the buttons do when they are pressed. This is for the VR UI buttons, when clicked by a pointer.
  */
 

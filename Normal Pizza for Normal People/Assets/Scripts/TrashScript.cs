@@ -2,7 +2,9 @@
  * Normal Pizza for Normal People
  * IM 389
  * TrashScript
- * Sydney 
+ * Sydney & Steven
+ * Sydney: Created initial script and functionality that destroyed game objects
+ * Steven: Added audio source and made ingredients disable instead of destroy to work with object pooling
  * Will destroy anything thrown in trash can, or set active in case of ingredients for object pool
  */
 

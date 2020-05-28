@@ -1,4 +1,12 @@
-﻿using System.Collections.Generic;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * Order
+ * Steven:
+ * Holds order ingredients
+ */
+
+using System.Collections.Generic;
 
 public class Order
 {

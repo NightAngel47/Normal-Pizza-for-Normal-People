@@ -2,9 +2,9 @@
  * Normal Pizza for Normal People
  * IM 389
  * Customer
- * Steven & Sydney 
+ * Steven & Sydney
+ * Steven: Created initial script that handles customer AI, order and timer, and delivery of pizza
  * Sydney: The show money amount function and the variables it sets and uses
- * 
  */
 
 using System.Collections;

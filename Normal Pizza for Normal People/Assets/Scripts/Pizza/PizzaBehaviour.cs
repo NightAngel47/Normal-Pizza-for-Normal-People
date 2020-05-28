@@ -1,4 +1,14 @@
-﻿using System.Collections.Generic;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * PizzaBehaviour
+ * Sydney & Steven
+ * Sydney: Added pizza cooking, and hover UI
+ * Steven: Created initial script that holds ingredients on pizza, helped with hover UI
+ * Handles ingredients on pizza and cooking state, and also hover UI
+ */
+
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

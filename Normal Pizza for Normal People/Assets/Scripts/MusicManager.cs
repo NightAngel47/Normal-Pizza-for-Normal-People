@@ -1,4 +1,12 @@
-﻿using System.Collections.Generic;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * MusicManager
+ * Steven:
+ * Handles background music switching
+ */
+
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,11 +16,9 @@ public class MusicManager : MonoBehaviour
     public static MusicManager instance;
 
     private AudioSource audioSource;
-    [SerializeField]
-    private List<AudioClip> musicTracks = new List<AudioClip>(3);
+    [SerializeField] private List<AudioClip> musicTracks = new List<AudioClip>(3);
     public enum MusicTrackName { MainMenuMusic, WorkDayMusic, BetweenDaysMusic }
     
-
     private void Awake()
     {
         if (gameObject.TryGetComponent(out MusicManager musicManager))

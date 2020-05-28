@@ -2,9 +2,10 @@
  * Normal Pizza for Normal People
  * IM 389
  * GameManager
- * Steven & Sydney 
+ * Steven & Sydney
+ * Steven: 
  * Sydney: Toggle pointer function, start day button and days being started by the player, and pizza spawning button turning on and off,
- * ?
+ * Manages the game
  */
 
 using System;

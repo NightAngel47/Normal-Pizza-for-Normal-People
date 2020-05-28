@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 389
+ * PizzaIngredientSpawner
+ * Steven & Sydney
+ * Steven: Created initial script that holds ingredient info
+ * Sydney: Added ingredient icon info
+ * Handles ingredient info and icon
+ */
+
+using UnityEngine;
 
 public class PizzaIngredient : MonoBehaviour
 {

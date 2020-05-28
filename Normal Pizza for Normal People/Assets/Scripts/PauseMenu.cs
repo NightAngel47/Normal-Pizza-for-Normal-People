@@ -2,7 +2,9 @@
  * Normal Pizza for Normal People
  * IM 389
  * PauseMenu
- * Sydney 
+ * Sydney & Steven
+ * Sydney: Created initial script that take controller input to trigger pause menu, move player, toggle pointer
+ * Steven: Added time pause, pair-debugging
  * Sets up the function to turn on or off the pause menu. Sets it up with the VR system so that the VR controllers can pause the game.
  */
 
