@@ -48,7 +48,7 @@ MonoBehaviour:
     prefab: {fileID: 3992555147375518813, guid: af79277fd6452a74b93ceef354085e6c,
       type: 3}
     size: 5
-  - tag: tidepod
+  - tag: laundry pod
     prefab: {fileID: 8947208651912989917, guid: 2b0d21a40c4cec2468b19ad6a923a98b,
       type: 3}
     size: 5
