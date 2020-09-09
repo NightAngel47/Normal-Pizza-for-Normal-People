@@ -8,13 +8,13 @@ TagManager:
   - projectile
   - LineStart
   - pineapple
-  - tidepod
   - honeycomb
   - starfish
   - cactus
   - beetroot
   - pauseMenu
   - pointer
+  - laundry pod
   layers:
   - Default
   - TransparentFX
