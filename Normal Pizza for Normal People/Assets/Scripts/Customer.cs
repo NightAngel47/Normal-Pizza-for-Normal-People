@@ -239,7 +239,26 @@ public class Customer : MonoBehaviour
     private int CheckDeliveredPizza(PizzaBehaviour pizza)
     {
         //TODO add topping tiers
-        float deliveredPizzaMoney = moneyTracker.basePizzaProfit + order.GetOrderIngredients().Count * moneyTracker.tier1Toppings;
+        float deliveredPizzaMoney = moneyTracker.basePizzaProfit;
+
+        foreach (PizzaIngredient ingredient in order.GetOrderIngredients())
+        {
+            switch (ingredient.GetIngredientTier())
+            {
+                case 1:
+                    deliveredPizzaMoney += moneyTracker.tier1Toppings;
+                    break;
+                case 2:
+                    deliveredPizzaMoney += moneyTracker.tier2Toppings;
+                    break;
+                case 3:
+                    deliveredPizzaMoney += moneyTracker.tier3Toppings;
+                    break;
+                default:
+                    Debug.LogWarning("Ingredient: " + ingredient.name + " does not have supported tier.");
+                    break;
+            }
+        }
 
         firstPizzaThrow = true;
 

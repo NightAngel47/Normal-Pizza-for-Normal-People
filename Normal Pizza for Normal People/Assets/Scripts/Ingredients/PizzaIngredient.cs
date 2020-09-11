@@ -27,4 +27,9 @@ public class PizzaIngredient : MonoBehaviour
     {
         return ingredientIcon;
     }
+
+    public int GetIngredientTier()
+    {
+        return tier;
+    }
 }
