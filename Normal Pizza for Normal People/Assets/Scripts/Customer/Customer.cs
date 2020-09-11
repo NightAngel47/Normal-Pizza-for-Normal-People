@@ -22,7 +22,7 @@ public class Customer : MonoBehaviour
     private MoneyTracker moneyTracker = null;
     private CustomerLine customerLine = null;
     private NavMeshAgent agent = null;
-    private AudioSource audioSource = null;
+    private CustomerAudio customerAudio = null;
     
     [SerializeField] private float startOrderTime = 90f;
     private float currentOrderTime = 0;
@@ -35,9 +35,6 @@ public class Customer : MonoBehaviour
     [SerializeField] private Transform ingredientUITransform = null;
     [SerializeField] private GameObject ingredientUI = null;
     [SerializeField] private GameObject speechBubbleUI = null;
-
-    private enum CustomerAudioStates {Walking, GoodOrder, BadOrder, OrderEndingSoon, AtCounter}
-    [SerializeField] private List<AudioClip> customerAudioClips = new List<AudioClip>();
 
     [SerializeField] private GameObject moneyForOrderText = null;
     public GameObject moneyForOrderTextObject = null;
@@ -59,9 +56,9 @@ public class Customer : MonoBehaviour
         customerLine = gm.GetComponent<CustomerLine>();
         moneyTracker = gm.GetMoneyTracker();
         agent = GetComponent<NavMeshAgent>();
-        audioSource = GetComponent<AudioSource>();
+        customerAudio = GetComponent<CustomerAudio>();
 
-        PlayCustomerAudio(CustomerAudioStates.Walking);
+        customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Walking);
         
         endPos = transform.position + (Vector3.right * 14);
 
@@ -95,13 +92,13 @@ public class Customer : MonoBehaviour
             }
         }
 
-        if (agent.velocity.magnitude > 0 && !audioSource.isPlaying)
+        if (agent.velocity.magnitude > 0 && customerAudio.currentCustomerAudioState != CustomerAudio.CustomerAudioStates.Walking)
         {
-            PlayCustomerAudio(CustomerAudioStates.Walking);
+            customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Walking);
         }
-        else if (audioSource.clip == customerAudioClips[(int) CustomerAudioStates.Walking] && agent.remainingDistance <= 0)
+        else if (customerAudio.currentCustomerAudioState == CustomerAudio.CustomerAudioStates.Walking && agent.remainingDistance <= 0)
         {
-            audioSource.Stop();
+            customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Stop);
         }
     }
 
@@ -112,7 +109,7 @@ public class Customer : MonoBehaviour
             activeOrder = true;
             transform.rotation = other.transform.rotation;
             ChangeUIState();
-            PlayCustomerAudio(CustomerAudioStates.AtCounter);
+            customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.AtCounter);
             StartCoroutine(OrderTimerCountDown());
         }
         
@@ -212,10 +209,7 @@ public class Customer : MonoBehaviour
             {
                 orderTimerProgressBar.color = orderTimerColors[(int) OrderTimerStates.End];
             
-                if (!audioSource.isPlaying)
-                {
-                    PlayCustomerAudio(CustomerAudioStates.OrderEndingSoon);
-                }
+                customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.OrderEndingSoon);
             }
             
             StartCoroutine(OrderTimerCountDown());
@@ -223,7 +217,7 @@ public class Customer : MonoBehaviour
         else // order ran out of time and customer left
         {
             moneyTracker.CustomerChangeMoney((int) -startOrderTime);
-            PlayCustomerAudio(CustomerAudioStates.BadOrder);
+            customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.BadOrder);
             activeOrder = false;
             gm.RemoveActiveCustomer(this);
             DestoryOrderUI();
@@ -238,7 +232,6 @@ public class Customer : MonoBehaviour
     /// <returns>If true: it returns the amount of money the pizza earned, else: it returns the amount of money lost.</returns>
     private int CheckDeliveredPizza(PizzaBehaviour pizza)
     {
-        //TODO add topping tiers
         float deliveredPizzaMoney = moneyTracker.basePizzaProfit;
 
         foreach (PizzaIngredient ingredient in order.GetOrderIngredients())
@@ -284,7 +277,7 @@ public class Customer : MonoBehaviour
                 // first 2 days don't need oven because there is no oven to cook pizzas till day 3
                 if (gm.currentGameDay.dayNum > 2 && (pizza.isBurnt || !pizza.isCooked))
                 {
-                    PlayCustomerAudio(CustomerAudioStates.BadOrder);
+                    customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.BadOrder);
                     ShowMoneyAmount(pizzaProfit = (int) -deliveredPizzaMoney / 2);
                     return pizzaProfit;
                 }
@@ -295,13 +288,13 @@ public class Customer : MonoBehaviour
                 }
                 //TODO add other bonuses
                 
-                PlayCustomerAudio(CustomerAudioStates.GoodOrder);
+                customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.GoodOrder);
                 ShowMoneyAmount(pizzaProfit = (int) (deliveredPizzaMoney * (1 + currentOrderTime / startOrderTime)));
                 return pizzaProfit;
             }
         }
 
-        PlayCustomerAudio(CustomerAudioStates.BadOrder);
+        customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.BadOrder);
         ShowMoneyAmount(pizzaProfit = (int) -deliveredPizzaMoney / 2);
         return pizzaProfit;
     }
@@ -344,37 +337,5 @@ public class Customer : MonoBehaviour
     private void DestoryOrderUI()
     {
         Destroy(ingredientUITransform.transform.parent.gameObject);
-    }
-
-    private void PlayCustomerAudio(CustomerAudioStates state)
-    {
-        switch (state)
-        {
-            case CustomerAudioStates.Walking:
-                audioSource.clip = customerAudioClips[(int) CustomerAudioStates.Walking];
-                audioSource.loop = true;
-                audioSource.Play();
-                break;
-            case CustomerAudioStates.GoodOrder:
-                audioSource.clip = customerAudioClips[(int) CustomerAudioStates.GoodOrder];
-                audioSource.loop = false;
-                audioSource.Play();
-                break;
-            case CustomerAudioStates.BadOrder:
-                audioSource.clip = customerAudioClips[(int) CustomerAudioStates.BadOrder];
-                audioSource.loop = false;
-                audioSource.Play();
-                break;
-            case CustomerAudioStates.OrderEndingSoon:
-                audioSource.clip = customerAudioClips[(int) CustomerAudioStates.OrderEndingSoon];
-                audioSource.loop = false;
-                audioSource.Play();
-                break;
-            case CustomerAudioStates.AtCounter:
-                audioSource.clip = customerAudioClips[(int) CustomerAudioStates.AtCounter];
-                audioSource.loop = false;
-                audioSource.Play();
-                break;
-        }
     }
 }

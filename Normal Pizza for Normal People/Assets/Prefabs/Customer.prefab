@@ -38,6 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8855423326005325541}
   - component: {fileID: 1842925526624691796}
+  - component: {fileID: 6205831059226573242}
   - component: {fileID: 6820603579891726374}
   - component: {fileID: 5473582815889425392}
   - component: {fileID: -5326706859492187182}
@@ -97,6 +98,24 @@ MonoBehaviour:
     type: 3}
   moneyForOrderTextObject: {fileID: 0}
   activeOrder: 0
+--- !u!114 &6205831059226573242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855423326005325540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc120cd318f1ffc479ef03cf9a5b9cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customerAudioClips:
+  - {fileID: 8300000, guid: 6450e4a80fd56424ab63d156ab02c035, type: 3}
+  - {fileID: 8300000, guid: 7cfcd398bd2ef854b8a9f0f478a553cd, type: 3}
+  - {fileID: 8300000, guid: 3f9a5b582e233474d870c089a72e10b8, type: 3}
+  - {fileID: 8300000, guid: 98e9a5544e32c56488c03cb8ab674c82, type: 3}
+  - {fileID: 8300000, guid: e098c94f061312d41835a7664b781f92, type: 3}
 --- !u!136 &6820603579891726374
 CapsuleCollider:
   m_ObjectHideFlags: 0
