@@ -22,23 +22,13 @@ public class Customer : MonoBehaviour
     private MoneyTracker moneyTracker = null;
     private CustomerLine customerLine = null;
     private NavMeshAgent agent = null;
+    
     private CustomerAudio customerAudio = null;
+    private CustomerUI customerUI = null;
     
     [SerializeField] private float startOrderTime = 90f;
     private float currentOrderTime = 0;
-    [SerializeField] private GameObject orderTimerUI = null;
-    private TMP_Text orderTimerText = null;
-    private Image orderTimerProgressBar = null;
-    private enum OrderTimerStates {Start, Middle, Quarter, End}
-    [SerializeField] private List<Color> orderTimerColors = new List<Color>();
-    
-    [SerializeField] private Transform ingredientUITransform = null;
-    [SerializeField] private GameObject ingredientUI = null;
-    [SerializeField] private GameObject speechBubbleUI = null;
 
-    [SerializeField] private GameObject moneyForOrderText = null;
-    public GameObject moneyForOrderTextObject = null;
-    
     [HideInInspector] public bool activeOrder = false;
     private bool leaving = false;
     private Vector3 targetLinePos = Vector3.zero;
@@ -46,28 +36,22 @@ public class Customer : MonoBehaviour
 
     public static bool firstPizzaThrow = false;
 
-    private Camera vrCam = null;
-
     // Start is called before the first frame update
     void Start()
     {
-        vrCam = Camera.main;
         gm = FindObjectOfType<GameManager>();
         customerLine = gm.GetComponent<CustomerLine>();
         moneyTracker = gm.GetMoneyTracker();
         agent = GetComponent<NavMeshAgent>();
+        
         customerAudio = GetComponent<CustomerAudio>();
+        customerUI = GetComponent<CustomerUI>();
 
         customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Walking);
+        customerUI.ChangeUIState();
         
         endPos = transform.position + (Vector3.right * 14);
-
-        //moneyForOrderTextObject = Instantiate(moneyForOrderText, targetLinePos, Quaternion.identity);
-        //moneyForOrderTextObject.gameObject.SetActive(false);
-        orderTimerText = orderTimerUI.GetComponentInChildren<TMP_Text>();
-        orderTimerProgressBar = orderTimerUI.transform.GetChild(0).GetComponent<Image>();
         currentOrderTime = startOrderTime + 1;
-        ChangeUIState();
     }
 
     public void SetTargetLine(Vector3 customerLinePos)
@@ -92,11 +76,11 @@ public class Customer : MonoBehaviour
             }
         }
 
-        if (agent.velocity.magnitude > 0 && customerAudio.currentCustomerAudioState != CustomerAudio.CustomerAudioStates.Walking)
+        if (agent.velocity.magnitude > 0 && customerAudio.CurrentCustomerAudioState != CustomerAudio.CustomerAudioStates.Walking)
         {
             customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Walking);
         }
-        else if (customerAudio.currentCustomerAudioState == CustomerAudio.CustomerAudioStates.Walking && agent.remainingDistance <= 0)
+        else if (customerAudio.CurrentCustomerAudioState == CustomerAudio.CustomerAudioStates.Walking && agent.remainingDistance <= 0)
         {
             customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Stop);
         }
@@ -108,14 +92,16 @@ public class Customer : MonoBehaviour
         {
             activeOrder = true;
             transform.rotation = other.transform.rotation;
-            ChangeUIState();
+            customerUI.ChangeUIState();
             customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.AtCounter);
             StartCoroutine(OrderTimerCountDown());
         }
         
         if (other.transform.parent.TryGetComponent(out PizzaBehaviour pizza))
         {
-            moneyTracker.CustomerChangeMoney(CheckDeliveredPizza(pizza));
+            int pizzaProfit = CheckDeliveredPizza(pizza);
+            moneyTracker.CustomerChangeMoney(pizzaProfit);
+            customerUI.ShowMoneyAmount(ref pizzaProfit);
             Destroy(pizza.gameObject);
             activeOrder = false;
             gm.RemoveActiveCustomer(this);
@@ -146,69 +132,42 @@ public class Customer : MonoBehaviour
     public void SetOrder(Order customerOrder)
     {
         order = customerOrder;
-        DisplayOrder();
+        CreateOrder();
     }
 
     /// <summary>
     /// Calculates the number of unique ingredients.
     /// Instantiates ingredient ui for each unique ingredient with ingredient count.
     /// </summary>
-    private void DisplayOrder()
+    private void CreateOrder()
     {
-        //TODO decouple UI from customer
-        // get unique ingredients
-        List<PizzaIngredient> uniqueIngredients = new List<PizzaIngredient>();
-        foreach (var ingredient in order.GetOrderIngredients().Where(ingredient => !uniqueIngredients.Contains(ingredient)))
+        // get unique ingredients and their count
+        Dictionary<PizzaIngredient, int> uniqueIngredients = new Dictionary<PizzaIngredient, int>();
+        foreach (var ingredient in order.GetOrderIngredients().Where(ingredient => !uniqueIngredients.ContainsKey(ingredient)))
         {
-            uniqueIngredients.Add(ingredient);
+            uniqueIngredients.Add(ingredient, order.GetOrderIngredients().Count(orderIngredient => ingredient == orderIngredient));
         }
-
-        // for each unique order ingredient
-        foreach (var ingredient in uniqueIngredients)
-        {
-            // get unique ingredient count
-            int uniqueIngredientCount = order.GetOrderIngredients().Count(orderIngredient => ingredient == orderIngredient);
-
-            // instantiate UI
-            var newIngredient = Instantiate(ingredientUI, ingredientUITransform.position, ingredientUITransform.rotation, ingredientUITransform);
-            
-            // update text with info
-            var ingredientTexts = newIngredient.GetComponentsInChildren<TMP_Text>();
-            ingredientTexts[0].text = ingredient.GetIngredientName();
-            ingredientTexts[1].text = "x" + uniqueIngredientCount;
-
-            newIngredient.GetComponentInChildren<Image>().sprite = ingredient.GetIngredientIcon();
-        }
+        
+        customerUI.DisplayOrder(ref uniqueIngredients);
     }
 
+    /// <summary>
+    /// Handles order count down timer.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator OrderTimerCountDown()
     {
         if (!activeOrder) yield break;
-        orderTimerText.text = ""+(int)currentOrderTime;
-        orderTimerProgressBar.fillAmount = currentOrderTime / startOrderTime;
+        
+        customerUI.UpdateOrderTimer(ref startOrderTime, ref currentOrderTime);
+        
         yield return new WaitForEndOfFrame();
+        
         currentOrderTime -= Time.deltaTime;
         if (currentOrderTime > 0)
         {
-            if (currentOrderTime / startOrderTime >= 0.66f)
-            {
-                orderTimerProgressBar.color = orderTimerColors[(int) OrderTimerStates.Start];
-            }
-            
-            if (currentOrderTime / startOrderTime <= .66f)
-            {
-                orderTimerProgressBar.color = orderTimerColors[(int) OrderTimerStates.Middle];
-            }
-            
-            if (currentOrderTime / startOrderTime <= .33f)
-            {
-                orderTimerProgressBar.color = orderTimerColors[(int) OrderTimerStates.Quarter];
-            }
-
             if (currentOrderTime <= 10)
             {
-                orderTimerProgressBar.color = orderTimerColors[(int) OrderTimerStates.End];
-            
                 customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.OrderEndingSoon);
             }
             
@@ -220,7 +179,7 @@ public class Customer : MonoBehaviour
             customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.BadOrder);
             activeOrder = false;
             gm.RemoveActiveCustomer(this);
-            DestoryOrderUI();
+            customerUI.DestoryOrderUI();
             CustomerLeave();
         }
     }
@@ -255,7 +214,6 @@ public class Customer : MonoBehaviour
 
         firstPizzaThrow = true;
 
-        int pizzaProfit;
         if (pizza.GetIngredientsOnPizza().Count == order.GetOrderIngredients().Count)
         {
             var tempOrderList = order.GetOrderIngredients();
@@ -278,8 +236,7 @@ public class Customer : MonoBehaviour
                 if (gm.currentGameDay.dayNum > 2 && (pizza.isBurnt || !pizza.isCooked))
                 {
                     customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.BadOrder);
-                    ShowMoneyAmount(pizzaProfit = (int) -deliveredPizzaMoney / 2);
-                    return pizzaProfit;
+                    return (int) -deliveredPizzaMoney / 2;
                 }
                 
                 if (pizza.isCooked)
@@ -289,14 +246,12 @@ public class Customer : MonoBehaviour
                 //TODO add other bonuses
                 
                 customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.GoodOrder);
-                ShowMoneyAmount(pizzaProfit = (int) (deliveredPizzaMoney * (1 + currentOrderTime / startOrderTime)));
-                return pizzaProfit;
+                return (int) (deliveredPizzaMoney * (1 + currentOrderTime / startOrderTime));
             }
         }
 
         customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.BadOrder);
-        ShowMoneyAmount(pizzaProfit = (int) -deliveredPizzaMoney / 2);
-        return pizzaProfit;
+        return (int) -deliveredPizzaMoney / 2;
     }
 
     public void CustomerLeave()
@@ -313,29 +268,5 @@ public class Customer : MonoBehaviour
     private void CallTheNextCustomer()
     {
         customerLine.CustomerServed();
-    }
-
-    private void ChangeUIState()
-    {
-        ingredientUITransform.gameObject.SetActive(!ingredientUITransform.gameObject.activeSelf);
-        orderTimerUI.SetActive(!orderTimerUI.activeSelf);
-        speechBubbleUI.SetActive(!speechBubbleUI.activeSelf);
-    }
-
-    private void ShowMoneyAmount(int amount)
-    {
-        moneyForOrderTextObject = Instantiate(moneyForOrderText, new Vector3(gameObject.transform.position.x, 1, gameObject.transform.position.z), Quaternion.identity);
-        moneyForOrderTextObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "$" + amount;
-        moneyForOrderTextObject.transform.LookAt(vrCam.transform);
-        moneyForOrderTextObject.gameObject.SetActive(true);
-
-        moneyForOrderTextObject.transform.localPosition = new Vector3(gameObject.transform.position.x, 1, gameObject.transform.position.z);
-        DestoryOrderUI();
-        Destroy(moneyForOrderTextObject, 3);
-    }
-
-    private void DestoryOrderUI()
-    {
-        Destroy(ingredientUITransform.transform.parent.gameObject);
     }
 }

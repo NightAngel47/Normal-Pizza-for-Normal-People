@@ -38,6 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8855423326005325541}
   - component: {fileID: 1842925526624691796}
+  - component: {fileID: 7108159095525338633}
   - component: {fileID: 6205831059226573242}
   - component: {fileID: 6820603579891726374}
   - component: {fileID: 5473582815889425392}
@@ -88,16 +89,35 @@ MonoBehaviour:
   ingredientUI: {fileID: 8306937801929323066, guid: f57c2c9a80b36e64fa04c920d6aa945c,
     type: 3}
   speechBubbleUI: {fileID: 2136325061995559620}
-  customerAudioClips:
-  - {fileID: 8300000, guid: 6450e4a80fd56424ab63d156ab02c035, type: 3}
-  - {fileID: 8300000, guid: 7cfcd398bd2ef854b8a9f0f478a553cd, type: 3}
-  - {fileID: 8300000, guid: 3f9a5b582e233474d870c089a72e10b8, type: 3}
-  - {fileID: 8300000, guid: 98e9a5544e32c56488c03cb8ab674c82, type: 3}
-  - {fileID: 8300000, guid: e098c94f061312d41835a7664b781f92, type: 3}
   moneyForOrderText: {fileID: 3607954698261671606, guid: eeaae81126b0b7e438f2d1aded924428,
     type: 3}
   moneyForOrderTextObject: {fileID: 0}
   activeOrder: 0
+--- !u!114 &7108159095525338633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855423326005325540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933751a067a0b324bab6917c978dfe25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orderTimerUI: {fileID: 2967428844220160117}
+  orderTimerColors:
+  - {r: 0.30588236, g: 0.5647059, b: 0.9960785, a: 1}
+  - {r: 0.9843138, g: 0.86666673, b: 0.2509804, a: 1}
+  - {r: 1, g: 0.6431373, b: 0.10588236, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  ingredientUITransform: {fileID: 1499280587323528968}
+  ingredientUI: {fileID: 8306937801929323066, guid: f57c2c9a80b36e64fa04c920d6aa945c,
+    type: 3}
+  speechBubbleUI: {fileID: 2136325061995559620}
+  moneyForOrderText: {fileID: 3607954698261671606, guid: eeaae81126b0b7e438f2d1aded924428,
+    type: 3}
+  moneyForOrderTextObject: {fileID: 0}
 --- !u!114 &6205831059226573242
 MonoBehaviour:
   m_ObjectHideFlags: 0

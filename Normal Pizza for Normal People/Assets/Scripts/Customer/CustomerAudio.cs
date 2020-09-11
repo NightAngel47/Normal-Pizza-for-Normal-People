@@ -6,8 +6,8 @@ public class CustomerAudio : MonoBehaviour
 {
     private AudioSource audioSource = null;
 
-    public enum CustomerAudioStates {Stop, Walking, GoodOrder, BadOrder, OrderEndingSoon, AtCounter}
-    public CustomerAudioStates currentCustomerAudioState { get; private set; }
+    public enum CustomerAudioStates {Walking, GoodOrder, BadOrder, OrderEndingSoon, AtCounter, Stop}
+    public CustomerAudioStates CurrentCustomerAudioState { get; private set; }
     
     [SerializeField] private List<AudioClip> customerAudioClips = new List<AudioClip>();
     
@@ -16,11 +16,15 @@ public class CustomerAudio : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    /// <summary>
+    /// Changes the audio state of the customer 
+    /// </summary>
+    /// <param name="state">The new audio state to change to</param>
     public void ChangeCustomerAudio(CustomerAudioStates state)
     {
-        currentCustomerAudioState = state;
+        CurrentCustomerAudioState = state;
         
-        if (currentCustomerAudioState == CustomerAudioStates.Stop)
+        if (CurrentCustomerAudioState == CustomerAudioStates.Stop)
             audioSource.Stop();
         else
             PlayCustomerAudio();
@@ -28,8 +32,8 @@ public class CustomerAudio : MonoBehaviour
     
     private void PlayCustomerAudio()
     {
-        audioSource.clip = customerAudioClips[(int) currentCustomerAudioState];
-        audioSource.loop = currentCustomerAudioState == CustomerAudioStates.Walking;
+        audioSource.clip = customerAudioClips[(int) CurrentCustomerAudioState];
+        audioSource.loop = CurrentCustomerAudioState == CustomerAudioStates.Walking;
         audioSource.Play();
     }
 }
