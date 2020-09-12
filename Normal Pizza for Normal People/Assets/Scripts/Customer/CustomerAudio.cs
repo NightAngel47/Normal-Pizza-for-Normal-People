@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 491
+ * CustomerAudio
+ * Steven
+ * Steven: Handles customer audio, including state and clip list
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +15,8 @@ public class CustomerAudio : MonoBehaviour
     private AudioSource audioSource = null;
 
     public enum CustomerAudioStates {Walking, GoodOrder, BadOrder, OrderEndingSoon, AtCounter, Stop}
-    public CustomerAudioStates CurrentCustomerAudioState { get; private set; }
+
+    public CustomerAudioStates CurrentCustomerAudioState { get; private set; } = CustomerAudioStates.Walking;
     
     [SerializeField] private List<AudioClip> customerAudioClips = new List<AudioClip>();
     
@@ -30,6 +39,7 @@ public class CustomerAudio : MonoBehaviour
             PlayCustomerAudio();
     }
     
+    // plays the audio clip based on CurrentCustomerAudioState
     private void PlayCustomerAudio()
     {
         audioSource.clip = customerAudioClips[(int) CurrentCustomerAudioState];

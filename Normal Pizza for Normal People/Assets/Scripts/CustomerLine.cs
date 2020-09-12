@@ -60,7 +60,6 @@ public class CustomerLine : MonoBehaviour
                 line.isOpen = false;
                 customerTargetPos = customerLines[customerLines.IndexOf(line)].transform.position;
                 newCustomer.SetTargetLine(customerTargetPos);
-                newCustomer.GetComponent<NavMeshAgent>().SetDestination(customerTargetPos);
                 break;
             }
 
@@ -68,7 +67,6 @@ public class CustomerLine : MonoBehaviour
             {
                 customerTargetPos = customerLines[Random.Range(0, customerLines.Count)].transform.position;
                 newCustomer.SetTargetLine(customerTargetPos);
-                newCustomer.GetComponent<NavMeshAgent>().SetDestination(customerTargetPos);
                 break;
             }
         }

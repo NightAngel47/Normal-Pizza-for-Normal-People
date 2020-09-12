@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Normal Pizza for Normal People
+ * IM 491
+ * CustomerUI
+ * Steven
+ * Steven: Handles customer ui, including order and timer display
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -27,17 +35,24 @@ public class CustomerUI : MonoBehaviour
         orderTimerText = orderTimerUI.GetComponentInChildren<TMP_Text>();
         orderTimerProgressBar = orderTimerUI.transform.GetChild(0).GetComponent<Image>();
         
-        ChangeUIState();
+        ToggleOrderUIState();
     }
     
-    public void ChangeUIState()
+    /// <summary>
+    /// Toggles the customer order UI on/off
+    /// </summary>
+    public void ToggleOrderUIState()
     {
         ingredientUITransform.gameObject.SetActive(!ingredientUITransform.gameObject.activeSelf);
         orderTimerUI.SetActive(!orderTimerUI.activeSelf);
         speechBubbleUI.SetActive(!speechBubbleUI.activeSelf);
     }
 
-    public void DisplayOrder(ref Dictionary<PizzaIngredient, int> uniqueIngredients)
+    /// <summary>
+    /// Creates the ui elements for the toppings from the customer's order
+    /// </summary>
+    /// <param name="uniqueIngredients">The unique toppings and their ammounts</param>
+    public void CreateToppingUI(Dictionary<PizzaIngredient, int> uniqueIngredients)
     {
         foreach (var ingredient in uniqueIngredients)
         {
@@ -53,6 +68,11 @@ public class CustomerUI : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Updates the progress of the order timer.
+    /// </summary>
+    /// <param name="startOrderTime">The starting amount for the order timer.</param>
+    /// <param name="currentOrderTime">the current amount for the order timer.</param>
     public void UpdateOrderTimer(ref float startOrderTime, ref float currentOrderTime)
     {
         orderTimerText.text = ""+(int)currentOrderTime;
@@ -79,6 +99,10 @@ public class CustomerUI : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Shows the amount of money a pizza earned/loss
+    /// </summary>
+    /// <param name="amount">The calculated amount</param>
     public void ShowMoneyAmount(ref int amount)
     {
         var position = gameObject.transform.position;
@@ -92,6 +116,9 @@ public class CustomerUI : MonoBehaviour
         Destroy(moneyForOrderTextObject, 3);
     }
 
+    /// <summary>
+    /// Destroys the order UI
+    /// </summary>
     public void DestoryOrderUI()
     {
         Destroy(ingredientUITransform.transform.parent.gameObject);

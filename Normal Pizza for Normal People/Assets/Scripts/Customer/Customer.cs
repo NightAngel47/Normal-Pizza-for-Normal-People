@@ -1,86 +1,69 @@
 ﻿/*
  * Normal Pizza for Normal People
- * IM 389
+ * IM 389 & IM 491
  * Customer
  * Steven & Sydney
  * Steven: Created initial script that handles customer AI, order and timer, and delivery of pizza
+ *     Refactored customer to be split into Customer, CustomerAI, CustomerUI, and CustomerAudio
  * Sydney: The show money amount function and the variables it sets and uses
  */
 
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UI;
 
 public class Customer : MonoBehaviour
 {
+    // Customer Components
+    public CustomerAudio customerAudio = null;
+    public CustomerUI customerUI = null;
+    public CustomerAI customerAI = null;
+    
     private Order order = null;
+    
     private GameManager gm = null;
     private MoneyTracker moneyTracker = null;
+    
     private CustomerLine customerLine = null;
-    private NavMeshAgent agent = null;
     
-    private CustomerAudio customerAudio = null;
-    private CustomerUI customerUI = null;
-    
+    // Customer Order Variables
     [SerializeField] private float startOrderTime = 90f;
     private float currentOrderTime = 0;
-
-    [HideInInspector] public bool activeOrder = false;
-    private bool leaving = false;
-    private Vector3 targetLinePos = Vector3.zero;
-    private Vector3 endPos = Vector3.zero;
-
+    public bool activeOrder { get; private set; }
+    
+    // Tutorial flag
     public static bool firstPizzaThrow = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
         customerLine = gm.GetComponent<CustomerLine>();
         moneyTracker = gm.GetMoneyTracker();
-        agent = GetComponent<NavMeshAgent>();
-        
-        customerAudio = GetComponent<CustomerAudio>();
-        customerUI = GetComponent<CustomerUI>();
 
         customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Walking);
-        customerUI.ChangeUIState();
         
-        endPos = transform.position + (Vector3.right * 14);
         currentOrderTime = startOrderTime + 1;
     }
 
+    /// <summary>
+    /// Sets the line that the customer will initially head towards.
+    /// </summary>
+    /// <param name="customerLinePos">The position of the line.</param>
     public void SetTargetLine(Vector3 customerLinePos)
     {
-        targetLinePos = customerLinePos;
+        customerAI.SetTargetLine(customerLinePos);
     }
 
     private void Update()
     {
-        if (!leaving)
-        {
-            if (Physics.SphereCast(transform.position, 0.5f, transform.forward, out RaycastHit hit, 0.5f))
-            {
-                if (hit.collider.TryGetComponent(out Customer customer) && !customer.leaving)
-                {
-                    agent.SetDestination(transform.position);
-                }
-            }
-            else if(agent.destination != targetLinePos)
-            {
-                agent.SetDestination(targetLinePos);
-            }
-        }
-
-        if (agent.velocity.magnitude > 0 && customerAudio.CurrentCustomerAudioState != CustomerAudio.CustomerAudioStates.Walking)
+        // play customer walk sound as long as the customer is not stopped
+        if (customerAI.currentCustomerAIState != CustomerAI.CustomerAIStates.Stopped && customerAudio.CurrentCustomerAudioState != CustomerAudio.CustomerAudioStates.Walking)
         {
             customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Walking);
         }
-        else if (customerAudio.CurrentCustomerAudioState == CustomerAudio.CustomerAudioStates.Walking && agent.remainingDistance <= 0)
+        // stop customer walk sound when customer stopped
+        else if (customerAudio.CurrentCustomerAudioState == CustomerAudio.CustomerAudioStates.Walking && customerAI.currentCustomerAIState == CustomerAI.CustomerAIStates.Stopped)
         {
             customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Stop);
         }
@@ -88,15 +71,18 @@ public class Customer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // when the customer reaches the front of the line
         if (other.CompareTag("LineStart"))
         {
             activeOrder = true;
             transform.rotation = other.transform.rotation;
-            customerUI.ChangeUIState();
+            customerAI.ChangeCustomerAIState(CustomerAI.CustomerAIStates.Stopped);
+            customerUI.ToggleOrderUIState();
             customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.AtCounter);
             StartCoroutine(OrderTimerCountDown());
         }
         
+        // when the customer is delivered a pizza
         if (other.transform.parent.TryGetComponent(out PizzaBehaviour pizza))
         {
             int pizzaProfit = CheckDeliveredPizza(pizza);
@@ -108,17 +94,19 @@ public class Customer : MonoBehaviour
             CustomerLeave();
         }
     }
-
+    
     private void OnTriggerStay(Collider other)
     {
+        // while the customer is at the front of the line and not facing the right direction
         if (other.CompareTag("LineStart") && transform.rotation == other.transform.rotation)
         {
             transform.rotation = other.transform.rotation;
         }
     }
-
+    
     private void OnTriggerExit(Collider other)
     {
+        // when the customer leaves the front of the line
         if (other.CompareTag("LineStart"))
         {
             activeOrder = false;
@@ -148,7 +136,7 @@ public class Customer : MonoBehaviour
             uniqueIngredients.Add(ingredient, order.GetOrderIngredients().Count(orderIngredient => ingredient == orderIngredient));
         }
         
-        customerUI.DisplayOrder(ref uniqueIngredients);
+        customerUI.CreateToppingUI(uniqueIngredients);
     }
 
     /// <summary>
@@ -191,8 +179,10 @@ public class Customer : MonoBehaviour
     /// <returns>If true: it returns the amount of money the pizza earned, else: it returns the amount of money lost.</returns>
     private int CheckDeliveredPizza(PizzaBehaviour pizza)
     {
+        // adds base profit for pizza
         float deliveredPizzaMoney = moneyTracker.basePizzaProfit;
 
+        // adds profit for toppings based on tiers
         foreach (PizzaIngredient ingredient in order.GetOrderIngredients())
         {
             switch (ingredient.GetIngredientTier())
@@ -212,8 +202,10 @@ public class Customer : MonoBehaviour
             }
         }
 
+        // checks flag for the first pizza thrown for the tutorial flag
         firstPizzaThrow = true;
 
+        // checks if the ingredients on the pizza match the customer's order
         if (pizza.GetIngredientsOnPizza().Count == order.GetOrderIngredients().Count)
         {
             var tempOrderList = order.GetOrderIngredients();
@@ -236,9 +228,10 @@ public class Customer : MonoBehaviour
                 if (gm.currentGameDay.dayNum > 2 && (pizza.isBurnt || !pizza.isCooked))
                 {
                     customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.BadOrder);
-                    return (int) -deliveredPizzaMoney / 2;
+                    return (int) -deliveredPizzaMoney / 2; // bad order because pizza is uncooked or burnt
                 }
                 
+                // add cooked bonus
                 if (pizza.isCooked)
                 {
                     deliveredPizzaMoney += (int) moneyTracker.cookedBonus;
@@ -246,25 +239,31 @@ public class Customer : MonoBehaviour
                 //TODO add other bonuses
                 
                 customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.GoodOrder);
-                return (int) (deliveredPizzaMoney * (1 + currentOrderTime / startOrderTime));
+                return (int) (deliveredPizzaMoney * (1 + currentOrderTime / startOrderTime)); // good order because pizza is correct
             }
         }
 
         customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.BadOrder);
-        return (int) -deliveredPizzaMoney / 2;
+        return (int) -deliveredPizzaMoney / 2; // bad order because the total amount of toppings on pizza is not equal to customer order
     }
 
+    /// <summary>
+    /// Tells the customer to leave
+    /// </summary>
     public void CustomerLeave()
     {
-        if (leaving || activeOrder) return;
+        if (customerAI.currentCustomerAIState == CustomerAI.CustomerAIStates.Leaving || activeOrder) return;
         
-        agent.SetDestination(endPos);
-        leaving = true;
+        customerAI.Leave();
+        
         customerLine.IncreaseCustomersServed();
         Invoke(nameof(CallTheNextCustomer), 5f);
         Destroy(gameObject, 10f);
     }
 
+    /// <summary>
+    /// Tells the customer line to bring in the next customer
+    /// </summary>
     private void CallTheNextCustomer()
     {
         customerLine.CustomerServed();
