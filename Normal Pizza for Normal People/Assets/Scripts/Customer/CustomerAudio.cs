@@ -19,7 +19,7 @@ public class CustomerAudio : MonoBehaviour
     public CustomerAudioStates CurrentCustomerAudioState { get; private set; } = CustomerAudioStates.Walking;
     
     [SerializeField] private List<AudioClip> customerAudioClips = new List<AudioClip>();
-    
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -32,18 +32,23 @@ public class CustomerAudio : MonoBehaviour
     public void ChangeCustomerAudio(CustomerAudioStates state)
     {
         CurrentCustomerAudioState = state;
-        
+
         if (CurrentCustomerAudioState == CustomerAudioStates.Stop)
+        {
             audioSource.Stop();
+        }
         else
-            PlayCustomerAudio();
+        {
+            PlayCustomerAudio(state);
+        }
+
     }
     
     // plays the audio clip based on CurrentCustomerAudioState
-    private void PlayCustomerAudio()
+    private void PlayCustomerAudio(CustomerAudioStates state)
     {
-        audioSource.clip = customerAudioClips[(int) CurrentCustomerAudioState];
-        audioSource.loop = CurrentCustomerAudioState == CustomerAudioStates.Walking;
+        audioSource.clip = customerAudioClips[(int) state];
+        audioSource.loop = state == CustomerAudioStates.Walking;
         audioSource.Play();
     }
 }
