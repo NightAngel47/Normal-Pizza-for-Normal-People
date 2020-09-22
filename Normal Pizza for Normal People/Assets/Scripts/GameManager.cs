@@ -121,8 +121,8 @@ public class GameManager : MonoBehaviour
             {
                 activeCustomers.Add(customer);
             }
-
-            customer.CustomerLeave();
+            
+            StartCoroutine(customer.CustomerLeave());
         }
 
         yield return new WaitUntil(() => activeCustomers.Count == 0);

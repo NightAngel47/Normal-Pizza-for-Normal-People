@@ -31,6 +31,8 @@ public class Customer : MonoBehaviour
     [SerializeField] private float startOrderTime = 90f;
     private float currentOrderTime = 0;
     public bool activeOrder { get; private set; }
+
+    [SerializeField] private float customerLeaveDelayTime = 1f;
     
     // Tutorial flag
     public static bool firstPizzaThrow = false;
@@ -55,20 +57,6 @@ public class Customer : MonoBehaviour
         customerAI.SetTargetLine(customerLinePos);
     }
 
-    private void Update()
-    {
-        // play customer walk sound as long as the customer is not stopped
-        if (customerAI.currentCustomerAIState != CustomerAI.CustomerAIStates.Stopped && customerAudio.CurrentCustomerAudioState != CustomerAudio.CustomerAudioStates.Walking)
-        {
-            customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Walking);
-        }
-        // stop customer walk sound when customer stopped
-        else if (customerAudio.CurrentCustomerAudioState == CustomerAudio.CustomerAudioStates.Walking && customerAI.currentCustomerAIState == CustomerAI.CustomerAIStates.Stopped)
-        {
-            customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Stop);
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         // when the customer reaches the front of the line
@@ -91,7 +79,7 @@ public class Customer : MonoBehaviour
             Destroy(pizza.gameObject);
             activeOrder = false;
             gm.RemoveActiveCustomer(this);
-            CustomerLeave();
+            StartCoroutine(CustomerLeave());
         }
     }
     
@@ -168,7 +156,7 @@ public class Customer : MonoBehaviour
             activeOrder = false;
             gm.RemoveActiveCustomer(this);
             customerUI.DestoryOrderUI();
-            CustomerLeave();
+            StartCoroutine(CustomerLeave());
         }
     }
 
@@ -248,13 +236,18 @@ public class Customer : MonoBehaviour
     }
 
     /// <summary>
-    /// Tells the customer to leave
+    /// Tells the customer to leave. Waits a short period before walking away.
     /// </summary>
-    public void CustomerLeave()
+    public IEnumerator CustomerLeave()
     {
-        if (customerAI.currentCustomerAIState == CustomerAI.CustomerAIStates.Leaving || activeOrder) return;
+        if (customerAI.currentCustomerAIState == CustomerAI.CustomerAIStates.Leaving || activeOrder) yield break;
+        
+        customerAI.ChangeCustomerAIState(CustomerAI.CustomerAIStates.Leaving);
+        
+        yield return new WaitForSeconds(customerLeaveDelayTime);
         
         customerAI.Leave();
+        customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Walking);
         
         customerLine.IncreaseCustomersServed();
         Invoke(nameof(CallTheNextCustomer), 5f);

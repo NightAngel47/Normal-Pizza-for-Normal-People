@@ -58,12 +58,11 @@ public class CustomerAI : MonoBehaviour
     {
         targetLinePos = customerLinePos;
         agent.SetDestination(targetLinePos);
-        currentCustomerAIState = CustomerAIStates.Entering;
+        ChangeCustomerAIState(CustomerAIStates.Entering);
     }
 
     public void Leave()
     {
         agent.SetDestination(endPos);
-        currentCustomerAIState = CustomerAIStates.Leaving;
     }
 }
