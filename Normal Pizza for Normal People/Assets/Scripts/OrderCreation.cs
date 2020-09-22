@@ -118,11 +118,13 @@ public class OrderCreation : MonoBehaviour
                     if(tierRand >= 30 && tierRand < 60) //tier 2
                     {
                         twoTemp = PickTopping(twoTemp);
+                        amount = PickToppingAmount(2, totalToppingsPerPizza);
                     }
 
                     if(tierRand >= 60 && tierRand <= 99) //tier 3
                     {
                         threeTemp = PickTopping(threeTemp);
+                        amount = PickToppingAmount(3, totalToppingsPerPizza);
                     }
                     
                     break;
@@ -132,16 +134,19 @@ public class OrderCreation : MonoBehaviour
                     if (tierRand < 30)
                     {
                         oneTemp = PickTopping(oneTemp);
+                        amount = PickToppingAmount(1, totalToppingsPerPizza);
                     }
 
                     if (tierRand >= 30 && tierRand < 60)
                     {
                         twoTemp = PickTopping(twoTemp);
+                        amount = PickToppingAmount(2, totalToppingsPerPizza);
                     }
 
                     if (tierRand >= 60 && tierRand <= 99)
                     {
                         threeTemp = PickTopping(threeTemp);
+                        amount = PickToppingAmount(3, totalToppingsPerPizza);
                     }
 
                     break;
@@ -151,16 +156,19 @@ public class OrderCreation : MonoBehaviour
                     if (tierRand < 30)
                     {
                         oneTemp = PickTopping(oneTemp);
+                        amount = PickToppingAmount(1, totalToppingsPerPizza);
                     }
 
                     if (tierRand >= 30 && tierRand < 60)
                     {
                         twoTemp = PickTopping(twoTemp);
+                        amount = PickToppingAmount(2, totalToppingsPerPizza);
                     }
 
                     if (tierRand >= 60 && tierRand <= 99)
                     {
                         threeTemp = PickTopping(threeTemp);
+                        amount = PickToppingAmount(3, totalToppingsPerPizza);
                     }
 
                     break;
@@ -170,16 +178,19 @@ public class OrderCreation : MonoBehaviour
                     if (tierRand < 30)
                     {
                         oneTemp = PickTopping(oneTemp);
+                        amount = PickToppingAmount(1, totalToppingsPerPizza);
                     }
 
                     if (tierRand >= 30 && tierRand < 60)
                     {
                         twoTemp = PickTopping(twoTemp);
+                        amount = PickToppingAmount(2, totalToppingsPerPizza);
                     }
 
                     if (tierRand >= 60 && tierRand <= 99)
                     {
                         threeTemp = PickTopping(threeTemp);
+                        amount = PickToppingAmount(3, totalToppingsPerPizza);
                     }
 
                     break;
@@ -189,16 +200,19 @@ public class OrderCreation : MonoBehaviour
                     if (tierRand < 30)
                     {
                         oneTemp = PickTopping(oneTemp);
+                        amount = PickToppingAmount(1, totalToppingsPerPizza);
                     }
 
                     if (tierRand >= 30 && tierRand < 60)
                     {
                         twoTemp = PickTopping(twoTemp);
+                        amount = PickToppingAmount(2, totalToppingsPerPizza);
                     }
 
                     if (tierRand >= 60 && tierRand <= 99)
                     {
                         threeTemp = PickTopping(threeTemp);
+                        amount = PickToppingAmount(3, totalToppingsPerPizza);
                     }
 
                     break;
@@ -208,16 +222,19 @@ public class OrderCreation : MonoBehaviour
                     if (tierRand < 30)
                     {
                         oneTemp = PickTopping(oneTemp);
+                        amount = PickToppingAmount(1, totalToppingsPerPizza);
                     }
 
                     if (tierRand >= 30 && tierRand < 60)
                     {
                         twoTemp = PickTopping(twoTemp);
+                        amount = PickToppingAmount(2, totalToppingsPerPizza);
                     }
 
                     if (tierRand >= 60 && tierRand <= 99)
                     {
                         threeTemp = PickTopping(threeTemp);
+                        amount = PickToppingAmount(3, totalToppingsPerPizza);
                     }
 
                     break;
@@ -252,7 +269,6 @@ public class OrderCreation : MonoBehaviour
     private List<PizzaIngredient> PickTopping(List<PizzaIngredient> ingredientList)
     {
         int rand = UnityEngine.Random.Range(0, ingredientList.Count);
-        Debug.Log(ingredientList.Count);
 
         pickedTopping = ingredientList[rand];
 
