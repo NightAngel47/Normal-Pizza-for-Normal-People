@@ -24,6 +24,7 @@ public class OrderCreation : MonoBehaviour
     [SerializeField] private List<TotalToppingCurves> toppingTotalRanges = new List<TotalToppingCurves>();
     [SerializeField] private List<MaxIngredientAmount> ingredientMax = new List<MaxIngredientAmount>();
     private PizzaIngredient pickedTopping;
+    private bool dont = false;
 
     [Serializable]
     public struct TotalToppingCurves
@@ -101,10 +102,12 @@ public class OrderCreation : MonoBehaviour
 
         int tierRand;
         int amount = 0;
-        int forLoopRuns = allPizzaIngredients.Capacity;
+        int forLoopRuns = 6;//allPizzaIngredients.Capacity;
 
         for (int i = 0; i < forLoopRuns; ++i) //Potential max amount of different ingredients i.e. 6 toppings 6 different options
         {
+            dont = false;
+
             switch (i)
             {
                 case 0:
@@ -243,30 +246,31 @@ public class OrderCreation : MonoBehaviour
 
             if (totalToppingTemp - amount < 0) //the amount of toppings to be added is greater than what is available on the pizza
             {
-                int tempAmount = amount;
-                tempAmount -= totalToppingTemp;
-                totalToppingTemp -= tempAmount;
+                amount = totalToppingTemp;
+                totalToppingTemp -= amount;
             }
-
+            
             else
             {
                 totalToppingTemp -= amount;
             }
 
-            Debug.Log(pickedTopping);
-            for (int k = 0; k < amount; k++)
+            if (dont == false)
             {
-                ingredients.Add(pickedTopping);
+                for (int k = 0; k < amount; k++)
+                {
+                    ingredients.Add(pickedTopping);
+                }
             }
 
             if (totalToppingTemp == 0)
             {
-                break;
+                return ingredients;
             }
 
             if(i == forLoopRuns && totalToppingTemp != 0)
             {
-                forLoopRuns++;
+                forLoopRuns = 0;
             }
         }
 
@@ -275,6 +279,12 @@ public class OrderCreation : MonoBehaviour
 
     private List<PizzaIngredient> PickTopping(List<PizzaIngredient> ingredientList)
     {
+        if(ingredientList.Count == 0)
+        {
+            dont = true;
+            return ingredientList;
+        }
+
         int rand = UnityEngine.Random.Range(0, ingredientList.Count);
 
         pickedTopping = ingredientList[rand];
@@ -289,18 +299,17 @@ public class OrderCreation : MonoBehaviour
         int i = (totalToppings / 2) + (totalToppings % 2);
         int result = 0;
         Debug.Log(i);
-        Debug.Log(totalToppings);
 
         switch (tier)
         {
             case 1:
-                result = UnityEngine.Random.Range(1, ingredientMax[i - 1].tierOne + 1);
+                result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierOne + 1));
                 break;
             case 2:
-                result = UnityEngine.Random.Range(1, ingredientMax[i - 1].tierTwo + 1);
+                result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierTwo + 1));
                 break;
             case 3:
-                result = UnityEngine.Random.Range(1, ingredientMax[i - 1].tierThree + 1);
+                result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierThree + 1));
                 break;
         }
 
