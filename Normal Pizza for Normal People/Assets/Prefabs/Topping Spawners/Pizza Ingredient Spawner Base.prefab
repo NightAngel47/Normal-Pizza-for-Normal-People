@@ -89,7 +89,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: 31c8194453332614abf2f0ee7ea752bb, type: 3}
+  - {fileID: 2100000, guid: 5993cd5e912f66443a40b87753808e94, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -184,3 +184,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pizzaIngredientToSpawn: {fileID: 0}
+  op: {fileID: 0}

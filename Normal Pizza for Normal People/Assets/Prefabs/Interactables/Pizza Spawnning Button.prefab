@@ -88,7 +88,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5993cd5e912f66443a40b87753808e94, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,7 +126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3488463892018788685
 Transform:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5993cd5e912f66443a40b87753808e94, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -188,22 +188,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &633795264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4050137906175898347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b33d708cc136fa44a805968b05bd075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pizzaPrefab: {fileID: 7701498598052804793, guid: baf89d6b909037e4ca1ab0feddce36fd,
-    type: 3}
-  pizzaSpawnPos: {fileID: 290742596}
-  pizzaSpawnPos2: {fileID: 3909139098152099557}
 --- !u!1 &4110168434970703981
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +218,22 @@ Transform:
   m_Father: {fileID: 4050137906175898351}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &633795264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4050137906175898347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b33d708cc136fa44a805968b05bd075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pizzaPrefab: {fileID: 7701498598052804793, guid: baf89d6b909037e4ca1ab0feddce36fd,
+    type: 3}
+  pizzaSpawnPos: {fileID: 290742596}
+  pizzaSpawnPos2: {fileID: 3909139098152099557}
 --- !u!1001 &7617579293688284220
 PrefabInstance:
   m_ObjectHideFlags: 0
