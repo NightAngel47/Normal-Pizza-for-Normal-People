@@ -13,64 +13,64 @@ MonoBehaviour:
   m_Name: New Import Setting
   m_EditorClassIdentifier: 
   templatePath: QuickSheet/ExcelPlugin/Templates
-  scriptFilePath: 
-  editorScriptFilePath: 
+  scriptFilePath: Data/Runtime
+  editorScriptFilePath: Data/Editor
   sheetName: Levels.xlsx
   workSheetName: Sheet1
   columnHeaderList:
-  - type: 0
+  - type: 3
     name: DayNum
     isEnable: 0
     isArray: 0
-  - type: 0
+  - type: 3
     name: ScoreGoal
     isEnable: 0
     isArray: 0
-  - type: 0
+  - type: 3
     name: DayLength
     isEnable: 0
     isArray: 0
-  - type: 0
+  - type: 3
     name: TotalCustomers
     isEnable: 0
     isArray: 0
-  - type: 0
+  - type: 3
     name: MinTopping
     isEnable: 0
     isArray: 0
-  - type: 0
+  - type: 3
     name: MaxTopping
     isEnable: 0
     isArray: 0
-  - type: 0
+  - type: 3
     name: NumOfOvens
     isEnable: 0
     isArray: 0
-  - type: 0
+  - type: 3
     name: NumCustomerLines
     isEnable: 0
     isArray: 0
-  - type: 0
+  - type: 8
     name: Pineapple
     isEnable: 0
     isArray: 0
-  - type: 0
+  - type: 8
     name: LaundryPod
     isEnable: 0
     isArray: 0
-  - type: 0
+  - type: 8
     name: Cactus
     isEnable: 0
     isArray: 0
-  - type: 0
+  - type: 8
     name: Beetroot
     isEnable: 0
     isArray: 0
-  - type: 0
+  - type: 8
     name: Starfish
     isEnable: 0
     isArray: 0
-  - type: 0
+  - type: 8
     name: Honeycomb
     isEnable: 0
     isArray: 0
