@@ -25,20 +25,20 @@ public class Sheet1Data
   public int Totalcustomers { get {return totalcustomers; } set { this.totalcustomers = value;} }
   
   [SerializeField]
-  int mintopping;
-  public int Mintopping { get {return mintopping; } set { this.mintopping = value;} }
-  
-  [SerializeField]
-  int maxtopping;
-  public int Maxtopping { get {return maxtopping; } set { this.maxtopping = value;} }
+  int numcustomerlines;
+  public int Numcustomerlines { get {return numcustomerlines; } set { this.numcustomerlines = value;} }
   
   [SerializeField]
   int numofovens;
   public int Numofovens { get {return numofovens; } set { this.numofovens = value;} }
   
   [SerializeField]
-  int numcustomerlines;
-  public int Numcustomerlines { get {return numcustomerlines; } set { this.numcustomerlines = value;} }
+  int mintopping;
+  public int Mintopping { get {return mintopping; } set { this.mintopping = value;} }
+  
+  [SerializeField]
+  int maxtopping;
+  public int Maxtopping { get {return maxtopping; } set { this.maxtopping = value;} }
   
   [SerializeField]
   bool pineapple;
@@ -63,5 +63,9 @@ public class Sheet1Data
   [SerializeField]
   bool honeycomb;
   public bool Honeycomb { get {return honeycomb; } set { this.honeycomb = value;} }
+  
+  [SerializeField]
+  int toppingrange;
+  public int Toppingrange { get {return toppingrange; } set { this.toppingrange = value;} }
   
 }

@@ -35,11 +35,7 @@ MonoBehaviour:
     isEnable: 0
     isArray: 0
   - type: 3
-    name: MinTopping
-    isEnable: 0
-    isArray: 0
-  - type: 3
-    name: MaxTopping
+    name: NumCustomerLines
     isEnable: 0
     isArray: 0
   - type: 3
@@ -47,7 +43,11 @@ MonoBehaviour:
     isEnable: 0
     isArray: 0
   - type: 3
-    name: NumCustomerLines
+    name: MinTopping
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: MaxTopping
     isEnable: 0
     isArray: 0
   - type: 8
@@ -72,6 +72,10 @@ MonoBehaviour:
     isArray: 0
   - type: 8
     name: Honeycomb
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: ToppingRange
     isEnable: 0
     isArray: 0
   excelFilePath: Assets/Levels.xlsx
