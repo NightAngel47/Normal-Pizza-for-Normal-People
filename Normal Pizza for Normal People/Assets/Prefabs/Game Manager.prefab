@@ -416,6 +416,8 @@ GameObject:
   - component: {fileID: 821180517}
   - component: {fileID: 821180516}
   - component: {fileID: 5973250667470171886}
+  - component: {fileID: 4617729008710552073}
+  - component: {fileID: 449130245}
   m_Layer: 0
   m_Name: Customer Line Start Pos
   m_TagString: LineStart
@@ -479,6 +481,116 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 1
+--- !u!114 &4617729008710552073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149450571433723016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5c8f6e6b704fb24eadb8a0ac3a1a331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newLineUI: {fileID: 5069565016871101520, guid: 21f185d3d344fed4c822358982e8dfa0,
+    type: 3}
+--- !u!82 &449130245
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149450571433723016}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3d88de1f8036ed842977a3959bcc9e24, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3481793447267015054
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,9 +604,9 @@ GameObject:
   - component: {fileID: 4954694665190826298}
   - component: {fileID: 8357020710274601803}
   - component: {fileID: 7806614716939482675}
-  - component: {fileID: 5544742078080136158}
   - component: {fileID: 6980543429296917128}
   - component: {fileID: 449130246}
+  - component: {fileID: 53617022}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -534,18 +646,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerLine: {fileID: 8357020710274601803}
   moneyTracker: {fileID: 4954694665190826298}
-  upgradeSystem: {fileID: 5544742078080136158}
+  upgradeSystem: {fileID: 0}
   currentDayText: {fileID: 0}
   currentDayTime: {fileID: 0}
   currentDayProgressBar: {fileID: 0}
   endOfDaySummary: {fileID: 0}
-  startingDayValues:
-    dayNum: 1
-    numOfCustomers: 10
-    dayLength: 90
-    moneyGoal: 100
-  newCustomerPerDayRate: 1.1
-  newMoneyGoalPerDayRate: 1.5
   currentGameDay:
     dayNum: 0
     numOfCustomers: 0
@@ -558,6 +663,7 @@ MonoBehaviour:
   inputMod: {fileID: 0}
   startDayButton: {fileID: 0}
   dayStarted: 0
+  pizzaSpawnButton: {fileID: 0}
   gameDayAudioClips:
   - {fileID: 8300000, guid: 8d43ea58af9da7b4ea7afd1c3fad8ada, type: 3}
   - {fileID: 8300000, guid: 89f5ba6b80c18664683cc9da7bf9c561, type: 3}
@@ -620,29 +726,63 @@ MonoBehaviour:
   allPizzaIngredients:
   - {fileID: 7516945271227501687, guid: 44021f337208aae4785144ea1442ecf3, type: 3}
   - {fileID: 9040540506502419961, guid: 7d1e6b0d42121f24d9fc188a3f5b8555, type: 3}
-  minIngredientsPerOrder: 1
-  maxIngredientsPerOrder: 6
---- !u!114 &5544742078080136158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3481793447267015054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 997d9b72ead54984798b26125ac80295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  availableUpgrades:
-  - {fileID: 833014313}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1733666333}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9040540506502419961, guid: 7d1e6b0d42121f24d9fc188a3f5b8555, type: 3}
+  - {fileID: 9040540506502419961, guid: 7d1e6b0d42121f24d9fc188a3f5b8555, type: 3}
+  - {fileID: 9040540506502419961, guid: 7d1e6b0d42121f24d9fc188a3f5b8555, type: 3}
+  - {fileID: 9040540506502419961, guid: 7d1e6b0d42121f24d9fc188a3f5b8555, type: 3}
+  tierOneIngredients:
+  - {fileID: 7516945271227501687, guid: 44021f337208aae4785144ea1442ecf3, type: 3}
+  - {fileID: 9040540506502419961, guid: 7d1e6b0d42121f24d9fc188a3f5b8555, type: 3}
+  tierTwoIngredients:
+  - {fileID: 4725293823596819026, guid: 3d48b0aae803e044598a55b38236f832, type: 3}
+  - {fileID: 446608974989589850, guid: 255f257408eae6749a21e391f8ea83a4, type: 3}
+  tierThreeIngredients:
+  - {fileID: 9040540506502419961, guid: 89a4299c38027a147b5fe3806ae29d5b, type: 3}
+  - {fileID: 9040540506502419961, guid: bf5287467bb620b48b0b7a30d3c36321, type: 3}
+  minTotalToppingsPerOrder: 5
+  maxTotalToppingsPerOrder: 9
+  rangeLevel: 0
+  toppingTotalRanges:
+  - low: 64000000
+    mid: 64000000
+    high: 64000000
+  - low: 4b00000064000000
+    mid: 3200000064000000
+    high: 1900000064000000
+  - low: 3c0000005a00000064000000
+    mid: 190000004b00000064000000
+    high: 0a0000002800000064000000
+  - low: 19000000410000005a00000064000000
+    mid: 0f000000320000005500000064000000
+    high: 0a000000230000004b00000064000000
+  - low: 1800000038000000500000005f00000064000000
+    mid: 0e00000023000000410000005600000064000000
+    high: 05000000140000002c0000004c00000064000000
+  - low: 150000003000000045000000540000005f00000064000000
+    mid: 0600000017000000320000004d0000005e00000064000000
+    high: 05000000100000001f000000340000004f00000064000000
+  - low: 130000002c0000003f0000004f0000005a0000006100000064000000
+    mid: 0600000013000000260000003e0000005b0000005e00000064000000
+    high: 030000000a0000001500000025000000380000005100000064000000
+  - low: 11000000260000003700000046000000520000005b0000006100000064000000
+    mid: 06000000100000001f0000003200000045000000540000005e00000064000000
+    high: 0300000009000000120000001e0000002d0000003e0000005300000064000000
+  - low: 1100000025000000360000004400000050000000580000005e0000006200000064000000
+    mid: 050000000e0000001a000000290000003b0000004a000000560000005f00000064000000
+    high: 02000000060000000c00000014000000200000002e0000003f0000005300000064000000
+  ingredientMax:
+  - tierOne: 3
+    tierTwo: 2
+    tierThree: 1
+  - tierOne: 3
+    tierTwo: 2
+    tierThree: 1
+  - tierOne: 4
+    tierTwo: 3
+    tierThree: 2
+  - tierOne: 4
+    tierTwo: 3
+    tierThree: 2
 --- !u!82 &6980543429296917128
 AudioSource:
   m_ObjectHideFlags: 0
@@ -755,6 +895,34 @@ MonoBehaviour:
   bottomOven: {fileID: 0}
   tutorialUI:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &53617022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3481793447267015054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955ae1d3231920a4286fdfa8fe246b46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelData: {fileID: 11400000, guid: b2933b25a5b7e014f9a1ffa8cc238618, type: 2}
+  customerLines:
+  - {fileID: 4617729008710552073}
+  - {fileID: 2392098152540189665}
+  - {fileID: 5128009736757141335}
+  ovens:
+  - {fileID: 0}
+  - {fileID: 0}
+  toppings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

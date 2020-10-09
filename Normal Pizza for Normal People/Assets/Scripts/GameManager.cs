@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject endOfDaySummary = null;
 
     [Header("Game Days")] 
-    [SerializeField, Tooltip("The starting values for the game days.")] private Day startingDayValues = new Day();
-    [SerializeField, Tooltip("The rate that each new day will increase in customers."), Range(1f, 2f)] private float newCustomerPerDayRate = 1.1f;
-    [SerializeField, Tooltip("The rate that each new day will increase its money goal."), Range(1f, 2f)] private float newMoneyGoalPerDayRate = 1.5f;
+    //[SerializeField, Tooltip("The starting values for the game days.")] private Day startingDayValues = new Day();
+    //[SerializeField, Tooltip("The rate that each new day will increase in customers."), Range(1f, 2f)] private float newCustomerPerDayRate = 1.1f;
+    //[SerializeField, Tooltip("The rate that each new day will increase its money goal."), Range(1f, 2f)] private float newMoneyGoalPerDayRate = 1.5f;
     [HideInInspector] public Day currentGameDay = new Day();
     [HideInInspector] public float currentDayTimer = 0f;
 
@@ -52,13 +52,26 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<AudioClip> gameDayAudioClips = new List<AudioClip>();
     
     [Serializable]
-    public struct Day
+    public class Day
     {
         [Header("Day Info")] 
         [Tooltip("The day number")] public int dayNum;
         [Tooltip("The number of customers per day"), Range(0, 50)] public int numOfCustomers;
         [Tooltip("The length of each day in seconds"), Range(0, 300)] public int dayLength;
         [Tooltip("The profit goal for each day")] public int moneyGoal;
+
+        public Day()
+        {
+            
+        }
+        
+        public Day(int num, int customers, int length, int goal)
+        {
+            dayNum = num;
+            numOfCustomers = customers;
+            dayLength = length;
+            moneyGoal = goal;
+        }
     }
 
     private void Start()
@@ -68,8 +81,6 @@ public class GameManager : MonoBehaviour
         endOfDaySummary.SetActive(false);
         gameOverButtons.SetActive(false);
         gameOverText.gameObject.SetActive(false);
-        //TODO have player start day
-        currentGameDay = startingDayValues;
         //StartCoroutine(DayCycle());  //moved to start day function
 
         pizzaSpawnButton.SetActive(false);
@@ -77,6 +88,11 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<PauseMenu>().SetUp();
         
         MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.BetweenDaysMusic);
+    }
+
+    public void SetDay(int num, int customers, int length, int goal)
+    {
+        currentGameDay = new Day(num, customers, length, goal);
     }
 
     public MoneyTracker GetMoneyTracker()
@@ -206,9 +222,10 @@ public class GameManager : MonoBehaviour
 
     private void IncreaseDayDifficulty()
     {
-        currentGameDay.dayNum++;
-        currentGameDay.numOfCustomers = (int) (currentGameDay.numOfCustomers * newCustomerPerDayRate);
-        currentGameDay.moneyGoal = (int) (currentGameDay.moneyGoal * newMoneyGoalPerDayRate);
+        //TODO call level manager to get the next day
+        //currentGameDay.dayNum++;
+        //currentGameDay.numOfCustomers = (int) (currentGameDay.numOfCustomers * newCustomerPerDayRate);
+        //currentGameDay.moneyGoal = (int) (currentGameDay.moneyGoal * newMoneyGoalPerDayRate);
     }
 
     public void RemoveActiveCustomer(Customer customer)
