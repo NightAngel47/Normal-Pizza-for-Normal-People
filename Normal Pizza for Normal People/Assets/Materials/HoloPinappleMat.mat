@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Customer
-  m_Shader: {fileID: -6465566751694194690, guid: 52c87f55c2578064d852d3889e9d7ca2,
+  m_Name: HoloPinappleMat
+  m_Shader: {fileID: -6465566751694194690, guid: bf67b296f94d4ae4081721ceedd046d5,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,8 +20,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_E4A40B82:
-        m_Texture: {fileID: 2800000, guid: 0d7798fb5b6a6114d8361d9a710605f7, type: 3}
+    - Texture2D_4BA39F62:
+        m_Texture: {fileID: 2800000, guid: 7bf1dcee736c96d4586b2c117b7c5960, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_6BEF0271:
+        m_Texture: {fileID: 2800000, guid: 5d9863cb32f804d40b37a37bf1d13aba, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -53,10 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_2DE14883: -0.206
-    - Vector1_4563C04B: 0.634
-    - Vector1_68EFF04C: 1
-    - Vector1_EB1F66B2: 1
+    - Vector1_86B9451: 0.1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -79,14 +80,14 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_1E2953E7: {r: 1, g: 1, b: 1, a: 0}
-    - Color_3AF7A2BA: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 0}
-    - Color_6231B7A2: {r: 1, g: 1, b: 1, a: 0}
+    - Color_2EC605AD: {r: 2.143547, g: 1.53831, b: 0, a: 0}
+    - Color_9A23840F: {r: 0, g: 1, b: 0.96764225, a: 0}
+    - Color_AFD9DFA1: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
---- !u!114 &6283674626397187252
+--- !u!114 &2522385289438607762
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
