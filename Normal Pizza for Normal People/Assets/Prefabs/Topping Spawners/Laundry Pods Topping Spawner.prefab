@@ -213,7 +213,7 @@ PrefabInstance:
     - target: {fileID: 8930300501600822282, guid: b8d64de87b973ce4f9e14c8d48fb631d,
         type: 3}
       propertyPath: m_Name
-      value: Tidepod Topping Spawner
+      value: Laundry Pods Topping Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 8930300501600822282, guid: b8d64de87b973ce4f9e14c8d48fb631d,
         type: 3}
