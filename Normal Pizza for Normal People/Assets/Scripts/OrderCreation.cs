@@ -16,14 +16,15 @@ public class OrderCreation : MonoBehaviour
     [SerializeField] public List<PizzaIngredient> tierOneIngredients = new List<PizzaIngredient>();
     [SerializeField] public List<PizzaIngredient> tierTwoIngredients = new List<PizzaIngredient>();
     [SerializeField] public List<PizzaIngredient> tierThreeIngredients = new List<PizzaIngredient>();
-    [SerializeField] private int minIngredientsPerOrder = 1;
-    [SerializeField] private int maxIngredientsPerOrder = 3;
-    [SerializeField] private int minTotalToppingsPerOrder = 3;
-    [SerializeField] private int maxTotalToppingsPerOrder = 3;
+    //[SerializeField] private int minIngredientsPerOrder = 1;
+    //[SerializeField] private int maxIngredientsPerOrder = 3;
+    [SerializeField] private int minTotalToppingsPerOrder = 0;
+    [SerializeField] private int maxTotalToppingsPerOrder = 0;
     [SerializeField] private int rangeLevel = 0; //1,2,3 low,mid,high
     [SerializeField] private List<TotalToppingCurves> toppingTotalRanges = new List<TotalToppingCurves>();
     [SerializeField] private List<MaxIngredientAmount> ingredientMax = new List<MaxIngredientAmount>();
     private PizzaIngredient pickedTopping;
+    private bool dont = false;
 
     [Serializable]
     public struct TotalToppingCurves
@@ -101,12 +102,15 @@ public class OrderCreation : MonoBehaviour
 
         int tierRand;
         int amount = 0;
+        int forLoopRuns = 6;//allPizzaIngredients.Capacity;
 
-        for (int i = 0; i < allPizzaIngredients.Capacity; ++i) //Potential max amount of different ingredients i.e. 6 toppings 6 different options
+        for (int i = 0; i < forLoopRuns; ++i) //Potential max amount of different ingredients i.e. 6 toppings 6 different options
         {
+            dont = false;
+
             switch (i)
             {
-                case 1:
+                case 0:
                     tierRand = UnityEngine.Random.Range(0, 100);
                     
                     if (tierRand < 30) //tier 1
@@ -127,6 +131,28 @@ public class OrderCreation : MonoBehaviour
                         amount = PickToppingAmount(3, totalToppingsPerPizza);
                     }
                     
+                    break;
+                case 1:
+                    tierRand = UnityEngine.Random.Range(0, 100);
+
+                    if (tierRand < 30)
+                    {
+                        oneTemp = PickTopping(oneTemp);
+                        amount = PickToppingAmount(1, totalToppingsPerPizza);
+                    }
+
+                    if (tierRand >= 30 && tierRand < 60)
+                    {
+                        twoTemp = PickTopping(twoTemp);
+                        amount = PickToppingAmount(2, totalToppingsPerPizza);
+                    }
+
+                    if (tierRand >= 60 && tierRand <= 99)
+                    {
+                        threeTemp = PickTopping(threeTemp);
+                        amount = PickToppingAmount(3, totalToppingsPerPizza);
+                    }
+
                     break;
                 case 2:
                     tierRand = UnityEngine.Random.Range(0, 100);
@@ -216,50 +242,35 @@ public class OrderCreation : MonoBehaviour
                     }
 
                     break;
-                case 6:
-                    tierRand = UnityEngine.Random.Range(0, 100);
-
-                    if (tierRand < 30)
-                    {
-                        oneTemp = PickTopping(oneTemp);
-                        amount = PickToppingAmount(1, totalToppingsPerPizza);
-                    }
-
-                    if (tierRand >= 30 && tierRand < 60)
-                    {
-                        twoTemp = PickTopping(twoTemp);
-                        amount = PickToppingAmount(2, totalToppingsPerPizza);
-                    }
-
-                    if (tierRand >= 60 && tierRand <= 99)
-                    {
-                        threeTemp = PickTopping(threeTemp);
-                        amount = PickToppingAmount(3, totalToppingsPerPizza);
-                    }
-
-                    break;
             }
 
             if (totalToppingTemp - amount < 0) //the amount of toppings to be added is greater than what is available on the pizza
             {
-                int tempAmount = amount;
-                tempAmount -= totalToppingTemp;
-                totalToppingTemp -= tempAmount;
+                amount = totalToppingTemp;
+                totalToppingTemp -= amount;
             }
-
+            
             else
             {
                 totalToppingTemp -= amount;
             }
 
-            for (int k = 0; k < amount; k++)
+            if (dont == false)
             {
-                ingredients.Add(pickedTopping);
+                for (int k = 0; k < amount; k++)
+                {
+                    ingredients.Add(pickedTopping);
+                }
             }
 
             if (totalToppingTemp == 0)
             {
-                break;
+                return ingredients;
+            }
+
+            if(i == forLoopRuns && totalToppingTemp != 0)
+            {
+                forLoopRuns = 0;
             }
         }
 
@@ -268,6 +279,12 @@ public class OrderCreation : MonoBehaviour
 
     private List<PizzaIngredient> PickTopping(List<PizzaIngredient> ingredientList)
     {
+        if(ingredientList.Count == 0)
+        {
+            dont = true;
+            return ingredientList;
+        }
+
         int rand = UnityEngine.Random.Range(0, ingredientList.Count);
 
         pickedTopping = ingredientList[rand];
@@ -281,17 +298,18 @@ public class OrderCreation : MonoBehaviour
     {
         int i = (totalToppings / 2) + (totalToppings % 2);
         int result = 0;
+        Debug.Log(i);
 
         switch (tier)
         {
             case 1:
-                result = UnityEngine.Random.Range(1, ingredientMax[i - 1].tierOne + 1);
+                result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierOne + 1));
                 break;
             case 2:
-                result = UnityEngine.Random.Range(1, ingredientMax[i - 1].tierTwo + 1);
+                result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierTwo + 1));
                 break;
             case 3:
-                result = UnityEngine.Random.Range(1, ingredientMax[i - 1].tierThree + 1);
+                result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierThree + 1));
                 break;
         }
 
@@ -304,13 +322,13 @@ public class OrderCreation : MonoBehaviour
     /// <returns>Returns list of ingredients for order for the number of ingredients per order</returns>
     private List<PizzaIngredient> RandomOrderIngredients()
     {
-        int randNumOfIngredients = UnityEngine.Random.Range(minIngredientsPerOrder, maxIngredientsPerOrder + 1);
-        List<PizzaIngredient> ingredients = new List<PizzaIngredient>(randNumOfIngredients);
+        //int randNumOfIngredients = UnityEngine.Random.Range(minIngredientsPerOrder, maxIngredientsPerOrder + 1);
+        List<PizzaIngredient> ingredients = new List<PizzaIngredient>();
         
-        for (int i = 0; i < ingredients.Capacity; ++i)
-        {
-            ingredients.Add(allPizzaIngredients[UnityEngine.Random.Range(0, allPizzaIngredients.Count)]);
-        }
+        //for (int i = 0; i < ingredients.Capacity; ++i)
+        //{
+        //    ingredients.Add(allPizzaIngredients[UnityEngine.Random.Range(0, allPizzaIngredients.Count)]);
+        //}
 
         return ingredients;
     }
