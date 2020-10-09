@@ -83,7 +83,7 @@ MonoBehaviour:
   customerUI: {fileID: 7108159095525338633}
   customerAI: {fileID: 3132741235551514967}
   startOrderTime: 45
-  activeOrder: 0
+  customerLeaveDelayTime: 1
 --- !u!114 &7108159095525338633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +421,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8855423326005325541}
     m_Modifications:
+    - target: {fileID: -6874540395504895234, guid: d318cd99163420e4f990c98cd0a9b97d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5993cd5e912f66443a40b87753808e94, type: 2}
     - target: {fileID: -4216859302048453862, guid: d318cd99163420e4f990c98cd0a9b97d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -496,6 +501,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Customer Model
       objectReference: {fileID: 0}
+    - target: {fileID: 2345211957819186503, guid: d318cd99163420e4f990c98cd0a9b97d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b23ebecd1e4e612498f5cdb1ef01c28d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d318cd99163420e4f990c98cd0a9b97d, type: 3}
 --- !u!4 &4584238181285329547 stripped
