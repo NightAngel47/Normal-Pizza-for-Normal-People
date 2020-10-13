@@ -17,13 +17,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private List<ToppingUpgrades> toppings = new List<ToppingUpgrades>();
 
     //TODO get selected day using save System (playerPrefs as temp)
-    private void SetupLevel(int selectedDay)
+    public void SetupLevel(int selectedDay)
     {
-        // check for valid level num
-        if (selectedDay == 0) return;
-        
-        // setup level data
-        
         // setup day 
         GetComponent<GameManager>().SetDay(levelData.dataArray[selectedDay].Daynum,
                     levelData.dataArray[selectedDay].Totalcustomers,
@@ -89,5 +84,18 @@ public class LevelManager : MonoBehaviour
         GetComponent<OrderCreation>().SetDayToppingValues(levelData.dataArray[selectedDay].Mintopping, 
                                                         levelData.dataArray[selectedDay].Maxtopping, 
                                                         levelData.dataArray[selectedDay].Toppingrange);
+    }
+
+    public void ResetLevel()
+    {
+        List<ItemUpgrades> allItems = new List<ItemUpgrades>();
+        allItems.AddRange(customerLines);
+        allItems.AddRange(ovens);
+        allItems.AddRange(toppings);
+
+        foreach (var item in allItems)
+        {
+            item.HideItem();
+        }
     }
 }

@@ -646,7 +646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerLine: {fileID: 8357020710274601803}
   moneyTracker: {fileID: 4954694665190826298}
-  upgradeSystem: {fileID: 0}
+  levelManager: {fileID: 53617022}
   currentDayText: {fileID: 0}
   currentDayTime: {fileID: 0}
   currentDayProgressBar: {fileID: 0}
@@ -657,6 +657,7 @@ MonoBehaviour:
     dayLength: 0
     moneyGoal: 0
   currentDayTimer: 0
+  currentDay: 0
   gameOverButtons: {fileID: 0}
   gameOverText: {fileID: 0}
   pointer: {fileID: 0}
