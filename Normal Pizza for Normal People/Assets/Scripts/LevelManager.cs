@@ -50,6 +50,7 @@ public class LevelManager : MonoBehaviour
         }
         
         // setup toppings
+        // TODO add enabled toppings to order creation list
         if (!levelData.dataArray[selectedDay].Pineapple)
         {
             toppings[(int) ToppingTypes.Pineapple].HideItem();

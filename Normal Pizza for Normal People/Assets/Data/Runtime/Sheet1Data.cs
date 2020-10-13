@@ -41,6 +41,10 @@ public class Sheet1Data
   public int Maxtopping { get {return maxtopping; } set { this.maxtopping = value;} }
   
   [SerializeField]
+  int toppingrange;
+  public int Toppingrange { get {return toppingrange; } set { this.toppingrange = value;} }
+  
+  [SerializeField]
   bool pineapple;
   public bool Pineapple { get {return pineapple; } set { this.pineapple = value;} }
   
@@ -63,9 +67,5 @@ public class Sheet1Data
   [SerializeField]
   bool honeycomb;
   public bool Honeycomb { get {return honeycomb; } set { this.honeycomb = value;} }
-  
-  [SerializeField]
-  int toppingrange;
-  public int Toppingrange { get {return toppingrange; } set { this.toppingrange = value;} }
   
 }
