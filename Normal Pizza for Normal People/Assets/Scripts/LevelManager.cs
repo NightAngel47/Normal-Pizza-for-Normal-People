@@ -95,7 +95,7 @@ public class LevelManager : MonoBehaviour
 
         foreach (var item in allItems)
         {
-            item.HideItem();
+            item.ShowItem();
         }
     }
 }
