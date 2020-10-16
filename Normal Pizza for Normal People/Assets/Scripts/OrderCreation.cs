@@ -246,13 +246,9 @@ public class OrderCreation : MonoBehaviour
             if (totalToppingTemp - amount < 0) //the amount of toppings to be added is greater than what is available on the pizza
             {
                 amount = totalToppingTemp;
-                totalToppingTemp -= amount;
             }
             
-            else
-            {
-                totalToppingTemp -= amount;
-            }
+            totalToppingTemp -= amount;
 
             if (dont == false)
             {
@@ -262,14 +258,9 @@ public class OrderCreation : MonoBehaviour
                 }
             }
 
-            if (totalToppingTemp == 0)
+            if(i == forLoopRuns - 1 && totalToppingTemp != 0)
             {
-                return ingredients;
-            }
-
-            if(i == forLoopRuns && totalToppingTemp != 0)
-            {
-                forLoopRuns = 0;
+                i = 0;
             }
         }
 
@@ -295,23 +286,26 @@ public class OrderCreation : MonoBehaviour
 
     private int PickToppingAmount(int tier, int totalToppings)
     {
-        int i = (totalToppings / 2) + (totalToppings % 2);
         int result = 0;
-        Debug.Log(i);
-
-        switch (tier)
+        
+        if (dont == false)
         {
-            case 1:
-                result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierOne + 1));
-                break;
-            case 2:
-                result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierTwo + 1));
-                break;
-            case 3:
-                result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierThree + 1));
-                break;
-        }
+            int i = (totalToppings / 2) + (totalToppings % 2);
 
+            switch (tier)
+            {
+                case 1:
+                    result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierOne + 1));
+                    break;
+                case 2:
+                    result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierTwo + 1));
+                    break;
+                case 3:
+                    result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierThree + 1));
+                    break;
+            }
+        }
+        
         return result;
     }
 
