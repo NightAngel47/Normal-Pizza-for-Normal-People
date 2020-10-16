@@ -12,10 +12,9 @@ using UnityEngine;
 
 public class OrderCreation : MonoBehaviour
 {
-    [SerializeField] public List<PizzaIngredient> allPizzaIngredients = new List<PizzaIngredient>();
-    [SerializeField] public List<PizzaIngredient> tierOneIngredients = new List<PizzaIngredient>();
-    [SerializeField] public List<PizzaIngredient> tierTwoIngredients = new List<PizzaIngredient>();
-    [SerializeField] public List<PizzaIngredient> tierThreeIngredients = new List<PizzaIngredient>();
+    public List<PizzaIngredient> tierOneIngredients = new List<PizzaIngredient>();
+    public List<PizzaIngredient> tierTwoIngredients = new List<PizzaIngredient>();
+    public List<PizzaIngredient> tierThreeIngredients = new List<PizzaIngredient>();
     //[SerializeField] private int minIngredientsPerOrder = 1;
     //[SerializeField] private int maxIngredientsPerOrder = 3;
     [SerializeField] private int minTotalToppingsPerOrder = 0;
@@ -102,7 +101,7 @@ public class OrderCreation : MonoBehaviour
 
         int tierRand;
         int amount = 0;
-        int forLoopRuns = 6;//allPizzaIngredients.Capacity;
+        int forLoopRuns = tierOneIngredients.Count + tierTwoIngredients.Count + tierThreeIngredients.Count;
 
         for (int i = 0; i < forLoopRuns; ++i) //Potential max amount of different ingredients i.e. 6 toppings 6 different options
         {

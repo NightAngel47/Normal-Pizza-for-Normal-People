@@ -50,35 +50,58 @@ public class LevelManager : MonoBehaviour
         }
         
         // setup toppings
-        // TODO add enabled toppings to order creation list
         if (!levelData.dataArray[selectedDay].Pineapple)
         {
             toppings[(int) ToppingTypes.Pineapple].HideItem();
+        }
+        else
+        {
+            toppings[(int) ToppingTypes.Pineapple].TurnOnUpgrade();
         }
         
         if (!levelData.dataArray[selectedDay].Laundrypod)
         {
             toppings[(int) ToppingTypes.Laundrypod].HideItem();
         }
+        else
+        {
+            toppings[(int) ToppingTypes.Laundrypod].TurnOnUpgrade();
+        }
         
         if (!levelData.dataArray[selectedDay].Beetroot)
         {
             toppings[(int) ToppingTypes.Beetroot].HideItem();
+        }
+        else
+        {
+            toppings[(int) ToppingTypes.Beetroot].TurnOnUpgrade();
         }
         
         if (!levelData.dataArray[selectedDay].Cactus)
         {
             toppings[(int) ToppingTypes.Cactus].HideItem();
         }
+        else
+        {
+            toppings[(int) ToppingTypes.Cactus].TurnOnUpgrade();
+        }
         
         if (!levelData.dataArray[selectedDay].Starfish)
         {
             toppings[(int) ToppingTypes.Starfish].HideItem();
         }
+        else
+        {
+            toppings[(int) ToppingTypes.Starfish].TurnOnUpgrade();
+        }
 
         if (!levelData.dataArray[selectedDay].Honeycomb)
         {
             toppings[(int) ToppingTypes.Honeycomb].HideItem();
+        }
+        else
+        {
+            toppings[(int) ToppingTypes.Honeycomb].TurnOnUpgrade();
         }
         
         // setup order creation

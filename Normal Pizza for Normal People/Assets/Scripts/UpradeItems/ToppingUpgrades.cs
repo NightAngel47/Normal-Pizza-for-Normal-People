@@ -13,28 +13,23 @@ using UnityEngine;
 
 public class ToppingUpgrades : ItemUpgrades
 {
-    [SerializeField] private GameObject newToppingUI = null;
-
-    private GameObject toppingUIInstance = null;
-    
-    private PizzaIngredientSpawner pis = null;
-
     public override void TurnOnUpgrade()
     {
-        pis = gameObject.GetComponent<PizzaIngredientSpawner>();
-        pis.enabled = !pis.enabled;
-
-        if (pis.enabled)
+        PizzaIngredient ingredient = GetComponent<PizzaIngredientSpawner>().pizzaIngredientToSpawn.GetComponent<IngredientHitEffect>().spawnObjectOnCollision.GetComponent<PizzaIngredient>();
+        switch (ingredient.tier)
         {
-            FindObjectOfType<OrderCreation>().allPizzaIngredients.Add(pis.pizzaIngredientToSpawn.GetComponent<IngredientHitEffect>().spawnObjectOnCollision.GetComponent<PizzaIngredient>());
-            toppingUIInstance = Instantiate(newToppingUI, transform.position, Quaternion.Euler(0, -90, 0));
-            StartCoroutine(DestroyUI());
+            case 1:
+                FindObjectOfType<OrderCreation>().tierOneIngredients.Add(ingredient);
+                break;
+            case 2:
+                FindObjectOfType<OrderCreation>().tierTwoIngredients.Add(ingredient);
+                break;
+            case 3:
+                FindObjectOfType<OrderCreation>().tierThreeIngredients.Add(ingredient);
+                break;
+            default:
+                Debug.LogWarning($"Ingredient's tier value, {ingredient.tier} is not supported.");
+                break;
         }
-    }
-
-    private IEnumerator DestroyUI()
-    {
-        yield return new WaitUntil(() => FindObjectOfType<GameManager>().dayStarted);
-        Destroy(toppingUIInstance);
     }
 }
