@@ -121,5 +121,10 @@ public class LevelManager : MonoBehaviour
         {
             item.ShowItem();
         }
+
+        OrderCreation orderCreation = FindObjectOfType<OrderCreation>();
+        orderCreation.tierOneIngredients.Clear();
+        orderCreation.tierTwoIngredients.Clear();
+        orderCreation.tierThreeIngredients.Clear();
     }
 }
