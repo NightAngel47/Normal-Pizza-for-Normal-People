@@ -78,6 +78,10 @@ MonoBehaviour:
     name: Honeycomb
     isEnable: 0
     isArray: 0
+  - type: 8
+    name: CheesePress
+    isEnable: 0
+    isArray: 0
   excelFilePath: Assets/Levels.xlsx
   SheetNames:
   - Sheet1
