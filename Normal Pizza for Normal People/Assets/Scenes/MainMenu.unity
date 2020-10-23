@@ -122,7 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!21 &677778762
+--- !u!21 &388864584
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -225,56 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 502a61ddfbcff294586d7c625c3efb49, type: 3}
---- !u!1 &1161715242
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1161715244}
-  - component: {fileID: 1161715243}
-  m_Layer: 0
-  m_Name: LevelSelect
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1161715243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161715242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dca3212db93416b409e91b670e793e07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1161715244
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161715242}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2273, y: 2.7303548, z: 2.5365}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &1399689101 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 5355422399162787402, guid: 0ed3571a4535dbc4aa6742cd31d6b270,
-    type: 3}
-  m_PrefabInstance: {fileID: 8741163638914246814}
-  m_PrefabAsset: {fileID: 0}
---- !u!43 &1673552665
+--- !u!43 &1343738148
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -437,6 +388,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!20 &1399689101 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5355422399162787402, guid: 0ed3571a4535dbc4aa6742cd31d6b270,
+    type: 3}
+  m_PrefabInstance: {fileID: 8741163638914246814}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1941941394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -827,12 +784,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1673552665}
+      objectReference: {fileID: 1343738148}
     - target: {fileID: 8741163638886084953, guid: 0ed3571a4535dbc4aa6742cd31d6b270,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 677778762}
+      objectReference: {fileID: 388864584}
     - target: {fileID: 8741163638887815957, guid: 0ed3571a4535dbc4aa6742cd31d6b270,
         type: 3}
       propertyPath: m_LocalPosition.x
