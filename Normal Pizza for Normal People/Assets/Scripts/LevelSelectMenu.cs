@@ -21,10 +21,13 @@ public class LevelSelectMenu : MonoBehaviour
                 levelButtonScript.SetLevelNum(i);
                 levelButtonScript.SetLevelName($"Day {levelData.dataArray[i].Daynum}");
 
+                ButtonTransistioner buttonTransistioner = levelButtonScript.GetComponent<ButtonTransistioner>();
+                buttonTransistioner.panelHandler = FindObjectOfType<MainMenuHandle>().gameObject;
+
                 // set all levels that are beyond the furthest level to locked state
                 if (i > PlayerPrefs.GetInt("FurthestLevel", 0))
                 {
-                    levelButtonScript.GetComponent<ButtonTransistioner>().SetInteractable(false);
+                    buttonTransistioner.SetInteractable(false);
                 }
             }
         }
