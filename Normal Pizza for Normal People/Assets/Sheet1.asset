@@ -30,6 +30,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 2
     scoregoal: 600
     daylength: 90
@@ -45,6 +46,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 3
     scoregoal: 600
     daylength: 100
@@ -60,6 +62,7 @@ MonoBehaviour:
     beetroot: 1
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 4
     scoregoal: 800
     daylength: 100
@@ -75,6 +78,7 @@ MonoBehaviour:
     beetroot: 1
     starfish: 1
     honeycomb: 0
+    cheesepress: 0
   - daynum: 5
     scoregoal: 1000
     daylength: 100
@@ -90,6 +94,7 @@ MonoBehaviour:
     beetroot: 1
     starfish: 1
     honeycomb: 1
+    cheesepress: 0
   - daynum: 6
     scoregoal: 0
     daylength: 0
@@ -105,6 +110,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 7
     scoregoal: 0
     daylength: 0
@@ -120,6 +126,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 8
     scoregoal: 0
     daylength: 0
@@ -135,6 +142,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 9
     scoregoal: 0
     daylength: 0
@@ -150,6 +158,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 10
     scoregoal: 0
     daylength: 0
@@ -165,6 +174,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -180,6 +190,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -195,6 +206,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -210,6 +222,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -225,6 +238,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -240,6 +254,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -255,6 +270,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -270,6 +286,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -285,6 +302,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -300,6 +318,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -315,6 +334,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -330,6 +350,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -345,6 +366,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -360,6 +382,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -375,6 +398,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -390,6 +414,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -405,6 +430,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -420,6 +446,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -435,6 +462,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -450,6 +478,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -465,6 +494,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -480,6 +510,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -495,6 +526,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -510,6 +542,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -525,6 +558,7 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -540,3 +574,4 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
+    cheesepress: 0

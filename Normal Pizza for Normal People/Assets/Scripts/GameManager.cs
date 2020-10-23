@@ -3,7 +3,7 @@
  * IM 389
  * GameManager
  * Steven & Sydney
- * Steven: 
+ * Steven:
  * Sydney: Toggle pointer function, start day button and days being started by the player, and pizza spawning button turning on and off,
  * Manages the game
  */
@@ -28,10 +28,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text currentDayText = null;
     [SerializeField] private TMP_Text currentDayTime = null;
     [SerializeField] private Image currentDayProgressBar = null;
-    
+
     [SerializeField] private GameObject endOfDaySummary = null;
 
-    [Header("Game Days")] 
+    [Header("Game Days")]
     //[SerializeField, Tooltip("The starting values for the game days.")] private Day startingDayValues = new Day();
     //[SerializeField, Tooltip("The rate that each new day will increase in customers."), Range(1f, 2f)] private float newCustomerPerDayRate = 1.1f;
     //[SerializeField, Tooltip("The rate that each new day will increase its money goal."), Range(1f, 2f)] private float newMoneyGoalPerDayRate = 1.5f;
@@ -49,14 +49,14 @@ public class GameManager : MonoBehaviour
     public GameObject pizzaSpawnButton = null;
 
     private readonly List<Customer> activeCustomers = new List<Customer>();
-    
+
     enum GameDayAudioStates {StartDay, EndDay}
     [SerializeField] List<AudioClip> gameDayAudioClips = new List<AudioClip>();
-    
+
     [Serializable]
     public class Day
     {
-        [Header("Day Info")] 
+        [Header("Day Info")]
         [Tooltip("The day number")] public int dayNum;
         [Tooltip("The number of customers per day"), Range(0, 50)] public int numOfCustomers;
         [Tooltip("The length of each day in seconds"), Range(0, 300)] public int dayLength;
@@ -64,9 +64,9 @@ public class GameManager : MonoBehaviour
 
         public Day()
         {
-            
+
         }
-        
+
         public Day(int num, int customers, int length, int goal)
         {
             dayNum = num;
@@ -80,9 +80,9 @@ public class GameManager : MonoBehaviour
     {
         // Setup level based on the day
         levelManager.SetupLevel(currentDay);
-        
+
         audioSource = GetComponent<AudioSource>();
-        
+
         endOfDaySummary.SetActive(false);
         gameOverButtons.SetActive(false);
         gameOverText.gameObject.SetActive(false);
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<PauseMenu>().SetUp();
 
         currentDay = LevelSelect.selectedLevel;
-        
+
         MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.BetweenDaysMusic);
     }
 
@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
         dayStarted = true;
         startDayButton.SetActive(false);
         pizzaSpawnButton.SetActive(true);
-        
+
         StartCoroutine(DayCycle());
     }
 
@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
         MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.WorkDayMusic);
         audioSource.clip = gameDayAudioClips[(int) GameDayAudioStates.StartDay];
         audioSource.Play();
-        
+
         yield return new WaitUntil(() => currentDayTimer <= 0);
         foreach (var customer in FindObjectsOfType<Customer>())
         {
@@ -144,17 +144,17 @@ public class GameManager : MonoBehaviour
             {
                 activeCustomers.Add(customer);
             }
-            
+
             StartCoroutine(customer.CustomerLeave());
         }
 
         yield return new WaitUntil(() => activeCustomers.Count == 0);
-        
+
         audioSource.clip = gameDayAudioClips[(int) GameDayAudioStates.EndDay];
         audioSource.Play();
 
         dayStarted = false;
-        
+
         yield return new WaitForSeconds(1f);
         endOfDaySummary.SetActive(true);
 
@@ -234,7 +234,7 @@ public class GameManager : MonoBehaviour
         currentDay++;
         LevelSelect.selectedLevel = currentDay;
         levelManager.ResetLevel();
-        
+
         levelManager.SetupLevel(currentDay);
         //currentGameDay.dayNum++;
         //currentGameDay.numOfCustomers = (int) (currentGameDay.numOfCustomers * newCustomerPerDayRate);
