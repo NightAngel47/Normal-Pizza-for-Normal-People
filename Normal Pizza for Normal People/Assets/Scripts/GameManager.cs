@@ -230,6 +230,8 @@ public class GameManager : MonoBehaviour
         //TODO call level manager to get the next day
         // temp setup on day progression
         currentDay++;
+        // TODO check if this is the furthest day that the player has made it
+        // PlayerPrefs.SetInt("FurthestLevel", currentDay); // sets new furthest day
         levelManager.ResetLevel();
         
         levelManager.SetupLevel(currentDay);
