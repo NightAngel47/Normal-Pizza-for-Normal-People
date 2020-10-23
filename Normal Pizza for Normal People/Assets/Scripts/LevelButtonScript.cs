@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LevelButtonScript : MonoBehaviour
 {
-    [SerializeField] private int levelNum;
+    [SerializeField] private TMP_Text levelNameText;
+    private int levelNum;
     private string levelName;
 
     public int GetLevelNum()
@@ -25,5 +27,6 @@ public class LevelButtonScript : MonoBehaviour
     public void SetLevelName(string n)
     {
         levelName = n;
+        levelNameText.text = n;
     }
 }

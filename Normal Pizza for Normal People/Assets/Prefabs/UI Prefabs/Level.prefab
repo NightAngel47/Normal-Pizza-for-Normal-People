@@ -102,6 +102,10 @@ MonoBehaviour:
   down:
     serializedVersion: 2
     rgba: 4292467030
+  disabled:
+    serializedVersion: 2
+    rgba: 4278190080
+  interactable: 1
 --- !u!82 &4069149577814923963
 AudioSource:
   m_ObjectHideFlags: 0
@@ -211,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22176797c02fc0c4f9044876dae0f28f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelNum: 0
+  levelNameText: {fileID: 3920837299193141649}
 --- !u!1 &5224631547258017389
 GameObject:
   m_ObjectHideFlags: 0
