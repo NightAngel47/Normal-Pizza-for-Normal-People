@@ -21,8 +21,11 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
     public Color32 norm = Color.white;
     public Color32 hover = Color.gray;
     public Color32 down = Color.white;
+    public Color32 disabled = Color.black;
 
     private Image img = null;
+
+    [SerializeField] private bool interactable = true;
 
     private void Awake()
     {
@@ -30,8 +33,17 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
         audioSource = GetComponent<AudioSource>();
     }
 
+    public void SetInteractable(bool state)
+    {
+        interactable = state;
+
+        img.color = interactable ? norm : disabled;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (!interactable) return;
+        
         if (gameObject.name == "Start") //main menu
         {
             panelHandler.GetComponent<MainMenuHandle>().logo.SetActive(true);
@@ -41,7 +53,7 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
             panelHandler.GetComponent<MainMenuHandle>().mainMenuPanel.SetActive(false);
         }
 
-        if(gameObject.name == "HowToPlay") //main menu
+        if (gameObject.name == "HowToPlay") //main menu
         {
             panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(true);
             panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(false);
@@ -95,21 +107,20 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
             SceneManager.LoadScene("MainMenu");
         }
 
-        if(gameObject.CompareTag("level"))
+        if (gameObject.CompareTag("level"))
         {
             LevelSelect.selectedLevel = gameObject.GetComponent<LevelButtonScript>().GetLevelNum();
             panelHandler.GetComponent<MainMenuHandle>().startLevelButton.SetActive(true);
         }
 
-        if(gameObject.name == "Back") //back from level select to main menu
+        if (gameObject.name == "Back") //back from level select to main menu
         {
             panelHandler.GetComponent<MainMenuHandle>().levelSelectPanel.SetActive(false);
             panelHandler.GetComponent<MainMenuHandle>().mainMenuPanel.SetActive(true);
         }
 
-        if(gameObject.name == "StartLevel")
+        if (gameObject.name == "StartLevel")
         {
-
             SceneManager.LoadScene("Game");
         }
 
@@ -118,22 +129,28 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (!interactable) return;
+        
         img.color = down;
         audioSource.Play();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!interactable) return;
+        
         img.color = hover;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (!interactable) return;
+        
         img.color = norm;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        
+        if (!interactable) return;
     }
 }

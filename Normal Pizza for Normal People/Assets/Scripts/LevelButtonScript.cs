@@ -7,12 +7,6 @@ public class LevelButtonScript : MonoBehaviour
     [SerializeField] private int levelNum;
     private string levelName;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public int GetLevelNum()
     {
         return levelNum;

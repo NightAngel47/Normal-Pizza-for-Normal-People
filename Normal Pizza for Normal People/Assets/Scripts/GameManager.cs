@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
     //[SerializeField, Tooltip("The rate that each new day will increase its money goal."), Range(1f, 2f)] private float newMoneyGoalPerDayRate = 1.5f;
     [HideInInspector] public Day currentGameDay = new Day();
     [HideInInspector] public float currentDayTimer = 0f;
-    [SerializeField] private int currentDay = 0;
 
     public GameObject gameOverButtons = null;
     public TMP_Text gameOverText = null;
@@ -79,7 +78,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         // Setup level based on the day
-        levelManager.SetupLevel(currentDay);
+        levelManager.SetupLevel(LevelSelect.selectedLevel);
 
         audioSource = GetComponent<AudioSource>();
 
@@ -91,8 +90,6 @@ public class GameManager : MonoBehaviour
         pizzaSpawnButton.SetActive(false);
 
         FindObjectOfType<PauseMenu>().SetUp();
-
-        currentDay = LevelSelect.selectedLevel;
 
         MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.BetweenDaysMusic);
     }
@@ -229,16 +226,21 @@ public class GameManager : MonoBehaviour
 
     private void IncreaseDayDifficulty()
     {
-        //TODO call level manager to get the next day
-        // temp setup on day progression
-        currentDay++;
-        LevelSelect.selectedLevel = currentDay;
+        // TODO save other info about how the player did for that day
+        
+        // progress to the next day
+        LevelSelect.selectedLevel++;
+        
+        // updated furthest level if the next level is the furthest the player has gone
+        if (LevelSelect.selectedLevel > PlayerPrefs.GetInt("FurthestLevel", 0))
+        {
+            PlayerPrefs.SetInt("FurthestLevel", LevelSelect.selectedLevel);
+        }
+        
+        
+        // reset and setup for next level
         levelManager.ResetLevel();
-
-        levelManager.SetupLevel(currentDay);
-        //currentGameDay.dayNum++;
-        //currentGameDay.numOfCustomers = (int) (currentGameDay.numOfCustomers * newCustomerPerDayRate);
-        //currentGameDay.moneyGoal = (int) (currentGameDay.moneyGoal * newMoneyGoalPerDayRate);
+        levelManager.SetupLevel(LevelSelect.selectedLevel);
     }
 
     public void RemoveActiveCustomer(Customer customer)
