@@ -15,6 +15,7 @@ TagManager:
   - pauseMenu
   - pointer
   - laundry pod
+  - level
   layers:
   - Default
   - TransparentFX

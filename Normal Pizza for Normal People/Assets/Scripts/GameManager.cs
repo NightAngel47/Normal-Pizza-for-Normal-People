@@ -91,6 +91,8 @@ public class GameManager : MonoBehaviour
         pizzaSpawnButton.SetActive(false);
 
         FindObjectOfType<PauseMenu>().SetUp();
+
+        currentDay = LevelSelect.selectedLevel;
         
         MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.BetweenDaysMusic);
     }
@@ -230,6 +232,7 @@ public class GameManager : MonoBehaviour
         //TODO call level manager to get the next day
         // temp setup on day progression
         currentDay++;
+        LevelSelect.selectedLevel = currentDay;
         levelManager.ResetLevel();
         
         levelManager.SetupLevel(currentDay);

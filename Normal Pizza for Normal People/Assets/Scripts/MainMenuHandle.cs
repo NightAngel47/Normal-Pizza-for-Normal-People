@@ -13,4 +13,7 @@ public class MainMenuHandle : MonoBehaviour
     public GameObject logo;
     public GameObject howToPlay;
     public GameObject credits;
+    public GameObject startLevelButton;
+    public GameObject mainMenuPanel;
+    public GameObject levelSelectPanel;
 }

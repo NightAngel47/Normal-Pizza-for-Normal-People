@@ -37,7 +37,8 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
             panelHandler.GetComponent<MainMenuHandle>().logo.SetActive(true);
             panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(false);
             panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(false);
-            SceneManager.LoadScene("Game");
+            panelHandler.GetComponent<MainMenuHandle>().levelSelectPanel.SetActive(true);
+            panelHandler.GetComponent<MainMenuHandle>().mainMenuPanel.SetActive(false);
         }
 
         if(gameObject.name == "HowToPlay") //main menu
@@ -92,6 +93,24 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
             Time.timeScale = 1;
             FindObjectOfType<PauseMenu>().pausePanel.SetActive(false);
             SceneManager.LoadScene("MainMenu");
+        }
+
+        if(gameObject.CompareTag("level"))
+        {
+            LevelSelect.selectedLevel = gameObject.GetComponent<LevelButtonScript>().GetLevelNum();
+            panelHandler.GetComponent<MainMenuHandle>().startLevelButton.SetActive(true);
+        }
+
+        if(gameObject.name == "Back") //back from level select to main menu
+        {
+            panelHandler.GetComponent<MainMenuHandle>().levelSelectPanel.SetActive(false);
+            panelHandler.GetComponent<MainMenuHandle>().mainMenuPanel.SetActive(true);
+        }
+
+        if(gameObject.name == "StartLevel")
+        {
+
+            SceneManager.LoadScene("Game");
         }
 
         img.color = hover;
