@@ -17,13 +17,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private List<ToppingUpgrades> toppings = new List<ToppingUpgrades>();
 
     //TODO get selected day using save System (playerPrefs as temp)
-    private void SetupLevel(int selectedDay)
+    public void SetupLevel(int selectedDay)
     {
-        // check for valid level num
-        if (selectedDay == 0) return;
-        
-        // setup level data
-        
         // setup day 
         GetComponent<GameManager>().SetDay(levelData.dataArray[selectedDay].Daynum,
                     levelData.dataArray[selectedDay].Totalcustomers,
@@ -59,35 +54,77 @@ public class LevelManager : MonoBehaviour
         {
             toppings[(int) ToppingTypes.Pineapple].HideItem();
         }
+        else
+        {
+            toppings[(int) ToppingTypes.Pineapple].TurnOnUpgrade();
+        }
         
         if (!levelData.dataArray[selectedDay].Laundrypod)
         {
             toppings[(int) ToppingTypes.Laundrypod].HideItem();
+        }
+        else
+        {
+            toppings[(int) ToppingTypes.Laundrypod].TurnOnUpgrade();
         }
         
         if (!levelData.dataArray[selectedDay].Beetroot)
         {
             toppings[(int) ToppingTypes.Beetroot].HideItem();
         }
+        else
+        {
+            toppings[(int) ToppingTypes.Beetroot].TurnOnUpgrade();
+        }
         
         if (!levelData.dataArray[selectedDay].Cactus)
         {
             toppings[(int) ToppingTypes.Cactus].HideItem();
+        }
+        else
+        {
+            toppings[(int) ToppingTypes.Cactus].TurnOnUpgrade();
         }
         
         if (!levelData.dataArray[selectedDay].Starfish)
         {
             toppings[(int) ToppingTypes.Starfish].HideItem();
         }
+        else
+        {
+            toppings[(int) ToppingTypes.Starfish].TurnOnUpgrade();
+        }
 
         if (!levelData.dataArray[selectedDay].Honeycomb)
         {
             toppings[(int) ToppingTypes.Honeycomb].HideItem();
+        }
+        else
+        {
+            toppings[(int) ToppingTypes.Honeycomb].TurnOnUpgrade();
         }
         
         // setup order creation
         GetComponent<OrderCreation>().SetDayToppingValues(levelData.dataArray[selectedDay].Mintopping, 
                                                         levelData.dataArray[selectedDay].Maxtopping, 
                                                         levelData.dataArray[selectedDay].Toppingrange);
+    }
+
+    public void ResetLevel()
+    {
+        List<ItemUpgrades> allItems = new List<ItemUpgrades>();
+        allItems.AddRange(customerLines);
+        allItems.AddRange(ovens);
+        allItems.AddRange(toppings);
+
+        foreach (var item in allItems)
+        {
+            item.ShowItem();
+        }
+
+        OrderCreation orderCreation = FindObjectOfType<OrderCreation>();
+        orderCreation.tierOneIngredients.Clear();
+        orderCreation.tierTwoIngredients.Clear();
+        orderCreation.tierThreeIngredients.Clear();
     }
 }

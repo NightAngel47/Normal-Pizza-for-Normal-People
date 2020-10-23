@@ -646,7 +646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerLine: {fileID: 8357020710274601803}
   moneyTracker: {fileID: 4954694665190826298}
-  upgradeSystem: {fileID: 0}
+  levelManager: {fileID: 53617022}
   currentDayText: {fileID: 0}
   currentDayTime: {fileID: 0}
   currentDayProgressBar: {fileID: 0}
@@ -657,6 +657,7 @@ MonoBehaviour:
     dayLength: 0
     moneyGoal: 0
   currentDayTimer: 0
+  currentDay: 0
   gameOverButtons: {fileID: 0}
   gameOverText: {fileID: 0}
   pointer: {fileID: 0}
@@ -723,22 +724,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c53ba91d1d1e241bffc4170e3ebc4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allPizzaIngredients:
-  - {fileID: 7516945271227501687, guid: 44021f337208aae4785144ea1442ecf3, type: 3}
-  - {fileID: 9040540506502419961, guid: 7d1e6b0d42121f24d9fc188a3f5b8555, type: 3}
-  - {fileID: 9040540506502419961, guid: 7d1e6b0d42121f24d9fc188a3f5b8555, type: 3}
-  - {fileID: 9040540506502419961, guid: 7d1e6b0d42121f24d9fc188a3f5b8555, type: 3}
-  - {fileID: 9040540506502419961, guid: 7d1e6b0d42121f24d9fc188a3f5b8555, type: 3}
-  - {fileID: 9040540506502419961, guid: 7d1e6b0d42121f24d9fc188a3f5b8555, type: 3}
-  tierOneIngredients:
-  - {fileID: 7516945271227501687, guid: 44021f337208aae4785144ea1442ecf3, type: 3}
-  - {fileID: 9040540506502419961, guid: 7d1e6b0d42121f24d9fc188a3f5b8555, type: 3}
-  tierTwoIngredients:
-  - {fileID: 4725293823596819026, guid: 3d48b0aae803e044598a55b38236f832, type: 3}
-  - {fileID: 446608974989589850, guid: 255f257408eae6749a21e391f8ea83a4, type: 3}
-  tierThreeIngredients:
-  - {fileID: 9040540506502419961, guid: 89a4299c38027a147b5fe3806ae29d5b, type: 3}
-  - {fileID: 9040540506502419961, guid: bf5287467bb620b48b0b7a30d3c36321, type: 3}
+  tierOneIngredients: []
+  tierTwoIngredients: []
+  tierThreeIngredients: []
   minTotalToppingsPerOrder: 5
   maxTotalToppingsPerOrder: 9
   rangeLevel: 0

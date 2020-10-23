@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private CustomerLine customerLine = null;
     [SerializeField] private MoneyTracker moneyTracker = null;
-    [SerializeField] private UpgradeSystem upgradeSystem = null;
+    //[SerializeField] private UpgradeSystem upgradeSystem = null;
+    [SerializeField] private LevelManager levelManager;
     private AudioSource audioSource = null;
 
     [Header("Day Canvas UI")]
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
     //[SerializeField, Tooltip("The rate that each new day will increase its money goal."), Range(1f, 2f)] private float newMoneyGoalPerDayRate = 1.5f;
     [HideInInspector] public Day currentGameDay = new Day();
     [HideInInspector] public float currentDayTimer = 0f;
+    [SerializeField] private int currentDay = 0;
 
     public GameObject gameOverButtons = null;
     public TMP_Text gameOverText = null;
@@ -76,6 +78,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        // Setup level based on the day
+        levelManager.SetupLevel(currentDay);
+        
         audioSource = GetComponent<AudioSource>();
         
         endOfDaySummary.SetActive(false);
@@ -153,9 +158,9 @@ public class GameManager : MonoBehaviour
 
         if (moneyTracker.GetCurrentDayAmount() >= currentGameDay.moneyGoal)
         {
-            upgradeSystem.EnterUpgradeMode();
+            //upgradeSystem.EnterUpgradeMode();
 
-            yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
+            //yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
 
             IncreaseDayDifficulty();
 
@@ -223,6 +228,11 @@ public class GameManager : MonoBehaviour
     private void IncreaseDayDifficulty()
     {
         //TODO call level manager to get the next day
+        // temp setup on day progression
+        currentDay++;
+        levelManager.ResetLevel();
+        
+        levelManager.SetupLevel(currentDay);
         //currentGameDay.dayNum++;
         //currentGameDay.numOfCustomers = (int) (currentGameDay.numOfCustomers * newCustomerPerDayRate);
         //currentGameDay.moneyGoal = (int) (currentGameDay.moneyGoal * newMoneyGoalPerDayRate);

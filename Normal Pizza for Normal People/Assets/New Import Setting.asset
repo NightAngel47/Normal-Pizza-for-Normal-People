@@ -50,6 +50,10 @@ MonoBehaviour:
     name: MaxTopping
     isEnable: 0
     isArray: 0
+  - type: 3
+    name: ToppingRange
+    isEnable: 0
+    isArray: 0
   - type: 8
     name: Pineapple
     isEnable: 0
@@ -72,10 +76,6 @@ MonoBehaviour:
     isArray: 0
   - type: 8
     name: Honeycomb
-    isEnable: 0
-    isArray: 0
-  - type: 3
-    name: ToppingRange
     isEnable: 0
     isArray: 0
   excelFilePath: Assets/Levels.xlsx
