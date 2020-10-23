@@ -45,5 +45,5 @@ Material:
     - Vector1_86B9451: 0.1
     m_Colors:
     - Color_2EC605AD: {r: 2.143547, g: 1.53831, b: 0, a: 0}
-    - Color_9A23840F: {r: 0, g: 1, b: 0.96764225, a: 1}
+    - Color_9A23840F: {r: 0, g: 0.32501507, b: 1, a: 1}
     - Color_AFD9DFA1: {r: 1, g: 1, b: 1, a: 0}
