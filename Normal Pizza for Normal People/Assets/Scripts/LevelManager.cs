@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour
     enum ToppingTypes {Pineapple, Laundrypod, Beetroot, Cactus, Starfish, Honeycomb}
     [SerializeField] private List<ToppingUpgrades> toppings = new List<ToppingUpgrades>();
 
+    [SerializeField] private CheeseUpgrade cheesePress;
+    
     //TODO get selected day using save System (playerPrefs as temp)
     public void SetupLevel(int selectedDay)
     {
@@ -102,6 +104,12 @@ public class LevelManager : MonoBehaviour
         else
         {
             toppings[(int) ToppingTypes.Honeycomb].TurnOnUpgrade();
+        }
+        
+        // setup cheese press
+        if (!levelData.dataArray[selectedDay].Cheesepress)
+        {
+            cheesePress.HideItem();   
         }
         
         // setup order creation

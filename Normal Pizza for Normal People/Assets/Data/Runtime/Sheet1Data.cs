@@ -68,4 +68,8 @@ public class Sheet1Data
   bool honeycomb;
   public bool Honeycomb { get {return honeycomb; } set { this.honeycomb = value;} }
   
+  [SerializeField]
+  bool cheesepress;
+  public bool Cheesepress { get {return cheesepress; } set { this.cheesepress = value;} }
+  
 }
