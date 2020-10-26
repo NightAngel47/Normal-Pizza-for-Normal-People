@@ -140,13 +140,13 @@ public class OrderCreation : MonoBehaviour
                     if (tierRand < 50) //tier 1
                     {
                         oneTemp = PickTopping(oneTemp); //which tier one topping
-                        amount = PickToppingAmount(1, totalToppingsPerPizza); //how many of that tier one topping
+                        amount = PickToppingAmount(totalToppingsPerPizza, i); //how many of that tier one topping
                     }
 
                     if (tierRand >= 50 && tierRand <= 99) //tier 2
                     {
                         twoTemp = PickTopping(twoTemp);
-                        amount = PickToppingAmount(2, totalToppingsPerPizza);
+                        amount = PickToppingAmount(totalToppingsPerPizza, i);
                     }
                     break;
                 case 2: //all 3 tiers
@@ -155,24 +155,24 @@ public class OrderCreation : MonoBehaviour
                     if (tierRand < 30) //tier 1
                     {
                         oneTemp = PickTopping(oneTemp); //which tier one topping
-                        amount = PickToppingAmount(1, totalToppingsPerPizza); //how many of that tier one topping
+                        amount = PickToppingAmount(totalToppingsPerPizza, i); //how many of that tier one topping
                     }
 
                     if (tierRand >= 30 && tierRand < 60) //tier 2
                     {
                         twoTemp = PickTopping(twoTemp);
-                        amount = PickToppingAmount(2, totalToppingsPerPizza);
+                        amount = PickToppingAmount(totalToppingsPerPizza, i);
                     }
 
                     if (tierRand >= 60 && tierRand <= 99) //tier 3
                     {
                         threeTemp = PickTopping(threeTemp);
-                        amount = PickToppingAmount(3, totalToppingsPerPizza);
+                        amount = PickToppingAmount(totalToppingsPerPizza, i);
                     }
                     break;
                 case 3: //just tier 2
                     twoTemp = PickTopping(twoTemp);
-                    amount = PickToppingAmount(2, totalToppingsPerPizza);
+                    amount = PickToppingAmount(totalToppingsPerPizza, i);
                     break;
             }
 
