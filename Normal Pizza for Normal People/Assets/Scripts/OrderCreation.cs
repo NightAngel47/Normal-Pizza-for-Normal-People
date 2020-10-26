@@ -105,7 +105,7 @@ public class OrderCreation : MonoBehaviour
         int amount = 0;
         int forLoopRuns = tierOneIngredients.Count + tierTwoIngredients.Count + tierThreeIngredients.Count;
         differentToppings = UnityEngine.Random.Range(1, ((oneTemp.Count + twoTemp.Count + threeTemp.Count) + 1));
-        Debug.Log(differentToppings);
+        //Debug.Log(differentToppings);
 
         if(oneTemp.Count > 0 && twoTemp.Count == 0 && threeTemp.Count == 0)
         {
@@ -132,7 +132,7 @@ public class OrderCreation : MonoBehaviour
             {
                 case 0: //just tier 1
                     oneTemp = PickTopping(oneTemp); //which tier one topping
-                    amount = PickToppingAmount(1, totalToppingsPerPizza); //how many of that tier one topping
+                    amount = PickToppingAmount(totalToppingsPerPizza, i); //how many of that tier one topping
                     break;
                 case 1: //just tier 1 and 2
                     tierRand = UnityEngine.Random.Range(0, 100);
