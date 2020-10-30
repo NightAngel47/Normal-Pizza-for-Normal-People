@@ -82,6 +82,10 @@ MonoBehaviour:
     name: CheesePress
     isEnable: 0
     isArray: 0
+  - type: 3
+    name: Cheeses
+    isEnable: 0
+    isArray: 0
   excelFilePath: Assets/Levels.xlsx
   SheetNames:
   - Sheet1

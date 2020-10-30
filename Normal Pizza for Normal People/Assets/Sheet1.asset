@@ -31,6 +31,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 2
     scoregoal: 400
     daylength: 90
@@ -47,6 +48,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 3
     scoregoal: 550
     daylength: 100
@@ -63,6 +65,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 4
     scoregoal: 700
     daylength: 100
@@ -79,6 +82,7 @@ MonoBehaviour:
     starfish: 1
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 5
     scoregoal: 900
     daylength: 100
@@ -86,7 +90,7 @@ MonoBehaviour:
     numcustomerlines: 3
     numofovens: 2
     mintopping: 3
-    maxtopping: 10
+    maxtopping: 9
     toppingrange: 0
     pineapple: 1
     laundrypod: 1
@@ -95,6 +99,7 @@ MonoBehaviour:
     starfish: 1
     honeycomb: 1
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -111,6 +116,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -127,6 +133,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -143,6 +150,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -159,6 +167,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -175,6 +184,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -191,6 +201,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -207,6 +218,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -223,6 +235,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -239,6 +252,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -255,6 +269,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -271,6 +286,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -287,6 +303,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -303,6 +320,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -319,6 +337,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -335,6 +354,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -351,6 +371,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -367,6 +388,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -383,6 +405,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -399,6 +422,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -415,6 +439,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -431,6 +456,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -447,6 +473,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -463,6 +490,24 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
+  - daynum: 999
+    scoregoal: 1
+    daylength: 200
+    totalcustomers: 50
+    numcustomerlines: 3
+    numofovens: 2
+    mintopping: 1
+    maxtopping: 9
+    toppingrange: 1
+    pineapple: 1
+    laundrypod: 1
+    cactus: 1
+    beetroot: 1
+    starfish: 1
+    honeycomb: 1
+    cheesepress: 1
+    cheeses: 3
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -479,6 +524,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -495,6 +541,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -511,6 +558,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -527,6 +575,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
     daylength: 0
@@ -543,35 +592,4 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
-  - daynum: 0
-    scoregoal: 0
-    daylength: 0
-    totalcustomers: 0
-    numcustomerlines: 0
-    numofovens: 0
-    mintopping: 0
-    maxtopping: 0
-    toppingrange: 0
-    pineapple: 0
-    laundrypod: 0
-    cactus: 0
-    beetroot: 0
-    starfish: 0
-    honeycomb: 0
-    cheesepress: 0
-  - daynum: 0
-    scoregoal: 0
-    daylength: 0
-    totalcustomers: 0
-    numcustomerlines: 0
-    numofovens: 0
-    mintopping: 0
-    maxtopping: 0
-    toppingrange: 0
-    pineapple: 0
-    laundrypod: 0
-    cactus: 0
-    beetroot: 0
-    starfish: 0
-    honeycomb: 0
-    cheesepress: 0
+    cheeses: 0
