@@ -16,7 +16,7 @@ MonoBehaviour:
   WorksheetName: Sheet1
   dataArray:
   - daynum: 1
-    scoregoal: 500
+    scoregoal: 300
     daylength: 90
     totalcustomers: 15
     numcustomerlines: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
     honeycomb: 0
     cheesepress: 0
   - daynum: 2
-    scoregoal: 600
+    scoregoal: 400
     daylength: 90
     totalcustomers: 15
     numcustomerlines: 2
@@ -48,7 +48,7 @@ MonoBehaviour:
     honeycomb: 0
     cheesepress: 0
   - daynum: 3
-    scoregoal: 600
+    scoregoal: 550
     daylength: 100
     totalcustomers: 20
     numcustomerlines: 2
@@ -64,12 +64,12 @@ MonoBehaviour:
     honeycomb: 0
     cheesepress: 0
   - daynum: 4
-    scoregoal: 800
+    scoregoal: 700
     daylength: 100
     totalcustomers: 20
     numcustomerlines: 3
     numofovens: 2
-    mintopping: 1
+    mintopping: 2
     maxtopping: 8
     toppingrange: 0
     pineapple: 1
@@ -80,12 +80,12 @@ MonoBehaviour:
     honeycomb: 0
     cheesepress: 0
   - daynum: 5
-    scoregoal: 1000
+    scoregoal: 900
     daylength: 100
     totalcustomers: 25
     numcustomerlines: 3
     numofovens: 2
-    mintopping: 1
+    mintopping: 3
     maxtopping: 10
     toppingrange: 0
     pineapple: 1
@@ -95,7 +95,7 @@ MonoBehaviour:
     starfish: 1
     honeycomb: 1
     cheesepress: 0
-  - daynum: 6
+  - daynum: 0
     scoregoal: 0
     daylength: 0
     totalcustomers: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
-  - daynum: 7
+  - daynum: 0
     scoregoal: 0
     daylength: 0
     totalcustomers: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
-  - daynum: 8
+  - daynum: 0
     scoregoal: 0
     daylength: 0
     totalcustomers: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
-  - daynum: 9
+  - daynum: 0
     scoregoal: 0
     daylength: 0
     totalcustomers: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
     starfish: 0
     honeycomb: 0
     cheesepress: 0
-  - daynum: 10
+  - daynum: 0
     scoregoal: 0
     daylength: 0
     totalcustomers: 0

@@ -24,6 +24,8 @@ public class OrderCreation : MonoBehaviour
     [SerializeField] private List<MaxIngredientAmount> ingredientMax = new List<MaxIngredientAmount>();
     private PizzaIngredient pickedTopping;
     private bool dont = false;
+    private int tiersAvailable;
+    private int differentToppings;
 
     [Serializable]
     public struct TotalToppingCurves
@@ -102,145 +104,81 @@ public class OrderCreation : MonoBehaviour
         int tierRand;
         int amount = 0;
         int forLoopRuns = tierOneIngredients.Count + tierTwoIngredients.Count + tierThreeIngredients.Count;
+        differentToppings = UnityEngine.Random.Range(1, ((oneTemp.Count + twoTemp.Count + threeTemp.Count) + 1));
+        //Debug.Log(differentToppings);
 
-        for (int i = 0; i < forLoopRuns; ++i) //Potential max amount of different ingredients i.e. 6 toppings 6 different options
+        if(oneTemp.Count > 0 && twoTemp.Count == 0 && threeTemp.Count == 0)
+        {
+            tiersAvailable = 0;
+        }
+        if (oneTemp.Count > 0 && twoTemp.Count > 0 && threeTemp.Count == 0)
+        {
+            tiersAvailable = 1;
+        }
+        if (oneTemp.Count > 0 && twoTemp.Count > 0 && threeTemp.Count > 0)
+        {
+            tiersAvailable = 2;
+        }
+        if (oneTemp.Count == 0 && twoTemp.Count > 0 && threeTemp.Count == 0)
+        {
+            tiersAvailable = 3;
+        }
+
+        for (int i = 0; i < differentToppings; ++i) //Potential max amount of different ingredients i.e. 6 toppings 6 different options
         {
             dont = false;
 
-            switch (i)
+            switch(tiersAvailable)
             {
-                case 0:
+                case 0: //just tier 1
+                    oneTemp = PickTopping(oneTemp); //which tier one topping
+                    amount = PickToppingAmount(totalToppingsPerPizza, i); //how many of that tier one topping
+                    break;
+                case 1: //just tier 1 and 2
                     tierRand = UnityEngine.Random.Range(0, 100);
-                    
+
+                    if (tierRand < 50) //tier 1
+                    {
+                        oneTemp = PickTopping(oneTemp); //which tier one topping
+                        amount = PickToppingAmount(totalToppingsPerPizza, i); //how many of that tier one topping
+                    }
+
+                    if (tierRand >= 50 && tierRand <= 99) //tier 2
+                    {
+                        twoTemp = PickTopping(twoTemp);
+                        amount = PickToppingAmount(totalToppingsPerPizza, i);
+                    }
+                    break;
+                case 2: //all 3 tiers
+                    tierRand = UnityEngine.Random.Range(0, 100);
+
                     if (tierRand < 30) //tier 1
                     {
                         oneTemp = PickTopping(oneTemp); //which tier one topping
-                        amount = PickToppingAmount(1, totalToppingsPerPizza); //how many of that tier one topping
+                        amount = PickToppingAmount(totalToppingsPerPizza, i); //how many of that tier one topping
                     }
 
-                    if(tierRand >= 30 && tierRand < 60) //tier 2
+                    if (tierRand >= 30 && tierRand < 60) //tier 2
                     {
                         twoTemp = PickTopping(twoTemp);
-                        amount = PickToppingAmount(2, totalToppingsPerPizza);
+                        amount = PickToppingAmount(totalToppingsPerPizza, i);
                     }
 
-                    if(tierRand >= 60 && tierRand <= 99) //tier 3
+                    if (tierRand >= 60 && tierRand <= 99) //tier 3
                     {
                         threeTemp = PickTopping(threeTemp);
-                        amount = PickToppingAmount(3, totalToppingsPerPizza);
+                        amount = PickToppingAmount(totalToppingsPerPizza, i);
                     }
-                    
                     break;
-                case 1:
-                    tierRand = UnityEngine.Random.Range(0, 100);
-
-                    if (tierRand < 30)
-                    {
-                        oneTemp = PickTopping(oneTemp);
-                        amount = PickToppingAmount(1, totalToppingsPerPizza);
-                    }
-
-                    if (tierRand >= 30 && tierRand < 60)
-                    {
-                        twoTemp = PickTopping(twoTemp);
-                        amount = PickToppingAmount(2, totalToppingsPerPizza);
-                    }
-
-                    if (tierRand >= 60 && tierRand <= 99)
-                    {
-                        threeTemp = PickTopping(threeTemp);
-                        amount = PickToppingAmount(3, totalToppingsPerPizza);
-                    }
-
+                case 3: //just tier 2
+                    twoTemp = PickTopping(twoTemp);
+                    amount = PickToppingAmount(totalToppingsPerPizza, i);
                     break;
-                case 2:
-                    tierRand = UnityEngine.Random.Range(0, 100);
+            }
 
-                    if (tierRand < 30)
-                    {
-                        oneTemp = PickTopping(oneTemp);
-                        amount = PickToppingAmount(1, totalToppingsPerPizza);
-                    }
-
-                    if (tierRand >= 30 && tierRand < 60)
-                    {
-                        twoTemp = PickTopping(twoTemp);
-                        amount = PickToppingAmount(2, totalToppingsPerPizza);
-                    }
-
-                    if (tierRand >= 60 && tierRand <= 99)
-                    {
-                        threeTemp = PickTopping(threeTemp);
-                        amount = PickToppingAmount(3, totalToppingsPerPizza);
-                    }
-
-                    break;
-                case 3:
-                    tierRand = UnityEngine.Random.Range(0, 100);
-
-                    if (tierRand < 30)
-                    {
-                        oneTemp = PickTopping(oneTemp);
-                        amount = PickToppingAmount(1, totalToppingsPerPizza);
-                    }
-
-                    if (tierRand >= 30 && tierRand < 60)
-                    {
-                        twoTemp = PickTopping(twoTemp);
-                        amount = PickToppingAmount(2, totalToppingsPerPizza);
-                    }
-
-                    if (tierRand >= 60 && tierRand <= 99)
-                    {
-                        threeTemp = PickTopping(threeTemp);
-                        amount = PickToppingAmount(3, totalToppingsPerPizza);
-                    }
-
-                    break;
-                case 4:
-                    tierRand = UnityEngine.Random.Range(0, 100);
-
-                    if (tierRand < 30)
-                    {
-                        oneTemp = PickTopping(oneTemp);
-                        amount = PickToppingAmount(1, totalToppingsPerPizza);
-                    }
-
-                    if (tierRand >= 30 && tierRand < 60)
-                    {
-                        twoTemp = PickTopping(twoTemp);
-                        amount = PickToppingAmount(2, totalToppingsPerPizza);
-                    }
-
-                    if (tierRand >= 60 && tierRand <= 99)
-                    {
-                        threeTemp = PickTopping(threeTemp);
-                        amount = PickToppingAmount(3, totalToppingsPerPizza);
-                    }
-
-                    break;
-                case 5:
-                    tierRand = UnityEngine.Random.Range(0, 100);
-
-                    if (tierRand < 30)
-                    {
-                        oneTemp = PickTopping(oneTemp);
-                        amount = PickToppingAmount(1, totalToppingsPerPizza);
-                    }
-
-                    if (tierRand >= 30 && tierRand < 60)
-                    {
-                        twoTemp = PickTopping(twoTemp);
-                        amount = PickToppingAmount(2, totalToppingsPerPizza);
-                    }
-
-                    if (tierRand >= 60 && tierRand <= 99)
-                    {
-                        threeTemp = PickTopping(threeTemp);
-                        amount = PickToppingAmount(3, totalToppingsPerPizza);
-                    }
-
-                    break;
+            if(amount == 0)
+            {
+                amount = totalToppingTemp;
             }
 
             if (totalToppingTemp - amount < 0) //the amount of toppings to be added is greater than what is available on the pizza
@@ -250,18 +188,16 @@ public class OrderCreation : MonoBehaviour
             
             totalToppingTemp -= amount;
 
-            if (dont == false)
+            for (int k = 0; k < amount; k++)
             {
-                for (int k = 0; k < amount; k++)
-                {
-                    ingredients.Add(pickedTopping);
-                }
+                ingredients.Add(pickedTopping);
             }
 
-            if(i == forLoopRuns - 1 && totalToppingTemp != 0)
-            {
-                i = 0;
-            }
+
+            //if(i == forLoopRuns - 1 && totalToppingTemp != 0)
+            //{
+            //    i = 0;
+            //}
         }
 
         return ingredients;
@@ -284,26 +220,36 @@ public class OrderCreation : MonoBehaviour
         return ingredientList;
     }
 
-    private int PickToppingAmount(int tier, int totalToppings)
+    private int PickToppingAmount(int totalToppings, int i)
     {
         int result = 0;
-        
-        if (dont == false)
-        {
-            int i = (totalToppings / 2) + (totalToppings % 2);
 
-            switch (tier)
-            {
-                case 1:
-                    result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierOne + 1));
-                    break;
-                case 2:
-                    result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierTwo + 1));
-                    break;
-                case 3:
-                    result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierThree + 1));
-                    break;
-            }
+        //if (dont == false)
+        //{
+        //    int i = (totalToppings / 2) + (totalToppings % 2);
+
+        //    switch (tier)
+        //    {
+        //        case 1:
+        //            result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierOne + 1));
+        //            break;
+        //        case 2:
+        //            result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierTwo + 1));
+        //            break;
+        //        case 3:
+        //            result = UnityEngine.Random.Range(1, (ingredientMax[i - 1].tierThree + 1));
+        //            break;
+        //    }
+        //}
+
+        if (differentToppings - i == 1)
+        {
+            result = 0;
+        }
+
+        else
+        {
+            result = UnityEngine.Random.Range(1, (totalToppings / 2));
         }
         
         return result;

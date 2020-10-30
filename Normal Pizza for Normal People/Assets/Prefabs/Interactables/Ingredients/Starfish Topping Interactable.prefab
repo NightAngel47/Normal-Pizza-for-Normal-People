@@ -410,8 +410,7 @@ PrefabInstance:
         type: 3}
       propertyPath: mat
       value: 
-      objectReference: {fileID: -876546973899608171, guid: e7ec257a567adf04f8c6e25e6ec0810c,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: 46e1980ae70410d42aca91463c862bed, type: 2}
     - target: {fileID: 3733129861206303584, guid: cce7d3133eca42c4487ecfbde06776f1,
         type: 3}
       propertyPath: overridePreviewRightHandPrefab
@@ -637,8 +636,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onHandHoverEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: -876546973899608171, guid: e7ec257a567adf04f8c6e25e6ec0810c,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: 46e1980ae70410d42aca91463c862bed, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cce7d3133eca42c4487ecfbde06776f1, type: 3}
 --- !u!4 &3992555147375518759 stripped
