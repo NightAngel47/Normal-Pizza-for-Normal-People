@@ -19,6 +19,9 @@ public class Customer : MonoBehaviour
     public CustomerAudio customerAudio = null;
     public CustomerUI customerUI = null;
     public CustomerAI customerAI = null;
+
+    public List<Material> faces = new List<Material>(); //neutral, good, bad, waiting, giving order
+    private GameObject head;
     
     private Order order = null;
     
@@ -46,6 +49,8 @@ public class Customer : MonoBehaviour
         customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Walking);
         
         currentOrderTime = startOrderTime + 1;
+
+        head = gameObject.transform.GetChild(0).gameObject.transform.GetChild(3).gameObject;
     }
 
     /// <summary>
@@ -66,6 +71,7 @@ public class Customer : MonoBehaviour
             transform.rotation = other.transform.rotation;
             customerAI.ChangeCustomerAIState(CustomerAI.CustomerAIStates.Stopped);
             customerUI.ToggleOrderUIState();
+            head.GetComponent<MeshRenderer>().material = faces[4];
             customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.AtCounter);
             StartCoroutine(OrderTimerCountDown());
         }
@@ -74,6 +80,17 @@ public class Customer : MonoBehaviour
         if (other.transform.parent.TryGetComponent(out PizzaBehaviour pizza))
         {
             int pizzaProfit = CheckDeliveredPizza(pizza);
+
+            if(pizzaProfit <= 0)
+            {
+                head.GetComponent<MeshRenderer>().material = faces[2];
+            }
+
+            if(pizzaProfit > 0)
+            {
+                head.GetComponent<MeshRenderer>().material = faces[1];
+            }
+
             moneyTracker.CustomerChangeMoney(pizzaProfit);
             customerUI.ShowMoneyAmount(ref pizzaProfit);
             Destroy(pizza.gameObject);
@@ -142,6 +159,16 @@ public class Customer : MonoBehaviour
         currentOrderTime -= Time.deltaTime;
         if (currentOrderTime > 0)
         {
+            if(startOrderTime - currentOrderTime >= 5 && startOrderTime - currentOrderTime < 15)
+            {
+                head.GetComponent<MeshRenderer>().material = faces[0];
+            }
+
+            if(startOrderTime - currentOrderTime >= 15)
+            {
+                head.GetComponent<MeshRenderer>().material = faces[3];
+            }
+
             if (currentOrderTime <= 10)
             {
                 customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.OrderEndingSoon);
@@ -151,6 +178,7 @@ public class Customer : MonoBehaviour
         }
         else // order ran out of time and customer left
         {
+            head.GetComponent<MeshRenderer>().material = faces[2];
             moneyTracker.CustomerChangeMoney((int) -startOrderTime);
             customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.BadOrder);
             activeOrder = false;
