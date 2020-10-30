@@ -235,7 +235,7 @@ public class OrderCreation : MonoBehaviour
 
         if (FindObjectOfType<LevelManager>().levelData.dataArray[LevelSelect.selectedLevel].Cheesepress == true)
         {
-            int cheeses = 0;//FindObjectOfType<LevelManager>().levelData.dataArray[LevelSelect.selectedLevel].Cheeses;
+            int cheeses = FindObjectOfType<LevelManager>().levelData.dataArray[LevelSelect.selectedLevel].Cheeses;
             int randCheese;
 
             switch (cheeses)
