@@ -26,16 +26,25 @@ public class LevelManager : MonoBehaviour
                     levelData.dataArray[selectedDay].Totalcustomers,
                     levelData.dataArray[selectedDay].Daylength, 
                     levelData.dataArray[selectedDay].Scoregoal);
-        
+
+        CustomerLine customerLine = FindObjectOfType<CustomerLine>();
         // setup customer lines
         switch (levelData.dataArray[selectedDay].Numcustomerlines)
         {
             case 0:
+                customerLine.AddNewCustomerLine(customerLines[(int) CustomerLinePoses.Center].GetComponent<CustomerLinePos>());
                 customerLines[(int) CustomerLinePoses.Right].HideItem();
                 customerLines[(int) CustomerLinePoses.Left].HideItem();
                 break;
             case 1:
+                customerLine.AddNewCustomerLine(customerLines[(int) CustomerLinePoses.Center].GetComponent<CustomerLinePos>());
+                customerLine.AddNewCustomerLine(customerLines[(int) CustomerLinePoses.Right].GetComponent<CustomerLinePos>());
                 customerLines[(int) CustomerLinePoses.Left].HideItem();
+                break;
+            default:
+                customerLine.AddNewCustomerLine(customerLines[(int) CustomerLinePoses.Center].GetComponent<CustomerLinePos>());
+                customerLine.AddNewCustomerLine(customerLines[(int) CustomerLinePoses.Right].GetComponent<CustomerLinePos>());
+                customerLine.AddNewCustomerLine(customerLines[(int) CustomerLinePoses.Left].GetComponent<CustomerLinePos>());
                 break;
         }
         

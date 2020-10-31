@@ -72,4 +72,8 @@ public class Sheet1Data
   bool cheesepress;
   public bool Cheesepress { get {return cheesepress; } set { this.cheesepress = value;} }
   
+  [SerializeField]
+  int cheeses;
+  public int Cheeses { get {return cheeses; } set { this.cheeses = value;} }
+  
 }

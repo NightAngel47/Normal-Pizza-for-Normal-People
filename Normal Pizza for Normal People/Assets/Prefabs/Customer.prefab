@@ -83,6 +83,12 @@ MonoBehaviour:
   customerAudio: {fileID: 6205831059226573242}
   customerUI: {fileID: 7108159095525338633}
   customerAI: {fileID: 3132741235551514967}
+  faces:
+  - {fileID: 2100000, guid: b23ebecd1e4e612498f5cdb1ef01c28d, type: 2}
+  - {fileID: 2100000, guid: 45edddc081cd5a541b917a9e3e2e6497, type: 2}
+  - {fileID: 2100000, guid: 9b01d7c0e4dfa854eb5dfe2624e27c0f, type: 2}
+  - {fileID: 2100000, guid: 052aed6b4ff01ae4c8764a22d27a7fad, type: 2}
+  - {fileID: -653050824427989372, guid: d23a4b9386e0d8042a995c1f12ee41b6, type: 3}
   startOrderTime: 45
   customerLeaveDelayTime: 1
 --- !u!114 &7108159095525338633
@@ -453,7 +459,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5993cd5e912f66443a40b87753808e94, type: 2}
+      objectReference: {fileID: 2100000, guid: 11ae96cbfc7187349b6cbfa3c040b687, type: 2}
     - target: {fileID: -4895130862930413786, guid: d318cd99163420e4f990c98cd0a9b97d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
