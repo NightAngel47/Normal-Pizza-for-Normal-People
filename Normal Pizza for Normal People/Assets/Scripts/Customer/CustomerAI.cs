@@ -13,12 +13,11 @@ using UnityEngine.AI;
 
 public class CustomerAI : MonoBehaviour
 {
-
     private NavMeshAgent agent = null;
     
     public enum CustomerAIStates {Entering, Leaving, Stopped}
 
-    public CustomerAIStates currentCustomerAIState { get; private set; } = CustomerAIStates.Entering;
+    public CustomerAIStates CurrentCustomerAIState { get; private set; } = CustomerAIStates.Entering;
     
     private Vector3 targetLinePos = Vector3.zero;
     private Vector3 endPos = Vector3.zero;
@@ -33,11 +32,11 @@ public class CustomerAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentCustomerAIState != CustomerAIStates.Leaving)
+        if (CurrentCustomerAIState != CustomerAIStates.Leaving)
         {
             if (Physics.SphereCast(transform.position, 0.5f, transform.forward, out RaycastHit hit, 0.5f))
             {
-                if (hit.collider.TryGetComponent(out CustomerAI customerAI) && currentCustomerAIState != CustomerAIStates.Leaving)
+                if (hit.collider.TryGetComponent(out CustomerAI customerAI) && customerAI.CurrentCustomerAIState != CustomerAIStates.Leaving)
                 {
                     agent.SetDestination(transform.position);
                 }
@@ -51,7 +50,7 @@ public class CustomerAI : MonoBehaviour
 
     public void ChangeCustomerAIState(CustomerAIStates state)
     {
-        currentCustomerAIState = state;
+        CurrentCustomerAIState = state;
     }
     
     public void SetTargetLine(Vector3 customerLinePos)

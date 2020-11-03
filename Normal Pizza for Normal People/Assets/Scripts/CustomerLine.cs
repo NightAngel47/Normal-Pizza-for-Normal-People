@@ -8,6 +8,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,10 +20,10 @@ public class CustomerLine : MonoBehaviour
     //[SerializeField] private TMP_Text currentDayCustomerText;
     private int currentDayCustomerServed = 0;
     private int currentDayNumOfCustomers = 0;
-    private int currentAmountOfCustomersInShop = 0;
     [SerializeField] private GameObject customerPrefab = null;
     [SerializeField] private Transform customerSpawnPos = null;
     [SerializeField] private List<CustomerLinePos> customerLines = new List<CustomerLinePos>();
+    private List<Customer> customersWaiting = new List<Customer>();
     
     void Start()
     {
@@ -41,61 +42,72 @@ public class CustomerLine : MonoBehaviour
 
     private IEnumerator NextCustomer()
     {
-        yield return new WaitUntil(() => currentAmountOfCustomersInShop < customerLines.Count * 3);
-
-        if (gameManager.currentDayTimer < 1 || customerOrders.Count <= 0) yield break;
+        Customer nextCustomer = CustomerToMove();
         
-        currentAmountOfCustomersInShop++;
-            
-        var newCustomer = Instantiate(customerPrefab, customerSpawnPos.position, customerSpawnPos.rotation).GetComponent<Customer>();
-        newCustomer.SetOrder(customerOrders[0]);
-        customerOrders.Remove(customerOrders[0]);
-
-        foreach (var line in customerLines)
+        // if there is not a customer to move, spawn a new one if room in shop
+        if (nextCustomer == null && customersWaiting.Count < customerLines.Count * 2)
         {
-            Vector3 customerTargetPos;
+            Debug.Log("Spawning new Customer");
             
-            if (line.isOpen)
-            {
-                line.isOpen = false;
-                customerTargetPos = customerLines[customerLines.IndexOf(line)].transform.position;
-                newCustomer.SetTargetLine(customerTargetPos);
-                break;
-            }
-
-            if(line == customerLines[customerLines.Count - 1])
-            {
-                customerTargetPos = customerLines[Random.Range(0, customerLines.Count)].transform.position;
-                newCustomer.SetTargetLine(customerTargetPos);
-                break;
-            }
+            nextCustomer = Instantiate(customerPrefab, customerSpawnPos.position, customerSpawnPos.rotation).GetComponent<Customer>();
+            customersWaiting.Add(nextCustomer);
+            nextCustomer.SetOrder(customerOrders[0]);
+            customerOrders.Remove(customerOrders[0]);
+        }
+        else
+        {
+            Debug.Log("Moving existing Customer");
         }
 
-        yield return new WaitForSeconds(gameManager.currentGameDay.dayLength / gameManager.currentGameDay.numOfCustomers);
+        if (nextCustomer != null)
+        {
+            // find shortest line
+            CustomerLinePos shortestLine = customerLines[0];
+            foreach (var line in customerLines.Where(line => line.customersInLine <= shortestLine.customersInLine))
+            {
+                shortestLine = line;
+            }
         
+            // send customer to shortest line
+            nextCustomer.SetTargetLine(shortestLine.transform.position);
+            shortestLine.customersInLine++;
+            
+            yield return new WaitForSeconds(gameManager.currentGameDay.dayLength / gameManager.currentGameDay.numOfCustomers);
+        }
+
+        yield return new WaitForEndOfFrame();
+        
+        // continue only if more day/customer left
         if (gameManager.currentDayTimer > 1 && customerOrders.Count > 0)
         {
             StartCoroutine(NextCustomer());
         }
     }
 
-    public void IncreaseCustomersServed()
+    public void CustomerNotWaiting(Customer customer)
     {
-        currentDayCustomerServed++;
-        //currentDayCustomerText.text = currentDayCustomerServed + "/" + currentDayNumOfCustomers;
+        customersWaiting.Remove(customer);
     }
     
-    public void CustomerServed()
+    public void CustomerServed(Customer customer)
     {
-        currentAmountOfCustomersInShop--;
-        if (currentAmountOfCustomersInShop < 0)
-        {
-            currentAmountOfCustomersInShop = 0;
-        }
+        // Remove customers that where given pizzas before giving orders
+        if(customersWaiting.Contains(customer))
+            customersWaiting.Remove(customer);
+        
+        currentDayCustomerServed++;
     }
 
     public void AddNewCustomerLine(CustomerLinePos customerLine)
     {
         customerLines.Add(customerLine);
+    }
+
+    private Customer CustomerToMove()
+    {
+        return (from customer in customersWaiting from line in customerLines 
+                where line.customersInLine <= 0 
+                where !customer.activeOrder 
+                select customer).FirstOrDefault();
     }
 }

@@ -68,6 +68,7 @@ public class Customer : MonoBehaviour
         if (other.CompareTag("LineStart"))
         {
             activeOrder = true;
+            customerLine.CustomerNotWaiting(this);
             transform.rotation = other.transform.rotation;
             customerAI.ChangeCustomerAIState(CustomerAI.CustomerAIStates.Stopped);
             customerUI.ToggleOrderUIState();
@@ -268,7 +269,7 @@ public class Customer : MonoBehaviour
     /// </summary>
     public IEnumerator CustomerLeave()
     {
-        if (customerAI.currentCustomerAIState == CustomerAI.CustomerAIStates.Leaving || activeOrder) yield break;
+        if (customerAI.CurrentCustomerAIState == CustomerAI.CustomerAIStates.Leaving || activeOrder) yield break;
         
         customerAI.ChangeCustomerAIState(CustomerAI.CustomerAIStates.Leaving);
         
@@ -277,16 +278,7 @@ public class Customer : MonoBehaviour
         customerAI.Leave();
         customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Walking);
         
-        customerLine.IncreaseCustomersServed();
-        Invoke(nameof(CallTheNextCustomer), 5f);
+        customerLine.CustomerServed(this);
         Destroy(gameObject, 10f);
-    }
-
-    /// <summary>
-    /// Tells the customer line to bring in the next customer
-    /// </summary>
-    private void CallTheNextCustomer()
-    {
-        customerLine.CustomerServed();
     }
 }

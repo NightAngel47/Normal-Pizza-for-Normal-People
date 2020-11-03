@@ -11,14 +11,13 @@ using UnityEngine;
 
 public class CustomerLinePos : MonoBehaviour
 {
-    public bool isOpen = true;
     public int customersInLine = 0;
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out Customer customer))
+        if (other.TryGetComponent(out Customer customer) && customer.activeOrder == false)
         {
-            isOpen = true;
+            customersInLine--;
         }
     }
 }

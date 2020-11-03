@@ -155,7 +155,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.30070812
+  m_Radius: 0.26
   m_Height: 1.5490851
   m_Direction: 1
   m_Center: {x: 0, y: -0.37235022, z: 0}
@@ -168,7 +168,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8855423326005325540}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.35
+  m_Radius: 0.17
   m_Speed: 2.5
   m_Acceleration: 20
   avoidancePriority: 50
@@ -315,7 +315,7 @@ PrefabInstance:
     - target: {fileID: 6776600240221178425, guid: a48cbd8b80e14ab4a98285dc54d49872,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.283
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6776600240221178425, guid: a48cbd8b80e14ab4a98285dc54d49872,
         type: 3}
@@ -478,7 +478,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: d318cd99163420e4f990c98cd0a9b97d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.25
+      value: 0.165
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d318cd99163420e4f990c98cd0a9b97d,
         type: 3}

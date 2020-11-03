@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833014313}
   m_LocalRotation: {x: 0, y: 0.3826836, z: -0, w: -0.92387944}
-  m_LocalPosition: {x: 1.547, y: 1.65, z: 1.282}
+  m_LocalPosition: {x: 1.407, y: 1.65, z: 1.023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9190195862997612197}
@@ -62,7 +62,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.35, y: 0.35, z: 0.35}
+  m_Size: {x: 0.15, y: 0.15, z: 0.15}
   m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!114 &833014315
 MonoBehaviour:
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f6a29930d421d478eb8c3bfa721f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 1
+  customersInLine: 0
 --- !u!114 &5128009736757141335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733666333}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: -1.412, y: 1.65, z: 1.289}
+  m_LocalPosition: {x: -1.2, y: 1.65, z: 1.061}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9190195862997612197}
@@ -279,7 +279,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.35, y: 0.35, z: 0.35}
+  m_Size: {x: 0.15, y: 0.15, z: 0.15}
   m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!114 &1733666335
 MonoBehaviour:
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f6a29930d421d478eb8c3bfa721f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 1
+  customersInLine: 0
 --- !u!114 &2392098152540189665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,7 +433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2149450571433723016}
   m_LocalRotation: {x: 0, y: 0.9659259, z: -0, w: -0.25881898}
-  m_LocalPosition: {x: 0, y: 1.65, z: 1.622}
+  m_LocalPosition: {x: 0, y: 1.65, z: 1.415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9190195862997612197}
@@ -466,7 +466,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.35, y: 0.35, z: 0.35}
+  m_Size: {x: 0.15, y: 0.15, z: 0.15}
   m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!114 &5973250667470171886
 MonoBehaviour:
@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f6a29930d421d478eb8c3bfa721f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 1
+  customersInLine: 0
 --- !u!114 &4617729008710552073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,7 +657,6 @@ MonoBehaviour:
     dayLength: 0
     moneyGoal: 0
   currentDayTimer: 0
-  currentDay: 0
   gameOverButtons: {fileID: 0}
   gameOverText: {fileID: 0}
   pointer: {fileID: 0}
@@ -727,6 +726,10 @@ MonoBehaviour:
   tierOneIngredients: []
   tierTwoIngredients: []
   tierThreeIngredients: []
+  cheeseIngredients:
+  - {fileID: 7516945271227501687, guid: 44021f337208aae4785144ea1442ecf3, type: 3}
+  - {fileID: 4725293823596819026, guid: 3d48b0aae803e044598a55b38236f832, type: 3}
+  - {fileID: 9040540506502419961, guid: 89a4299c38027a147b5fe3806ae29d5b, type: 3}
   minTotalToppingsPerOrder: 5
   maxTotalToppingsPerOrder: 9
   rangeLevel: 0

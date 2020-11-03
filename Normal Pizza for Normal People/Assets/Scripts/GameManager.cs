@@ -123,8 +123,8 @@ public class GameManager : MonoBehaviour
         endOfDaySummary.SetActive(false);
         endOfDaySummary.GetComponentsInChildren<TMP_Text>()[0].text = "Day " + currentGameDay.dayNum + " Summary";
         currentDayText.text = "Day " + currentGameDay.dayNum;
-        customerLine.StartDay(currentGameDay.numOfCustomers);
         currentDayTimer = currentGameDay.dayLength;
+        customerLine.StartDay(currentGameDay.numOfCustomers);
         ShowHideDayTimer(true);
         StartCoroutine(DayTimer());
         moneyTracker.TrackNewDay();
