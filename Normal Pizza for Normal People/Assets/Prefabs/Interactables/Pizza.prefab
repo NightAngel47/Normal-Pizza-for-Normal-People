@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 8795bf6cde2a98744b48d0f182bf64b5, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0.29803923}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -132,6 +132,7 @@ MonoBehaviour:
   overCooking: 0
   cooked: {fileID: 2100000, guid: 406281ab3b4a7c54090398d3bb49d99d, type: 2}
   burnt: {fileID: 2100000, guid: 8855fb4f96d8d7a4ea1b863dfdebbac2, type: 2}
+  inOven: 0
   ingredientUITransform: {fileID: 8912265287094422191}
   ingredientUI: {fileID: 4760833702499510269, guid: 96147194f1b96fe46bd96aa74bfb2b0d,
     type: 3}
@@ -161,17 +162,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5928169911808577525}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.306}
+  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
+  m_LocalPosition: {x: 0, y: 0, z: 0.356}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8912265287094422191}
   m_Father: {fileID: 7701498598052804803}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.02, y: 0.58}
+  m_AnchoredPosition: {x: 0.001, y: 0.537}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &129044653875167046
