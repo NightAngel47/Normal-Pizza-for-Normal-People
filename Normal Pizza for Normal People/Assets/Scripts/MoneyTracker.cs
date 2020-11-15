@@ -11,21 +11,19 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoneyTracker : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager = null;
+    
+    [Header("Day Progress UI")]
     [SerializeField] private TMP_Text currentDayMoneyText = null;
     [SerializeField] private TMP_Text starGoalTwoText;
     [SerializeField] private TMP_Text starGoalThreeText;
 
-    [SerializeField] private List<TMP_Text> endOfDaySummaryTexts = new List<TMP_Text>();
-    private enum SummaryText
-    {
-        CurrentDay,
-        PreviousTotal,
-        NewTotal
-    };
+    [Header("Day Summary UI")]
+    [SerializeField] private TMP_Text daySummaryScoreText;
     
     /// <summary>
     /// Current amount of money earned each day
@@ -53,7 +51,6 @@ public class MoneyTracker : MonoBehaviour
     public void TrackNewDay()
     {
         currentDayAmount = 0;
-        endOfDaySummaryTexts[(int) SummaryText.PreviousTotal].text = "$" + totalMoneyAmount;
         currentDayMoneyText.text = "$" + currentDayAmount + " / $" + gameManager.currentGameDay.moneyGoal;
         starGoalTwoText.text = "$" + currentDayAmount + " / $" + gameManager.currentGameDay.starTwoGoal;
         starGoalThreeText.text = "$" + currentDayAmount + " / $" + gameManager.currentGameDay.starThreeGoal;
@@ -70,8 +67,7 @@ public class MoneyTracker : MonoBehaviour
         currentDayMoneyText.text = "$" + currentDayAmount + " / $" + gameManager.currentGameDay.moneyGoal;
         starGoalTwoText.text = "$" + currentDayAmount + " / $" + gameManager.currentGameDay.starTwoGoal;
         starGoalThreeText.text = "$" + currentDayAmount + " / $" + gameManager.currentGameDay.starThreeGoal;
-        endOfDaySummaryTexts[(int) SummaryText.CurrentDay].text = "$" + currentDayAmount;
-        endOfDaySummaryTexts[(int) SummaryText.NewTotal].text = "$" + totalMoneyAmount;
+        daySummaryScoreText.text = "$" + currentDayAmount;
     }
 
     public int GetCurrentDayAmount()

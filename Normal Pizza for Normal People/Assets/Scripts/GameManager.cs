@@ -24,12 +24,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelManager levelManager;
     private AudioSource audioSource = null;
 
-    [Header("Day Canvas UI")]
+    [Header("Day Progress UI")]
     [SerializeField] private TMP_Text currentDayText = null;
     [SerializeField] private TMP_Text currentDayTime = null;
     [SerializeField] private Image currentDayProgressBar = null;
 
-    [SerializeField] private GameObject endOfDaySummary = null;
+    [Header("Day Summary UI")]
+    [SerializeField] private GameObject endOfDaySummary;
+    [SerializeField] private TMP_Text daySummaryTitle;
+    [SerializeField] private Color missedStarColor;
+    [SerializeField] private List<Image> daySummaryStars;
 
     [Header("Game Days")]
     [HideInInspector] public Day currentGameDay = new Day();
@@ -40,8 +44,8 @@ public class GameManager : MonoBehaviour
     public GameObject pointer = null;
     public GameObject inputMod = null;
 
+    [HideInInspector] public bool dayStarted = false;
     public GameObject startDayButton = null;
-    public bool dayStarted = false;
     public GameObject pizzaSpawnButton = null;
 
     private readonly List<Customer> activeCustomers = new List<Customer>();
@@ -122,7 +126,11 @@ public class GameManager : MonoBehaviour
     private IEnumerator DayCycle()
     {
         endOfDaySummary.SetActive(false);
-        endOfDaySummary.GetComponentsInChildren<TMP_Text>()[0].text = "Day " + currentGameDay.dayNum + " Summary";
+        daySummaryTitle.text = "Day " + currentGameDay.dayNum + " Summary";
+        foreach (var star in daySummaryStars)
+        {
+            star.color = Color.white;
+        }
         currentDayText.text = "Day " + currentGameDay.dayNum;
         currentDayTimer = currentGameDay.dayLength;
         customerLine.StartDay(currentGameDay.numOfCustomers);
@@ -155,28 +163,21 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         endOfDaySummary.SetActive(true);
+        pizzaSpawnButton.SetActive(false);
 
         if (moneyTracker.GetCurrentDayAmount() >= currentGameDay.moneyGoal)
         {
-            //upgradeSystem.EnterUpgradeMode();
-
-            //yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
-
             // increase stars earned for reaching the day's money goal
             currentGameDay.starsEarned++;
             IncreaseDayDifficulty();
 
             startDayButton.SetActive(true);
-            pizzaSpawnButton.SetActive(false);
-
-            //MOVED TO START DAY FUNCTION
-            //StartCoroutine(DayCycle());
         }
         else
         {
             //TODO add game over transition
-            //Debug.Log("game over");
-            endOfDaySummary.GetComponentsInChildren<TMP_Text>()[0].text = "Game Over";
+            
+            daySummaryTitle.text = "Game Over";
             if (currentGameDay.dayNum == 1)
             {
                 gameOverText.text = "You have completed "+ currentGameDay.dayNum +" Day\n of Pizza Research!";
@@ -185,6 +186,12 @@ public class GameManager : MonoBehaviour
             {
                 gameOverText.text = "You have completed "+ currentGameDay.dayNum +" Days\n of Pizza Research!";
             }
+
+            foreach (var star in daySummaryStars)
+            {
+                star.color = missedStarColor;
+            }
+            
             gameOverButtons.SetActive(true);
             gameOverText.gameObject.SetActive(true);
 
@@ -233,10 +240,18 @@ public class GameManager : MonoBehaviour
         {
             currentGameDay.starsEarned++;
         }
+        else
+        {
+            daySummaryStars[1].color = missedStarColor;
+        }
         
         if (moneyTracker.GetCurrentDayAmount() >= currentGameDay.starThreeGoal)
         {
             currentGameDay.starsEarned++;
+        }
+        else
+        {
+            daySummaryStars[2].color = missedStarColor;
         }
 
         if (currentGameDay.starsEarned > LoadData.FromBinaryFile<int>("npnp", $"day_{currentGameDay.dayNum}_stars"))

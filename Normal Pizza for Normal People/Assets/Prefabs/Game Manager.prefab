@@ -651,6 +651,11 @@ MonoBehaviour:
   currentDayTime: {fileID: 0}
   currentDayProgressBar: {fileID: 0}
   endOfDaySummary: {fileID: 0}
+  missedStarColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
+  daySummaryStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   currentGameDay:
     dayNum: 0
     numOfCustomers: 0
@@ -686,10 +691,7 @@ MonoBehaviour:
   currentDayMoneyText: {fileID: 0}
   starGoalTwoText: {fileID: 0}
   starGoalThreeText: {fileID: 0}
-  endOfDaySummaryTexts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  daySummaryScoreText: {fileID: 0}
   basePizzaProfit: 25
   tier1Toppings: 2
   tier2Toppings: 4
