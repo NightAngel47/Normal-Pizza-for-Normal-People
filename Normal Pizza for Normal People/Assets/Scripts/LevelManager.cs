@@ -120,6 +120,31 @@ public class LevelManager : MonoBehaviour
         if (!levelData.dataArray[selectedDay].Cheesepress)
         {
             cheesePress.HideItem();   
+
+            switch(levelData.dataArray[selectedDay].Cheeses)
+            {
+                case 0:
+                    cheesePress.transform.GetChild(0).gameObject.SetActive(false);
+                    cheesePress.transform.GetChild(1).gameObject.SetActive(false);
+                    cheesePress.transform.GetChild(2).gameObject.SetActive(false);
+                    break;
+                case 1:
+                    cheesePress.transform.GetChild(0).gameObject.SetActive(true);
+                    cheesePress.transform.GetChild(1).gameObject.SetActive(false);
+                    cheesePress.transform.GetChild(2).gameObject.SetActive(false);
+                    break;
+                case 2:
+                    cheesePress.transform.GetChild(0).gameObject.SetActive(true);
+                    cheesePress.transform.GetChild(1).gameObject.SetActive(true);
+                    cheesePress.transform.GetChild(2).gameObject.SetActive(false);
+                    break;
+                case 3:
+                    cheesePress.transform.GetChild(0).gameObject.SetActive(true);
+                    cheesePress.transform.GetChild(1).gameObject.SetActive(true);
+                    cheesePress.transform.GetChild(2).gameObject.SetActive(true);
+                    break;
+
+            }
         }
         
         // setup order creation
