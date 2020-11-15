@@ -11,6 +11,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ACTools.Saving;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +21,6 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private CustomerLine customerLine = null;
     [SerializeField] private MoneyTracker moneyTracker = null;
-    //[SerializeField] private UpgradeSystem upgradeSystem = null;
     [SerializeField] private LevelManager levelManager;
     private AudioSource audioSource = null;
 
@@ -32,9 +32,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject endOfDaySummary = null;
 
     [Header("Game Days")]
-    //[SerializeField, Tooltip("The starting values for the game days.")] private Day startingDayValues = new Day();
-    //[SerializeField, Tooltip("The rate that each new day will increase in customers."), Range(1f, 2f)] private float newCustomerPerDayRate = 1.1f;
-    //[SerializeField, Tooltip("The rate that each new day will increase its money goal."), Range(1f, 2f)] private float newMoneyGoalPerDayRate = 1.5f;
     [HideInInspector] public Day currentGameDay = new Day();
     [HideInInspector] public float currentDayTimer = 0f;
 
@@ -60,18 +57,23 @@ public class GameManager : MonoBehaviour
         [Tooltip("The number of customers per day"), Range(0, 50)] public int numOfCustomers;
         [Tooltip("The length of each day in seconds"), Range(0, 300)] public int dayLength;
         [Tooltip("The profit goal for each day")] public int moneyGoal;
+        [Tooltip("The star two goal for each day")] public int starTwoGoal;
+        [Tooltip("The star three goal for each day")] public int starThreeGoal;
+        [Tooltip("The amount of stars earned that day")] public int starsEarned;
 
         public Day()
         {
 
         }
 
-        public Day(int num, int customers, int length, int goal)
+        public Day(int num, int customers, int length, int goal, int secondGoal, int thirdGoal)
         {
             dayNum = num;
             numOfCustomers = customers;
             dayLength = length;
             moneyGoal = goal;
+            starTwoGoal = secondGoal;
+            starThreeGoal = thirdGoal;
         }
     }
 
@@ -85,7 +87,6 @@ public class GameManager : MonoBehaviour
         endOfDaySummary.SetActive(false);
         gameOverButtons.SetActive(false);
         gameOverText.gameObject.SetActive(false);
-        //StartCoroutine(DayCycle());  //moved to start day function
 
         pizzaSpawnButton.SetActive(false);
 
@@ -94,9 +95,9 @@ public class GameManager : MonoBehaviour
         MusicManager.instance.ChangeMusic(MusicManager.MusicTrackName.BetweenDaysMusic);
     }
 
-    public void SetDay(int num, int customers, int length, int goal)
+    public void SetDay(int num, int customers, int length, int goal, int secondGoal, int thirdGoal)
     {
-        currentGameDay = new Day(num, customers, length, goal);
+        currentGameDay = new Day(num, customers, length, goal, secondGoal, thirdGoal);
     }
 
     public MoneyTracker GetMoneyTracker()
@@ -161,6 +162,8 @@ public class GameManager : MonoBehaviour
 
             //yield return new WaitWhile(upgradeSystem.GetIsUpgrading);
 
+            // increase stars earned for reaching the day's money goal
+            currentGameDay.starsEarned++;
             IncreaseDayDifficulty();
 
             startDayButton.SetActive(true);
@@ -226,15 +229,28 @@ public class GameManager : MonoBehaviour
 
     private void IncreaseDayDifficulty()
     {
-        // TODO save other info about how the player did for that day
+        if (moneyTracker.GetCurrentDayAmount() >= currentGameDay.starTwoGoal)
+        {
+            currentGameDay.starsEarned++;
+        }
+        
+        if (moneyTracker.GetCurrentDayAmount() >= currentGameDay.starThreeGoal)
+        {
+            currentGameDay.starsEarned++;
+        }
+
+        if (currentGameDay.starsEarned > LoadData.FromBinaryFile<int>("npnp", $"day_{currentGameDay.dayNum}_stars"))
+        {
+            SaveData.ToBinaryFile("npnp", $"day_{currentGameDay.dayNum}_stars", currentGameDay.starsEarned);
+        }
         
         // progress to the next day
         LevelSelect.selectedLevel++;
         
         // updated furthest level if the next level is the furthest the player has gone
-        if (LevelSelect.selectedLevel > PlayerPrefs.GetInt("FurthestLevel", 0))
+        if (LevelSelect.selectedLevel > LoadData.FromBinaryFile<int>("npnp", "FurthestLevel"))
         {
-            PlayerPrefs.SetInt("FurthestLevel", LevelSelect.selectedLevel);
+            SaveData.ToBinaryFile("npnp", "FurthestLevel", LevelSelect.selectedLevel);
         }
         
         

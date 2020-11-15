@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ACTools.Saving;
 using UnityEngine;
 
 public class LevelSelectMenu : MonoBehaviour
@@ -20,12 +21,13 @@ public class LevelSelectMenu : MonoBehaviour
                 LevelButtonScript levelButtonScript = Instantiate(levelButton, transform).GetComponent<LevelButtonScript>();
                 levelButtonScript.SetLevelNum(i);
                 levelButtonScript.SetLevelName($"Day {levelData.dataArray[i].Daynum}");
+                levelButtonScript.SetStarCount(LoadData.FromBinaryFile<int>("npnp", $"day_{levelData.dataArray[i].Daynum}_stars"));
 
                 ButtonTransistioner buttonTransistioner = levelButtonScript.GetComponent<ButtonTransistioner>();
                 buttonTransistioner.panelHandler = FindObjectOfType<MainMenuHandle>().gameObject;
 
                 // set all levels that are beyond the furthest level to locked state
-                if (i > PlayerPrefs.GetInt("FurthestLevel", 0))
+                if (i >  LoadData.FromBinaryFile<int>("npnp", "FurthestLevel"))
                 {
                     buttonTransistioner.SetInteractable(false);
                 }

@@ -17,6 +17,8 @@ MonoBehaviour:
   dataArray:
   - daynum: 1
     scoregoal: 300
+    startwogoal: 400
+    starthreegoal: 500
     daylength: 90
     totalcustomers: 15
     numcustomerlines: 1
@@ -34,6 +36,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 2
     scoregoal: 400
+    startwogoal: 500
+    starthreegoal: 600
     daylength: 90
     totalcustomers: 15
     numcustomerlines: 2
@@ -51,6 +55,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 3
     scoregoal: 550
+    startwogoal: 650
+    starthreegoal: 750
     daylength: 100
     totalcustomers: 20
     numcustomerlines: 2
@@ -68,6 +74,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 4
     scoregoal: 700
+    startwogoal: 800
+    starthreegoal: 900
     daylength: 100
     totalcustomers: 20
     numcustomerlines: 3
@@ -85,6 +93,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 5
     scoregoal: 900
+    startwogoal: 1000
+    starthreegoal: 1100
     daylength: 100
     totalcustomers: 25
     numcustomerlines: 3
@@ -102,6 +112,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -119,6 +131,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -136,6 +150,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -153,6 +169,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -170,6 +188,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -187,6 +207,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -204,6 +226,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -221,6 +245,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -238,6 +264,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -255,6 +283,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -272,6 +302,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -289,6 +321,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -306,6 +340,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -323,6 +359,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -340,6 +378,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -357,6 +397,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -374,6 +416,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -391,6 +435,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -408,6 +454,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -425,6 +473,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -442,6 +492,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -459,6 +511,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -476,6 +530,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -493,6 +549,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 999
     scoregoal: 1
+    startwogoal: 2
+    starthreegoal: 3
     daylength: 200
     totalcustomers: 50
     numcustomerlines: 3
@@ -510,6 +568,8 @@ MonoBehaviour:
     cheeses: 3
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -527,6 +587,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -544,6 +606,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -561,6 +625,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -578,6 +644,8 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
+    startwogoal: 0
+    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0

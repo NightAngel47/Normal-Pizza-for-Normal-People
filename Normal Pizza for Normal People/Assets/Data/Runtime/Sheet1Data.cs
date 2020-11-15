@@ -17,6 +17,14 @@ public class Sheet1Data
   public int Scoregoal { get {return scoregoal; } set { this.scoregoal = value;} }
   
   [SerializeField]
+  int startwogoal;
+  public int Startwogoal { get {return startwogoal; } set { this.startwogoal = value;} }
+  
+  [SerializeField]
+  int starthreegoal;
+  public int Starthreegoal { get {return starthreegoal; } set { this.starthreegoal = value;} }
+  
+  [SerializeField]
   int daylength;
   public int Daylength { get {return daylength; } set { this.daylength = value;} }
   

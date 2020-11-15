@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.actools.saving": "https://github.com/Cpt-Jack04/ACTools_Saving.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ide.rider": "1.1.4",
     "com.unity.ide.vscode": "1.1.4",
@@ -42,5 +43,11 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.actools.saving": {
+      "revision": "HEAD",
+      "hash": "411dfe1d1c8d779bebf16657562c768e0fb5bd19"
+    }
   }
 }

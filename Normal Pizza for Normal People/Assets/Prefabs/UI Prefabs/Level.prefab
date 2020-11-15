@@ -216,6 +216,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelNameText: {fileID: 3920837299193141649}
+  starImages:
+  - {fileID: 3076886003736204491}
+  - {fileID: 4413576219044325439}
+  - {fileID: 3978660594635024317}
+  missingStarColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
 --- !u!1 &5224631547258017389
 GameObject:
   m_ObjectHideFlags: 0

@@ -656,6 +656,9 @@ MonoBehaviour:
     numOfCustomers: 0
     dayLength: 0
     moneyGoal: 0
+    starTwoGoal: 0
+    starThreeGoal: 0
+    starsEarned: 0
   currentDayTimer: 0
   gameOverButtons: {fileID: 0}
   gameOverText: {fileID: 0}
@@ -681,6 +684,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2906572782878665318}
   currentDayMoneyText: {fileID: 0}
+  starGoalTwoText: {fileID: 0}
+  starGoalThreeText: {fileID: 0}
   endOfDaySummaryTexts:
   - {fileID: 0}
   - {fileID: 0}

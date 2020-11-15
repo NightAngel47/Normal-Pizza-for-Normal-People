@@ -16,6 +16,8 @@ public class MoneyTracker : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager = null;
     [SerializeField] private TMP_Text currentDayMoneyText = null;
+    [SerializeField] private TMP_Text starGoalTwoText;
+    [SerializeField] private TMP_Text starGoalThreeText;
 
     [SerializeField] private List<TMP_Text> endOfDaySummaryTexts = new List<TMP_Text>();
     private enum SummaryText
@@ -52,7 +54,9 @@ public class MoneyTracker : MonoBehaviour
     {
         currentDayAmount = 0;
         endOfDaySummaryTexts[(int) SummaryText.PreviousTotal].text = "$" + totalMoneyAmount;
-        currentDayMoneyText.text = "$" + currentDayAmount + "/$" + gameManager.currentGameDay.moneyGoal;
+        currentDayMoneyText.text = "$" + currentDayAmount + " / $" + gameManager.currentGameDay.moneyGoal;
+        starGoalTwoText.text = "$" + currentDayAmount + " / $" + gameManager.currentGameDay.starTwoGoal;
+        starGoalThreeText.text = "$" + currentDayAmount + " / $" + gameManager.currentGameDay.starThreeGoal;
     }
 
     /// <summary>
@@ -63,7 +67,9 @@ public class MoneyTracker : MonoBehaviour
     {
         currentDayAmount += amount;
         totalMoneyAmount += amount;
-        currentDayMoneyText.text = "$" + currentDayAmount + "/$" + gameManager.currentGameDay.moneyGoal;
+        currentDayMoneyText.text = "$" + currentDayAmount + " / $" + gameManager.currentGameDay.moneyGoal;
+        starGoalTwoText.text = "$" + currentDayAmount + " / $" + gameManager.currentGameDay.starTwoGoal;
+        starGoalThreeText.text = "$" + currentDayAmount + " / $" + gameManager.currentGameDay.starThreeGoal;
         endOfDaySummaryTexts[(int) SummaryText.CurrentDay].text = "$" + currentDayAmount;
         endOfDaySummaryTexts[(int) SummaryText.NewTotal].text = "$" + totalMoneyAmount;
     }

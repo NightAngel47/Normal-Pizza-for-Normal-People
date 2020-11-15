@@ -18,14 +18,15 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private CheeseUpgrade cheesePress;
     
-    //TODO get selected day using save System (playerPrefs as temp)
     public void SetupLevel(int selectedDay)
     {
         // setup day 
         GetComponent<GameManager>().SetDay(levelData.dataArray[selectedDay].Daynum,
-                    levelData.dataArray[selectedDay].Totalcustomers,
-                    levelData.dataArray[selectedDay].Daylength, 
-                    levelData.dataArray[selectedDay].Scoregoal);
+            levelData.dataArray[selectedDay].Totalcustomers,
+            levelData.dataArray[selectedDay].Daylength,
+            levelData.dataArray[selectedDay].Scoregoal,
+            levelData.dataArray[selectedDay].Startwogoal,
+            levelData.dataArray[selectedDay].Starthreegoal);
 
         CustomerLine customerLine = FindObjectOfType<CustomerLine>();
         // setup customer lines
