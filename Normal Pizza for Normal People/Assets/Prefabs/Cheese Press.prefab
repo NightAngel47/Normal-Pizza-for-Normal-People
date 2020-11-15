@@ -451,7 +451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2671586542640839259
 Transform:
   m_ObjectHideFlags: 0
@@ -1327,7 +1327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &781546170313125892
 Transform:
   m_ObjectHideFlags: 0
@@ -2433,6 +2433,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cheese 1 Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3482953719646963237, guid: 6cdadde70e7e99444bc045f24622a6ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cdadde70e7e99444bc045f24622a6ca, type: 3}
