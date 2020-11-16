@@ -6,18 +6,20 @@
  * Handles when customer lines are available
  */
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CustomerLinePos : MonoBehaviour
 {
-    public int customersInLine = 0;
+    public List<Customer> customersInLine = new List<Customer>();
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out Customer customer) && customer.activeOrder == false)
+        if (other.TryGetComponent(out Customer customer) 
+            && customer.customerAI.CurrentCustomerAIState == CustomerAI.CustomerAIStates.Leaving)
         {
-            customersInLine--;
+            customersInLine.Remove(customer);
         }
     }
 }

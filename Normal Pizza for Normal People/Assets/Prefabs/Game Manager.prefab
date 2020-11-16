@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833014313}
-  m_LocalRotation: {x: -0, y: 0.9257379, z: -0, w: -0.37816572}
-  m_LocalPosition: {x: 1.492, y: 1.65, z: 1.142}
+  m_LocalRotation: {x: -0, y: 0.71055245, z: -0, w: -0.7036442}
+  m_LocalPosition: {x: 1.493, y: 1.65, z: 0.986}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9190195862997612197}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 224.43999, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 269.44, z: 0}
 --- !u!54 &833014317
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.15, y: 0.15, z: 0.15}
+  m_Size: {x: 0.26, y: 0.26, z: 0.26}
   m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!114 &833014315
 MonoBehaviour:
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f6a29930d421d478eb8c3bfa721f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customersInLine: 0
+  customersInLine: []
 --- !u!114 &5128009736757141335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733666333}
   m_LocalRotation: {x: -0, y: 0.93415034, z: -0, w: 0.3568797}
-  m_LocalPosition: {x: -1.467, y: 1.65, z: 0.943}
+  m_LocalPosition: {x: -1.261, y: 1.65, z: 0.952}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9190195862997612197}
@@ -279,7 +279,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.15, y: 0.15, z: 0.15}
+  m_Size: {x: 0.26, y: 0.26, z: 0.26}
   m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!114 &1733666335
 MonoBehaviour:
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f6a29930d421d478eb8c3bfa721f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customersInLine: 0
+  customersInLine: []
 --- !u!114 &2392098152540189665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,7 +466,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.15, y: 0.15, z: 0.15}
+  m_Size: {x: 0.26, y: 0.26, z: 0.26}
   m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!114 &5973250667470171886
 MonoBehaviour:
@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f6a29930d421d478eb8c3bfa721f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customersInLine: 0
+  customersInLine: []
 --- !u!114 &4617729008710552073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,6 +651,7 @@ MonoBehaviour:
   currentDayTime: {fileID: 0}
   currentDayProgressBar: {fileID: 0}
   endOfDaySummary: {fileID: 0}
+  daySummaryTitle: {fileID: 0}
   missedStarColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
   daySummaryStars:
   - {fileID: 0}
@@ -669,8 +670,8 @@ MonoBehaviour:
   gameOverText: {fileID: 0}
   pointer: {fileID: 0}
   inputMod: {fileID: 0}
-  startDayButton: {fileID: 0}
   dayStarted: 0
+  startDayButton: {fileID: 0}
   pizzaSpawnButton: {fileID: 0}
   gameDayAudioClips:
   - {fileID: 8300000, guid: 8d43ea58af9da7b4ea7afd1c3fad8ada, type: 3}

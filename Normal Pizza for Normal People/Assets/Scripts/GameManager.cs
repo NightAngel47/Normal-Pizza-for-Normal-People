@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     public GameObject startDayButton = null;
     public GameObject pizzaSpawnButton = null;
 
-    private readonly List<Customer> activeCustomers = new List<Customer>();
+    private readonly List<Customer> remainingActiveCustomers = new List<Customer>();
 
     enum GameDayAudioStates {StartDay, EndDay}
     [SerializeField] List<AudioClip> gameDayAudioClips = new List<AudioClip>();
@@ -143,18 +143,22 @@ public class GameManager : MonoBehaviour
         audioSource.clip = gameDayAudioClips[(int) GameDayAudioStates.StartDay];
         audioSource.Play();
 
+        // wait until end of day
         yield return new WaitUntil(() => currentDayTimer <= 0);
+        
+        // Keeps active customers at counter, and tells other customers in shop to leave
         foreach (var customer in FindObjectsOfType<Customer>())
         {
             if (customer.activeOrder)
             {
-                activeCustomers.Add(customer);
+                remainingActiveCustomers.Add(customer);
             }
 
             StartCoroutine(customer.CustomerLeave());
         }
 
-        yield return new WaitUntil(() => activeCustomers.Count == 0);
+        // wait until remaining active customers are dealt with
+        yield return new WaitUntil(() => remainingActiveCustomers.Count == 0);
 
         audioSource.clip = gameDayAudioClips[(int) GameDayAudioStates.EndDay];
         audioSource.Play();
@@ -276,9 +280,9 @@ public class GameManager : MonoBehaviour
 
     public void RemoveActiveCustomer(Customer customer)
     {
-        if (activeCustomers.Contains(customer))
+        if (remainingActiveCustomers.Contains(customer))
         {
-            activeCustomers.Remove(customer);
+            remainingActiveCustomers.Remove(customer);
         }
     }
 }

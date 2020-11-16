@@ -6,45 +6,85 @@
  * Steven: Handles customer ai, including state, target pos, and movement
  */
 
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class CustomerAI : MonoBehaviour
 {
     private NavMeshAgent agent = null;
+    private Customer thisCustomer;
+    private CustomerLine customerLine;
     
-    public enum CustomerAIStates {Entering, Leaving, Stopped}
-
+    public enum CustomerAIStates {Entering, Leaving, AtCounter}
     public CustomerAIStates CurrentCustomerAIState { get; private set; } = CustomerAIStates.Entering;
-    
-    private Vector3 targetLinePos = Vector3.zero;
+
+    [SerializeField] private LayerMask mask;
+    [HideInInspector] public CustomerLinePos targetLinePos;
     private Vector3 endPos = Vector3.zero;
+    private static bool customerAboutToLeave = false;
     
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        thisCustomer = GetComponent<Customer>();
+        customerLine = FindObjectOfType<CustomerLine>();
         
         endPos = transform.position + (Vector3.right * 14);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (CurrentCustomerAIState != CustomerAIStates.Leaving)
+        StartCoroutine(WaitingInLine());
+    }
+
+    private IEnumerator WaitingInLine()
+    {
+        if (CurrentCustomerAIState != CustomerAIStates.Entering) yield break;
+        
+        if (Physics.SphereCast(transform.position, agent.radius, transform.forward, out RaycastHit hit, agent.stoppingDistance * 2, mask))
         {
-            if (Physics.SphereCast(transform.position, 0.5f, transform.forward, out RaycastHit hit, 0.5f))
+            if (hit.transform.TryGetComponent(out CustomerAI otherCustomerAI))
             {
-                if (hit.collider.TryGetComponent(out CustomerAI customerAI) && customerAI.CurrentCustomerAIState != CustomerAIStates.Leaving)
+                if (otherCustomerAI.CurrentCustomerAIState != CustomerAIStates.Leaving
+                    && otherCustomerAI.targetLinePos == targetLinePos)
                 {
-                    agent.SetDestination(transform.position);
+                    agent.isStopped = true;
+                }
+                else if (otherCustomerAI.CurrentCustomerAIState == CustomerAIStates.Leaving)
+                {
+                    customerAboutToLeave = true;
+                    yield return new WaitForSeconds(thisCustomer.customerLeaveDelayTime * 1.5f);
+                    agent.isStopped = false;
+                    customerAboutToLeave = false;
                 }
             }
-            else if(agent.destination != targetLinePos)
+            else
             {
-                agent.SetDestination(targetLinePos);
+                agent.isStopped = false;
             }
+        }
+
+        if (agent.isStopped)
+        {
+            yield return new WaitWhile((() => customerAboutToLeave));
+            
+            CustomerLinePos shortestLinePos = customerLine.FindShortestCustomerLine();
+            if (targetLinePos.customersInLine.IndexOf(thisCustomer) > shortestLinePos.customersInLine.Count)
+            {
+                agent.isStopped = false;
+                targetLinePos.customersInLine.Remove(thisCustomer);
+                SetTargetLine(shortestLinePos);
+                shortestLinePos.customersInLine.Add(thisCustomer);
+            }
+        }
+        
+        yield return new WaitForEndOfFrame();
+
+        if (CurrentCustomerAIState == CustomerAIStates.Entering)
+        {
+            StartCoroutine(WaitingInLine());
         }
     }
 
@@ -53,11 +93,10 @@ public class CustomerAI : MonoBehaviour
         CurrentCustomerAIState = state;
     }
     
-    public void SetTargetLine(Vector3 customerLinePos)
+    public void SetTargetLine(CustomerLinePos customerLinePos)
     {
         targetLinePos = customerLinePos;
-        agent.SetDestination(targetLinePos);
-        ChangeCustomerAIState(CustomerAIStates.Entering);
+        agent.SetDestination(targetLinePos.transform.position);
     }
 
     public void Leave()

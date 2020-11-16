@@ -20,8 +20,16 @@ public class Customer : MonoBehaviour
     public CustomerUI customerUI = null;
     public CustomerAI customerAI = null;
 
+    enum FaceTypes
+    {
+        Neutral,
+        Good,
+        Bad,
+        Waiting,
+        Speaking
+    }
     public List<Material> faces = new List<Material>(); //neutral, good, bad, waiting, giving order
-    private GameObject head;
+    private MeshRenderer head;
     
     private Order order = null;
     
@@ -34,8 +42,9 @@ public class Customer : MonoBehaviour
     [SerializeField] private float startOrderTime = 90f;
     private float currentOrderTime = 0;
     public bool activeOrder { get; private set; }
+    private bool wasGivenPizza = false;
 
-    [SerializeField] private float customerLeaveDelayTime = 1f;
+    public float customerLeaveDelayTime = 1f;
     
     // Tutorial flag
     public static bool firstPizzaThrow = false;
@@ -50,16 +59,17 @@ public class Customer : MonoBehaviour
         
         currentOrderTime = startOrderTime + 1;
 
-        head = gameObject.transform.GetChild(0).gameObject.transform.GetChild(3).gameObject;
+        head = gameObject.transform.GetChild(0).gameObject.transform.GetChild(3).gameObject.GetComponent<MeshRenderer>();
     }
 
     /// <summary>
     /// Sets the line that the customer will initially head towards.
     /// </summary>
-    /// <param name="customerLinePos">The position of the line.</param>
-    public void SetTargetLine(Vector3 customerLinePos)
+    /// <param name="customerLinePos">The CustomerLinePos that they player will head towards.</param>
+    public void SetTargetLine(CustomerLinePos customerLinePos)
     {
         customerAI.SetTargetLine(customerLinePos);
+        customerAI.ChangeCustomerAIState(CustomerAI.CustomerAIStates.Entering);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -68,34 +78,38 @@ public class Customer : MonoBehaviour
         if (other.CompareTag("LineStart"))
         {
             activeOrder = true;
-            customerLine.CustomerNotWaiting(this);
             transform.rotation = other.transform.rotation;
-            customerAI.ChangeCustomerAIState(CustomerAI.CustomerAIStates.Stopped);
+            customerAI.ChangeCustomerAIState(CustomerAI.CustomerAIStates.AtCounter);
             customerUI.ToggleOrderUIState();
-            head.GetComponent<MeshRenderer>().material = faces[4];
+            head.material = faces[(int) FaceTypes.Speaking];
             customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.AtCounter);
             StartCoroutine(OrderTimerCountDown());
         }
         
         // when the customer is delivered a pizza
-        if (other.transform.parent.TryGetComponent(out PizzaBehaviour pizza))
+        if (!wasGivenPizza && other.transform.parent.TryGetComponent(out PizzaBehaviour pizza))
         {
+            wasGivenPizza = true;
+            activeOrder = false;
+            
             int pizzaProfit = CheckDeliveredPizza(pizza);
 
             if(pizzaProfit <= 0)
             {
-                head.GetComponent<MeshRenderer>().material = faces[2];
+                head.material = faces[(int) FaceTypes.Bad];
+                customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.BadOrder);
             }
 
             if(pizzaProfit > 0)
             {
-                head.GetComponent<MeshRenderer>().material = faces[1];
+                head.material = faces[(int) FaceTypes.Good];
+                customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.GoodOrder);
             }
 
             moneyTracker.CustomerChangeMoney(pizzaProfit);
             customerUI.ShowMoneyAmount(ref pizzaProfit);
             Destroy(pizza.gameObject);
-            activeOrder = false;
+            
             gm.RemoveActiveCustomer(this);
             StartCoroutine(CustomerLeave());
         }
@@ -162,12 +176,12 @@ public class Customer : MonoBehaviour
         {
             if(startOrderTime - currentOrderTime >= 5 && startOrderTime - currentOrderTime < 15)
             {
-                head.GetComponent<MeshRenderer>().material = faces[0];
+                head.material = faces[(int) FaceTypes.Neutral];
             }
 
             if(startOrderTime - currentOrderTime >= 15)
             {
-                head.GetComponent<MeshRenderer>().material = faces[3];
+                head.material = faces[(int) FaceTypes.Waiting];
             }
 
             if (currentOrderTime <= 10)
@@ -179,7 +193,7 @@ public class Customer : MonoBehaviour
         }
         else // order ran out of time and customer left
         {
-            head.GetComponent<MeshRenderer>().material = faces[2];
+            head.material = faces[(int) FaceTypes.Bad];
             moneyTracker.CustomerChangeMoney((int) -startOrderTime);
             customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.BadOrder);
             activeOrder = false;
@@ -244,7 +258,6 @@ public class Customer : MonoBehaviour
                 // first 2 days don't need oven because there is no oven to cook pizzas till day 3
                 if (gm.currentGameDay.dayNum > 2 && (pizza.isBurnt || !pizza.isCooked))
                 {
-                    customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.BadOrder);
                     return (int) -deliveredPizzaMoney / 2; // bad order because pizza is uncooked or burnt
                 }
                 
@@ -255,12 +268,10 @@ public class Customer : MonoBehaviour
                 }
                 //TODO add other bonuses
                 
-                customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.GoodOrder);
                 return (int) (deliveredPizzaMoney * (1 + currentOrderTime / startOrderTime)); // good order because pizza is correct
             }
         }
 
-        customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.BadOrder);
         return (int) -deliveredPizzaMoney / 2; // bad order because the total amount of toppings on pizza is not equal to customer order
     }
 
