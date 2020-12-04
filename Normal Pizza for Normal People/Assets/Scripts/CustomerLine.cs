@@ -40,7 +40,7 @@ public class CustomerLine : MonoBehaviour
         Customer nextCustomer = null;
         
         // if there is not a customer to move, spawn a new one if room in shop
-        yield return new WaitUntil(() => customersWaiting.Count < customerLines.Count * 3);
+        yield return new WaitUntil(() => customersWaiting.Count < customerLines.Count * 2);
         
         nextCustomer = Instantiate(customerPrefab, customerSpawnPos.position, customerSpawnPos.rotation).GetComponent<Customer>();
         customersWaiting.Add(nextCustomer);
