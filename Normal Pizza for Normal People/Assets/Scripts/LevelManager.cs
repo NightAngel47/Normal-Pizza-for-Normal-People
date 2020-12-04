@@ -121,7 +121,12 @@ public class LevelManager : MonoBehaviour
         {
             cheesePress.HideItem();   
 
-            switch(levelData.dataArray[selectedDay].Cheeses)
+            
+        }
+
+        else
+        {
+            switch (levelData.dataArray[selectedDay].Cheeses)
             {
                 case 0:
                     cheesePress.transform.GetChild(0).gameObject.SetActive(false);
@@ -143,7 +148,6 @@ public class LevelManager : MonoBehaviour
                     cheesePress.transform.GetChild(1).gameObject.SetActive(true);
                     cheesePress.transform.GetChild(2).gameObject.SetActive(true);
                     break;
-
             }
         }
         

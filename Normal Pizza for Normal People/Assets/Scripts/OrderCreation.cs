@@ -246,12 +246,12 @@ public class OrderCreation : MonoBehaviour
                 case 1:
                     randCheese = UnityEngine.Random.Range(0, 100);
 
-                    if (randCheese <= 65) // tier 1 cheese
+                    if (randCheese <= 70) // tier 1 cheese
                     {
                         ingredients.Add(cheeseIngredients[0]);
                     }
 
-                    if (randCheese > 65 && randCheese <= 99) //no cheese
+                    if (randCheese > 70 && randCheese <= 99) //no cheese
                     {
                         // no cheese
                     }
@@ -259,17 +259,17 @@ public class OrderCreation : MonoBehaviour
                 case 2:
                     randCheese = UnityEngine.Random.Range(0, 100);
 
-                    if (randCheese <= 40) // no cheese
+                    if (randCheese <= 60) // no cheese
                     {
                         // no cheese
                     }
 
-                    if (randCheese > 40 && randCheese <= 80) //tier 1 cheese
+                    if (randCheese > 60 && randCheese <= 85) //tier 1 cheese
                     {
                         ingredients.Add(cheeseIngredients[0]);
                     }
 
-                    if (randCheese > 80 && randCheese <= 99) //tier 2 cheese
+                    if (randCheese > 85 && randCheese <= 99) //tier 2 cheese
                     {
                         ingredients.Add(cheeseIngredients[1]);
                     }
@@ -277,22 +277,22 @@ public class OrderCreation : MonoBehaviour
                 case 3:
                     randCheese = UnityEngine.Random.Range(0, 100);
 
-                    if (randCheese <= 25) // no cheese
+                    if (randCheese <= 50) // no cheese
                     {
                         //no cheese
                     }
 
-                    if (randCheese > 25 && randCheese <= 60) //tier 1 cheese
+                    if (randCheese > 50 && randCheese <= 75) //tier 1 cheese
                     {
                         ingredients.Add(cheeseIngredients[0]);
                     }
 
-                    if (randCheese > 60 && randCheese <= 85) //tier 2 cheese
+                    if (randCheese > 75 && randCheese <= 92) //tier 2 cheese
                     {
                         ingredients.Add(cheeseIngredients[1]);
                     }
 
-                    if (randCheese > 85 && randCheese <= 99) //tier 3 cheese
+                    if (randCheese > 92 && randCheese <= 99) //tier 3 cheese
                     {
                         ingredients.Add(cheeseIngredients[2]);
                     }

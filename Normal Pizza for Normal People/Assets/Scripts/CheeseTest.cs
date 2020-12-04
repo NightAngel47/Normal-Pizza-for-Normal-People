@@ -11,6 +11,10 @@ public class CheeseTest : MonoBehaviour
     public GameObject cheeseTwo;
     public GameObject cheeseThree;
 
+    public GameObject cheeseParent;
+    public Material selected;
+    public Material notSelected;
+
     public void Start()
     {
         cheeseToSpawn = cheeseOne;
@@ -32,16 +36,25 @@ public class CheeseTest : MonoBehaviour
 
     public void SelectCheeseOne()
     {
+        cheeseParent.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = selected;
+        cheeseParent.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material = notSelected;
+        cheeseParent.transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material = notSelected;
         cheeseToSpawn = cheeseOne;
     }
 
     public void SelectCheeseTwo()
     {
+        cheeseParent.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = notSelected;
+        cheeseParent.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material = selected;
+        cheeseParent.transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material = notSelected;
         cheeseToSpawn = cheeseTwo;
     }
 
     public void SelectCheeseThree()
     {
+        cheeseParent.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = notSelected;
+        cheeseParent.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material = notSelected;
+        cheeseParent.transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material = selected;
         cheeseToSpawn = cheeseThree;
     }
 }

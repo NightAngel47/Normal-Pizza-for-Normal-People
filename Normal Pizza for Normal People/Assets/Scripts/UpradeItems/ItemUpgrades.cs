@@ -22,7 +22,7 @@ public abstract class ItemUpgrades : MonoBehaviour
     //hides items when upgrade period is done
     public void HideItem()
     {
-        gameObject.SetActive(false); ;
+        gameObject.SetActive(false); 
     }
 
     //When item is being purchased/when item is now avialble to player via forced upgrade

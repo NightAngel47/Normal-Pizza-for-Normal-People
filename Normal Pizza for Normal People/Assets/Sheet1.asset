@@ -32,8 +32,8 @@ MonoBehaviour:
     beetroot: 0
     starfish: 0
     honeycomb: 0
-    cheesepress: 0
-    cheeses: 0
+    cheesepress: 1
+    cheeses: 3
   - daynum: 2
     scoregoal: 400
     startwogoal: 500

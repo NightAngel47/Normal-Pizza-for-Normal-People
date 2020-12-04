@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 713762808538174543}
   - component: {fileID: 713762808538174528}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Cheese Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713762808538174541}
   m_LocalRotation: {x: -0.49571642, y: -0.50424695, z: 0.50424707, w: 0.4957169}
-  m_LocalPosition: {x: -0.0005305191, y: -0.017413335, z: -0.0014348759}
+  m_LocalPosition: {x: -0.00053, y: -0.01741, z: -0.00002}
   m_LocalScale: {x: 0.01999866, y: 0.0010000004, z: 0.021160416}
   m_Children: []
   m_Father: {fileID: 1966103033933320964}
@@ -428,7 +428,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 12600904435167537, guid: b81487edb22c3404bb2d6d6b07877b76, type: 3}
 --- !u!1 &1437239978811713832
@@ -1696,7 +1696,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7796687908688860227, guid: b81487edb22c3404bb2d6d6b07877b76, type: 3}
 --- !u!1 &4970405617830079912
