@@ -8,6 +8,7 @@
  * This is the script that handles what the buttons do when they are pressed. This is for the VR UI buttons, when clicked by a pointer.
  */
 
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,7 @@ using UnityEngine.UI;
 public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerClickHandler, IPointerUpHandler
 {
     public GameObject panelHandler;
+    private MainMenuHandle mainMenuHandle;
     private AudioSource audioSource;
 
     public Color32 norm = Color.white;
@@ -33,6 +35,11 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void Start()
+    {
+        mainMenuHandle = panelHandler.GetComponent<MainMenuHandle>();
+    }
+
     public void SetInteractable(bool state)
     {
         interactable = state;
@@ -46,32 +53,32 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
         
         if (gameObject.name == "Start") //main menu
         {
-            panelHandler.GetComponent<MainMenuHandle>().logo.SetActive(true);
-            panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(false);
-            panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(false);
-            panelHandler.GetComponent<MainMenuHandle>().levelSelectPanel.SetActive(true);
-            panelHandler.GetComponent<MainMenuHandle>().mainMenuPanel.SetActive(false);
+            mainMenuHandle.logo.SetActive(true);
+            mainMenuHandle.howToPlay.SetActive(false);
+            mainMenuHandle.credits.SetActive(false);
+            mainMenuHandle.levelSelectPanel.SetActive(true);
+            mainMenuHandle.mainMenuPanel.SetActive(false);
         }
 
         if (gameObject.name == "HowToPlay") //main menu
         {
-            panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(true);
-            panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(false);
-            panelHandler.GetComponent<MainMenuHandle>().logo.SetActive(false);
+            mainMenuHandle.howToPlay.SetActive(true);
+            mainMenuHandle.credits.SetActive(false);
+            mainMenuHandle.logo.SetActive(false);
         }
 
         if (gameObject.name == "Credits") //main menu
         {
-            panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(false);
-            panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(true);
-            panelHandler.GetComponent<MainMenuHandle>().logo.SetActive(false);
+            mainMenuHandle.howToPlay.SetActive(false);
+            mainMenuHandle.credits.SetActive(true);
+            mainMenuHandle.logo.SetActive(false);
         }
 
         if (gameObject.name == "Quit") //main menu
         {
-            panelHandler.GetComponent<MainMenuHandle>().howToPlay.SetActive(false);
-            panelHandler.GetComponent<MainMenuHandle>().credits.SetActive(false);
-            panelHandler.GetComponent<MainMenuHandle>().logo.SetActive(false);
+            mainMenuHandle.howToPlay.SetActive(false);
+            mainMenuHandle.credits.SetActive(false);
+            mainMenuHandle.logo.SetActive(false);
             Application.Quit();
         }
 
@@ -109,14 +116,16 @@ public class ButtonTransistioner : MonoBehaviour, IPointerEnterHandler, IPointer
 
         if (gameObject.CompareTag("level"))
         {
-            LevelSelect.selectedLevel = gameObject.GetComponent<LevelButtonScript>().GetLevelNum();
-            panelHandler.GetComponent<MainMenuHandle>().startLevelButton.SetActive(true);
+            LevelButtonScript selectedLevel = gameObject.GetComponent<LevelButtonScript>();
+            selectedLevel.ChangeSelectedLevel();
+            LevelSelect.selectedLevel = selectedLevel.GetLevelNum();
+            mainMenuHandle.startLevelButton.SetActive(true);
         }
 
         if (gameObject.name == "Back") //back from level select to main menu
         {
-            panelHandler.GetComponent<MainMenuHandle>().levelSelectPanel.SetActive(false);
-            panelHandler.GetComponent<MainMenuHandle>().mainMenuPanel.SetActive(true);
+            mainMenuHandle.levelSelectPanel.SetActive(false);
+            mainMenuHandle.mainMenuPanel.SetActive(true);
         }
 
         if (gameObject.name == "StartLevel")

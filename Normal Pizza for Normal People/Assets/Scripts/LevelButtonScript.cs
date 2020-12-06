@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,9 +10,15 @@ public class LevelButtonScript : MonoBehaviour
     [SerializeField] private TMP_Text levelNameText;
     [SerializeField] private List<Image> starImages = new List<Image>();
     [SerializeField] private Color missingStarColor = Color.black;
+    [SerializeField] private GameObject selectedLevelOutline;
     private int levelNum;
     private string levelName;
     private int levelStars;
+
+    private void Start()
+    {
+        selectedLevelOutline.SetActive(false);
+    }
 
     public int GetLevelNum()
     {
@@ -57,5 +64,18 @@ public class LevelButtonScript : MonoBehaviour
                 starImages[i].color = missingStarColor;
             }
         }
+    }
+
+    public void ChangeSelectedLevel()
+    {
+        foreach (var levelButton in FindObjectsOfType<LevelButtonScript>())
+        {
+            if (levelButton.selectedLevelOutline.activeSelf)
+            {
+                levelButton.selectedLevelOutline.SetActive(false);
+                break;
+            }
+        }
+        selectedLevelOutline.SetActive(true);
     }
 }

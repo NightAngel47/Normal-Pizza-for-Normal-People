@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39607847, g: 1, b: 1, a: 0.6}
+  m_Color: {r: 0, g: 0.6039216, b: 1, a: 0.6}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -91,7 +91,7 @@ MonoBehaviour:
   panelHandler: {fileID: 0}
   norm:
     serializedVersion: 2
-    rgba: 2583691109
+    rgba: 2583665152
   hover:
     serializedVersion: 2
     rgba: 4294967141
@@ -100,7 +100,7 @@ MonoBehaviour:
     rgba: 4292467030
   disabled:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4281677109
   interactable: 1
 --- !u!82 &391458095
 AudioSource:
@@ -676,7 +676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39607847, g: 1, b: 1, a: 0.6}
+  m_Color: {r: 0, g: 0.6039216, b: 1, a: 0.6}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -706,7 +706,7 @@ MonoBehaviour:
   panelHandler: {fileID: 0}
   norm:
     serializedVersion: 2
-    rgba: 2583691109
+    rgba: 2583665152
   hover:
     serializedVersion: 2
     rgba: 4294967141
@@ -715,7 +715,7 @@ MonoBehaviour:
     rgba: 4292467030
   disabled:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4281677109
   interactable: 1
 --- !u!82 &931265400
 AudioSource:
