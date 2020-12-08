@@ -17,103 +17,91 @@ MonoBehaviour:
   dataArray:
   - daynum: 1
     scoregoal: 300
-    startwogoal: 400
-    starthreegoal: 500
-    daylength: 90
-    totalcustomers: 15
-    numcustomerlines: 1
-    numofovens: 0
+    daylength: 400
+    totalcustomers: 500
+    numcustomerlines: 90
+    numofovens: 15
     mintopping: 1
-    maxtopping: 4
-    toppingrange: 0
-    pineapple: 1
-    laundrypod: 1
-    cactus: 0
-    beetroot: 0
+    maxtopping: 0
+    toppingrange: 1
+    pineapple: 0
+    laundrypod: 0
+    cactus: 1
+    beetroot: 1
     starfish: 0
     honeycomb: 0
     cheesepress: 1
     cheeses: 3
   - daynum: 2
     scoregoal: 400
-    startwogoal: 500
-    starthreegoal: 600
-    daylength: 90
-    totalcustomers: 15
-    numcustomerlines: 2
-    numofovens: 0
-    mintopping: 1
-    maxtopping: 6
-    toppingrange: 0
-    pineapple: 1
-    laundrypod: 1
-    cactus: 1
-    beetroot: 0
-    starfish: 0
-    honeycomb: 0
-    cheesepress: 0
-    cheeses: 0
-  - daynum: 3
-    scoregoal: 550
-    startwogoal: 650
-    starthreegoal: 750
-    daylength: 100
-    totalcustomers: 20
-    numcustomerlines: 2
-    numofovens: 1
-    mintopping: 1
-    maxtopping: 6
-    toppingrange: 1
-    pineapple: 1
-    laundrypod: 1
-    cactus: 1
-    beetroot: 1
-    starfish: 0
-    honeycomb: 0
-    cheesepress: 0
-    cheeses: 0
-  - daynum: 4
-    scoregoal: 700
-    startwogoal: 800
-    starthreegoal: 900
-    daylength: 100
-    totalcustomers: 20
-    numcustomerlines: 3
-    numofovens: 2
+    daylength: 500
+    totalcustomers: 600
+    numcustomerlines: 90
+    numofovens: 15
     mintopping: 2
-    maxtopping: 8
-    toppingrange: 0
-    pineapple: 1
-    laundrypod: 1
+    maxtopping: 0
+    toppingrange: 1
+    pineapple: 0
+    laundrypod: 0
     cactus: 1
     beetroot: 1
     starfish: 1
     honeycomb: 0
     cheesepress: 0
     cheeses: 0
-  - daynum: 5
-    scoregoal: 900
-    startwogoal: 1000
-    starthreegoal: 1100
-    daylength: 100
-    totalcustomers: 25
-    numcustomerlines: 3
-    numofovens: 2
-    mintopping: 3
-    maxtopping: 9
-    toppingrange: 0
-    pineapple: 1
-    laundrypod: 1
+  - daynum: 3
+    scoregoal: 550
+    daylength: 650
+    totalcustomers: 750
+    numcustomerlines: 100
+    numofovens: 20
+    mintopping: 2
+    maxtopping: 1
+    toppingrange: 1
+    pineapple: 0
+    laundrypod: 0
     cactus: 1
     beetroot: 1
     starfish: 1
     honeycomb: 1
     cheesepress: 0
     cheeses: 0
+  - daynum: 4
+    scoregoal: 700
+    daylength: 800
+    totalcustomers: 900
+    numcustomerlines: 100
+    numofovens: 20
+    mintopping: 3
+    maxtopping: 2
+    toppingrange: 2
+    pineapple: 0
+    laundrypod: 0
+    cactus: 1
+    beetroot: 1
+    starfish: 1
+    honeycomb: 1
+    cheesepress: 1
+    cheeses: 0
+  - daynum: 5
+    scoregoal: 900
+    daylength: 1000
+    totalcustomers: 1100
+    numcustomerlines: 100
+    numofovens: 25
+    mintopping: 3
+    maxtopping: 2
+    toppingrange: 3
+    pineapple: 0
+    laundrypod: 0
+    cactus: 1
+    beetroot: 1
+    starfish: 1
+    honeycomb: 1
+    cheesepress: 1
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -131,8 +119,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -150,8 +136,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -169,8 +153,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -188,8 +170,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -207,8 +187,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -226,8 +204,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -245,8 +221,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -264,8 +238,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -283,8 +255,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -302,8 +272,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -321,8 +289,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -340,8 +306,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -359,8 +323,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -378,8 +340,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -397,8 +357,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -416,8 +374,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -435,8 +391,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -454,8 +408,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -473,8 +425,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -492,8 +442,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -511,8 +459,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -530,8 +476,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -549,27 +493,23 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 999
     scoregoal: 1
-    startwogoal: 2
-    starthreegoal: 3
-    daylength: 200
-    totalcustomers: 50
-    numcustomerlines: 3
-    numofovens: 2
-    mintopping: 1
-    maxtopping: 9
+    daylength: 2
+    totalcustomers: 3
+    numcustomerlines: 200
+    numofovens: 50
+    mintopping: 3
+    maxtopping: 2
     toppingrange: 1
-    pineapple: 1
-    laundrypod: 1
+    pineapple: 0
+    laundrypod: 0
     cactus: 1
     beetroot: 1
     starfish: 1
     honeycomb: 1
     cheesepress: 1
-    cheeses: 3
+    cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -587,8 +527,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -606,8 +544,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -625,8 +561,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
@@ -644,8 +578,6 @@ MonoBehaviour:
     cheeses: 0
   - daynum: 0
     scoregoal: 0
-    startwogoal: 0
-    starthreegoal: 0
     daylength: 0
     totalcustomers: 0
     numcustomerlines: 0
