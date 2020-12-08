@@ -210,12 +210,18 @@ public class Customer : MonoBehaviour
     /// <returns>If true: it returns the amount of money the pizza earned, else: it returns the amount of money lost.</returns>
     private int CheckDeliveredPizza(PizzaBehaviour pizza)
     {
+        // checks flag for the first pizza thrown for the tutorial flag
+        firstPizzaThrow = true;
+        
         // adds base profit for pizza
         float deliveredPizzaMoney = moneyTracker.basePizzaProfit;
+        int orderIngredientCount = 0;
 
         // adds profit for toppings based on tiers
-        foreach (PizzaIngredient ingredient in order.GetOrderIngredients())
+        foreach (var ingredient in order.GetOrderIngredients().TakeWhile(ingredient => !ingredient.isCheese || !ingredient.isDough))
         {
+            orderIngredientCount++;
+            
             switch (ingredient.GetIngredientTier())
             {
                 case 1:
@@ -233,43 +239,77 @@ public class Customer : MonoBehaviour
             }
         }
 
-        // checks flag for the first pizza thrown for the tutorial flag
-        firstPizzaThrow = true;
+        int pizzaIngredientCount = pizza.GetIngredientsOnPizza().TakeWhile(ingredient => !ingredient.isCheese || !ingredient.isDough).Count();
 
         // checks if the ingredients on the pizza match the customer's order
-        if (pizza.GetIngredientsOnPizza().Count == order.GetOrderIngredients().Count)
+        if (pizzaIngredientCount == orderIngredientCount)
         {
             var tempOrderList = order.GetOrderIngredients();
 
-            for (int i = 0; i < pizza.GetIngredientsOnPizza().Count; ++i)
+            foreach (PizzaIngredient ingredient in pizza.GetIngredientsOnPizza())
             {
-                for (int j = 0; j < tempOrderList.Count; ++j)
+                if (!ingredient.isCheese && !ingredient.isDough)
                 {
-                    if (pizza.GetIngredientsOnPizza()[i].GetIngredientName() == tempOrderList[j].GetIngredientName())
+                    for (int j = 0; j < tempOrderList.Count; ++j)
                     {
-                        tempOrderList.RemoveAt(j);
-                        break;
+                        if (ingredient.GetIngredientName() == tempOrderList[j].GetIngredientName())
+                        {
+                            tempOrderList.RemoveAt(j);
+                            break;
+                        }
+                    }
+                }
+                else if (ingredient.isCheese)
+                {
+                    for (int j = 0; j < tempOrderList.Count; ++j)
+                    {
+                        if (ingredient.GetIngredientName() == tempOrderList[j].GetIngredientName())
+                        {
+                            deliveredPizzaMoney += moneyTracker.cheeseBonus;
+                    
+                            switch (ingredient.GetIngredientTier())
+                            {
+                                case 1:
+                                    deliveredPizzaMoney += moneyTracker.tier1Toppings;
+                                    break;
+                                case 2:
+                                    deliveredPizzaMoney += moneyTracker.tier2Toppings;
+                                    break;
+                                case 3:
+                                    deliveredPizzaMoney += moneyTracker.tier3Toppings;
+                                    break;
+                                default:
+                                    Debug.LogWarning("Ingredient: " + ingredient.name + " does not have supported tier.");
+                                    break;
+                            }
+                            
+                            tempOrderList.RemoveAt(j);
+                            break;
+                        }
+                    }
+                }
+                else if (ingredient.isDough)
+                {
+                    for (int j = 0; j < tempOrderList.Count; ++j)
+                    {
+                        if (ingredient.GetIngredientName() == tempOrderList[j].GetIngredientName())
+                        {
+                            deliveredPizzaMoney += moneyTracker.doughBonus;
+
+                            tempOrderList.RemoveAt(j);
+                            break;
+                        }
                     }
                 }
             }
 
-            if (tempOrderList.Count <= 0)
+            
+            if (tempOrderList.Any(ingredient => !ingredient.isCheese && !ingredient.isDough))
             {
-                // first 2 days don't need oven because there is no oven to cook pizzas till day 3
-                if (gm.currentGameDay.dayNum > 2 && (pizza.isBurnt || !pizza.isCooked))
-                {
-                    return (int) -deliveredPizzaMoney / 2; // bad order because pizza is uncooked or burnt
-                }
-                
-                // add cooked bonus
-                if (pizza.isCooked)
-                {
-                    deliveredPizzaMoney += (int) moneyTracker.cookedBonus;
-                }
-                //TODO add other bonuses
-                
-                return (int) (deliveredPizzaMoney * (1 + currentOrderTime / startOrderTime)); // good order because pizza is correct
+                return (int) -deliveredPizzaMoney / 2; // bad order because the toppings don't match
             }
+                
+            return (int) (deliveredPizzaMoney * (1 + currentOrderTime / startOrderTime)); // good order because pizza is correct
         }
 
         return (int) -deliveredPizzaMoney / 2; // bad order because the total amount of toppings on pizza is not equal to customer order

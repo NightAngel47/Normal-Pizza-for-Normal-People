@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Day Summary UI")]
     [SerializeField] private GameObject endOfDaySummary;
+    [SerializeField] private GameObject startOfDaySummary;
     [SerializeField] private TMP_Text daySummaryTitle;
     [SerializeField] private Color missedStarColor;
     [SerializeField] private List<Image> daySummaryStars;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public bool dayStarted = false;
     public GameObject startDayButton = null;
+    public GameObject nextLevelButton = null;
     public GameObject pizzaSpawnButton = null;
 
     private readonly List<Customer> remainingActiveCustomers = new List<Customer>();
@@ -114,11 +116,20 @@ public class GameManager : MonoBehaviour
         pointer.SetActive(state);
     }
 
+    public void ChangeDayPanels()
+    {
+        endOfDaySummary.SetActive(false);
+        startOfDaySummary.SetActive(true);
+        startDayButton.SetActive(true);
+        nextLevelButton.SetActive(false);
+    }
+
     public void StartDay()
     {
         dayStarted = true;
         startDayButton.SetActive(false);
         pizzaSpawnButton.SetActive(true);
+        startOfDaySummary.SetActive(false);
 
         StartCoroutine(DayCycle());
     }
@@ -175,7 +186,7 @@ public class GameManager : MonoBehaviour
             currentGameDay.starsEarned++;
             IncreaseDayDifficulty();
 
-            startDayButton.SetActive(true);
+            nextLevelButton.SetActive(true);
         }
         else
         {

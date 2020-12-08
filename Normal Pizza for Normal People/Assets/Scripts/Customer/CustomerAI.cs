@@ -68,6 +68,7 @@ public class CustomerAI : MonoBehaviour
 
         if (agent.isStopped)
         {
+            thisCustomer.customerAudio.ChangeCustomerAudio(CustomerAudio.CustomerAudioStates.Stop);
             yield return new WaitWhile((() => customerAboutToLeave));
             
             CustomerLinePos shortestLinePos = customerLine.FindShortestCustomerLine();
