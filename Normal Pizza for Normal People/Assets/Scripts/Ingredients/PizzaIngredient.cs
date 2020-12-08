@@ -17,6 +17,7 @@ public class PizzaIngredient : MonoBehaviour
     [SerializeField] private Sprite ingredientIcon = null;
 
     public int tier = 0;
+    public bool isCheese;
 
     public string GetIngredientName()
     {

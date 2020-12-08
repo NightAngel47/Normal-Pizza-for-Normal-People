@@ -231,6 +231,11 @@ public class Customer : MonoBehaviour
                     Debug.LogWarning("Ingredient: " + ingredient.name + " does not have supported tier.");
                     break;
             }
+
+            if (ingredient.isCheese)
+            {
+                deliveredPizzaMoney += moneyTracker.cheeseBonus;
+            }
         }
 
         // checks flag for the first pizza thrown for the tutorial flag
