@@ -6,6 +6,6 @@ public class CheeseUpgrade : ItemUpgrades
 {
     public override void TurnOnUpgrade()
     {
-        Debug.LogWarning("Not implemented");
+        gameObject.SetActive(true);
     }
 }

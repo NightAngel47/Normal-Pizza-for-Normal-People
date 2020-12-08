@@ -21,7 +21,7 @@ MonoBehaviour:
     starthreegoal: 500
     daylength: 90
     totalcustomers: 15
-    numcustomerlines: 1
+    numcustomerlines: 0
     numofovens: 0
     mintopping: 1
     maxtopping: 4
@@ -40,7 +40,7 @@ MonoBehaviour:
     starthreegoal: 600
     daylength: 90
     totalcustomers: 15
-    numcustomerlines: 2
+    numcustomerlines: 1
     numofovens: 0
     mintopping: 1
     maxtopping: 6
@@ -59,7 +59,7 @@ MonoBehaviour:
     starthreegoal: 750
     daylength: 100
     totalcustomers: 20
-    numcustomerlines: 2
+    numcustomerlines: 1
     numofovens: 1
     mintopping: 1
     maxtopping: 6
@@ -78,7 +78,7 @@ MonoBehaviour:
     starthreegoal: 900
     daylength: 100
     totalcustomers: 20
-    numcustomerlines: 3
+    numcustomerlines: 2
     numofovens: 2
     mintopping: 2
     maxtopping: 8
@@ -97,7 +97,7 @@ MonoBehaviour:
     starthreegoal: 1100
     daylength: 100
     totalcustomers: 25
-    numcustomerlines: 3
+    numcustomerlines: 2
     numofovens: 2
     mintopping: 3
     maxtopping: 9

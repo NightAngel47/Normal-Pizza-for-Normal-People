@@ -2,11 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
     public Sheet1 levelData;
-    
+    [SerializeField] private GameObject startOfDaySummary;
+    [SerializeField] private GameObject starOneScore;
+    [SerializeField] private GameObject starTwoScore;
+    [SerializeField] private GameObject starThreeScore;
+
+    public List<string> narrativeBodyText = new List<string>();
+
     enum CustomerLinePoses {Center, Right, Left}
     [SerializeField] private List<CustomerLineUpgrade> customerLines = new List<CustomerLineUpgrade>();
     
@@ -28,6 +35,15 @@ public class LevelManager : MonoBehaviour
             levelData.dataArray[selectedDay].Startwogoal,
             levelData.dataArray[selectedDay].Starthreegoal);
 
+        if (selectedDay == 0)
+        {
+            startOfDaySummary.SetActive(true);
+        }
+        startOfDaySummary.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = "Day " + (selectedDay + 1);
+        startOfDaySummary.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = narrativeBodyText[selectedDay];
+        starOneScore.GetComponent<TextMeshProUGUI>().text = levelData.dataArray[selectedDay].Scoregoal.ToString();
+        starTwoScore.GetComponent<TextMeshProUGUI>().text = levelData.dataArray[selectedDay].Startwogoal.ToString();
+        starThreeScore.GetComponent<TextMeshProUGUI>().text = levelData.dataArray[selectedDay].Starthreegoal.ToString();
         CustomerLine customerLine = FindObjectOfType<CustomerLine>();
         // setup customer lines
         switch (levelData.dataArray[selectedDay].Numcustomerlines)
@@ -120,12 +136,11 @@ public class LevelManager : MonoBehaviour
         if (!levelData.dataArray[selectedDay].Cheesepress)
         {
             cheesePress.HideItem();   
-
-            
         }
 
         else
         {
+            cheesePress.TurnOnUpgrade();
             switch (levelData.dataArray[selectedDay].Cheeses)
             {
                 case 0:
