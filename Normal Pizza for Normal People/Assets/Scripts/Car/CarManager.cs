@@ -27,7 +27,7 @@ public class CarManager : MonoBehaviour
     public IEnumerator Car()
     {
         spawnCar = false;
-        int time = Random.Range(15, 45);
+        int time = Random.Range(10, 25);
         int carNum = Random.Range(0, cars.Count);
         int locNum = Random.Range(0, 2);
 
