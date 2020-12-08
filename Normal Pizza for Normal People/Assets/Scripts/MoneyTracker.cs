@@ -11,6 +11,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MoneyTracker : MonoBehaviour
@@ -39,8 +40,7 @@ public class MoneyTracker : MonoBehaviour
     public float tier1Toppings = 2f;
     public float tier2Toppings = 4f;
     public float tier3Toppings = 6f;
-    public float cookedBonus = 10f;
-    public float sauceBonus = 15f;
+    public float doughBonus = 10f;
     public float cheeseBonus = 20f;
 
     private void Start()
