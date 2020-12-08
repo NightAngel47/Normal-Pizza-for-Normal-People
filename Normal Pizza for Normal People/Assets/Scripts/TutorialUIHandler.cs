@@ -11,10 +11,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class TutorialUIHandler : MonoBehaviour
 {
     [SerializeField] private GameObject bottomOven = null;
+    [SerializeField] private GameObject cheesePress = null;
     [SerializeField] private List<GameObject> tutorialUI = new List<GameObject>();
     private GameManager gm = null;
     
@@ -67,9 +69,17 @@ public class TutorialUIHandler : MonoBehaviour
         yield return new WaitUntil(() => Customer.firstPizzaThrow);
         
         tutorialUI[5].SetActive(false); //throw off
-        
+
+        yield return new WaitUntil(() => cheesePress.activeSelf);
+
+        tutorialUI[8].SetActive(true);
+
+        yield return new WaitUntil(() => cheesePress.transform.GetChild(4).gameObject.transform.GetChild(2).gameObject.GetComponent<LinearMapping>().value >= .8);
+
+        tutorialUI[8].SetActive(false);
+
         yield return new WaitUntil(() => bottomOven.activeSelf && gm.dayStarted && FindObjectOfType<PizzaBehaviour>() && FindObjectOfType<IngredientHitEffect>());
-        
+
         tutorialUI[6].SetActive(true); // cook right on
         tutorialUI[7].SetActive(true); // cook on
         
