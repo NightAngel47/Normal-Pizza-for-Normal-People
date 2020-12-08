@@ -555,3 +555,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
+  isCar: 1

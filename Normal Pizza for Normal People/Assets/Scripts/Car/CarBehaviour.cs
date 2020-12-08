@@ -5,11 +5,19 @@ using UnityEngine;
 public class CarBehaviour : MonoBehaviour
 {
     private float speed = 10;
-    public bool direction = true; //true left false right
+    public bool isGoingLeft = true; //true left false right
+    public bool isCar = false;
 
     void Start()
     {
-        speed = Random.Range(7, 13);
+        if (isCar == true)
+        {
+            speed = Random.Range(7, 13);
+        }
+        else
+        {
+            speed = Random.Range(1, 5);
+        }
     }
 
     // Update is called once per frame
@@ -17,7 +25,7 @@ public class CarBehaviour : MonoBehaviour
     {
         float step = speed * Time.deltaTime;
 
-        if (direction == true)
+        if (isGoingLeft == true)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 20, transform.position.y, transform.position.z), step);
         }
@@ -26,6 +34,13 @@ public class CarBehaviour : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x + 20, transform.position.y, transform.position.z), step);
         }
 
-        Destroy(gameObject, 5);
+        if (isCar == true)
+        {
+            Destroy(gameObject, 5);
+        }
+        else
+        {
+            Destroy(gameObject, 15);
+        }
     }
 }

@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
+  isCar: 1
 --- !u!1 &5017095512413886202
 GameObject:
   m_ObjectHideFlags: 0
