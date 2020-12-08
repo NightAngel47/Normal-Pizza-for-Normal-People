@@ -16,6 +16,7 @@ public class OrderCreation : MonoBehaviour
     public List<PizzaIngredient> tierTwoIngredients = new List<PizzaIngredient>();
     public List<PizzaIngredient> tierThreeIngredients = new List<PizzaIngredient>();
     public List<PizzaIngredient> cheeseIngredients = new List<PizzaIngredient>();
+    public List<PizzaIngredient> doughType = new List<PizzaIngredient>();
     //[SerializeField] private int minIngredientsPerOrder = 1;
     //[SerializeField] private int maxIngredientsPerOrder = 3;
     [SerializeField] private int minTotalToppingsPerOrder = 0;
@@ -96,7 +97,27 @@ public class OrderCreation : MonoBehaviour
             }
         }
 
-        int totalToppingTemp = totalToppingsPerPizza;
+        if (FindObjectOfType<LevelManager>().levelData.dataArray[LevelSelect.selectedLevel].Numofovens > 0)
+        {
+            int randDough = UnityEngine.Random.Range(0, 100);
+
+            if (randDough <= 50) // cooked dough
+            {
+                ingredients.Add(doughType[0]);
+            }
+
+            if (randDough > 50 && randDough <= 75) //uncooked dough
+            {
+                ingredients.Add(doughType[1]);
+            }
+
+            if (randDough > 75 && randDough <= 99) //burnt dough
+            {
+                ingredients.Add(doughType[2]);
+            }
+        }
+
+            int totalToppingTemp = totalToppingsPerPizza;
 
         List<PizzaIngredient> oneTemp = new List<PizzaIngredient>(tierOneIngredients);
         List<PizzaIngredient> twoTemp = new List<PizzaIngredient>(tierTwoIngredients);
@@ -300,6 +321,7 @@ public class OrderCreation : MonoBehaviour
             }
 
         }
+
 
         return ingredients;
     }
