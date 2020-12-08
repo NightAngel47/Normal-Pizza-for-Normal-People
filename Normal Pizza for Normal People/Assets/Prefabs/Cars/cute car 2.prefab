@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5352949596215313173}
   - component: {fileID: 3005537408909535790}
   - component: {fileID: 7645890079085263100}
+  - component: {fileID: 1180727316328092671}
   m_Layer: 0
   m_Name: polySurface113
   m_TagString: Untagged
@@ -79,6 +80,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &1180727316328092671
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167499700919627156}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39a9e6c32d4075040be157062e2dfc41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1552799204401897899
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +335,7 @@ GameObject:
   - component: {fileID: 7719128927836536382}
   - component: {fileID: 7013529384654297112}
   - component: {fileID: 8653931325783339212}
+  - component: {fileID: 3620980677536460482}
   m_Layer: 0
   m_Name: polySurface118
   m_TagString: Untagged
@@ -383,6 +404,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &3620980677536460482
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6785152425015789690}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39a9e6c32d4075040be157062e2dfc41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7242257703942923218
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,6 +559,7 @@ GameObject:
   - component: {fileID: 1716547365157162897}
   - component: {fileID: 3496729145050173913}
   - component: {fileID: 3168498474872078601}
+  - component: {fileID: 8194619458003885665}
   m_Layer: 0
   m_Name: polySurface112
   m_TagString: Untagged
@@ -587,6 +628,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &8194619458003885665
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8863083595809518987}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39a9e6c32d4075040be157062e2dfc41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8965108965614812771
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +658,7 @@ GameObject:
   - component: {fileID: 1890858229454956494}
   - component: {fileID: 5342214782184833115}
   - component: {fileID: 49162150001367982}
+  - component: {fileID: 5273782497786922511}
   m_Layer: 0
   m_Name: polySurface119
   m_TagString: Untagged
@@ -666,3 +727,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &5273782497786922511
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965108965614812771}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39a9e6c32d4075040be157062e2dfc41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

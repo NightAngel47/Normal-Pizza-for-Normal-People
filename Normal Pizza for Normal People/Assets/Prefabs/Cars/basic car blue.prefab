@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 4904490309441368093}
   - component: {fileID: 5789385985228670085}
   - component: {fileID: 1718065999358384371}
+  - component: {fileID: 4604527820030481926}
   m_Layer: 0
   m_Name: pCylinder9
   m_TagString: Untagged
@@ -192,6 +193,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &4604527820030481926
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4931462555188560850}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39a9e6c32d4075040be157062e2dfc41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6434420451362500678
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,6 +223,7 @@ GameObject:
   - component: {fileID: 1738925206461678694}
   - component: {fileID: 3404711813098480466}
   - component: {fileID: 8513265662190106604}
+  - component: {fileID: 6538176884411027469}
   m_Layer: 0
   m_Name: pCylinder10
   m_TagString: Untagged
@@ -271,6 +292,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &6538176884411027469
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6434420451362500678}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39a9e6c32d4075040be157062e2dfc41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7487248535649363929
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +322,7 @@ GameObject:
   - component: {fileID: 3262005883124145471}
   - component: {fileID: 6417690358262448552}
   - component: {fileID: 769148356215467089}
+  - component: {fileID: 6932906496442225826}
   m_Layer: 0
   m_Name: pCylinder8
   m_TagString: Untagged
@@ -350,6 +391,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &6932906496442225826
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7487248535649363929}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39a9e6c32d4075040be157062e2dfc41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8099389489844917135
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +421,7 @@ GameObject:
   - component: {fileID: 413957152208283843}
   - component: {fileID: 3157557796517520742}
   - component: {fileID: 455980866523064571}
+  - component: {fileID: 6467837841327170758}
   m_Layer: 0
   m_Name: pCylinder7
   m_TagString: Untagged
@@ -429,6 +490,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &6467837841327170758
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8099389489844917135}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39a9e6c32d4075040be157062e2dfc41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8388177175379222745
 GameObject:
   m_ObjectHideFlags: 0

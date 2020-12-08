@@ -490,6 +490,7 @@ GameObject:
   - component: {fileID: 2798722410302032613}
   - component: {fileID: 4782164918732862132}
   - component: {fileID: 5593139774466923791}
+  - component: {fileID: 2205139277633104985}
   m_Layer: 0
   m_Name: wheel
   m_TagString: Untagged
@@ -558,6 +559,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &2205139277633104985
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4240833590966357130}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39a9e6c32d4075040be157062e2dfc41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5794208432374844072
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,6 +781,7 @@ GameObject:
   - component: {fileID: 577887924374854296}
   - component: {fileID: 975413985669666516}
   - component: {fileID: 6786283421551614503}
+  - component: {fileID: 96421688437813920}
   m_Layer: 0
   m_Name: wheel4
   m_TagString: Untagged
@@ -829,6 +850,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &96421688437813920
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369169331355585655}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39a9e6c32d4075040be157062e2dfc41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6590019727538991399
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,6 +959,7 @@ GameObject:
   - component: {fileID: 2228056624457096390}
   - component: {fileID: 7069601537033057403}
   - component: {fileID: 6834278552404501660}
+  - component: {fileID: 5720281372600254823}
   m_Layer: 0
   m_Name: wheel6
   m_TagString: Untagged
@@ -987,6 +1028,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &5720281372600254823
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103816555493874796}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39a9e6c32d4075040be157062e2dfc41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7925311055133360745
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,6 +1058,7 @@ GameObject:
   - component: {fileID: 2243151388324905599}
   - component: {fileID: 6537054518567274005}
   - component: {fileID: 392806041904483055}
+  - component: {fileID: 647447355359572818}
   m_Layer: 0
   m_Name: wheel5
   m_TagString: Untagged
@@ -1066,3 +1127,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &647447355359572818
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925311055133360745}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39a9e6c32d4075040be157062e2dfc41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
