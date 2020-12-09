@@ -290,9 +290,9 @@ public class Customer : MonoBehaviour
                 }
             }
 
-            if (tempOrderList[0].isDough)
+            foreach (var ingredient in tempOrderList.Where(ingredient => ingredient.isDough))
             {
-                switch (tempOrderList[0].GetIngredientName())
+                switch (ingredient.GetIngredientName())
                 {
                     case "Uncooked":
                         if (!pizza.isCooked && !pizza.isBurnt)
@@ -319,6 +319,8 @@ public class Customer : MonoBehaviour
                         Debug.LogError("Missing Dough Type");
                         break;
                 }
+
+                break;
             }
 
             
