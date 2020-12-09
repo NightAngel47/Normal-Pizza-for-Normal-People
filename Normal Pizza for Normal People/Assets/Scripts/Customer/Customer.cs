@@ -218,10 +218,10 @@ public class Customer : MonoBehaviour
         int orderIngredientCount = 0;
 
         // adds profit for toppings based on tiers
-        foreach (var ingredient in order.GetOrderIngredients().TakeWhile(ingredient => !ingredient.isCheese && !ingredient.isDough))
+        foreach (var ingredient in order.GetOrderIngredients().Where(ingredient => !ingredient.isCheese && !ingredient.isDough))
         {
             orderIngredientCount++;
-            
+                
             switch (ingredient.GetIngredientTier())
             {
                 case 1:
@@ -239,7 +239,7 @@ public class Customer : MonoBehaviour
             }
         }
 
-        int pizzaIngredientCount = pizza.GetIngredientsOnPizza().TakeWhile(ingredient => !ingredient.isCheese && !ingredient.isDough).Count();
+        int pizzaIngredientCount = pizza.GetIngredientsOnPizza().Count(ingredient => !ingredient.isCheese && !ingredient.isDough);
 
         // checks if the ingredients on the pizza match the customer's order
         if (pizzaIngredientCount == orderIngredientCount)
