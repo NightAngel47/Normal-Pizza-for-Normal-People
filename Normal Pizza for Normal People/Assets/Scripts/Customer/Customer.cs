@@ -218,7 +218,7 @@ public class Customer : MonoBehaviour
         int orderIngredientCount = 0;
 
         // adds profit for toppings based on tiers
-        foreach (var ingredient in order.GetOrderIngredients().TakeWhile(ingredient => !ingredient.isCheese || !ingredient.isDough))
+        foreach (var ingredient in order.GetOrderIngredients().TakeWhile(ingredient => !ingredient.isCheese && !ingredient.isDough))
         {
             orderIngredientCount++;
             
@@ -239,7 +239,7 @@ public class Customer : MonoBehaviour
             }
         }
 
-        int pizzaIngredientCount = pizza.GetIngredientsOnPizza().TakeWhile(ingredient => !ingredient.isCheese || !ingredient.isDough).Count();
+        int pizzaIngredientCount = pizza.GetIngredientsOnPizza().TakeWhile(ingredient => !ingredient.isCheese && !ingredient.isDough).Count();
 
         // checks if the ingredients on the pizza match the customer's order
         if (pizzaIngredientCount == orderIngredientCount)
@@ -298,21 +298,18 @@ public class Customer : MonoBehaviour
                         if (!pizza.isCooked && !pizza.isBurnt)
                         {
                             deliveredPizzaMoney += moneyTracker.doughBonus;
-                            tempOrderList.RemoveAt(0);
                         }
                         break;
                     case "Cooked":
                         if (pizza.isCooked && !pizza.isBurnt)
                         {
                             deliveredPizzaMoney += moneyTracker.doughBonus;
-                            tempOrderList.RemoveAt(0);
                         }
                         break;
                     case "Burnt":
                         if (pizza.isBurnt)
                         {
                             deliveredPizzaMoney += moneyTracker.doughBonus;
-                            tempOrderList.RemoveAt(0);
                         }
                         break;
                     default:
@@ -320,6 +317,7 @@ public class Customer : MonoBehaviour
                         break;
                 }
 
+                tempOrderList.Remove(ingredient);
                 break;
             }
 
