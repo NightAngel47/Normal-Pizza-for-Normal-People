@@ -288,18 +288,36 @@ public class Customer : MonoBehaviour
                         }
                     }
                 }
-                else if (ingredient.isDough)
+            }
+
+            if (tempOrderList[0].isDough)
+            {
+                switch (tempOrderList[0].GetIngredientName())
                 {
-                    for (int j = 0; j < tempOrderList.Count; ++j)
-                    {
-                        if (ingredient.GetIngredientName() == tempOrderList[j].GetIngredientName())
+                    case "Uncooked":
+                        if (!pizza.isCooked && !pizza.isBurnt)
                         {
                             deliveredPizzaMoney += moneyTracker.doughBonus;
-
-                            tempOrderList.RemoveAt(j);
-                            break;
+                            tempOrderList.RemoveAt(0);
                         }
-                    }
+                        break;
+                    case "Cooked":
+                        if (pizza.isCooked && !pizza.isBurnt)
+                        {
+                            deliveredPizzaMoney += moneyTracker.doughBonus;
+                            tempOrderList.RemoveAt(0);
+                        }
+                        break;
+                    case "Burnt":
+                        if (pizza.isBurnt)
+                        {
+                            deliveredPizzaMoney += moneyTracker.doughBonus;
+                            tempOrderList.RemoveAt(0);
+                        }
+                        break;
+                    default:
+                        Debug.LogError("Missing Dough Type");
+                        break;
                 }
             }
 
